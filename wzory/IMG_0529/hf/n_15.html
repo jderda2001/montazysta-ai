@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Inter Tight"; src: url("fonts/InterTight.ttf") format("truetype"); font-weight: 100 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; font-family: "Inter Tight", sans-serif; color: #fff; }
+      .cap { position: absolute; left: 60px; right: 60px; top: 905px; text-align: center; font-weight: 650; letter-spacing: -0.015em;
+        line-height: 1.1; white-space: nowrap; }
+      .cap .w { display: inline-block; background: linear-gradient(180deg, #ffffff 30%, #cfd2d8 100%); -webkit-background-clip: text;
+        background-clip: text; color: transparent; filter: drop-shadow(0 4px 14px rgba(0,0,0,.6)) drop-shadow(0 0 22px rgba(255,255,255,.14)); }
+      .cap .w.hl { background: linear-gradient(180deg, #ffa25f 0%, #ff7018 70%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="1.520" data-width="1920" data-height="1080">
+      <div id="c0" class="cap clip" data-start="0.050" data-duration="1.420" data-track-index="1" style="font-size:58px"><span class="w">do</span> <span class="w">następnego</span> <span class="w">razu.</span></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#c0 .w:nth-child(1)",{opacity:0,y:12,filter:"blur(7px)"},{opacity:1,y:0,filter:"blur(0px)",duration:0.16,ease:"power2.out"},0.080);
+      tl.fromTo("#c0 .w:nth-child(2)",{opacity:0,y:12,filter:"blur(7px)"},{opacity:1,y:0,filter:"blur(0px)",duration:0.16,ease:"power2.out"},0.440);
+      tl.fromTo("#c0 .w:nth-child(3)",{opacity:0,y:12,filter:"blur(7px)"},{opacity:1,y:0,filter:"blur(0px)",duration:0.16,ease:"power2.out"},0.970);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

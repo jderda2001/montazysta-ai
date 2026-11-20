@@ -1,0 +1,310 @@
+[
+ {
+  "plik": "o_00_hook.html",
+  "nazwa": "hook",
+  "start": 0.03,
+  "dlugosc": 4.43,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_01_adgen.html",
+  "nazwa": "adgen",
+  "start": 6.46,
+  "dlugosc": 8.663,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_02_belka_start.html",
+  "nazwa": "belka_start",
+  "start": 15.373,
+  "dlugosc": 4.8,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_03_pol_roku.html",
+  "nazwa": "pol_roku",
+  "start": 19.555,
+  "dlugosc": 3.1,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_04_etaty.html",
+  "nazwa": "etaty",
+  "start": 41.29,
+  "dlugosc": 4.84,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_05_porownanie.html",
+  "nazwa": "porownanie",
+  "start": 56.573,
+  "dlugosc": 15.334,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_06_x25.html",
+  "nazwa": "x25",
+  "start": 82.2,
+  "dlugosc": 5.677,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_07_plan.html",
+  "nazwa": "plan",
+  "start": 103.167,
+  "dlugosc": 39.703,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_08_30k.html",
+  "nazwa": "30k",
+  "start": 147.16,
+  "dlugosc": 9.21,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_09_ile_dzis.html",
+  "nazwa": "ile_dzis",
+  "start": 159.77,
+  "dlugosc": 9.07,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_10_roz1.html",
+  "nazwa": "roz1",
+  "start": 171.75,
+  "dlugosc": 2.75,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_11_dlaczego.html",
+  "nazwa": "dlaczego",
+  "start": 180.967,
+  "dlugosc": 10.14,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_12_roz2.html",
+  "nazwa": "roz2",
+  "start": 196.43,
+  "dlugosc": 4.35,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_13_lista.html",
+  "nazwa": "lista",
+  "start": 203.623,
+  "dlugosc": 8.19,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_14_artur1.html",
+  "nazwa": "artur1",
+  "start": 211.903,
+  "dlugosc": 6.17,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_15_imiona.html",
+  "nazwa": "imiona",
+  "start": 218.243,
+  "dlugosc": 3.39,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_16_schemat1.html",
+  "nazwa": "schemat1",
+  "start": 221.413,
+  "dlugosc": 6.43,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_17_kaja.html",
+  "nazwa": "kaja",
+  "start": 227.683,
+  "dlugosc": 21.094,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_18_closerzy.html",
+  "nazwa": "closerzy",
+  "start": 251.13,
+  "dlugosc": 4.48,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_19_etat.html",
+  "nazwa": "etat",
+  "start": 268.943,
+  "dlugosc": 13.56,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_20_weronika.html",
+  "nazwa": "weronika",
+  "start": 299.815,
+  "dlugosc": 26.555,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_21_sekwencje.html",
+  "nazwa": "sekwencje",
+  "start": 336.41,
+  "dlugosc": 12.07,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_22_mail.html",
+  "nazwa": "mail",
+  "start": 348.22,
+  "dlugosc": 7.117,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_23_tymon.html",
+  "nazwa": "tymon",
+  "start": 355.907,
+  "dlugosc": 28.228,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_24_artur2.html",
+  "nazwa": "artur2",
+  "start": 388.157,
+  "dlugosc": 18.91,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_25_schemat2.html",
+  "nazwa": "schemat2",
+  "start": 406.97,
+  "dlugosc": 12.38,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_26_call.html",
+  "nazwa": "call",
+  "start": 422.887,
+  "dlugosc": 20.34,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_27_poddzialy.html",
+  "nazwa": "poddzialy",
+  "start": 474.227,
+  "dlugosc": 11.53,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_28_montaz_ai.html",
+  "nazwa": "montaz_ai",
+  "start": 492.227,
+  "dlugosc": 3.3,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_29_montaz_ai2.html",
+  "nazwa": "montaz_ai2",
+  "start": 511.047,
+  "dlugosc": 2.45,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_30_roz3.html",
+  "nazwa": "roz3",
+  "start": 529.523,
+  "dlugosc": 3.11,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_31_nie_zamknie.html",
+  "nazwa": "nie_zamknie",
+  "start": 549.787,
+  "dlugosc": 2.37,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_32_closing.html",
+  "nazwa": "closing",
+  "start": 571.407,
+  "dlugosc": 6.58,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_33_nie_zadzwoni.html",
+  "nazwa": "nie_zadzwoni",
+  "start": 616.053,
+  "dlugosc": 6.917,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_34_roz4.html",
+  "nazwa": "roz4",
+  "start": 698.423,
+  "dlugosc": 4.93,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_35_plan100.html",
+  "nazwa": "plan100",
+  "start": 755.6,
+  "dlugosc": 8.38,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_36_24.html",
+  "nazwa": "24",
+  "start": 774.543,
+  "dlugosc": 4.73,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_37_koszty.html",
+  "nazwa": "koszty",
+  "start": 785.513,
+  "dlugosc": 4.69,
+  "rodzaj": "board"
+ },
+ {
+  "plik": "o_38_start30.html",
+  "nazwa": "start30",
+  "start": 794.863,
+  "dlugosc": 4.17,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_39_cta.html",
+  "nazwa": "cta",
+  "start": 818.673,
+  "dlugosc": 6.69,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_40_nina_iga.html",
+  "nazwa": "nina_iga",
+  "start": 848.042,
+  "dlugosc": 16.24,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_41_nastepny.html",
+  "nazwa": "nastepny",
+  "start": 874.412,
+  "dlugosc": 4.56,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_42_belka_koniec.html",
+  "nazwa": "belka_koniec",
+  "start": 883.147,
+  "dlugosc": 7.6,
+  "rodzaj": "overlay"
+ },
+ {
+  "plik": "o_43_koniec.html",
+  "nazwa": "koniec",
+  "start": 901.09,
+  "dlugosc": 8.91,
+  "rodzaj": "board"
+ }
+]

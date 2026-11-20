@@ -1,0 +1,20 @@
+# media i wyniki nigdy do repo
+*.mov
+*.MOV
+*.mp4
+*.m4a
+*.wav
+*.mxf
+renders/
+render/
+.hyperframes/
+__pycache__/
+*.pyc
+.DS_Store
+# klucze
+api_key
+*.key
+.env
+
+# wyjątek: biblioteka efektów dźwiękowych
+!zasoby/**/*.wav

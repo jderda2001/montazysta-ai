@@ -1,0 +1,1057 @@
+1
+00:00:00,130 --> 00:00:01,780
+Zautomatyzowałem cały dział growth.
+
+2
+00:00:01,800 --> 00:00:06,270
+Co to znaczy? Marketing i sprzedaż, w
+wielkim skrócie, w naszej agencji adGen.
+
+3
+00:00:06,560 --> 00:00:11,740
+Dla przypomnienia, czym zajmuje się adGen:
+pozyskujemy kwalifikowane, przedzwonione
+
+4
+00:00:11,760 --> 00:00:15,153
+leady dla branży prawnej,
+finansowej oraz OZE.
+
+5
+00:00:15,173 --> 00:00:21,495
+Moi drodzy, dzisiejszy odcinek jest o
+tak naprawdę półrocznej, bardzo mocnej
+
+6
+00:00:21,515 --> 00:00:27,600
+pracy z naszej strony w tym roku, bo w
+wielkim skrócie, co się udało nam zrobić?
+
+7
+00:00:28,010 --> 00:00:30,330
+Bardzo mocno zredukowaliśmy zespół.
+
+8
+00:00:30,610 --> 00:00:36,840
+I nie tylko temat odcinka został bardzo
+mocno zautomatyzowany, czyli ten
+
+9
+00:00:36,920 --> 00:00:41,130
+dział growth. Jakby zautomatyzowaliśmy
+całą firmę praktycznie, nie?
+
+10
+00:00:41,440 --> 00:00:45,170
+Zeszliśmy z parunastu
+etatów do dosłownie dwóch.
+
+11
+00:00:45,313 --> 00:00:50,313
+I jedyne, jakie mamy tam na celowniku na
+następne miesiące, są tylko i wyłącznie
+
+12
+00:00:50,333 --> 00:00:56,463
+dlatego, bo już faktycznie trochę
+za bardzo pęczniejemy, bo sam
+
+13
+00:00:56,483 --> 00:01:02,747
+sobie zespół, który liczył te 14–15 osób
+jeszcze w tamtym roku, generował dwa i
+
+14
+00:01:02,767 --> 00:01:06,897
+pół raza mniejszy przychód niż
+zespół, który mamy teraz w adGenie.
+
+15
+00:01:06,917 --> 00:01:10,047
+Czyli teraz mamy te cztery osoby
+razem z nami, pięć w sumie.
+
+16
+00:01:10,067 --> 00:01:15,387
+I to jest dla mnie niesamowite,
+jakie czasy nadeszły aktualnie.
+
+17
+00:01:15,867 --> 00:01:19,150
+Bo jakby rok temu jeszcze w ogóle bym
+o tym nie pomyślał, ale wtedy się za to
+
+18
+00:01:19,170 --> 00:01:21,910
+wzięliśmy. Dzisiaj faktycznie jestem
+w stanie powiedzieć, że to wyszło.
+
+19
+00:01:22,350 --> 00:01:26,657
+Przychody razy 2,5 do przodu ponad,
+a zespół trzykrotnie mniejszy.
+
+20
+00:01:26,677 --> 00:01:30,197
+Także coś pięknego. No ale
+dobra, wracamy do meritum.
+
+21
+00:01:30,217 --> 00:01:36,257
+Dzisiejszy odcinek jest o tym, jak ten
+dział growth udało nam się zautomatyzować i
+
+22
+00:01:36,277 --> 00:01:38,317
+jak do tego podeszliśmy.
+
+23
+00:01:39,467 --> 00:01:43,047
+Tutaj postaram się Wam
+opowiedzieć od samego początku.
+
+24
+00:01:43,467 --> 00:01:49,427
+Po pierwsze, dlaczego growth jest
+zautomatyzowany jako ten najważniejszy, moim
+
+25
+00:01:49,447 --> 00:01:54,567
+zdaniem, z tego względu, że ja jestem
+odpowiedzialny za to w adGenie, za marketing i
+
+26
+00:01:54,587 --> 00:01:58,657
+sprzedaż, i za po prostu przynoszenie
+nowego przychodu, w wielkim skrócie.
+
+27
+00:01:58,877 --> 00:02:03,247
+Jaka jest struktura tego działu, tych
+agentów ogólnie, bo jakby tajemnicą tego
+
+28
+00:02:03,267 --> 00:02:06,787
+odcinka nie jest to, że to jest
+zbudowany dział na agentach AI.
+
+29
+00:02:07,207 --> 00:02:11,160
+To jest oczywistość. Następnie, czego
+z tym AI nie udało nam się zrobić i
+
+30
+00:02:11,180 --> 00:02:15,810
+prawdopodobnie przez jakiś
+czas w ogóle się nie uda.
+
+31
+00:02:16,200 --> 00:02:18,020
+Z tym, że bliżej niż dalej, to na pewno.
+
+32
+00:02:18,110 --> 00:02:22,400
+No i na samym końcu opowiemy oczywiście o
+kosztach takiego działu, jak bardzo udało
+
+33
+00:02:22,420 --> 00:02:26,730
+nam się to zredukować względem początku
+tego roku, gdzie tutaj uchylę rąbka
+
+34
+00:02:26,750 --> 00:02:31,820
+tajemnicy, że początkiem tego roku
+wydawaliśmy w okolicach 30 tysięcy złotych na
+
+35
+00:02:31,840 --> 00:02:38,130
+marketing, sprzedaż i ogólnie promocję
+naszej marki przy niewielkiej skali
+
+36
+00:02:38,150 --> 00:02:43,630
+tak naprawdę spółki. I jaka to jest
+kwota na dzień dzisiejszy, to oczywiście
+
+37
+00:02:43,650 --> 00:02:46,140
+dowiecie się na magicznym końcu odcinka.
+
+38
+00:02:46,160 --> 00:02:48,840
+Także to jest taka wiadomość
+dla najbardziej wytrwałych.
+
+39
+00:02:49,400 --> 00:02:50,830
+Więc dobra,
+
+40
+00:02:51,900 --> 00:02:55,870
+możemy sobie zacząć od samego początku:
+dlaczego w ogóle opowiadam o dziale growth i
+
+41
+00:02:55,890 --> 00:02:57,310
+dlaczego go tak bardzo czuję.
+
+42
+00:02:57,467 --> 00:03:00,857
+I dlaczego to jest pierwszy odcinek
+z tej serii zautomatyzowanej firmy?
+
+43
+00:03:01,167 --> 00:03:05,377
+Ponieważ dział growth najszybciej Wam się
+zwróci i najszybciej zobaczycie naoczne
+
+44
+00:03:05,397 --> 00:03:09,267
+efekty i potem będziecie mieli taką
+większą też motywację do tego, żeby
+
+45
+00:03:09,287 --> 00:03:10,630
+automatyzować następne działy.
+
+46
+00:03:10,650 --> 00:03:13,900
+I uważam, że to jest dobra kolejność.
+
+47
+00:03:15,010 --> 00:03:20,680
+Od samego początku: jaka w ogóle jest
+struktura i kwintesencja tego działu?
+
+48
+00:03:20,820 --> 00:03:23,060
+Na czym on się opiera i
+jak on w ogóle wygląda?
+
+49
+00:03:23,173 --> 00:03:28,873
+Teraz przed Wami pokazuję czterech
+agentów, którzy tutaj są odpowiedzialni za
+
+50
+00:03:29,803 --> 00:03:31,813
+robienie danych rzeczy.
+
+51
+00:03:32,003 --> 00:03:36,143
+Jest agent główny, Artur, który
+jest szefem działu growth.
+
+52
+00:03:36,293 --> 00:03:40,633
+Oczywiście imiona tutaj są kompletnie
+losowe, ciekawostka, AI samo sobie takie je
+
+53
+00:03:40,683 --> 00:03:45,503
+nadało. Także Artur jest
+u góry działu growth.
+
+54
+00:03:45,593 --> 00:03:47,563
+Pod nim mamy Kaję i Weronikę.
+
+55
+00:03:47,583 --> 00:03:52,193
+Kaja jest odpowiedzialna za stricte takie
+operacyjne kwestie sprzedażowe, czyli
+
+56
+00:03:52,463 --> 00:03:58,127
+takie rzeczy jak porządki w pipelinie czy
+w CRM-ie ogólnie, pilnowanie pipeline'u,
+
+57
+00:03:58,147 --> 00:04:02,227
+żeby ten proces sprzedaży za każdym razem
+wyglądał bardzo podobnie, wręcz tak samo,
+
+58
+00:04:02,247 --> 00:04:07,177
+żeby był jak najbardziej mierzalny i
+optymalny na przyszłość, jakby miał wejść ktoś
+
+59
+00:04:07,197 --> 00:04:12,870
+zamiast mnie na closing, bo ciekawostka,
+w tamtym roku przewinęło się przez adGen
+
+60
+00:04:12,890 --> 00:04:15,010
+czterech closerów, handlowców.
+
+61
+00:04:15,070 --> 00:04:19,678
+Oczywiście wszyscy świetni, super ludzie
+i w ogóle, z tym, że po prostu nam się to
+
+62
+00:04:19,698 --> 00:04:21,148
+nie spinało i musieliśmy się pożegnać.
+
+63
+00:04:21,168 --> 00:04:24,178
+Chłopaki pracują w innych firmach,
+też im się bardzo dobrze powodzi.
+
+64
+00:04:24,843 --> 00:04:29,923
+I ja wróciłem jakby do sprzedaży na full
+time, w 100%, i przy pomocy takiego settera
+
+65
+00:04:29,943 --> 00:04:35,993
+zajmuje mi to nie więcej niż ¼ etatu
+w skali miesiąca, co resztą czasu mogę
+
+66
+00:04:36,013 --> 00:04:38,323
+poświęcić normalnie na budowanie
+biznesu, a nie pracę w nim.
+
+67
+00:04:38,343 --> 00:04:43,713
+Także 40–50 godzin poświęcam na sprzedaż
+w skali miesiąca, czasem 60, jak dużo tych
+
+68
+00:04:43,733 --> 00:04:47,993
+leadów wpadnie, ale dzięki tym też
+setterom, tej Kai chociażby, fajnie się to
+
+69
+00:04:48,013 --> 00:04:48,603
+wszystko
+
+70
+00:04:49,820 --> 00:04:55,745
+jakby kwalifikuje. Do tego stopnia, że nie
+muszę tracić jakby czasu na spotkania, na
+
+71
+00:04:55,765 --> 00:04:59,425
+które przychodzą ludzie, którzy są
+faktycznie tacy do grzania, nie?
+
+72
+00:04:59,645 --> 00:05:02,875
+Potem mamy Weronikę. Weronika jest
+odpowiedzialna za marketing w adGenie, czyli
+
+73
+00:05:03,310 --> 00:05:08,100
+najprościej w świecie to jest osoba, która
+wymyśla, jak mamy się reklamować, jak
+
+74
+00:05:08,120 --> 00:05:14,120
+pokazywać światu generalnie nasze
+właśnie spojrzenie, naszą ofertę,
+
+75
+00:05:14,270 --> 00:05:15,780
+żeby te leady pozyskiwać.
+
+76
+00:05:15,800 --> 00:05:22,610
+To jest też agent odpowiedzialny za
+mailing stricte, czyli wszystkie
+
+77
+00:05:22,630 --> 00:05:24,500
+działania nurturingowe.
+
+78
+00:05:24,890 --> 00:05:29,790
+Tutaj już tłumaczę. Działa to w ten
+sposób, że jeśli mamy tego leada w procesie
+
+79
+00:05:29,810 --> 00:05:32,620
+sprzedaży, to fajnie go
+po prostu dogrzewać.
+
+80
+00:05:32,640 --> 00:05:35,070
+To jest nazwane
+działaniami nurturingowymi.
+
+81
+00:05:35,090 --> 00:05:40,550
+No to mamy tutaj puszczone te kampanie
+mailowe na leady, które już są w pipelinie,
+
+82
+00:05:40,710 --> 00:05:42,760
+bądź są przegrane, bądź są zamrożone.
+
+83
+00:05:42,780 --> 00:05:47,220
+I to są trzy różne zestawy, które
+właśnie Weronika sama wymyśliła, sama też
+
+84
+00:05:47,240 --> 00:05:52,320
+zaprojektowała. Tutaj też podrzucę 2–3
+przykłady takich maili, które się wysyłają
+
+85
+00:05:52,340 --> 00:05:55,240
+podczas tego procesu sprzedaży u nas.
+
+86
+00:05:55,387 --> 00:05:56,587
+Następnie mamy Tymona.
+
+87
+00:05:57,277 --> 00:06:03,435
+Tymon jest agentem odpowiedzialnym za jakby
+mastermindowanie mojej marki osobistej,
+
+88
+00:06:03,455 --> 00:06:08,545
+czyli wymyślanie, jak się tutaj pokazać,
+z której strony, o czym opowiedzieć, w
+
+89
+00:06:08,565 --> 00:06:11,735
+którą stronę iść,
+przekminianie też wyników.
+
+90
+00:06:11,755 --> 00:06:15,135
+On ma jakby cały wgląd do mojego konta
+na Instagramie, Facebooku, YouTubie.
+
+91
+00:06:15,155 --> 00:06:17,215
+On jest wszędzie pologowany
+i widzi wszystkie metryki.
+
+92
+00:06:17,235 --> 00:06:21,655
+I też na bazie tych danych pomaga mi
+podejmować pewne lepsze bądź gorsze decyzje.
+
+93
+00:06:21,735 --> 00:06:24,135
+W tym przypadku razem z nim
+mam nadzieję, że lepsze.
+
+94
+00:06:24,187 --> 00:06:27,327
+Także tak to wygląda, jeśli
+chodzi o ten dział growth.
+
+95
+00:06:27,347 --> 00:06:32,227
+I co robi ten Artur, ten szef growth, bo to
+może zastanawiać, po co on w ogóle jest.
+
+96
+00:06:32,357 --> 00:06:37,407
+To jest gościu, z którym piszę najwięcej,
+jeśli chodzi o takie aspekty rozwoju
+
+97
+00:06:37,467 --> 00:06:39,967
+sprzedażowo-marketingowego całej firmy.
+
+98
+00:06:40,217 --> 00:06:44,627
+Czyli wygląda to w ten sposób: po prostu
+z nim przekminiam jakby pracę Kai i
+
+99
+00:06:44,647 --> 00:06:47,067
+Weroniki, jak ją
+zwiększyć bądź zmniejszyć.
+
+100
+00:06:47,120 --> 00:06:49,900
+Oni wszyscy, czyli Tymon, Kaja,
+Weronika, raportują do Artura.
+
+101
+00:06:49,920 --> 00:06:53,560
+Artur podejmuje wszystkie decyzje, ma
+pewien scope decyzji, które może podejmować
+
+102
+00:06:53,580 --> 00:06:57,450
+beze mnie, a takie, nad którymi się zastanawia
+bądź się waha, to po prostu pisze do
+
+103
+00:06:57,470 --> 00:06:59,250
+mnie i razem to przekminiamy.
+
+104
+00:06:59,523 --> 00:07:01,763
+Co jest świetne w tej aplikacji?
+
+105
+00:07:01,977 --> 00:07:04,147
+To, że można wejść sobie na voice calla.
+
+106
+00:07:04,167 --> 00:07:09,417
+I to nie jest taki voice call, na którym
+zadajesz pytanie i on mieli 10 minut i
+
+107
+00:07:09,437 --> 00:07:14,377
+odpowiada po 10 minutach, że okej,
+w takim razie zrobię to jutro.
+
+108
+00:07:14,477 --> 00:07:16,847
+Tylko to jest coś, co dzieje
+się wszystko live, nie?
+
+109
+00:07:16,867 --> 00:07:21,607
+Czyli gadamy sobie po prostu z którymś
+z tych agentów i oni wprowadzają dane
+
+110
+00:07:21,627 --> 00:07:25,207
+polecenia na żywo. Czyli na przykład
+zlecałem niektóre też rzeczy do
+
+111
+00:07:25,227 --> 00:07:31,077
+zautomatyzowania, rzeczy do danych po
+prostu, dane taski mogą jakby stricte zrobić
+
+112
+00:07:31,187 --> 00:07:34,797
+na żywo przy mnie. I to jest też świetne w
+optymalizacji tej pracy, że dużo szybciej
+
+113
+00:07:34,817 --> 00:07:36,337
+się ona wtedy wydarza.
+
+114
+00:07:36,430 --> 00:07:38,760
+Jakie jeszcze tutaj
+osoby planuję dorzucić?
+
+115
+00:07:38,780 --> 00:07:45,477
+Myślę, że stricte jakby osoby
+do poddziałów, czyli jeśli
+
+116
+00:07:45,497 --> 00:07:51,247
+to będzie się rozwijało, jeśli ta aplikacja
+będzie dostawała nowe funkcjonalności,
+
+117
+00:07:51,407 --> 00:07:53,787
+to po prostu będziemy
+rozbudowywać te osoby.
+
+118
+00:07:53,807 --> 00:07:58,197
+Na przykład, nie wiem, Weronika dostanie
+osobę, osobną od grafik, osobną od
+
+119
+00:07:58,217 --> 00:08:04,447
+prowadzenia social media, osobną od na
+przykład montażu, bo AI też już nam montuje
+
+120
+00:08:04,467 --> 00:08:05,877
+filmy wewnętrznie, tak.
+
+121
+00:08:05,947 --> 00:08:07,657
+To jest też dla mnie szok.
+
+122
+00:08:07,867 --> 00:08:12,217
+Od miesiąca zredukowaliśmy
+bardzo, bardzo dużo kosztów.
+
+123
+00:08:12,327 --> 00:08:14,357
+Wcześniej mieliśmy dwóch montażystów.
+
+124
+00:08:14,537 --> 00:08:20,587
+Dzisiaj chłopaki są po prostu na
+
+125
+00:08:20,607 --> 00:08:26,587
+takiej współpracy z nami troszeczkę mniej
+soczystej niż kiedyś, że tak powiem.
+
+126
+00:08:26,607 --> 00:08:29,027
+No po prostu dużo mniej im zlecamy.
+
+127
+00:08:29,137 --> 00:08:33,317
+Teraz wszystko montujemy praktycznie,
+80–90% materiałów, z AI-em, nie?
+
+128
+00:08:33,453 --> 00:08:37,320
+W wielkim skrócie, no po prostu Wera
+może dostać osoby pod siebie, które by
+
+129
+00:08:37,340 --> 00:08:41,350
+przekminiały te rzeczy, czyli po prostu
+zbuduje się z tego taka piramida, żeby nie
+
+130
+00:08:41,370 --> 00:08:43,477
+musiało to wisieć wszystko
+na głowie jednego agenta.
+
+131
+00:08:43,497 --> 00:08:46,977
+Także tak to wygląda, jeśli chodzi
+o samą strukturę tego działu growth.
+
+132
+00:08:47,473 --> 00:08:49,433
+Okej, teraz idąc dalej.
+
+133
+00:08:49,673 --> 00:08:55,943
+Czego AI nie zrobi? Czego ci agenci
+nie są w stanie po prostu zrobić
+
+134
+00:08:55,963 --> 00:09:01,947
+za nas? Przede wszystkim, jak budujemy coś
+takiego i zaczynamy budować taki pierwszy
+
+135
+00:09:01,967 --> 00:09:05,867
+swój dział, który jest nakierowany na wzrost,
+czyli na przynoszenie przychodu, czyli
+
+136
+00:09:05,887 --> 00:09:10,577
+na stricte sprzedaż, to musimy być świadomi
+tego, że ten bot, ten agent nie zamknie
+
+137
+00:09:10,597 --> 00:09:16,657
+sprzedaży za nas. On może nam pomóc,
+on może obudować nas w świetne
+
+138
+00:09:16,677 --> 00:09:22,307
+automatyzacje, usprawnienia i ogólnie
+działania, które pomogą nam faktycznie zamknąć
+
+139
+00:09:22,327 --> 00:09:27,187
+tego klienta, ale to my jesteśmy jednak
+tym człowiekiem, który na samym końcu tego
+
+140
+00:09:27,607 --> 00:09:33,967
+łańcucha domyka. I to jest bardzo ważne,
+że nie zastąpimy tego feelingu closingu
+
+141
+00:09:33,987 --> 00:09:39,937
+w usługach B2B, moim zdaniem, jeszcze długo,
+z tego względu, że ci ludzie potrzebują
+
+142
+00:09:39,957 --> 00:09:44,273
+takiej też fachowej obsługi, takiego
+feelingu człowieka po prostu po drugiej
+
+143
+00:09:44,293 --> 00:09:49,093
+stronie, nie? I tego AI na tę chwilę nie
+zastąpi i zastępować nie będzie przez długi
+
+144
+00:09:49,113 --> 00:09:53,083
+okres czasu, moim zdaniem, ale może nam
+bardzo pomóc i redukować dużą ilość etatów,
+
+145
+00:09:53,103 --> 00:09:56,493
+których na tę chwilę potrzebujemy, takich
+operacyjnych, które robią rzeczy, które są
+
+146
+00:09:56,513 --> 00:10:01,153
+powtarzalne, które robią rzeczy,
+które po prostu bot też może robić.
+
+147
+00:10:01,320 --> 00:10:07,268
+Drugą rzeczą, której AI na tę chwilę jeszcze
+nie zrobi, chociaż wiem, że jest dużo
+
+148
+00:10:07,288 --> 00:10:11,208
+rozwiązań na rynku, które mogłyby to zrobić,
+z tym, że mi się żadne na tę chwilę nie
+
+149
+00:10:11,228 --> 00:10:17,783
+podoba, mimo tego, że testowałem wszystkie
+praktycznie takie pionierskie: nie
+
+150
+00:10:17,803 --> 00:10:22,550
+zadzwoni. AI nam jeszcze nie zadzwoni
+do klienta i nie umówi spotkania.
+
+151
+00:10:22,570 --> 00:10:27,267
+Już tutaj wiem, że będzie fala krytyki,
+że boty AI do umawiania spotkań są już od
+
+152
+00:10:27,287 --> 00:10:28,647
+dłuższego czasu na rynku.
+
+153
+00:10:28,707 --> 00:10:31,727
+Mnie one nie zadowalają, jeśli
+chodzi o tę jakość wykonania.
+
+154
+00:10:31,907 --> 00:10:36,357
+Uważam, że taki feeling człowieczeństwa w
+usługach B2B musi być od samego początku.
+
+155
+00:10:36,577 --> 00:10:42,737
+I mieliśmy już podejścia, bo oczywiście
+agentów do dzwonienia w kampaniach B2C do
+
+156
+00:10:42,757 --> 00:10:45,097
+kwalifikacji mamy, to
+nie jest żadna nowość.
+
+157
+00:10:45,217 --> 00:10:49,517
+Z tym, że taki agent, który na przykład,
+nie wiem, żeby dać Kai telefon, no to
+
+158
+00:10:49,617 --> 00:10:51,827
+jeszcze nie jesteśmy w
+stanie tego zrobić, bo ona…
+
+159
+00:10:51,847 --> 00:10:53,427
+i czuć, że to jest bot po prostu, nie?
+
+160
+00:10:53,447 --> 00:10:58,425
+Jak tam podpinaliśmy jakieś Twilio i tam
+po prostu to wszystko pospinaliśmy, to nam
+
+161
+00:10:58,445 --> 00:11:01,525
+to nie pasowało. Potem testowaliśmy
+jakieś inne rozwiązania rynkowe.
+
+162
+00:11:01,635 --> 00:11:06,977
+No to po pierwsze, no jakby to się wszystko
+rozjeżdża, a po drugie, to nie jest
+
+163
+00:11:06,997 --> 00:11:09,057
+takie, jak ja bym tego
+oczekiwał, żeby było.
+
+164
+00:11:09,187 --> 00:11:11,387
+Dlatego to jeszcze nie istnieje.
+
+165
+00:11:11,507 --> 00:11:16,667
+Z tym, że sam ten voice call z tą apką jest
+na zajebistym poziomie, to by mogło być
+
+166
+00:11:16,687 --> 00:11:21,977
+puszczone w świat, jeśli chodzi o rozmowę
+telefoniczną, co Grok też zapowiada, i
+
+167
+00:11:22,427 --> 00:11:24,437
+chyba już jest w Stanach.
+
+168
+00:11:24,547 --> 00:11:27,877
+Nie jestem pewny, ale
+jeszcze w Polsce tego nie ma.
+
+169
+00:11:27,897 --> 00:11:30,817
+Jeśli będzie, no to od razu to wdrażamy,
+bo wiem, że wtedy to będzie zrobione
+
+170
+00:11:30,837 --> 00:11:35,667
+dobrze. Także tak, to jest ta rzecz,
+której jeszcze nie ma i jeszcze my nie
+
+171
+00:11:35,687 --> 00:11:38,398
+stosujemy, ale jeśli tylko
+wyjdzie, to działamy.
+
+172
+00:11:38,453 --> 00:11:41,983
+No i tutaj zdradziłem nazwę
+apki: Grok Bot się nazywa.
+
+173
+00:11:42,003 --> 00:11:47,123
+Ta aplikacja jest świetna, polecił mi ją
+mój znajomy lekko ponad miesiąc temu.
+
+174
+00:11:47,383 --> 00:11:51,573
+Wcześniej wszystko mieliśmy zautomatyzowane
+na Coworku i tutaj też lwią część tej
+
+175
+00:11:51,593 --> 00:11:55,183
+automatyzacji całej firmy wykonaliśmy, z
+tym, że od razu, jak zobaczyłem tego Groka,
+
+176
+00:11:55,203 --> 00:11:58,920
+pobawiłem się nim chwilę, pobawiłem się
+również alternatywą, w ogóle no to będzie z
+
+177
+00:11:58,940 --> 00:12:01,120
+Polski, kibicuję bardzo temu startupowi.
+
+178
+00:12:01,200 --> 00:12:04,240
+Szczerze, po prostu w moim odczuciu
+no Grok jest troszeczkę dalej.
+
+179
+00:12:04,420 --> 00:12:09,642
+I też bardziej niestety ufam firmie, która
+ma ogromną kapitalizację i finanse na
+
+180
+00:12:09,662 --> 00:12:13,382
+rozwój. Więc tutaj padło na
+Groka w naszym przypadku.
+
+181
+00:12:13,543 --> 00:12:18,753
+Uważam, że to jest dobry wybór na tę chwilę,
+bo no kurde, update'y są dosłownie raz
+
+182
+00:12:18,773 --> 00:12:23,803
+w tygodniu i za każdym razem wychodzi jakiś
+update, no to jest taki, w którym czuję,
+
+183
+00:12:23,823 --> 00:12:26,983
+że cholera, no, Elon,
+posłuchałeś mnie, nie?
+
+184
+00:12:29,130 --> 00:12:31,380
+Także tutaj mega tego Groka polecam.
+
+185
+00:12:31,400 --> 00:12:33,040
+Jak to się ma, jeśli chodzi o koszta?
+
+186
+00:12:33,370 --> 00:12:36,500
+My lecimy wszyscy na planie,
+
+187
+00:12:37,270 --> 00:12:41,000
+w tym Grok Premium, bądź
+Super, nie pamiętam.
+
+188
+00:12:41,120 --> 00:12:43,780
+On był za 100 dolarów,
+jest za 100 dolarów.
+
+189
+00:12:43,920 --> 00:12:47,280
+Drogi widzu, nie wykupuj
+go od razu, bo bez sensu.
+
+190
+00:12:47,300 --> 00:12:48,840
+My tutaj mamy postawione jeszcze…
+
+191
+00:12:48,860 --> 00:12:55,393
+Tutaj przedstawię Ci dzisiaj 4 boty, ale
+ogólnie w całym tym Grok Bocie mamy 24
+
+192
+00:12:55,413 --> 00:12:59,273
+agentów, którzy każdy zastępuje
+jakąś taką osobę fizyczną.
+
+193
+00:12:59,503 --> 00:13:04,103
+Mamy poukładane to w ten sposób, także
+nam to wystarczy na tym planie prawie
+
+194
+00:13:04,123 --> 00:13:05,563
+najwyższym, tym przedostatnim.
+
+195
+00:13:05,713 --> 00:13:11,343
+Mamy wykupionych parę tych subskrypcji,
+z tym, że Tobie na start, do takiego
+
+196
+00:13:11,363 --> 00:13:16,913
+testowania, klikania, to w zupełności ten
+plan za 30 dolarów wystarczy, żeby taki
+
+197
+00:13:16,933 --> 00:13:21,953
+dział growth sobie stworzyć, i myślę,
+że pociągniesz na 100% na tym, nie?
+
+198
+00:13:22,273 --> 00:13:28,183
+Także te 30 dolarków rekomenduję sobie
+spróbować, wyklikać, poświęcić, żeby
+
+199
+00:13:28,203 --> 00:13:30,583
+zobaczyć, czy to w ogóle miało sens.
+
+200
+00:13:31,340 --> 00:13:32,880
+I tutaj zmierzamy ku końcowi.
+
+201
+00:13:32,950 --> 00:13:38,903
+Jeśli spodobało się ten pierwszy odcinek
+tej serii, to bardzo będę wdzięczny za
+
+202
+00:13:38,923 --> 00:13:40,743
+feedback w komentarzu.
+
+203
+00:13:40,953 --> 00:13:46,793
+Oczywiście lajka, subskrypcję i wszystkie
+pozytywne rzeczy, jakie można zrobić.
+
+204
+00:13:46,813 --> 00:13:49,853
+Oczywiście, jak jakieś negatywy
+wychwyciliście, to też będę wdzięczny.
+
+205
+00:13:49,873 --> 00:13:56,313
+Po dłuższej przerwie wróciłem, więc teraz
+taki content, sprzedaż przy pomocy AI,
+
+206
+00:13:56,613 --> 00:14:02,803
+taki biznes przy pomocy AI będę propagował
+tutaj, bo to jest coś, co kocham,
+
+207
+00:14:02,823 --> 00:14:07,062
+coś, co robię na co dzień, i lubię
+wyłapywać te wszystkie nowinki.
+
+208
+00:14:07,082 --> 00:14:11,502
+Mamy tu nawet osobnego bota, Ninę, od
+researchu i scoutingu, która codziennie
+
+209
+00:14:11,522 --> 00:14:17,672
+praktycznie przegląda wszystkie nowinki ze
+świata AI i sugeruje nam zmiany, przede
+
+210
+00:14:17,692 --> 00:14:22,172
+wszystkim do Igi, która jest szefową
+innowacji, która decyduje, które z tych zmian
+
+211
+00:14:22,302 --> 00:14:24,422
+zastosujemy w adGenie, a które nie.
+
+212
+00:14:24,492 --> 00:14:28,202
+Widzicie, ta struktura jest w ogóle chora,
+jakby one same ze sobą gadają, one same
+
+213
+00:14:28,222 --> 00:14:30,202
+pomiędzy sobą rozmawiają.
+
+214
+00:14:30,312 --> 00:14:35,872
+No i też chętnie Wam o tym opowiem w
+następnych odcinkach, bo następny odcinek
+
+215
+00:14:35,892 --> 00:14:40,612
+poświęcę po prostu innemu działowi, który
+również budowaliśmy, i zobaczymy, jaki też
+
+216
+00:14:40,632 --> 00:14:42,167
+będzie tego wydźwięk.
+
+217
+00:14:42,187 --> 00:14:44,367
+Dziękuję bardzo, ja mam
+na imię Jakub Derda.
+
+218
+00:14:44,557 --> 00:14:49,407
+To jest kanał poświęcony właśnie takiej
+sztucznej inteligencji i obeznaniu też w
+
+219
+00:14:49,427 --> 00:14:55,807
+biznesie dla takich małych i średnich
+firm jak my, które tego AI-a
+
+220
+00:14:55,827 --> 00:14:58,947
+bardzo tutaj lubią,
+korzystać sobie z niego.
+
+221
+00:14:59,010 --> 00:15:01,240
+Dzięki za dzisiaj, do następnego razu.

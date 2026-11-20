@@ -1,0 +1,23 @@
+Dzwieki z Mixkit (mixkit.co/free-sound-effects), pobrane 17.11.2026 przez oficjalny przycisk pobierania.
+Licencja: Mixkit Sound Effects Free License (https://mixkit.co/license/#sfxFree): uzycie komercyjne i prywatne,
+bez wymogu podpisu autora; nie wolno rozprowadzac samych plikow.
+
+swoosh_166_fast-small-sweep-transition.wav	Fast small sweep transition	https://assets.mixkit.co/active_storage/sfx/166/166.wav
+swoosh_1474_transition-windy-swoosh.wav	Transition windy swoosh	https://assets.mixkit.co/active_storage/sfx/1474/1474.wav
+swoosh_1461_short-wind-swoosh.wav	Short wind swoosh	https://assets.mixkit.co/active_storage/sfx/1461/1461.wav
+swoosh_3115_fast-transitions-swoosh.wav	Fast transitions swoosh	https://assets.mixkit.co/active_storage/sfx/3115/3115.wav
+swoosh_174_fast-sweep-transition.wav	Fast sweep transition	https://assets.mixkit.co/active_storage/sfx/174/174.wav
+swoosh_168_fast-air-sweep-transition.wav	Fast air sweep transition	https://assets.mixkit.co/active_storage/sfx/168/168.wav
+swoosh_1464_quick-swoosh-accent.wav	Quick swoosh accent	https://assets.mixkit.co/active_storage/sfx/1464/1464.wav
+swoosh_164_fast-sweeping-transition.wav	Fast sweeping transition	https://assets.mixkit.co/active_storage/sfx/164/164.wav
+swoosh_1167_swoosh-wind-passing.wav	Swoosh wind passing	https://assets.mixkit.co/active_storage/sfx/1167/1167.wav
+swoosh_167_long-sweeping-air-swoosh.wav	Long sweeping air swoosh	https://assets.mixkit.co/active_storage/sfx/167/167.wav
+whoosh_1489_air-woosh.wav	Air woosh	https://assets.mixkit.co/active_storage/sfx/1489/1489.wav
+whoosh_1490_fast-whoosh-transition.wav	Fast whoosh transition	https://assets.mixkit.co/active_storage/sfx/1490/1490.wav
+whoosh_3005_explainer-video-pops-whoosh-light-pop.wav	Explainer video pops whoosh light pop	https://assets.mixkit.co/active_storage/sfx/3005/3005.wav
+pop_2358_long-pop.wav	Long pop	https://assets.mixkit.co/active_storage/sfx/2358/2358.wav
+pop_2354_message-pop-alert.mp3	Message pop alert	https://assets.mixkit.co/active_storage/sfx/2354/2354.mp3
+pop_2364_hard-pop-click.wav	Hard pop click	https://assets.mixkit.co/active_storage/sfx/2364/2364.wav
+pop_2357_bubble-pop-up-alert-notification.wav	Bubble pop up alert notification	https://assets.mixkit.co/active_storage/sfx/2357/2357.wav
+pop_2356_dry-pop-up-notification-alert.wav	Dry pop up notification alert	https://assets.mixkit.co/active_storage/sfx/2356/2356.wav
+pop_2925_soap-bubble-sound.wav	Soap bubble sound	https://assets.mixkit.co/active_storage/sfx/2925/2925.wav

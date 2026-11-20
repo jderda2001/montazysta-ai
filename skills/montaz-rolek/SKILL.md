@@ -1,0 +1,124 @@
+---
+name: montaz-rolek
+description: Montaż pionowych rolek (Reels/TikTok/Shorts) i reklam wideo Jakuba w jego zatwierdzonym stylu i w palecie jego personal brandu (czerń, biel, ciemny szary plus akcent `#00E5A0`; reklamy adGen zostają pomarańczowe). Obejmuje synchronizację osobnego audio z mikrofonu z wideo z iPhone'a, wycinanie dubli i falstartów, napisy słowo po słowie, animowane plansze w HyperFrames, głos „studio AI” (Sidon + łańcuch radiowy), mastering, kontrolę i eksport do Eksporty. Używaj zawsze, gdy użytkownik wrzuca film lub nagranie do zmontowania („zmontuj”, „podmień audio”, „dodaj napisy”, „zrób rolkę”, „nowe video”, ścieżki .mov/.m4a), prosi o poprawki gotowej rolki, o wersję z innym hookiem lub o opis pod rolkę, albo pyta o styl montażu. Dotyczy to też sytuacji, gdy nie pada słowo „montaż”.
+---
+
+# Montaż rolek w stylu Jakuba
+
+Ten skill zbiera to, co Jakub zatwierdził przy kolejnych filmach. Wzorcowy projekt to `~/Montażysta AI/projekty/IMG_0526/` (rolka „Kaja zamiast settera”, 13.11.2026), o którym powiedział: „świetny montaż, trzymajmy się tego stylu”. Skrypty w `scripts/` to szablony z tego projektu. Kopiujesz je do nowego projektu i zmieniasz tylko dane konkretnego nagrania.
+
+Na start przeczytaj `references/dziennik.md`: co mu się podobało, a co odrzucił. To najszybszy sposób, żeby nie powtórzyć starego błędu.
+
+## Paleta marki: czerń, biel, ciemny szary i jeden akcent
+
+To jest montażysta personal brandu Jakuba, więc paleta obowiązuje w każdej klatce, którą sam rysujesz: napisy, plansze, nakładki, plansza końcowa, klipy A/B. Decyzja Jakuba z 17.11.2026, zastępuje wcześniejszy pomarańcz `#ff7018` we wszystkim poza reklamami adGen (wyjątek opisany niżej).
+
+- **Baza to trzy kolory:** czarny (`#0f1012`), biały (`#ffffff`) i ciemny szary (`#141518`–`#222327` na tła i karty). Z nich jest zbudowane wszystko, co nie jest akcentem. Odcienie szarości na tekst pomocniczy i obrysy są w porządku, bo zostają w tej samej rodzinie.
+- **Akcent pojawia się tam, gdzie jest sens wypowiedzi:** kluczowe słowo w napisie, puenta hooka, liczba, kafelek z ikoną, pasek, przycisk, ptaszek „zrobione”. Akcent pokazuje widzowi, co w tym zdaniu jest ważne, więc nie rozlewaj go na tła ani na całe akapity.
+- **Główny akcent: `#00E5A0`.** Jakub nazywa go limonkowym. Używaj go domyślnie w każdym filmie.
+- **Inny akcent tylko wtedy, gdy wymaga tego temat** (Jakub: akcenty mają zależeć od tego, o czym mówi). Jeden akcent na film, baza zostaje czarno-biało-szara. Jeśli wybierasz coś innego niż `#00E5A0`, powiedz mu o tym przy oddaniu i napisz dlaczego. Dopóki nie poda własnej listy kolorów pod tematy, w razie wątpliwości zostaje `#00E5A0`.
+- **Na akcencie `#00E5A0` zawsze ciemny tekst i ciemne ikony (`#0f1012`).** Biały ma tam kontrast 1,6:1 i znika, czarny ma ponad 11:1.
+- **Żadnych kolorów spoza palety w grafikach.** Dawny zielony „zrobione” `#3ddc84` też wypadł, jego rolę przejął akcent. Wyjątek to odtworzony cudzy interfejs i zdjęcia (awatar, zrzut ekranu), bo one mają wyglądać jak oryginał.
+
+### Wyjątek: reklamy adGen zostają pomarańczowe
+
+Jakub, 17.11.2026: „adGen zostaje pomarańczowy”. Reklamy adGen (te, które lądują w `Eksporty/Reklamy adGen/`) robisz w dotychczasowej palecie: akcent `#ff7018`, biały tekst na akcencie, zielony „zrobione” `#3ddc84`. Układ, ruch i napisy są te same co w rolkach, różni się tylko kolor.
+
+O palecie decyduje to, czyja to marka, a nie format. Rolka organiczna, long-form i rolki promo to personal brand, czyli `#00E5A0`. Reklama adGen to pomarańcz. Jeśli z nagrania nie wynika, czy to reklama adGen, czy treść pod jego markę, zapytaj przed kompozycją, bo pomyłka oznacza cały film w złym kolorze. Zasada „nigdy logo adGen” dotyczy personal brandu i się nie zmienia.
+
+### Jak to ustawić
+
+W `scripts/kompozycja.py` jest słownik `PALETY` i przełącznik `MARKA`: `"personal"` (domyślnie) albo `"adgen"`. Inny akcent pod temat filmu to zmiana `accent` w palecie `personal`. Jaśniejszy koniec gradientu, poświaty i przezroczystości liczą się z akcentu same (`kolory()`), więc nie wpisuj kolorów na sztywno w CSS, tylko używaj zmiennych `--accent`, `--accent-hi`, `--accent-rgb`, `--on-accent` i `--ok`. Szczegóły są w `references/styl.md`, punkt 1.
+
+## Zasady, których nie ruszasz
+
+Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa zaufanie do całego montażu.
+
+1. **Napisy są zamrożone.** Słowo po słowie, frazy po 2–4 słowa (do ok. 20 znaków, tyle mieści strefa bezpieczna), wyróżnienia kluczowych słów w kolorze akcentu, krój Inter Tight, pozycja i animacja jak w `references/styl.md`. Powiedział: „napisy zostawiłbym, nigdy bym ich nie zmieniał”. Nie eksperymentuj z ich wyglądem. Wolno poprawiać tylko trafność czasów. Kolor wyróżnień idzie za paletą marki (17.11.2026: akcent zamiast pomarańczu), reszta wyglądu bez zmian.
+2. **Animacje z IMG_0526 to wzorzec.** Jego słowa: „świetne i bardzo poprawne”. Nowe grafiki projektuj w tym samym języku wizualnym (ciemne plansze, akcenty w kolorze marki, wejście z rozmyciem i light leakiem). Rozwijaj go, ale nie podmieniaj stylistyki bez pytania. Dwie poprawki z IMG_0576 (17.11.2026): w personal brandzie plansze nie mają kwadratów dekoracyjnych u dołu („nie podoba mi się to”), a wykresy i schematy mają być mocno animowane („zanimuj bardziej wykres”), czyli każdy element wchodzi ruchem na swoim słowie, a nie pojawia się gotowy. Jak, opisuje `references/styl.md`, punkt 4.
+3. **Nigdy logo adGen.** Filmy są pod jego personal brand. Plansza końcowa ma dymek komentarza i tekst, bez logo.
+4. **Głos naturalny, bez AI.** Od 17.11.2026 domyślnie idzie dźwięk z mikrofonu po lekkim masteringu z `aroll.py` (highpass, łagodna kompresja, −14 LUFS). Jego słowa po IMG_0576: „za bardzo używasz voice enhancer AI, już kupiłem dobre mikrofony, także bez tego, albo z dużo mniejszym filtrem”. Wariant „C” (Sidon plus łańcuch radiowy), który wybrał 13.11.2026 przy mikrofonie stojącym pół metra od ust, robisz tylko na jego prośbę albo gdy nagranie jest wyraźnie złe (pogłos pokoju, daleki mikrofon), i wtedy mówisz mu o tym przy oddaniu.
+5. **Efekty dźwiękowe tylko z prawdziwych próbek i tylko subtelnie.** Whooshe generowane z szumu określił jako „chujowe” (IMG_0361). 17.11.2026 sam poprosił o delikatne dźwięki pod animacje: „wyskakuje jakiś napis, to jest taki bardzo delikatny, subtelny dźwięk”, a przy animowanym wykresie „takie shhh”. Biblioteka leży w `~/Desktop/Montażysta AI/Muzyka/SFX/` (Kenney, CC0, i wybrane pliki z Mixkit, pobrane za jego zgodą), a miksuje ją `scripts/sfx.py`. Poziomy są celowo niskie (pyknięcia ok. −20 dBFS w szczycie, swooshe −21, „shh” −24, przy głosie −14 LUFS) i po odsłuchu próbki 17.11.2026 ocenił je: „Jest dobrze”. Nie podgłaśniaj ich bez jego prośby. Nowe paczki pobierasz dopiero po pytaniu z nazwą, źródłem i rozmiarem. Muzyka nadal tylko z `~/Desktop/Montażysta AI/Muzyka/`.
+6. **Liczby i treści w grafikach tylko z tego, co mówi.** Jeśli coś jest poglądowe (np. „3 follow-upy” w powiadomieniu), powiedz mu o tym przy oddaniu.
+7. **Pobranie czegokolwiek nowego** (model, biblioteka) wymaga pytania z nazwą, źródłem i rozmiarem.
+8. **Parametry wyjścia:** 1080×1920, 30 kl./s, −14 LUFS, szczyt −1,5 dBFS.
+9. **Strefa bezpieczna (safe zone).** Wszystko, co widz ma przeczytać albo zobaczyć, leży między 270 a 1245 px w pionie i między 70 a 1010 px w poziomie, a od 860 px w dół omija prawą kolumnę przycisków (prawa krawędź 885 px, od 1145 px 850 px). Jakub, 18.11.2026: „napisy i animacje czasem są za wysoko bądź za szeroko”, plus dwa szablony z sieci. Napisy mają przez to 620 px szerokości zamiast 950 (krótsze frazy, ten sam wygląd), nakładki nie stoją już na 96 px u góry, a pole CTA zeszło spod opisu rolki. Stałe są w `SAFE` w `kompozycja.py`, opis i rysunek w `references/styl.md`, punkt 8, a przed każdym renderem `scripts/strefa.py` ma pokazać zero klatek z treścią poza strefą.
+
+## Foldery i nazwy
+
+- **Wejście:** wideo zwykle w `~/Downloads/IMG_xxxx.mov` (iPhone, po obrocie 1080×1920). Audio z mikrofonu w `~/Desktop/Montażysta AI/Nagrania /` (uwaga: spacja na końcu nazwy folderu).
+- **Projekt:** `~/Montażysta AI/projekty/<IMG_xxxx>/` z podfolderami `skrypty/`, `audio/`, `analiza/`, `aroll/`, `hf/` (HyperFrames), opcjonalnie `ab/` (porównania), plus `NOTATKI.md` i `napisy.srt`.
+- **Eksport (zawsze porządek, struktura zatwierdzona 13.11.2026):** jeden folder na film, nazwany `<RRRR-MM-DD Tytuł>` (dzień eksportu), w folderze typu:
+  - `Eksporty/Rolki/…/<Tytuł>_MM.RR.mp4`: rolki organiczne;
+  - `Eksporty/Reklamy adGen/…/<Tytuł>_HOOK A_MM.RR.mp4`: reklamy, wersja na każdy hook;
+  - `Eksporty/YouTube/…/`: long-form z `.srt`, opisem i rozdziałami, a 3 rolki promo w podfolderze `Rolki promo/`.
+  Nazwy plików zostają pełne, żeby plik wysłany osobno nadal mówił, czym jest. Nic nie zostaje luzem w głównym `Eksporty`. Surowe nagrania nie trafiają do Eksporty, tylko do `Nagrania `.
+- **Referencje od niego:** `~/Desktop/Montażysta AI/Referencje i wytyczne/`.
+
+## Proces
+
+Kolejność ma znaczenie, bo każdy krok korzysta z wyniku poprzedniego. Dokładne komendy i progi kontroli są w `references/pipeline.md`. Pułapki narzędzi (whisper, ffmpeg, HyperFrames, zsh) są w `references/narzedzia.md`. Przejrzyj je przed pierwszą komendą, bo oszczędzają godziny.
+
+1. **Projekt.** Załóż folder, skopiuj `scripts/*.py` do `skrypty/`, a do `hf/` skopiuj konfigurację HyperFrames z IMG_0526 (`package.json`, `hyperframes.json`, `meta.json`, `fonts/`). Ustaw w `aroll.py` ścieżki `VIDEO` i `AUDIO`.
+2. **Synchronizacja** (`sync.py`): korelacja dźwięku telefonu z mikrofonem daje offset i dryf. Nigdy nie synchronizuj na oko.
+3. **Transkrypcja i wybór dubli** (`wyspy.py`). Zasada: ostatni pełny dubel każdej kwestii. Wszystkie niewykorzystane warianty (inne hooki, CTA) wypisz w `NOTATKI.md` jako materiał na wersję B.
+4. **Falstarty** (`kawalki.py`), obowiązkowo. Whisper na całym dublu wygładza zająknięcia, więc „I każdego ranka dosta… I każdego ranka dostaję…” wygląda jak czyste zdanie. Jakub sam wyłapał to w IMG_0526. Kawałek, który powtarza początek następnego, oznacza start kwestii od powtórzenia. Puszczaj oba tryby, zwykły i `--drobne`: skrypt sam oznacza `POWTORKA?` (w kawałkach słychać więcej sylab, niż ma tekst kwestii) i `?` (kawałek, w którym żadne słowo nie pasuje do tekstu), a na końcu wypisuje listę miejsc do sprawdzenia. Każde z nich rozstrzygnij osobnym whisperem na samym kawałku i drobną obwiednią (`fonemy.py`), nie czytaniem na oko. Zdanie powiedziane dwa razy pod rząd bierz od drugiego podejścia. Zająknięcie w środku kwestii (powtórzona sylaba „sukce- cesu”, pauza w środku słowa „do… kładnie”) wytnij polem `wytnij` w `SEGS`, a skok obrazu większy niż 3 klatki schowaj zmianą kadru dokładnie w miejscu cięcia. Zanim wytniesz, policz sylaby w `fonemy.py`, bo od tego zależy, co ma wypaść, a sklejkę sprawdź whisperem w trzech kontekstach (`pipeline.md`, krok 4). W IMG_0591 powtórzone zdanie i dwa zająknięcia poszły do oddanego filmu i Jakub sam musiał je zgłosić („powtórzyłem i zaciąłem się w niektórych miejscach”).
+5. **A-roll** (`aroll.py`): lista `SEGS` (start, koniec, kadry, tekst), kadry W/M/C zmieniane między kwestiami i w pauzach, grading, cięcia z mikrofonu. Kontrola: `sprawdz_sync.py` (przesunięcie dźwięku względem obrazu poniżej klatki, typowo 4–5 ms).
+6. **Głos:** domyślnie nic więcej nie robisz, bo `aroll.py` zapisuje `audio/aroll.wav` (naturalny głos po lekkim masteringu) i to on idzie do kompozycji. Tylko gdy Jakub poprosi o wariant C albo nagranie jest złe: `sidon_infer.py` na surowych cięciach (eksport przez `glos.raw_concat`), potem `studio.py`, z kontrolą przesunięcia (Sidon daje ok. 8 ms, skrypt wyrównuje), tonu (F0 bez zmian) i treści.
+7. **Czasy słów** (`slowa.py`, whisper z DTW i `-nfa`), potem `waliduj_napisy.py`. Bez `-nfa` napisy wyskakują do 0,6 s przed mową.
+8. **Kompozycja** (`kompozycja.py`): `PHRASES` (podział napisów i `*wyróżnienia*`) oraz grafiki liczone z czasów słów i cięć, nigdy wpisane na sztywno. Głos (`GLOS`, domyślnie `audio/aroll.wav`) wchodzi jako `<audio>`, a wideo jest wyciszone. Momenty efektów dźwiękowych dopisujesz w `build()` do listy `dzw` (wejścia plansz dodają swoosh same, resztę stawiasz Ty: `pop` na wyskakujący napis lub kafelek, `tik` na drobny ruch, `shh` na rysowanie wykresu, `powiad` na powiadomienie) i `kompozycja.py` sam miksuje je pod głos. Celuj w 8–12 efektów na minutę, tylko na ruchach, które coś znaczą. Potem `hyperframes check` (0 błędów), `hyperframes snapshot` w kluczowych momentach i `strefa.py` (0 klatek z treścią poza strefą bezpieczną). Obejrzyj klatki, zanim pójdziesz dalej.
+9. **Render i kontrola:** `hyperframes render`, potem `kontrola_eksportu.py` (głośność, właściwa ścieżka głosu, transkrypcja kawałkami bez powtórzeń). Dopiero wtedy kopiuj do Eksporty.
+10. **Oddanie:** krótko, co zrobione i co warto sprawdzić. Uzupełnij `NOTATKI.md` i `napisy.srt`. Plik powyżej 30 MiB nie dojdzie na telefon. Lżejszą kopię zrób tylko na prośbę, a gdy pyta, gdzie jest plik, pokaż mu go w Finderze (`open -R`).
+11. **Pętla nauki:** zapytaj o ocenę. Po publikacji poproś o zrzuty z Insights (wykres utrzymania widzów). Dopisz wpis do `references/dziennik.md` i ważne decyzje do pamięci.
+
+## Jak dobierać grafiki
+
+**Najpierw biblioteka.** Jakub po IMG_0576: przejścia i grafiki są „bardzo generyczne”, „bardzo często są używane te same rzeczy”. Przed projektowaniem grafik przeczytaj `references/biblioteka.md` i obejrzyj oba arkusze podglądów: jest tam ok. 50 gotowych szablonów (liczniki, wykresy, siatki kart, czaty AI, powiadomienia, adnotacje markerem, kinetyczna typografia) i sześć przejść plansz. Trzy twarde reguły: kolejne plansze nie wchodzą tym samym przejściem (pilnuje tego `panel()`), ten sam szablon grafiki pada najwyżej dwa razy w rolce i nigdy pod rząd, a przy oddaniu wypisujesz, których szablonów i przejść użyłeś, żeby w następnym filmie sięgnąć po inne.
+
+Jedna grafika na jedną myśl, w momencie, gdy ją wypowiada. Słownik elementów (hook kinetyczny, plansza, powiadomienie, chip, kafelki, porównanie kosztów, odkrycie, pole komentarza, plansza końcowa) i ich parametry są w `references/styl.md`. Przeczytaj go przed edycją `kompozycja.py`. Przy nowym temacie wybierz z tego słownika to, co ilustruje sens zdania, a nie tylko jego słowa. Przykład: przy „CRM jest zawsze uporządkowany” pasuje chip z ptaszkiem, przy „30 razy więcej” paski kosztów i duże „30×”.
+
+## Opis pod rolkę
+
+Krótki, jako podsumowanie, nie transkrypcja 1:1. Pierwszą długą wersję odrzucił („chujowe, krótka jako podsumowanie”). Struktura: 2–4 linijki, liczba lub kontrast w pierwszej linii, CTA z tym samym słowem-kluczem co w filmie. Jego głos (krótko, konkretnie, prowokacyjnie) opisuje skill `jakub-clone`, rejestr C.
+
+## Porównania A/B
+
+Gdy zmieniasz coś, co ocenia uchem lub okiem (głos, wariant hooka), zrób klip porównawczy w `ab/` (kompozycja HyperFrames z planszami „A / B” i podpisami). Warunki: ta sama głośność, synchronizacja sprawdzona co do próbki, plik poniżej 30 MiB (`--video-bitrate 4M`), żeby dotarł na telefon. Wzór: `projekty/IMG_0526/ab/index.html`.
+
+## Long-form na YouTube (16:9)
+
+Pierwszy taki odcinek: `projekty/IMG_0529` (13.11.2026, „Zautomatyzowany dział growth”). Jakub od razu poprawił: „FILM MA BYĆ POZIOMO NA YOUTUBE”. Long-form zawsze 16:9, rolki zostają pionowe. Szablony skryptów są w `projekty/IMG_0529/skrypty/` (opis w `NOTATKI.md` projektu). Od 17.11.2026 są w palecie personal brandu: grafiki i napisy odcinka biorą kolory z `paleta.py` (`PALETY`, `MARKA`, `kolory()`), a rolki promo z `rolka_szablon.py`. Uwaga na dwie rzeczy: gotowe warstwy w `projekty/IMG_0529/hf/` i wyeksportowany odcinek są nadal pomarańczowe (tak wyszedł 13.11.2026), a oryginalne skrypty sprzed zmiany leżą w `skrypty/_przed_paleta_2026-11-17/`. Do nowego odcinka kopiuj skrypty z głównego folderu, nie z tej kopii.
+
+- **Głos i kwadraty w long-formie:** szablony z IMG_0529 nadal robią głos C (Sidon); kwadraty na planszach rysują już tylko przy `MARKA = "adgen"`. Uwaga o głosie z 17.11.2026 dotyczy też long-formu: przy następnym odcinku użyj naturalnego głosu z mikrofonu, a Sidon tylko na prośbę.
+- **Montaż:** `kawalki.py` (mapa całego nagrania), potem `slowa_kawalki.py` (DTW dla każdego kawałka), potem `montaz.py` (`SEGS` i `CUTS`). Pauzy powyżej 0,6 s są skracane do 0,3 s, a długie ujęcia dzielone zmianą kadru w pauzach. Kadry z 4K: W/M/C = 1,0/1,2/1,4. Kontrola: `kontrola.py` na zmontowanym dźwięku.
+- **Obraz:** `aroll.py` renderuje każde ujęcie osobno (HEVC VT, cache po parametrach). Grafiki i napisy są osobnymi warstwami HyperFrames (ProRes 4444 z alfą, `--resolution landscape-4k`): `render_warstwy.py`. Składanie w oknach po 60 s: `finalny.py`.
+- **Napisy:** ten sam wygląd co w rolkach, ale w dolnym pasie (`top: 905px`, 58 px). Tekst poprawiany ręcznie w `tekst.py`, z którego powstaje też `napisy.srt` na YouTube. Chowane, gdy ten sam tekst pokazuje grafika.
+- **Grafiki:** karty z boku kadru, szerokie tylko po lewej (twarz jest na ok. 56% szerokości, a w kadrze C prawa karta wchodzi na głowę). Plansze pełnoekranowe na liczby i schematy, rozdziały jako plansze „01/02…”, plansza końcowa 8 s pod ekran końcowy YouTube.
+- **Zawsze 3 rolki promocyjne:** przy każdym long-formie (powyżej 10 min) w tym samym przebiegu robię 3 pionowe rolki po 10–15 s z najmocniejszych momentów, w stylu rolek, z CTA do pełnego odcinka. Eksport do `Eksporty/YouTube/<RRRR-MM-DD Tytuł>/Rolki promo/`: `<Tytuł>_ROLKA 1_MM.RR.mp4`… plus `<Tytuł>_ROLKI_MM.RR - opisy.txt`. To stała zasada Jakuba z 13.11.2026. Jak (wzór: IMG_0529, `scripts/rolki_promo.py`):
+  - **Wybór:** trzy różne kąty: liczby i kontrast (efekt), kontrowersyjna teza (komentarze), coś praktycznego (koszt, jak zacząć). Każda rolka musi być zrozumiała bez odcinka i nie może przekręcać sensu (np. „plan za 30 $” tylko razem z „Tobie na start”).
+  - **Cięcia:** fragmenty osi odcinka (`segs`), granice w minimach obwiedni głosu C, każdy fragment sprawdzony whisperem bez promptu (wypadają „Eee…” i ucięte słowa). Mowa ok. 10–12,5 s plus 2,5 s planszy końcowej.
+  - **Obraz:** prosto ze źródła 4K przez `edl.json` (kadr 9:16, środek x osobno dla ujęcia, bo twarz chodzi). Start kawałka liczony od czasu jego pierwszej klatki, więc nie ma błędu zaokrąglenia.
+  - **Grafika:** hook kinetyczny na 1–2 pierwsze zdania, potem napisy i jedna plansza albo chip na myśl. Plansza końcowa: przycisk play w kolorze akcentu (ciemny trójkąt), „Cały odcinek na YouTube”, tytuł odcinka. Gdy rolka kończy się planszą, plansza końcowa wchodzi na tę samą planszę (bez dwóch pełnoekranowych naraz). Plansza wchodzi na słowie z treścią, nigdy pusta.
+  - **Kontrola:** `hyperframes check`, snapshoty, `kontrola_eksportu.py` i synchronizacja ust (dźwięk z telefonu w miejscu kawałka, mierzony z pełnego dekodu albo `-ss` > 0).
+  - **Strefa bezpieczna:** rolki promo biorą szablon z `skrypty/rolka_szablon.py`, a kopia w `projekty/IMG_0529/skrypty/` jest sprzed 18.11.2026 (napisy 950 px, nakładki na 96 px). Przy nowym odcinku skopiuj aktualny `scripts/kompozycja.py` jako `rolka_szablon.py`, wtedy `rolki_promo.py` weźmie z niego `CAP_W`, `KIN_W` i pozycje ze strefy (zasada 9). Frazy napisów w rolkach promo też do ok. 20 znaków.
+- **Muzyka (long-form):** Jakub chce cichego lo-fi na darmowej licencji. Źródło: Biblioteka audio YouTube (licencja bez atrybucji; pobieranie tylko za jego zgodą, z nazwą, źródłem i rozmiarem). `scripts/muzyka_podklad.py` (z IMG_0529):
+  - **rozkład:** osobny utwór na część odcinka, przenikanie 3 s na planszach rozdziałów;
+  - **poziom:** każdy utwór do −14 LUFS, EQ pod głos, podkład na −29 LUFS, ducking −5 dB od głosu C (pod mową −20 dB względem głosu);
+  - **koniec:** +4 dB na planszy końcowej, potem wyciszenie;
+  - **montaż do filmu:** miks do −14 LUFS i limiter, potem tylko podmiana dźwięku (`-c:v copy`), bez renderu obrazu.
+- **Do opisu:** `rozdzialy.txt` (z czasów plansz) i `opis_youtube.txt`.
+
+## Pliki skilla
+
+- `references/styl.md`: wygląd i animacje, z parametrami. Czytaj przed kompozycją.
+- `references/biblioteka.md` i `references/biblioteka_arkusz_1.jpg`, `_2.jpg`: biblioteka szablonów grafik i przejść z zasadami różnorodności. Czytaj przed wyborem grafik.
+- `biblioteka/`: pliki szablonów z katalogu HyperFrames (montuje je `mount()` z `scripts/kompozycja.py`).
+- `references/pipeline.md`: komendy krok po kroku i progi kontroli.
+- `references/narzedzia.md`: pułapki narzędzi i gdzie co jest zainstalowane.
+- `references/dziennik.md`: oceny Jakuba film po filmie. Czytaj na start, dopisuj na koniec.
+- `scripts/sfx.py`: miks subtelnych efektów dźwiękowych pod głos (typy, warianty i poziomy są na górze pliku).
+- `scripts/strefa.py`: kontrola strefy bezpiecznej na całym filmie i obrys strefy na klatkach; szablony od Jakuba leżą w `references/strefa_szablon_*.png`.
+- `scripts/twarze.py` i `scripts/twarz.swift`: pomiar twarzy w ujęciach (Vision z macOS) pod automatyczny dobór kadru, gdy broda wypada nisko i napisy nie mieszczą się w strefie (`references/pipeline.md`, punkt 5).
+- `scripts/`: szablony skryptów (z IMG_0526) plus `waliduj_napisy.py`, `kontrola_eksportu.py` `rolki_promo.py` (3 rolki promo z long-formu, IMG_0529) i `muzyka_podklad.py` (podkład lo-fi z duckingiem pod long-form).
+
+Gdy w trakcie pracy odkryjesz coś, co poprawia proces (nowa pułapka, lepszy parametr, nowa grafika, którą pochwalił), dopisz to tutaj albo do odpowiedniej referencji. Tak ten skill robi się z każdym filmem lepszy.

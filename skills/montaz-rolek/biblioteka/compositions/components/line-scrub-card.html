@@ -1,0 +1,395 @@
+<!doctype html>
+<!--
+  line-scrub-card: karta z wykresem liniowym, po ktorym jedzie punkt, a duza liczba czyta wartosc
+
+  Wlasny szablon biblioteki montaz-rolek (18.11.2026). Wzor: karty z wykresami w bibliotekach UI (duza liczba
+  nad wykresem i wskaznik jadacy po danych), przepisane na os czasu GSAP.
+
+  Karta wjezdza, linia rysuje sie od lewej, razem z nia jedzie punkt z pionowa prowadnica, a liczba nad wykresem
+  pokazuje wartosc w miejscu punktu. Na koncu pod linia pojawia sie wypelnienie i (opcjonalnie) plakietka zmiany.
+  Dziala dla wzrostu, spadku i dowolnego ksztaltu: linia idzie dokladnie przez podane punkty.
+
+  Zmienne:
+    - title (string, ""): podpis nad liczba.
+    - data (string, "12,14,13,18,22,21,27,34"): wartosci po przecinku (min. 2). TYLKO liczby, ktore padaja w filmie
+      albo opis, ze wykres jest pogladowy.
+    - prefix, suffix (string, ""): przed i za liczba (np. "zł", "K", "%").
+    - decimals (number, 0): miejsca po przecinku.
+    - delta (string, ""): tekst plakietki na koncu (np. "+183%"); pusty = brak. Nie jest liczony sam.
+    - labels (string, ""): dwa podpisy osi po przecinku (poczatek, koniec); puste = brak.
+    - draw_at (number, 0.45), draw (number, 2.2): start i czas rysowania linii w sekundach.
+    - backdrop (solid | none, "solid").
+
+  Czas: wejscie karty 0,4 s, rysowanie od draw_at przez draw, potem wypelnienie i plakietka (0,5 s), reszta to
+  przytrzymanie. Dzwiek (sfx.py): "shh" od draw_at z dl = draw, "pop" na plakietce (draw_at + draw + 0,15).
+-->
+<html
+  lang="pl"
+  data-composition-id="line-scrub-card"
+  data-composition-duration="5"
+  data-composition-variables='[
+    { "id": "title", "type": "string", "role": "content", "label": "Podpis", "description": "Podpis nad liczba.", "default": "" },
+    { "id": "data", "type": "string", "role": "content", "label": "Dane", "description": "Wartosci po przecinku (min. 2).", "default": "12,14,13,18,22,21,27,34" },
+    { "id": "prefix", "type": "string", "role": "content", "label": "Przed liczba", "description": "Tekst przed liczba.", "default": "" },
+    { "id": "suffix", "type": "string", "role": "content", "label": "Za liczba", "description": "Tekst za liczba.", "default": "" },
+    { "id": "decimals", "type": "number", "role": "content", "label": "Miejsca po przecinku", "description": "Ile miejsc po przecinku.", "default": 0 },
+    { "id": "delta", "type": "string", "role": "content", "label": "Plakietka", "description": "Tekst plakietki zmiany; pusty = brak.", "default": "" },
+    { "id": "labels", "type": "string", "role": "content", "label": "Podpisy osi", "description": "Poczatek i koniec osi po przecinku; puste = brak.", "default": "" },
+    { "id": "draw_at", "type": "number", "role": "timing", "label": "Start rysowania", "description": "Sekundy od startu elementu.", "default": 0.45 },
+    { "id": "draw", "type": "number", "role": "timing", "label": "Czas rysowania", "description": "Sekundy.", "default": 2.2 },
+    { "id": "backdrop", "type": "enum", "role": "style", "label": "Tlo", "description": "Wlasne tlo albo przezroczyste.", "default": "solid", "options": [{ "value": "solid", "label": "Pelne" }, { "value": "none", "label": "Brak" }] }
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Line Scrub Card</title>
+  </head>
+  <body>
+    <template>
+      <div id="root" data-composition-id="line-scrub-card" data-duration="5" data-fps="30">
+        <style>
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+
+          #root {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            container-type: size;
+            isolation: isolate;
+            color: var(--fg, #ffffff);
+            font-family: var(--font-display, Inter, system-ui, sans-serif);
+            pointer-events: none;
+          }
+
+          .ls-clip {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+          }
+
+          .ls-clip.solid {
+            background: var(--bg, #0f1012);
+          }
+
+          /* jednostka: 1cqw, chyba ze karta (ok. 96 u wysokosci) nie miesci sie w pionie */
+          .ls-card {
+            --u: min(1cqw, 0.9cqh);
+            position: relative;
+            width: calc(var(--u) * 90);
+            padding: calc(var(--u) * 5) calc(var(--u) * 5) calc(var(--u) * 4.4);
+            border-radius: calc(var(--u) * 5);
+            background: var(--surface, #16171a);
+            border: calc(var(--u) * 0.28) solid var(--border, #2b2d32);
+            box-shadow: 0 calc(var(--u) * 3) calc(var(--u) * 8) rgba(0, 0, 0, 0.35);
+            opacity: 0;
+          }
+
+          .ls-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: calc(var(--u) * 7);
+          }
+
+          .ls-title {
+            font-size: calc(var(--u) * 4.6);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--muted, #898989);
+            white-space: nowrap;
+          }
+
+          .ls-delta {
+            height: calc(var(--u) * 7);
+            padding: 0 calc(var(--u) * 2.6);
+            border-radius: calc(var(--u) * 3.5);
+            background: var(--brand, #00e5a0);
+            color: var(--on-accent, #0f1012);
+            font-size: calc(var(--u) * 4.4);
+            font-weight: 800;
+            line-height: calc(var(--u) * 7);
+            white-space: nowrap;
+            opacity: 0;
+          }
+
+          .ls-delta:empty {
+            display: none;
+          }
+
+          .ls-value {
+            margin-top: calc(var(--u) * 1.2);
+            height: calc(var(--u) * 17);
+            font-size: calc(var(--u) * 15);
+            font-weight: 800;
+            line-height: calc(var(--u) * 17);
+            letter-spacing: -0.045em;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+          }
+
+          .ls-value small {
+            font-size: 0.5em;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--muted, #898989);
+            margin: 0 0.12em;
+          }
+
+          .ls-value small:empty {
+            display: none;
+          }
+
+          .ls-chart {
+            position: relative;
+            margin-top: calc(var(--u) * 3);
+            width: 100%;
+            aspect-ratio: 1000 / 560;
+          }
+
+          .ls-chart svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+          }
+
+          .ls-grid {
+            stroke: color-mix(in srgb, var(--fg, #fff) 9%, transparent);
+            stroke-width: 2;
+          }
+
+          .ls-line {
+            fill: none;
+            stroke: var(--brand, #00e5a0);
+            stroke-width: 9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 14px color-mix(in srgb, var(--brand, #00e5a0) 45%, transparent));
+          }
+
+          .ls-area {
+            opacity: 0;
+          }
+
+          /* nosnik ma rozmiar wykresu; przesuwany w procentach wlasnego rozmiaru niesie punkt po linii */
+          .ls-carrier {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+          }
+
+          .ls-guide {
+            position: absolute;
+            left: calc(var(--u) * -0.16);
+            top: -100%;
+            width: calc(var(--u) * 0.32);
+            height: 200%;
+            background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--fg, #fff) 30%, transparent) 30%, color-mix(in srgb, var(--fg, #fff) 30%, transparent) 70%, transparent 100%);
+          }
+
+          .ls-dot {
+            position: absolute;
+            left: calc(var(--u) * -2);
+            top: calc(var(--u) * -2);
+            width: calc(var(--u) * 4);
+            height: calc(var(--u) * 4);
+            border-radius: 50%;
+            background: var(--fg, #ffffff);
+            border: calc(var(--u) * 0.9) solid var(--brand, #00e5a0);
+            box-shadow: 0 0 calc(var(--u) * 4) color-mix(in srgb, var(--brand, #00e5a0) 60%, transparent);
+          }
+
+          /* prowadnica nie moze wyjsc poza wykres: przycina ja maska o rozmiarze wykresu */
+          .ls-mask {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+          }
+
+          .ls-axis {
+            display: flex;
+            justify-content: space-between;
+            margin-top: calc(var(--u) * 2.4);
+            height: calc(var(--u) * 5.2);
+            font-size: calc(var(--u) * 4.2);
+            font-weight: 600;
+            line-height: calc(var(--u) * 5.2);
+            color: var(--muted, #898989);
+            opacity: 0;
+          }
+
+          .ls-axis.off {
+            display: none;
+          }
+        </style>
+
+        <div id="line-scrub-card-clip" class="ls-clip clip" data-start="0" data-duration="5" data-track-index="0">
+          <div class="ls-card" role="img">
+            <div class="ls-top">
+              <div class="ls-title"></div>
+              <div class="ls-delta"></div>
+            </div>
+            <div class="ls-value"><small class="ls-pre"></small><span class="ls-num">0</span><small class="ls-suf"></small></div>
+            <div class="ls-chart">
+              <svg viewBox="0 0 1000 560" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="ls-fill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="var(--brand, #00e5a0)" stop-opacity="0.3" />
+                    <stop offset="1" stop-color="var(--brand, #00e5a0)" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <line class="ls-grid" x1="0" y1="20" x2="1000" y2="20" />
+                <line class="ls-grid" x1="0" y1="280" x2="1000" y2="280" />
+                <line class="ls-grid" x1="0" y1="540" x2="1000" y2="540" />
+                <path class="ls-area" fill="url(#ls-fill)" d="" />
+                <path class="ls-line" d="" />
+              </svg>
+              <div class="ls-mask">
+                <div class="ls-carrier ls-carrier-x"><div class="ls-guide"></div></div>
+              </div>
+              <div class="ls-carrier ls-carrier-xy"><div class="ls-dot"></div></div>
+            </div>
+            <div class="ls-axis"><span class="ls-a0"></span><span class="ls-a1"></span></div>
+          </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            "use strict";
+
+            var root = document.getElementById("root");
+            var q = function (sel) {
+              return root.querySelector(sel);
+            };
+            var vars = window.__hyperframes && window.__hyperframes.getVariables ? window.__hyperframes.getVariables() : {};
+            var str = function (v) {
+              return v == null ? "" : String(v).trim();
+            };
+            var num = function (v, d) {
+              var n = Number(v);
+              return v == null || v === "" || !Number.isFinite(n) ? d : n;
+            };
+
+            var data = (str(vars.data) || "12,14,13,18,22,21,27,34")
+              .split(",")
+              .map(function (s) {
+                return Number(s.trim().replace(/\s/g, ""));
+              })
+              .filter(Number.isFinite);
+            if (data.length < 2) data = [0, 1];
+            var decimals = Math.max(0, Math.min(3, Math.round(num(vars.decimals, 0))));
+            var DRAW_AT = Math.max(0, num(vars.draw_at, 0.45));
+            var DRAW = Math.max(0.2, num(vars.draw, 2.2));
+            var labels = str(vars.labels)
+              .split(",")
+              .map(function (s) {
+                return s.trim();
+              });
+
+            if ((vars.backdrop || "solid") !== "none") q(".ls-clip").classList.add("solid");
+            q(".ls-title").textContent = str(vars.title);
+            q(".ls-delta").textContent = str(vars.delta);
+            q(".ls-pre").textContent = str(vars.prefix);
+            q(".ls-suf").textContent = str(vars.suffix);
+            if (labels.length >= 2 && (labels[0] || labels[1])) {
+              q(".ls-a0").textContent = labels[0];
+              q(".ls-a1").textContent = labels[1];
+            } else {
+              q(".ls-axis").classList.add("off");
+            }
+
+            function format(v) {
+              var fixed = v.toFixed(decimals).split(".");
+              fixed[0] = fixed[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+              return fixed.join(",");
+            }
+
+            // --- geometria: punkty na polu 1000 x 560 z marginesem 20 u gory i dolu
+            var W = 1000, H = 560, PAD = 20;
+            var lo = Math.min.apply(null, data), hi = Math.max.apply(null, data);
+            if (hi === lo) hi = lo + 1;
+            var pts = data.map(function (v, i) {
+              return [(i / (data.length - 1)) * W, PAD + (1 - (v - lo) / (hi - lo)) * (H - 2 * PAD)];
+            });
+            // gladka linia przez wszystkie punkty (monotoniczna w x, bez przestrzelen): krzywe z kontrolami w 1/3 odcinka
+            var d = "M" + pts[0][0].toFixed(1) + " " + pts[0][1].toFixed(1);
+            for (var i = 0; i < pts.length - 1; i += 1) {
+              var p0 = pts[i], p1 = pts[i + 1];
+              var dx = (p1[0] - p0[0]) / 2.6;
+              d += " C" + (p0[0] + dx).toFixed(1) + " " + p0[1].toFixed(1) + " " + (p1[0] - dx).toFixed(1) + " " + p1[1].toFixed(1) + " " + p1[0].toFixed(1) + " " + p1[1].toFixed(1);
+            }
+            var line = q(".ls-line");
+            line.setAttribute("d", d);
+            q(".ls-area").setAttribute("d", d + " L" + W + " " + H + " L0 " + H + " Z");
+            var len = line.getTotalLength();
+
+            // probki po dlugosci luku: pozycja punktu i wartosc w tym miejscu (wartosc liczona z y, wiec zgodna z linia)
+            var N = 48, xs = [], ys = [], vals = [];
+            for (var k = 0; k <= N; k += 1) {
+              var pt = line.getPointAtLength((len * k) / N);
+              xs.push((pt.x / W) * 100);
+              ys.push((pt.y / H) * 100);
+              vals.push(lo + (1 - (pt.y - PAD) / (H - 2 * PAD)) * (hi - lo));
+            }
+            vals[0] = data[0];
+            vals[N] = data[data.length - 1];
+
+            var numEl = q(".ls-num");
+            var card = q(".ls-card");
+            var cx = q(".ls-carrier-x");
+            var cxy = q(".ls-carrier-xy");
+            numEl.textContent = format(data[0]);
+            gsap.set(line, { strokeDasharray: len, strokeDashoffset: len });
+            gsap.set(cx, { xPercent: xs[0] });
+            gsap.set(cxy, { xPercent: xs[0], yPercent: ys[0] });
+
+            var EASE = "sine.inOut";
+            var tl = gsap.timeline({ paused: true });
+            tl.fromTo(card, { opacity: 0, yPercent: 6, scale: 0.95 }, { opacity: 1, yPercent: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 0);
+            tl.to([cx, cxy], { opacity: 1, duration: 0.2, ease: "power2.out" }, Math.max(0.15, DRAW_AT - 0.15));
+            tl.fromTo(q(".ls-dot"), { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2.4)" }, Math.max(0.15, DRAW_AT - 0.15));
+            // linia, punkt i liczba ida tym samym postepem: wspolna krzywa czasu, probki rowno po dlugosci linii
+            tl.to(line, { strokeDashoffset: 0, duration: DRAW, ease: EASE }, DRAW_AT);
+            tl.to(cx, { keyframes: { xPercent: xs, easeEach: "none" }, duration: DRAW, ease: EASE }, DRAW_AT);
+            tl.to(cxy, { keyframes: { xPercent: xs, yPercent: ys, easeEach: "none" }, duration: DRAW, ease: EASE }, DRAW_AT);
+            var state = { p: 0 };
+            tl.to(
+              state,
+              {
+                p: N,
+                duration: DRAW,
+                ease: EASE,
+                onUpdate: function () {
+                  var a = Math.min(N - 1, Math.floor(state.p));
+                  var f = state.p - a;
+                  numEl.textContent = format(vals[a] + (vals[a + 1] - vals[a]) * f);
+                },
+              },
+              DRAW_AT,
+            );
+            var END = DRAW_AT + DRAW;
+            tl.to(q(".ls-area"), { opacity: 1, duration: 0.5, ease: "power2.out" }, END - 0.1);
+            tl.to(cx, { opacity: 0, duration: 0.35, ease: "power2.in" }, END + 0.1);
+            tl.fromTo(q(".ls-dot"), { scale: 1 }, { scale: 1.35, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, END);
+            if (!q(".ls-axis").classList.contains("off")) tl.to(q(".ls-axis"), { opacity: 1, duration: 0.3 }, 0.3);
+            if (q(".ls-delta").textContent) {
+              tl.fromTo(q(".ls-delta"), { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, END + 0.15);
+            }
+
+            tl.seek(0);
+            window.__timelines = window.__timelines || {};
+            window.__timelines["line-scrub-card"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

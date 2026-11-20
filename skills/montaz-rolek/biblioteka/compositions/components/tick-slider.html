@@ -1,0 +1,332 @@
+<!doctype html>
+<!--
+  tick-slider: suwak z cienkich kresek, wartosc przejezdza z A do B, a liczba nad nim liczy
+
+  Wlasny szablon biblioteki montaz-rolek (18.11.2026). Wzor: suwaki bez uchwytu zlozone z kresek, w ktorych
+  kreski podskakuja falą za ruchem. Tu ruch jest na osi czasu GSAP, nie pod palcem.
+
+  Podpis, duza liczba i rzad kresek. Kreski do aktualnej wartosci sa jasne, reszta przygaszona. Gdy wartosc
+  jedzie z `from` do `to`, kazda mijana kreska zapala sie (albo gasnie przy ruchu w dol) i podskakuje, wiec za
+  krawedzia idzie fala. Ostatnia zapalona kreska jest w kolorze akcentu.
+
+  Zmienne:
+    - label (string, ""): podpis nad liczba.
+    - from, to (number, 10 i 100): wartosc na starcie i na koncu.
+    - min, max (number, 0 i 100): konce skali.
+    - prefix, suffix (string, ""): przed i za liczba.
+    - decimals (number, 0).
+    - bars (number, 36): liczba kresek (12-60).
+    - ends (string, ""): dwa podpisy koncow skali po przecinku; puste = brak.
+    - move_at (number, 0.9), move (number, 1.4): start i czas ruchu w sekundach.
+    - backdrop (solid | none, "solid").
+
+  Czas: wejscie 0,6 s (kreski wstaja kolejno), ruch od move_at przez move, reszta to przytrzymanie.
+  Dzwiek (sfx.py): "shh" od move_at z dl = move, "pop" na koncu ruchu.
+-->
+<html
+  lang="pl"
+  data-composition-id="tick-slider"
+  data-composition-duration="4"
+  data-composition-variables='[
+    { "id": "label", "type": "string", "role": "content", "label": "Podpis", "description": "Podpis nad liczba.", "default": "" },
+    { "id": "from", "type": "number", "role": "content", "label": "Od", "description": "Wartosc na starcie.", "default": 10 },
+    { "id": "to", "type": "number", "role": "content", "label": "Do", "description": "Wartosc na koncu.", "default": 100 },
+    { "id": "min", "type": "number", "role": "content", "label": "Minimum", "description": "Poczatek skali.", "default": 0 },
+    { "id": "max", "type": "number", "role": "content", "label": "Maksimum", "description": "Koniec skali.", "default": 100 },
+    { "id": "prefix", "type": "string", "role": "content", "label": "Przed liczba", "description": "Tekst przed liczba.", "default": "" },
+    { "id": "suffix", "type": "string", "role": "content", "label": "Za liczba", "description": "Tekst za liczba.", "default": "" },
+    { "id": "decimals", "type": "number", "role": "content", "label": "Miejsca po przecinku", "description": "Ile miejsc po przecinku.", "default": 0 },
+    { "id": "bars", "type": "number", "role": "style", "label": "Kreski", "description": "Liczba kresek (12-60).", "default": 36 },
+    { "id": "ends", "type": "string", "role": "content", "label": "Konce skali", "description": "Dwa podpisy po przecinku; puste = brak.", "default": "" },
+    { "id": "move_at", "type": "number", "role": "timing", "label": "Start ruchu", "description": "Sekundy od startu elementu.", "default": 0.9 },
+    { "id": "move", "type": "number", "role": "timing", "label": "Czas ruchu", "description": "Sekundy.", "default": 1.4 },
+    { "id": "backdrop", "type": "enum", "role": "style", "label": "Tlo", "description": "Wlasne tlo albo przezroczyste.", "default": "solid", "options": [{ "value": "solid", "label": "Pelne" }, { "value": "none", "label": "Brak" }] }
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tick Slider</title>
+  </head>
+  <body>
+    <template>
+      <div id="root" data-composition-id="tick-slider" data-duration="4" data-fps="30">
+        <style>
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+
+          #root {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            container-type: size;
+            isolation: isolate;
+            color: var(--fg, #ffffff);
+            font-family: var(--font-display, Inter, system-ui, sans-serif);
+            pointer-events: none;
+          }
+
+          .ts-clip {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+          }
+
+          .ts-clip.solid {
+            background: var(--bg, #0f1012);
+          }
+
+          .ts-stage {
+            --u: min(1cqw, 1.5cqh);
+            width: calc(var(--u) * 88);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .ts-label {
+            height: calc(var(--u) * 6);
+            font-size: calc(var(--u) * 4.6);
+            font-weight: 600;
+            line-height: calc(var(--u) * 6);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted, #898989);
+            white-space: nowrap;
+            opacity: 0;
+          }
+
+          .ts-label:empty {
+            display: none;
+          }
+
+          .ts-value {
+            height: calc(var(--u) * 24);
+            font-size: calc(var(--u) * 21);
+            font-weight: 800;
+            line-height: calc(var(--u) * 24);
+            letter-spacing: -0.05em;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            opacity: 0;
+          }
+
+          .ts-value small {
+            font-size: 0.46em;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--muted, #898989);
+            margin: 0 0.14em;
+          }
+
+          .ts-value small:empty {
+            display: none;
+          }
+
+          .ts-rail {
+            margin-top: calc(var(--u) * 4);
+            width: 100%;
+            height: calc(var(--u) * 16);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+
+          /* kreska: szara baza i jasna nakladka; zmienia sie tylko przezroczystosc nakladki i skala w pionie */
+          .ts-bar {
+            position: relative;
+            flex: 0 0 auto;
+            width: calc(var(--u) * 0.95);
+            height: calc(var(--u) * 7);
+            border-radius: calc(var(--u) * 0.5);
+            background: color-mix(in srgb, var(--fg, #fff) 20%, transparent);
+            transform-origin: 50% 50%;
+          }
+
+          .ts-bar i,
+          .ts-bar b {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            opacity: 0;
+          }
+
+          .ts-bar i {
+            background: var(--fg, #ffffff);
+          }
+
+          .ts-bar b {
+            background: var(--brand, #00e5a0);
+            box-shadow: 0 0 calc(var(--u) * 2.4) color-mix(in srgb, var(--brand, #00e5a0) 70%, transparent);
+          }
+
+          .ts-ends {
+            margin-top: calc(var(--u) * 1.6);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            height: calc(var(--u) * 5.4);
+            font-size: calc(var(--u) * 4.2);
+            font-weight: 600;
+            line-height: calc(var(--u) * 5.4);
+            color: var(--muted, #898989);
+            opacity: 0;
+          }
+
+          .ts-ends.off {
+            display: none;
+          }
+        </style>
+
+        <div id="tick-slider-clip" class="ts-clip clip" data-start="0" data-duration="4" data-track-index="0">
+          <div class="ts-stage" role="img">
+            <div class="ts-label"></div>
+            <div class="ts-value"><small class="ts-pre"></small><span class="ts-num">0</span><small class="ts-suf"></small></div>
+            <div class="ts-rail"></div>
+            <div class="ts-ends"><span class="ts-e0"></span><span class="ts-e1"></span></div>
+          </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            "use strict";
+
+            var root = document.getElementById("root");
+            var q = function (sel) {
+              return root.querySelector(sel);
+            };
+            var vars = window.__hyperframes && window.__hyperframes.getVariables ? window.__hyperframes.getVariables() : {};
+            var str = function (v) {
+              return v == null ? "" : String(v).trim();
+            };
+            var num = function (v, d) {
+              var n = Number(v);
+              return v == null || v === "" || !Number.isFinite(n) ? d : n;
+            };
+
+            var min = num(vars.min, 0), max = num(vars.max, 100);
+            if (max <= min) max = min + 1;
+            var clamp = function (v) {
+              return Math.max(min, Math.min(max, v));
+            };
+            var from = clamp(num(vars.from, 10)), to = clamp(num(vars.to, 100));
+            var decimals = Math.max(0, Math.min(3, Math.round(num(vars.decimals, 0))));
+            var COUNT = Math.max(12, Math.min(60, Math.round(num(vars.bars, 36))));
+            var MOVE_AT = Math.max(0.3, num(vars.move_at, 0.9));
+            var MOVE = Math.max(0.2, num(vars.move, 1.4));
+            var ends = str(vars.ends)
+              .split(",")
+              .map(function (s) {
+                return s.trim();
+              });
+
+            if ((vars.backdrop || "solid") !== "none") q(".ts-clip").classList.add("solid");
+            q(".ts-label").textContent = str(vars.label);
+            q(".ts-pre").textContent = str(vars.prefix);
+            q(".ts-suf").textContent = str(vars.suffix);
+            if (ends.length >= 2 && (ends[0] || ends[1])) {
+              q(".ts-e0").textContent = ends[0];
+              q(".ts-e1").textContent = ends[1];
+            } else {
+              q(".ts-ends").classList.add("off");
+            }
+
+            function format(v) {
+              var fixed = v.toFixed(decimals).split(".");
+              fixed[0] = fixed[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+              return fixed.join(",");
+            }
+
+            var rail = q(".ts-rail");
+            var bars = [];
+            for (var i = 0; i < COUNT; i += 1) {
+              var bar = document.createElement("div");
+              bar.className = "ts-bar";
+              bar.innerHTML = "<i></i><b></b>";
+              rail.appendChild(bar);
+              bars.push(bar);
+            }
+            // ile kresek jest zapalonych przy danej wartosci (co najmniej jedna, zeby krawedz bylo widac)
+            var lit = function (v) {
+              return Math.max(1, Math.round(((v - min) / (max - min)) * COUNT));
+            };
+            var litFrom = lit(from), litTo = lit(to);
+            var up = litTo >= litFrom;
+
+            var numEl = q(".ts-num");
+            numEl.textContent = format(from);
+            bars.forEach(function (bar, idx) {
+              gsap.set(bar.querySelector("i"), { opacity: idx < litFrom ? 1 : 0 });
+              gsap.set(bar.querySelector("b"), { opacity: idx === litFrom - 1 ? 1 : 0 });
+            });
+
+            var EASE = "power2.inOut";
+            var easeFn = gsap.parseEase(EASE);
+            // chwila, w ktorej krawedz mija kreske: odwrocenie krzywej czasu na 240 probkach
+            function crossTime(fraction) {
+              for (var s = 0; s <= 240; s += 1) {
+                if (easeFn(s / 240) >= fraction) return MOVE_AT + (MOVE * s) / 240;
+              }
+              return MOVE_AT + MOVE;
+            }
+
+            var tl = gsap.timeline({ paused: true });
+            tl.fromTo(q(".ts-label"), { opacity: 0, yPercent: 40 }, { opacity: 1, yPercent: 0, duration: 0.35, ease: "power3.out" }, 0);
+            tl.fromTo(q(".ts-value"), { opacity: 0, yPercent: 14, scale: 0.94 }, { opacity: 1, yPercent: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 0.06);
+            tl.fromTo(bars, { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.36 / COUNT }, 0.14);
+            if (!q(".ts-ends").classList.contains("off")) tl.to(q(".ts-ends"), { opacity: 1, duration: 0.3 }, 0.4);
+
+            // liczba
+            var state = { v: from };
+            tl.to(
+              state,
+              {
+                v: to,
+                duration: MOVE,
+                ease: EASE,
+                onUpdate: function () {
+                  numEl.textContent = format(state.v);
+                },
+              },
+              MOVE_AT,
+            );
+
+            // fala: kazda mijana kreska zmienia stan i podskakuje; akcent przechodzi na aktualna krawedz
+            var span = Math.abs(litTo - litFrom);
+            for (var step = 1; step <= span; step += 1) {
+              var idx = up ? litFrom - 1 + step : litFrom - step; // kreska, ktora teraz zmienia stan
+              var edge = up ? idx : idx - 1; // kreska, ktora zostaje krawedzia po tej zmianie
+              var at = crossTime(step / span);
+              var b = bars[idx];
+              if (up) {
+                tl.set(b.querySelector("i"), { opacity: 1 }, at);
+              } else {
+                tl.to(b.querySelector("i"), { opacity: 0, duration: 0.12 }, at);
+                tl.set(b.querySelector("b"), { opacity: 0 }, at);
+              }
+              tl.fromTo(b, { scaleY: up ? 2.1 : 0.45 }, { scaleY: 1, duration: 0.55, ease: "back.out(2.2)", immediateRender: false }, at);
+              // akcent: gasnie na poprzedniej krawedzi, zapala sie na nowej
+              var prev = up ? idx - 1 : idx;
+              if (prev >= 0 && prev < COUNT && up) tl.set(bars[prev].querySelector("b"), { opacity: 0 }, at);
+              if (edge >= 0 && edge < COUNT) tl.set(bars[edge].querySelector("b"), { opacity: 1 }, at);
+            }
+            var END = MOVE_AT + MOVE;
+            if (span > 0) {
+              tl.fromTo(q(".ts-value"), { scale: 1 }, { scale: 1.06, duration: 0.14, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, END);
+              tl.fromTo(bars[litTo - 1], { scaleY: 1 }, { scaleY: 1.9, duration: 0.18, ease: "power2.out", immediateRender: false }, END + 0.02);
+            }
+
+            tl.seek(0);
+            window.__timelines = window.__timelines || {};
+            window.__timelines["tick-slider"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

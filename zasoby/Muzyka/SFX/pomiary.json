@@ -1,0 +1,1514 @@
+[
+{
+"f": "kenney-interface-sounds/Audio/back_001.ogg",
+"dur": 0.054,
+"tpk": 0.008,
+"cen": 2008,
+"pk_db": -1.0,
+"low": 0.07,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/back_002.ogg",
+"dur": 0.054,
+"tpk": 0.008,
+"cen": 594,
+"pk_db": -1.0,
+"low": 0.27,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/back_003.ogg",
+"dur": 0.055,
+"tpk": 0.005,
+"cen": 1286,
+"pk_db": -0.7,
+"low": 0.15,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/back_004.ogg",
+"dur": 0.057,
+"tpk": 0.001,
+"cen": 840,
+"pk_db": -0.9,
+"low": 0.08,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/bong_001.ogg",
+"dur": 0.12,
+"tpk": 0.001,
+"cen": 201,
+"pk_db": -0.9,
+"low": 0.96,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/click_001.ogg",
+"dur": 0.016,
+"tpk": 0.001,
+"cen": 1732,
+"pk_db": -1.4,
+"low": 0.16,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/click_002.ogg",
+"dur": 0.011,
+"tpk": 0.0,
+"cen": 805,
+"pk_db": -0.8,
+"low": 0.12,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/click_004.ogg",
+"dur": 0.007,
+"tpk": 0.0,
+"cen": 10244,
+"pk_db": 0.9,
+"low": 0.12,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/close_001.ogg",
+"dur": 0.145,
+"tpk": 0.0,
+"cen": 11958,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/close_002.ogg",
+"dur": 0.307,
+"tpk": 0.0,
+"cen": 6823,
+"pk_db": -0.3,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/close_003.ogg",
+"dur": 0.308,
+"tpk": 0.001,
+"cen": 8913,
+"pk_db": 0.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/close_004.ogg",
+"dur": 0.315,
+"tpk": 0.001,
+"cen": 10834,
+"pk_db": -0.4,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/confirmation_001.ogg",
+"dur": 0.284,
+"tpk": 0.001,
+"cen": 660,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/confirmation_002.ogg",
+"dur": 0.506,
+"tpk": 0.0,
+"cen": 3203,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/confirmation_003.ogg",
+"dur": 0.307,
+"tpk": 0.001,
+"cen": 3822,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/confirmation_004.ogg",
+"dur": 0.474,
+"tpk": 0.166,
+"cen": 1348,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.002
+},
+{
+"f": "kenney-interface-sounds/Audio/drop_001.ogg",
+"dur": 0.053,
+"tpk": 0.0,
+"cen": 3177,
+"pk_db": 2.1,
+"low": 0.02,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/drop_002.ogg",
+"dur": 0.08,
+"tpk": 0.0,
+"cen": 815,
+"pk_db": 1.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/drop_003.ogg",
+"dur": 0.081,
+"tpk": 0.0,
+"cen": 730,
+"pk_db": 1.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/drop_004.ogg",
+"dur": 0.109,
+"tpk": 0.001,
+"cen": 1091,
+"pk_db": 2.1,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/error_001.ogg",
+"dur": 0.139,
+"tpk": 0.001,
+"cen": 3925,
+"pk_db": 3.7,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/error_002.ogg",
+"dur": 0.164,
+"tpk": 0.002,
+"cen": 6742,
+"pk_db": 3.5,
+"low": 0.01,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/error_003.ogg",
+"dur": 0.301,
+"tpk": 0.048,
+"cen": 2559,
+"pk_db": 2.3,
+"low": 0.0,
+"lead": 0.01
+},
+{
+"f": "kenney-interface-sounds/Audio/error_004.ogg",
+"dur": 0.103,
+"tpk": 0.001,
+"cen": 1473,
+"pk_db": 1.8,
+"low": 0.16,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/error_005.ogg",
+"dur": 0.138,
+"tpk": 0.013,
+"cen": 81,
+"pk_db": -1.0,
+"low": 0.97,
+"lead": 0.035
+},
+{
+"f": "kenney-interface-sounds/Audio/error_006.ogg",
+"dur": 0.2,
+"tpk": 0.066,
+"cen": 157,
+"pk_db": -0.8,
+"low": 0.93,
+"lead": 0.023
+},
+{
+"f": "kenney-interface-sounds/Audio/error_007.ogg",
+"dur": 0.192,
+"tpk": 0.001,
+"cen": 441,
+"pk_db": -0.2,
+"low": 0.68,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/error_008.ogg",
+"dur": 0.139,
+"tpk": 0.016,
+"cen": 471,
+"pk_db": -1.0,
+"low": 0.51,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/glass_001.ogg",
+"dur": 0.188,
+"tpk": 0.0,
+"cen": 1928,
+"pk_db": -1.1,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/glass_002.ogg",
+"dur": 0.088,
+"tpk": 0.0,
+"cen": 1967,
+"pk_db": -1.0,
+"low": 0.01,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/glass_003.ogg",
+"dur": 0.119,
+"tpk": 0.045,
+"cen": 1834,
+"pk_db": -1.0,
+"low": 0.04,
+"lead": 0.001
+},
+{
+"f": "kenney-interface-sounds/Audio/glass_004.ogg",
+"dur": 0.515,
+"tpk": 0.0,
+"cen": 7339,
+"pk_db": -0.3,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/glass_005.ogg",
+"dur": 0.051,
+"tpk": 0.0,
+"cen": 2635,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/glass_006.ogg",
+"dur": 0.058,
+"tpk": 0.0,
+"cen": 1780,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/glitch_001.ogg",
+"dur": 0.017,
+"tpk": 0.002,
+"cen": 487,
+"pk_db": 2.0,
+"low": 0.78,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/glitch_002.ogg",
+"dur": 0.027,
+"tpk": 0.003,
+"cen": 653,
+"pk_db": 2.0,
+"low": 0.86,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/glitch_003.ogg",
+"dur": 0.012,
+"tpk": 0.0,
+"cen": 3831,
+"pk_db": 2.5,
+"low": 0.21,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/glitch_004.ogg",
+"dur": 0.02,
+"tpk": 0.011,
+"cen": 4234,
+"pk_db": 2.4,
+"low": 0.03,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/maximize_001.ogg",
+"dur": 0.254,
+"tpk": 0.251,
+"cen": 3805,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.005
+},
+{
+"f": "kenney-interface-sounds/Audio/maximize_002.ogg",
+"dur": 0.254,
+"tpk": 0.253,
+"cen": 3539,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.005
+},
+{
+"f": "kenney-interface-sounds/Audio/maximize_003.ogg",
+"dur": 0.204,
+"tpk": 0.204,
+"cen": 5675,
+"pk_db": -0.8,
+"low": 0.0,
+"lead": 0.008
+},
+{
+"f": "kenney-interface-sounds/Audio/maximize_004.ogg",
+"dur": 0.393,
+"tpk": 0.347,
+"cen": 6004,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.022
+},
+{
+"f": "kenney-interface-sounds/Audio/maximize_005.ogg",
+"dur": 0.5,
+"tpk": 0.452,
+"cen": 5012,
+"pk_db": -0.6,
+"low": 0.0,
+"lead": 0.026
+},
+{
+"f": "kenney-interface-sounds/Audio/maximize_006.ogg",
+"dur": 0.366,
+"tpk": 0.064,
+"cen": 374,
+"pk_db": -0.9,
+"low": 0.02,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/maximize_007.ogg",
+"dur": 0.175,
+"tpk": 0.001,
+"cen": 2604,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/maximize_008.ogg",
+"dur": 0.208,
+"tpk": 0.154,
+"cen": 346,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/maximize_009.ogg",
+"dur": 0.204,
+"tpk": 0.029,
+"cen": 1371,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.001
+},
+{
+"f": "kenney-interface-sounds/Audio/minimize_001.ogg",
+"dur": 0.254,
+"tpk": 0.0,
+"cen": 3805,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/minimize_002.ogg",
+"dur": 0.254,
+"tpk": 0.001,
+"cen": 3540,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/minimize_003.ogg",
+"dur": 0.204,
+"tpk": 0.0,
+"cen": 5680,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/minimize_004.ogg",
+"dur": 0.394,
+"tpk": 0.047,
+"cen": 6003,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.002
+},
+{
+"f": "kenney-interface-sounds/Audio/minimize_005.ogg",
+"dur": 0.5,
+"tpk": 0.049,
+"cen": 5007,
+"pk_db": -0.6,
+"low": 0.0,
+"lead": 0.001
+},
+{
+"f": "kenney-interface-sounds/Audio/minimize_006.ogg",
+"dur": 0.366,
+"tpk": 0.302,
+"cen": 374,
+"pk_db": -1.0,
+"low": 0.02,
+"lead": 0.014
+},
+{
+"f": "kenney-interface-sounds/Audio/minimize_007.ogg",
+"dur": 0.172,
+"tpk": 0.172,
+"cen": 2625,
+"pk_db": -1.3,
+"low": 0.0,
+"lead": 0.011
+},
+{
+"f": "kenney-interface-sounds/Audio/minimize_008.ogg",
+"dur": 0.207,
+"tpk": 0.053,
+"cen": 346,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.018
+},
+{
+"f": "kenney-interface-sounds/Audio/minimize_009.ogg",
+"dur": 0.202,
+"tpk": 0.175,
+"cen": 1375,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.02
+},
+{
+"f": "kenney-interface-sounds/Audio/open_001.ogg",
+"dur": 0.145,
+"tpk": 0.144,
+"cen": 11941,
+"pk_db": -0.7,
+"low": 0.0,
+"lead": 0.003
+},
+{
+"f": "kenney-interface-sounds/Audio/open_002.ogg",
+"dur": 0.307,
+"tpk": 0.306,
+"cen": 6816,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.007
+},
+{
+"f": "kenney-interface-sounds/Audio/open_003.ogg",
+"dur": 0.308,
+"tpk": 0.308,
+"cen": 8912,
+"pk_db": 0.0,
+"low": 0.0,
+"lead": 0.005
+},
+{
+"f": "kenney-interface-sounds/Audio/open_004.ogg",
+"dur": 0.315,
+"tpk": 0.314,
+"cen": 10833,
+"pk_db": -0.8,
+"low": 0.0,
+"lead": 0.008
+},
+{
+"f": "kenney-interface-sounds/Audio/pluck_001.ogg",
+"dur": 0.072,
+"tpk": 0.002,
+"cen": 1824,
+"pk_db": 3.4,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/pluck_002.ogg",
+"dur": 0.093,
+"tpk": 0.001,
+"cen": 1805,
+"pk_db": 4.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/question_001.ogg",
+"dur": 0.474,
+"tpk": 0.166,
+"cen": 1460,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.002
+},
+{
+"f": "kenney-interface-sounds/Audio/question_002.ogg",
+"dur": 0.321,
+"tpk": 0.047,
+"cen": 706,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.001
+},
+{
+"f": "kenney-interface-sounds/Audio/question_003.ogg",
+"dur": 0.321,
+"tpk": 0.047,
+"cen": 2394,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.001
+},
+{
+"f": "kenney-interface-sounds/Audio/question_004.ogg",
+"dur": 0.321,
+"tpk": 0.047,
+"cen": 492,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.001
+},
+{
+"f": "kenney-interface-sounds/Audio/scratch_001.ogg",
+"dur": 0.122,
+"tpk": 0.02,
+"cen": 5703,
+"pk_db": -0.8,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/scratch_002.ogg",
+"dur": 0.122,
+"tpk": 0.052,
+"cen": 6187,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/scratch_003.ogg",
+"dur": 0.123,
+"tpk": 0.009,
+"cen": 10978,
+"pk_db": -0.6,
+"low": 0.21,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/scratch_004.ogg",
+"dur": 0.291,
+"tpk": 0.02,
+"cen": 3711,
+"pk_db": -1.0,
+"low": 0.01,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/scratch_005.ogg",
+"dur": 0.305,
+"tpk": 0.034,
+"cen": 4659,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/scroll_001.ogg",
+"dur": 0.957,
+"tpk": 0.0,
+"cen": 8936,
+"pk_db": 0.2,
+"low": 0.01,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/scroll_002.ogg",
+"dur": 1.0,
+"tpk": 0.65,
+"cen": 526,
+"pk_db": -0.9,
+"low": 0.21,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/scroll_003.ogg",
+"dur": 0.958,
+"tpk": 0.0,
+"cen": 1450,
+"pk_db": -0.9,
+"low": 0.17,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/scroll_004.ogg",
+"dur": 0.96,
+"tpk": 0.0,
+"cen": 4002,
+"pk_db": -0.6,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/scroll_005.ogg",
+"dur": 0.96,
+"tpk": 0.0,
+"cen": 2951,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/select_001.ogg",
+"dur": 0.032,
+"tpk": 0.002,
+"cen": 2342,
+"pk_db": 1.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/select_002.ogg",
+"dur": 0.04,
+"tpk": 0.002,
+"cen": 1179,
+"pk_db": 2.1,
+"low": 0.04,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/select_003.ogg",
+"dur": 0.18,
+"tpk": 0.011,
+"cen": 4592,
+"pk_db": -0.8,
+"low": 0.01,
+"lead": 0.013
+},
+{
+"f": "kenney-interface-sounds/Audio/select_004.ogg",
+"dur": 0.177,
+"tpk": 0.01,
+"cen": 3006,
+"pk_db": -0.7,
+"low": 0.02,
+"lead": 0.013
+},
+{
+"f": "kenney-interface-sounds/Audio/select_005.ogg",
+"dur": 0.184,
+"tpk": 0.009,
+"cen": 1869,
+"pk_db": -1.3,
+"low": 0.04,
+"lead": 0.013
+},
+{
+"f": "kenney-interface-sounds/Audio/select_006.ogg",
+"dur": 0.177,
+"tpk": 0.004,
+"cen": 658,
+"pk_db": -0.8,
+"low": 0.0,
+"lead": 0.032
+},
+{
+"f": "kenney-interface-sounds/Audio/select_007.ogg",
+"dur": 0.045,
+"tpk": 0.0,
+"cen": 3224,
+"pk_db": -0.2,
+"low": 0.01,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/select_008.ogg",
+"dur": 0.042,
+"tpk": 0.002,
+"cen": 8965,
+"pk_db": -2.5,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/switch_001.ogg",
+"dur": 0.129,
+"tpk": 0.108,
+"cen": 4247,
+"pk_db": 2.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/switch_002.ogg",
+"dur": 0.133,
+"tpk": 0.001,
+"cen": 973,
+"pk_db": 2.1,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/switch_003.ogg",
+"dur": 0.209,
+"tpk": 0.009,
+"cen": 286,
+"pk_db": 2.1,
+"low": 0.91,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/switch_004.ogg",
+"dur": 0.139,
+"tpk": 0.107,
+"cen": 2103,
+"pk_db": 2.2,
+"low": 0.61,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/switch_005.ogg",
+"dur": 0.137,
+"tpk": 0.004,
+"cen": 174,
+"pk_db": 0.7,
+"low": 0.98,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/switch_006.ogg",
+"dur": 0.13,
+"tpk": 0.002,
+"cen": 353,
+"pk_db": -1.8,
+"low": 0.72,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/switch_007.ogg",
+"dur": 0.134,
+"tpk": 0.109,
+"cen": 895,
+"pk_db": 0.3,
+"low": 0.25,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/tick_001.ogg",
+"dur": 0.009,
+"tpk": 0.001,
+"cen": 5916,
+"pk_db": 0.5,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/tick_002.ogg",
+"dur": 0.02,
+"tpk": 0.001,
+"cen": 3846,
+"pk_db": 1.1,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/tick_004.ogg",
+"dur": 0.054,
+"tpk": 0.047,
+"cen": 3410,
+"pk_db": -0.8,
+"low": 0.04,
+"lead": 0.001
+},
+{
+"f": "kenney-interface-sounds/Audio/toggle_001.ogg",
+"dur": 0.098,
+"tpk": 0.007,
+"cen": 2492,
+"pk_db": -0.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/toggle_002.ogg",
+"dur": 0.096,
+"tpk": 0.0,
+"cen": 2841,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/toggle_003.ogg",
+"dur": 0.097,
+"tpk": 0.014,
+"cen": 7381,
+"pk_db": -0.7,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-interface-sounds/Audio/toggle_004.ogg",
+"dur": 0.059,
+"tpk": 0.0,
+"cen": 3462,
+"pk_db": -1.0,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/click1.wav",
+"dur": 0.034,
+"tpk": 0.019,
+"cen": 1283,
+"pk_db": -13.6,
+"low": 0.6,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/click2.wav",
+"dur": 0.056,
+"tpk": 0.011,
+"cen": 350,
+"pk_db": -18.2,
+"low": 0.83,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/click3.wav",
+"dur": 0.048,
+"tpk": 0.018,
+"cen": 2707,
+"pk_db": -0.0,
+"low": 0.04,
+"lead": 0.011
+},
+{
+"f": "kenney-ui-sfx-set/click4.wav",
+"dur": 0.036,
+"tpk": 0.008,
+"cen": 3400,
+"pk_db": -28.7,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/click5.wav",
+"dur": 0.032,
+"tpk": 0.009,
+"cen": 2867,
+"pk_db": -30.7,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/mouseclick1.wav",
+"dur": 0.058,
+"tpk": 0.015,
+"cen": 8923,
+"pk_db": -32.2,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/mouserelease1.wav",
+"dur": 0.046,
+"tpk": 0.013,
+"cen": 10276,
+"pk_db": -31.0,
+"low": 0.0,
+"lead": 0.013
+},
+{
+"f": "kenney-ui-sfx-set/rollover1.wav",
+"dur": 0.177,
+"tpk": 0.06,
+"cen": 3804,
+"pk_db": -19.2,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/rollover2.wav",
+"dur": 0.052,
+"tpk": 0.018,
+"cen": 1765,
+"pk_db": -14.8,
+"low": 0.04,
+"lead": 0.005
+},
+{
+"f": "kenney-ui-sfx-set/rollover3.wav",
+"dur": 0.068,
+"tpk": 0.039,
+"cen": 4534,
+"pk_db": -26.6,
+"low": 0.13,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/rollover4.wav",
+"dur": 0.071,
+"tpk": 0.026,
+"cen": 1270,
+"pk_db": -36.5,
+"low": 0.0,
+"lead": 0.042
+},
+{
+"f": "kenney-ui-sfx-set/rollover5.wav",
+"dur": 0.096,
+"tpk": 0.024,
+"cen": 798,
+"pk_db": -29.0,
+"low": 0.16,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/rollover6.wav",
+"dur": 0.125,
+"tpk": 0.031,
+"cen": 105,
+"pk_db": -27.4,
+"low": 0.99,
+"lead": 0.011
+},
+{
+"f": "kenney-ui-sfx-set/switch1.wav",
+"dur": 0.112,
+"tpk": 0.004,
+"cen": 4261,
+"pk_db": -2.1,
+"low": 0.0,
+"lead": 0.073
+},
+{
+"f": "kenney-ui-sfx-set/switch10.wav",
+"dur": 0.098,
+"tpk": 0.015,
+"cen": 1962,
+"pk_db": -6.3,
+"low": 0.0,
+"lead": 0.104
+},
+{
+"f": "kenney-ui-sfx-set/switch11.wav",
+"dur": 0.111,
+"tpk": 0.035,
+"cen": 1711,
+"pk_db": -12.5,
+"low": 0.0,
+"lead": 0.054
+},
+{
+"f": "kenney-ui-sfx-set/switch12.wav",
+"dur": 0.052,
+"tpk": 0.007,
+"cen": 3900,
+"pk_db": -17.4,
+"low": 0.0,
+"lead": 0.001
+},
+{
+"f": "kenney-ui-sfx-set/switch13.wav",
+"dur": 0.027,
+"tpk": 0.005,
+"cen": 6592,
+"pk_db": -14.7,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/switch14.wav",
+"dur": 0.033,
+"tpk": 0.007,
+"cen": 6640,
+"pk_db": -20.9,
+"low": 0.0,
+"lead": 0.0
+},
+{
+"f": "kenney-ui-sfx-set/switch15.wav",
+"dur": 0.165,
+"tpk": 0.021,
+"cen": 2534,
+"pk_db": -5.9,
+"low": 0.01,
+"lead": 0.064
+},
+{
+"f": "kenney-ui-sfx-set/switch16.wav",
+"dur": 0.17,
+"tpk": 0.073,
+"cen": 4297,
+"pk_db": -3.4,
+"low": 0.0,
+"lead": 0.071
+},
+{
+"f": "kenney-ui-sfx-set/switch17.wav",
+"dur": 0.056,
+"tpk": 0.003,
+"cen": 1042,
+"pk_db": -5.5,
+"low": 0.07,
+"lead": 0.104
+},
+{
+"f": "kenney-ui-sfx-set/switch18.wav",
+"dur": 0.153,
+"tpk": 0.079,
+"cen": 3648,
+"pk_db": -3.6,
+"low": 0.01,
+"lead": 0.064
+},
+{
+"f": "kenney-ui-sfx-set/switch19.wav",
+"dur": 0.116,
+"tpk": 0.042,
+"cen": 3480,
+"pk_db": -7.6,
+"low": 0.01,
+"lead": 0.083
+},
+{
+"f": "kenney-ui-sfx-set/switch2.wav",
+"dur": 0.097,
+"tpk": 0.012,
+"cen": 3502,
+"pk_db": -2.4,
+"low": 0.0,
+"lead": 0.036
+},
+{
+"f": "kenney-ui-sfx-set/switch20.wav",
+"dur": 0.166,
+"tpk": 0.04,
+"cen": 2810,
+"pk_db": -5.6,
+"low": 0.0,
+"lead": 0.123
+},
+{
+"f": "kenney-ui-sfx-set/switch21.wav",
+"dur": 0.179,
+"tpk": 0.034,
+"cen": 1879,
+"pk_db": -6.1,
+"low": 0.01,
+"lead": 0.139
+},
+{
+"f": "kenney-ui-sfx-set/switch22.wav",
+"dur": 0.151,
+"tpk": 0.027,
+"cen": 1618,
+"pk_db": -5.2,
+"low": 0.01,
+"lead": 0.072
+},
+{
+"f": "kenney-ui-sfx-set/switch23.wav",
+"dur": 0.153,
+"tpk": 0.025,
+"cen": 1723,
+"pk_db": -4.6,
+"low": 0.0,
+"lead": 0.127
+},
+{
+"f": "kenney-ui-sfx-set/switch24.wav",
+"dur": 0.112,
+"tpk": 0.022,
+"cen": 2445,
+"pk_db": -7.5,
+"low": 0.01,
+"lead": 0.083
+},
+{
+"f": "kenney-ui-sfx-set/switch25.wav",
+"dur": 0.161,
+"tpk": 0.041,
+"cen": 2183,
+"pk_db": -5.3,
+"low": 0.0,
+"lead": 0.141
+},
+{
+"f": "kenney-ui-sfx-set/switch26.wav",
+"dur": 0.055,
+"tpk": 0.003,
+"cen": 2331,
+"pk_db": -5.3,
+"low": 0.02,
+"lead": 0.055
+},
+{
+"f": "kenney-ui-sfx-set/switch27.wav",
+"dur": 0.089,
+"tpk": 0.014,
+"cen": 2630,
+"pk_db": -5.1,
+"low": 0.0,
+"lead": 0.082
+},
+{
+"f": "kenney-ui-sfx-set/switch28.wav",
+"dur": 0.072,
+"tpk": 0.016,
+"cen": 3101,
+"pk_db": -5.4,
+"low": 0.01,
+"lead": 0.048
+},
+{
+"f": "kenney-ui-sfx-set/switch29.wav",
+"dur": 0.074,
+"tpk": 0.024,
+"cen": 6887,
+"pk_db": -6.4,
+"low": 0.0,
+"lead": 0.091
+},
+{
+"f": "kenney-ui-sfx-set/switch3.wav",
+"dur": 0.135,
+"tpk": 0.008,
+"cen": 6636,
+"pk_db": -0.7,
+"low": 0.0,
+"lead": 0.048
+},
+{
+"f": "kenney-ui-sfx-set/switch30.wav",
+"dur": 0.127,
+"tpk": 0.053,
+"cen": 2804,
+"pk_db": -4.6,
+"low": 0.0,
+"lead": 0.119
+},
+{
+"f": "kenney-ui-sfx-set/switch31.wav",
+"dur": 0.192,
+"tpk": 0.092,
+"cen": 5489,
+"pk_db": -2.6,
+"low": 0.03,
+"lead": 0.059
+},
+{
+"f": "kenney-ui-sfx-set/switch32.wav",
+"dur": 0.241,
+"tpk": 0.022,
+"cen": 2473,
+"pk_db": -3.6,
+"low": 0.04,
+"lead": 0.106
+},
+{
+"f": "kenney-ui-sfx-set/switch33.wav",
+"dur": 0.318,
+"tpk": 0.114,
+"cen": 6128,
+"pk_db": -5.7,
+"low": 0.0,
+"lead": 0.055
+},
+{
+"f": "kenney-ui-sfx-set/switch34.wav",
+"dur": 0.275,
+"tpk": 0.078,
+"cen": 6186,
+"pk_db": -8.5,
+"low": 0.0,
+"lead": 0.038
+},
+{
+"f": "kenney-ui-sfx-set/switch35.wav",
+"dur": 0.117,
+"tpk": 0.024,
+"cen": 6640,
+"pk_db": -8.6,
+"low": 0.01,
+"lead": 0.097
+},
+{
+"f": "kenney-ui-sfx-set/switch36.wav",
+"dur": 0.102,
+"tpk": 0.022,
+"cen": 5516,
+"pk_db": -10.4,
+"low": 0.01,
+"lead": 0.106
+},
+{
+"f": "kenney-ui-sfx-set/switch37.wav",
+"dur": 0.099,
+"tpk": 0.032,
+"cen": 9602,
+"pk_db": -9.4,
+"low": 0.0,
+"lead": 0.106
+},
+{
+"f": "kenney-ui-sfx-set/switch38.wav",
+"dur": 0.261,
+"tpk": 0.027,
+"cen": 1779,
+"pk_db": -10.8,
+"low": 0.0,
+"lead": 0.013
+},
+{
+"f": "kenney-ui-sfx-set/switch4.wav",
+"dur": 0.091,
+"tpk": 0.003,
+"cen": 5545,
+"pk_db": -0.0,
+"low": 0.0,
+"lead": 0.139
+},
+{
+"f": "kenney-ui-sfx-set/switch5.wav",
+"dur": 0.117,
+"tpk": 0.008,
+"cen": 6632,
+"pk_db": 0.7,
+"low": 0.0,
+"lead": 0.09
+},
+{
+"f": "kenney-ui-sfx-set/switch6.wav",
+"dur": 0.196,
+"tpk": 0.113,
+"cen": 5572,
+"pk_db": -8.8,
+"low": 0.0,
+"lead": 0.007
+},
+{
+"f": "kenney-ui-sfx-set/switch7.wav",
+"dur": 0.128,
+"tpk": 0.017,
+"cen": 4403,
+"pk_db": -8.2,
+"low": 0.0,
+"lead": 0.019
+},
+{
+"f": "kenney-ui-sfx-set/switch8.wav",
+"dur": 0.076,
+"tpk": 0.003,
+"cen": 2879,
+"pk_db": -13.6,
+"low": 0.0,
+"lead": 0.113
+},
+{
+"f": "kenney-ui-sfx-set/switch9.wav",
+"dur": 0.088,
+"tpk": 0.014,
+"cen": 4291,
+"pk_db": -16.2,
+"low": 0.0,
+"lead": 0.074
+},
+{
+"f": "mixkit/pop_2354_message-pop-alert.mp3",
+"dur": 0.022,
+"tpk": 0.002,
+"cen": 863,
+"pk_db": -2.8,
+"low": 0.0,
+"lead": 0.065
+},
+{
+"f": "mixkit/pop_2356_dry-pop-up-notification-alert.wav",
+"dur": 0.274,
+"tpk": 0.032,
+"cen": 820,
+"pk_db": -2.1,
+"low": 0.1,
+"lead": 0.016
+},
+{
+"f": "mixkit/pop_2357_bubble-pop-up-alert-notification.wav",
+"dur": 0.321,
+"tpk": 0.122,
+"cen": 2111,
+"pk_db": -2.2,
+"low": 0.08,
+"lead": 0.006
+},
+{
+"f": "mixkit/pop_2358_long-pop.wav",
+"dur": 0.437,
+"tpk": 0.019,
+"cen": 8766,
+"pk_db": 0.9,
+"low": 0.01,
+"lead": 0.015
+},
+{
+"f": "mixkit/pop_2364_hard-pop-click.wav",
+"dur": 0.072,
+"tpk": 0.002,
+"cen": 653,
+"pk_db": 2.9,
+"low": 0.06,
+"lead": 0.004
+},
+{
+"f": "mixkit/pop_2925_soap-bubble-sound.wav",
+"dur": 0.186,
+"tpk": 0.137,
+"cen": 1365,
+"pk_db": 2.7,
+"low": 0.0,
+"lead": 0.049
+},
+{
+"f": "mixkit/swoosh_1167_swoosh-wind-passing.wav",
+"dur": 3.798,
+"tpk": 0.973,
+"cen": 362,
+"pk_db": 0.9,
+"low": 0.66,
+"lead": 0.389
+},
+{
+"f": "mixkit/swoosh_1461_short-wind-swoosh.wav",
+"dur": 0.332,
+"tpk": 0.157,
+"cen": 401,
+"pk_db": 0.1,
+"low": 0.04,
+"lead": 0.006
+},
+{
+"f": "mixkit/swoosh_1464_quick-swoosh-accent.wav",
+"dur": 0.273,
+"tpk": 0.106,
+"cen": 348,
+"pk_db": -1.2,
+"low": 0.58,
+"lead": 0.005
+},
+{
+"f": "mixkit/swoosh_1474_transition-windy-swoosh.wav",
+"dur": 2.48,
+"tpk": 0.941,
+"cen": 1360,
+"pk_db": 0.8,
+"low": 0.26,
+"lead": 0.227
+},
+{
+"f": "mixkit/swoosh_164_fast-sweeping-transition.wav",
+"dur": 1.548,
+"tpk": 0.395,
+"cen": 1710,
+"pk_db": 2.1,
+"low": 0.02,
+"lead": 0.054
+},
+{
+"f": "mixkit/swoosh_166_fast-small-sweep-transition.wav",
+"dur": 0.611,
+"tpk": 0.224,
+"cen": 202,
+"pk_db": -0.9,
+"low": 0.94,
+"lead": 0.072
+},
+{
+"f": "mixkit/swoosh_167_long-sweeping-air-swoosh.wav",
+"dur": 2.939,
+"tpk": 0.591,
+"cen": 685,
+"pk_db": -0.2,
+"low": 0.07,
+"lead": 0.005
+},
+{
+"f": "mixkit/swoosh_168_fast-air-sweep-transition.wav",
+"dur": 0.675,
+"tpk": 0.233,
+"cen": 447,
+"pk_db": 0.1,
+"low": 0.57,
+"lead": 0.045
+},
+{
+"f": "mixkit/swoosh_174_fast-sweep-transition.wav",
+"dur": 0.598,
+"tpk": 0.329,
+"cen": 5887,
+"pk_db": -3.2,
+"low": 0.07,
+"lead": 0.189
+},
+{
+"f": "mixkit/swoosh_3115_fast-transitions-swoosh.wav",
+"dur": 0.219,
+"tpk": 0.066,
+"cen": 7375,
+"pk_db": -2.6,
+"low": 0.0,
+"lead": 0.052
+},
+{
+"f": "mixkit/whoosh_1489_air-woosh.wav",
+"dur": 1.313,
+"tpk": 0.618,
+"cen": 190,
+"pk_db": 1.5,
+"low": 0.88,
+"lead": 0.097
+},
+{
+"f": "mixkit/whoosh_1490_fast-whoosh-transition.wav",
+"dur": 0.719,
+"tpk": 0.675,
+"cen": 2999,
+"pk_db": -2.9,
+"low": 0.02,
+"lead": 0.038
+},
+{
+"f": "mixkit/whoosh_3005_explainer-video-pops-whoosh-light-pop.wav",
+"dur": 0.147,
+"tpk": 0.022,
+"cen": 1070,
+"pk_db": 1.0,
+"low": 0.62,
+"lead": 0.012
+}
+]

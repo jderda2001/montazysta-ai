@@ -1,0 +1,106 @@
+# Montażysta AI: zasady zespołu (Jakub, Maciej)
+
+Ten plik jest instrukcją dla Claude Code. Instalator podpina go jako `~/Montażysta AI/CLAUDE.md`, więc wczytuje się w każdej sesji uruchomionej w folderze `~/Montażysta AI`. Szczegóły procesu są w skillach `montaz-rolek` i `miniatury` (folder `skills/` w tym repo). Tu zebrane są zasady, które Jakub ustalał w rozmowach i które dotąd żyły tylko w jego pamięci Claude'a.
+
+## Kto jest kim
+
+- **Jakub Derda** jest autorem stylu i zwykle występuje w kadrze. Skille piszą o nim „Jakub”: jego oceny i zatwierdzenia obowiązują wszystkich, którzy montują.
+- **Maciej** jest wspólnikiem Jakuba w adGen i montuje głównie **reklamy adGen** i **rolki PerfOS**.
+- Operator to osoba, która uruchamia sesję. Pytania o decyzje kieruj do niej, a nie do „Jakuba” z tekstu skilla. W dzienniku zapisuj, kto dał ocenę (np. „Ocena Macieja: …”).
+- Odpowiadaj po polsku.
+
+## Wspólne repo: synchronizacja
+
+Skille w `~/.claude/skills/montaz-rolek` i `~/.claude/skills/miniatury` to linki do tego repo, więc każda zmiana w skillu jest zmianą w repo.
+
+1. **Przed montażem** pobierz zmiany z repo: `git -C "$HOME/Montażysta AI/montazysta-ai" pull --rebase --autostash`.
+2. **Po montażu** zrób to, co każe skill: ocena do `references/dziennik.md`, nowe pułapki do referencji. Potem commit z krótkim opisem i `git push`. Nie zostawiaj zmian w skillu bez commita, bo druga osoba ich nie dostanie.
+3. `dziennik.md` scala się automatycznie (`merge=union` w `.gitattributes`), więc dopisuj wpisy na końcu i nie przestawiaj starych.
+4. Gdy operator podaje nową ogólną zasadę stylu, dopisz ją tutaj albo do właściwej referencji skilla, a nie tylko do prywatnej pamięci.
+5. Do repo nie trafiają surowe nagrania, eksporty, rendery, klatki ani klucze API. Repo jest prywatne, a `.gitignore` odcina media.
+
+## Marki
+
+O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyja to rolka, zapytaj przed kompozycją.
+
+**Reklamy adGen** (Meta Ads, leady dla kancelarii odszkodowawczych). W skillu `MARKA = "adgen"`.
+- Ciemne plansze `#0f1012`, akcent pomarańczowy `#ff7018` z białym tekstem na akcencie, zielony „zrobione” `#3ddc84`, krój Inter Tight.
+- Nagranie zwykle ma kilka hooków („hook A… hook B…”), więc każdy hook dostaje osobną wersję do testu A/B. Pliki nazywaj `<Tytuł>_HOOK A_MM.RR.mp4` i zapisuj w `Eksporty/Reklamy adGen/<RRRR-MM-DD Tytuł>/`.
+- CTA „zostaw kontakt” i plansza końcowa. **Bez logo adGen** (zasada Jakuba z 13.11.2026), chyba że zlecający wprost o nie poprosi.
+- Do każdej reklamy oddaj **2 propozycje tekstu** do reklamy, różniące się kątem: plik `<Tytuł>_MM.RR - teksty reklamy.txt` obok filmów i w wiadomości. Jeden zestaw na film, wspólny dla hooków.
+- Montuj to, co padło w nagraniu. Liczby inne niż w scenariuszu zgłoś przed renderem.
+- Wzór: `projekty/IMG_0583` („Leady z OC”, hooki A/B/C, wersję wybiera nazwa folderu). Podobny jest IMG_0585.
+
+**PerfOS** (system AI Jakuba do reklam na Meta; perfos.pl).
+- Ciemny motyw: tło `#0f0f0f`, karty `#131313`–`#161616`, obrys `#262626`, tekst `#f5f5f5`, tekst pomocniczy `#a1a1aa`, akcent `#00E5A0`, tekst na akcencie `#04261c`. Krój Geist. Logo PerfOS (litera P z przełącznikiem) może być na planszach.
+- Pliki marki: `projekty/IMG_0597/branding/`. Większy zestaw jest w repo `PerfOS` w `public/brand/`.
+- Wzór: `projekty/IMG_0597/skrypty/kompozycja.py` (`MARKA = "perfos"`, odtworzone karty panelu PerfOS, toczące się cyfry, przełączniki). Liczby bierz tylko z nagrania i ze zrzutów panelu.
+- Eksport: `Eksporty/Rolki/<RRRR-MM-DD Tytuł>/`.
+
+**Personal brand Jakuba** (rolki organiczne, long-form, rolki promo). W skillu `MARKA = "personal"`.
+- Czerń `#0f1012`, biel i ciemne szarości. Jeden akcent na film, domyślnie `#00E5A0`, zawsze z ciemnym tekstem na akcencie. Kolor stawiaj tylko na sensie: kluczowe słowo, liczba, przycisk.
+- Bez logo adGen i bez dekoracyjnych kwadratów na planszach.
+- CTA to „napisz w komentarzu…” i plansza końcowa z dymkiem komentarza.
+
+## Styl (zatwierdzony, nie eksperymentuj)
+
+- **Napisy są zamrożone:** słowo po słowie, frazy po 2–5 słów, wyróżnienia akcentem, Inter Tight, pozycja 1120 px i szerokość 620 px. Nie zmieniaj ich wyglądu.
+- **Hook kinetyczny:** małe słowa i duże hasło (liczba albo puenta) w kolorze akcentu.
+- **Plansze i nakładki** ilustrują to, co pada w nagraniu. Wykresy i schematy mają być mocno animowane: rysujące się osie, jadąca kropka, wstrząs. Statyczny rysunek odpada.
+- **Różnorodność:** kolejne plansze wchodzą innym przejściem (`panel()` rotuje: iris, wipe, zoom, diag, slide, blur). Jeden szablon pojawia się najwyżej dwa razy w rolce i nigdy dwa razy pod rząd. Przed wyborem grafik przeczytaj `references/biblioteka.md` i obejrzyj arkusze podglądów.
+- **Kadry:** W/M/C (zoom 1,0/1,15/1,30) zmieniane w pauzach, w każdym ujęciu delikatny najazd. Przy niskim kadrze najpierw zmierz twarz (`twarze.py`), dopiero potem ustawiaj napisy.
+- **Strefa bezpieczna rolek:** y 270–1245, x 70–1010. Od 860 px w dół prawa krawędź jest na 885 px, od 1145 px na 850 px. Przed każdym renderem uruchom `strefa.py` i dopiero przy zerze naruszeń renderuj.
+- **Napięcie przed puentą:** zdanie zapowiadające wynik („No i wynik”) dostaje najazd na twarz i ok. 1 s pauzy. Marginesy cięć: 0,22 s po zdaniu i 0,14 s przed zdaniem. Naturalnych pauz do ok. 0,5 s nie ścinaj.
+
+## Dźwięk
+
+- Głos naturalny z mikrofonu, lekki mastering, −14 LUFS. Sidon albo „studio” tylko na prośbę albo przy wyraźnie złym nagraniu, i wtedy powiedz o tym przy oddaniu.
+- Efekty dźwiękowe tylko z biblioteki `zasoby/Muzyka/SFX` przez `sfx.py`, subtelnie, na poziomach zatwierdzonych w skrypcie. Nigdy nie generuj whooshy z szumu.
+- Rolki są bez muzyki, chyba że ktoś poprosi. W long-formie cichy lo-fi z `zasoby/Muzyka`, ok. 20 dB pod głosem, z duckingiem (`muzyka_podklad.py`).
+- Czasy słów do napisów licz osobno dla każdej kwestii, whisperem z DTW i flagą `-nfa`. Bez `-nfa` DTW po cichu się wyłącza.
+
+## Falstarty i powtórki
+
+Whisper wygładza zająknięcia, powtórzone zdania i falstarty. Przed oddaniem każdego filmu:
+- uruchom `kawalki.py` dwa razy: zwykle i z `--drobne`;
+- każdy alarm (`POWTORKA?`, `?`) rozstrzygnij whisperem bez promptu na samym kawałku i obwiednią z `fonemy.py`;
+- zająknięcie w środku kwestii wytnij polem `wytnij` w `SEGS`, a sklejkę sprawdź whisperem w trzech kontekstach;
+- po renderze przeczytaj kontrolę eksportu zdanie po zdaniu.
+
+## Formaty i komplet przy oddaniu
+
+- **Rolka:** 1080×1920, jedna wersja (reklama: jedna na hook). Do każdej rolki **2 propozycje opisu** różniące się kątem, w pliku `<Tytuł>_MM.RR - opisy.txt` obok filmu i w wiadomości.
+- **Long-form na YouTube** zawsze poziomo, 16:9, 4K. Przy każdym wideo dłuższym niż 10 min, bez pytania:
+  - **3 rolki promo** po 10–15 s;
+  - **3 miniatury A/B/C** skillem `miniatury`, z 2 tytułami do każdej.
+- **Eksporty** (`~/Desktop/Montażysta AI/Eksporty/`) układaj w folderach:
+  - `YouTube/<RRRR-MM-DD Tytuł>/` (w środku `Rolki promo/`, `Miniatury/`);
+  - `Rolki/<RRRR-MM-DD Tytuł>/`;
+  - `Reklamy adGen/<RRRR-MM-DD Tytuł>/`.
+
+  Nic nie zostaje luzem w katalogu głównym. Surowe nagrania leżą tylko w `Nagrania ` (ze spacją na końcu nazwy).
+
+## Wzorcowe projekty
+
+Skille odsyłają do projektów typu `projekty/IMG_0526/`. Ich skrypty, notatki, branding i szkielet HyperFrames są w repo w `wzory/`, a instalator kopiuje je do `~/Montażysta AI/projekty/`, więc ścieżki ze skilla działają. Nie ma tam nagrań ani renderów.
+
+| Projekt | Co to jest |
+|---|---|
+| IMG_0526 | Wzór układu i ruchu (rolka „Kaja zamiast settera”); szkielet `hf/` do kopiowania przy nowym projekcie. |
+| IMG_0576 | Wzór personal brandu w palecie `#00E5A0`. |
+| IMG_0583, IMG_0585 | Reklamy adGen z hookami A/B/C. |
+| IMG_0597 | Pierwsza rolka PerfOS. |
+| IMG_0529 | Long-form na YouTube z rolkami promo i miniaturami. |
+| IMG_0591, IMG_0640, IMG_0688 | Najnowsze rolki: strefa bezpieczna, cięcia w środku kwestii, scrim pod napisami. |
+| IMG_0361 | Stara wersja, sprzed zakazu logo i zasad o falstartach. Tylko poglądowo. |
+
+## Praca techniczna
+
+- **Agenci:** model i effort dobieraj do zadania. Wyszukiwanie, streszczanie i mechaniczne przeróbki idą na Sonnet albo Haiku. Ocena falstartów, decyzje montażowe i trudny debug zostają na najmocniejszym modelu albo robisz je sam.
+- **Dysk i HyperFrames:** render na całe konto idzie jeden naraz (wspólna blokada). Klatki A-rollu lądują w `$TMPDIR/hyperframes-extract-cache-*` i potrafią zająć dziesiątki GB.
+  - Przed renderem sprawdź `df -h`.
+  - Przy małym dysku renderuj z `--video-frame-format jpg`.
+  - Po udanym renderze usuń tylko własny wpis cache.
+  - Nigdy nie rób `pkill` po nazwie procesu; zatrzymuj własny proces po PID.
+- **Klucz kie.ai** (generowanie elementów w miniaturach) trzymaj w `~/.config/kie/api_key` z prawami 600 albo w zmiennej `KIE_API_KEY`, nigdy w repo. Zdjęć osób nie wysyłaj do kie.ai bez pytania.
+- Bez pytania nie pobieraj nowych plików (muzyki, SFX, szablonów) i nie usuwaj cudzych danych.

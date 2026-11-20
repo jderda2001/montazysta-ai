@@ -1,0 +1,7 @@
+# dzienniki ocen: wpisy obu osób scalają się bez konfliktów
+skills/montaz-rolek/references/dziennik.md merge=union
+skills/miniatury/references/dziennik.md merge=union
+*.mp3 binary
+*.ogg binary
+*.ttf binary
+*.woff2 binary

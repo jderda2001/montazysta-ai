@@ -1,0 +1,445 @@
+<!doctype html>
+<!--
+  pipeline-kanban: lejek jako tablica kanban, jedna karta przechodzi przez etapy
+
+  Wlasny szablon biblioteki montaz-rolek (18.11.2026). Wzor: tablice kanban z bibliotek UI (karty, ktore sie
+  unosza, przechylaja i sprezynuja w nowym miejscu), przepisane na os czasu GSAP i uklad pionowy pod 9:16.
+
+  Etapy leza jeden pod drugim. Wyrozniona karta startuje w pierwszym etapie i na kazdym sygnale (cues) unosi
+  sie, przechyla, przelatuje lukiem do nastepnego etapu i laduje ze sprezyna; licznik etapu rosnie, a etap
+  na chwile sie podswietla. W ostatnim etapie karta wypelnia sie akcentem i dostaje ptaszka.
+  Szare karty w etapach to atrapy (same kreski), zeby nie pokazywac zmyslonych tresci.
+
+  Zmienne:
+    - title (string, ""): maly podpis nad tablica; pusty = brak.
+    - stages (string, "Lead,Rozmowa,Oferta,Klient"): 2-5 etapow po przecinku.
+    - fill (string, "2,1,1,0"): ile szarych kart-atrap w kazdym etapie (0-2).
+    - card (string, "Nowy lead"): tekst na wyroznionej karcie.
+    - done (string, ""): tekst karty po dojsciu do ostatniego etapu; pusty = bez zmiany.
+    - cues (string, ""): sekundy od startu elementu, w ktorych karta przeskakuje do kolejnego etapu
+      (po jednym na przejscie). Puste = rowno rozlozone.
+    - backdrop (solid | none, "solid"): wlasne tlo z tokenu bg albo przezroczyste (na plansze).
+
+  Czas: wejscie 0,7 s, skoki po 0,55 s, reszta to przytrzymanie. Os czasu nie jest skalowana.
+  Dzwiek (sfx.py): "pop" na ladowaniu karty (cue + 0,45 s), "tik" na ptaszku.
+-->
+<html
+  lang="pl"
+  data-composition-id="pipeline-kanban"
+  data-composition-duration="5"
+  data-composition-variables='[
+    { "id": "title", "type": "string", "role": "content", "label": "Podpis", "description": "Maly podpis nad tablica; pusty = brak.", "default": "" },
+    { "id": "stages", "type": "string", "role": "content", "label": "Etapy", "description": "2-5 etapow po przecinku.", "default": "Lead,Rozmowa,Oferta,Klient" },
+    { "id": "fill", "type": "string", "role": "content", "label": "Atrapy", "description": "Liczba szarych kart w kazdym etapie (0-2), po przecinku.", "default": "2,1,1,0" },
+    { "id": "card", "type": "string", "role": "content", "label": "Karta", "description": "Tekst na wyroznionej karcie.", "default": "Nowy lead" },
+    { "id": "done", "type": "string", "role": "content", "label": "Karta na koncu", "description": "Tekst karty w ostatnim etapie; pusty = bez zmiany.", "default": "" },
+    { "id": "cues", "type": "string", "role": "timing", "label": "Sygnaly", "description": "Sekundy od startu elementu dla kolejnych przeskokow karty. Puste = rowno.", "default": "" },
+    { "id": "backdrop", "type": "enum", "role": "style", "label": "Tlo", "description": "Wlasne tlo albo przezroczyste.", "default": "solid", "options": [{ "value": "solid", "label": "Pelne" }, { "value": "none", "label": "Brak" }] }
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pipeline Kanban</title>
+  </head>
+  <body>
+    <template>
+      <div id="root" data-composition-id="pipeline-kanban" data-duration="5" data-fps="30">
+        <style>
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+
+          #root {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            container-type: size;
+            isolation: isolate;
+            color: var(--fg, #ffffff);
+            font-family: var(--font-display, Inter, system-ui, sans-serif);
+            pointer-events: none;
+          }
+
+          .pk-clip {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+          }
+
+          .pk-clip.solid {
+            background: var(--bg, #0f1012);
+          }
+
+          .pk-stage {
+            position: relative;
+            --u: 1cqw;
+            width: calc(var(--u) * 90);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--u) * 2.4);
+          }
+
+          .pk-title {
+            font-size: calc(var(--u) * 4.2);
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted, #898989);
+            padding-left: calc(var(--u) * 1);
+            height: calc(var(--u) * 5.6);
+            line-height: calc(var(--u) * 5.6);
+            opacity: 0;
+          }
+
+          .pk-title:empty {
+            display: none;
+          }
+
+          .pk-lane {
+            position: relative;
+            border-radius: calc(var(--u) * 3.4);
+            background: var(--surface, #16171a);
+            border: calc(var(--u) * 0.28) solid var(--border, #2b2d32);
+            padding: calc(var(--u) * 2.6) calc(var(--u) * 3) calc(var(--u) * 3);
+            height: calc(var(--u) * 26);
+            opacity: 0;
+          }
+
+          /* podswietlenie etapu: osobna warstwa, zmienia sie tylko jej przezroczystosc */
+          .pk-glow {
+            position: absolute;
+            inset: calc(var(--u) * -0.28);
+            border-radius: calc(var(--u) * 3.4);
+            border: calc(var(--u) * 0.42) solid var(--brand, #00e5a0);
+            box-shadow: 0 0 calc(var(--u) * 5) color-mix(in srgb, var(--brand, #00e5a0) 26%, transparent);
+            opacity: 0;
+          }
+
+          .pk-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: calc(var(--u) * 6.4);
+            margin-bottom: calc(var(--u) * 2);
+          }
+
+          .pk-name {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--u) * 1.8);
+            font-size: calc(var(--u) * 5);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+          }
+
+          .pk-dot {
+            width: calc(var(--u) * 1.8);
+            height: calc(var(--u) * 1.8);
+            border-radius: 50%;
+            background: var(--muted, #898989);
+          }
+
+          .pk-lane.last .pk-dot {
+            background: var(--brand, #00e5a0);
+          }
+
+          .pk-count {
+            display: grid;
+            min-width: calc(var(--u) * 7.6);
+            height: calc(var(--u) * 6.2);
+            padding: 0 calc(var(--u) * 1.6);
+            border-radius: calc(var(--u) * 3.1);
+            background: color-mix(in srgb, var(--fg, #fff) 9%, transparent);
+            font-size: calc(var(--u) * 4.2);
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            place-items: center;
+          }
+
+          .pk-count span {
+            grid-area: 1 / 1;
+          }
+
+          .pk-row {
+            display: flex;
+            gap: calc(var(--u) * 2);
+            height: calc(var(--u) * 11.5);
+          }
+
+          .pk-slot {
+            flex: 0 0 calc(var(--u) * 38);
+            border-radius: calc(var(--u) * 2.4);
+            border: calc(var(--u) * 0.3) dashed color-mix(in srgb, var(--fg, #fff) 16%, transparent);
+          }
+
+          .pk-ghost {
+            flex: 1 1 0;
+            max-width: calc(var(--u) * 21);
+            border-radius: calc(var(--u) * 2.4);
+            background: color-mix(in srgb, var(--fg, #fff) 6%, transparent);
+            padding: calc(var(--u) * 2.4) calc(var(--u) * 2.2);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--u) * 1.6);
+            justify-content: center;
+            opacity: 0;
+          }
+
+          .pk-ghost i {
+            display: block;
+            height: calc(var(--u) * 1.3);
+            border-radius: calc(var(--u) * 1);
+            background: color-mix(in srgb, var(--fg, #fff) 18%, transparent);
+          }
+
+          .pk-ghost i:last-child {
+            width: 58%;
+          }
+
+          .pk-card {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: calc(var(--u) * 38);
+            height: calc(var(--u) * 11.5);
+            border-radius: calc(var(--u) * 2.4);
+            background: var(--bg, #0f1012);
+            border: calc(var(--u) * 0.42) solid var(--brand, #00e5a0);
+            box-shadow: 0 calc(var(--u) * 1.6) calc(var(--u) * 4) rgba(0, 0, 0, 0.45);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--u) * 2);
+            padding: 0 calc(var(--u) * 2.6);
+            opacity: 0;
+            will-change: transform;
+          }
+
+          .pk-card-fill {
+            position: absolute;
+            inset: calc(var(--u) * -0.42);
+            border-radius: calc(var(--u) * 2.4);
+            background: var(--brand, #00e5a0);
+            opacity: 0;
+          }
+
+          .pk-av {
+            position: relative;
+            flex: 0 0 calc(var(--u) * 5.4);
+            height: calc(var(--u) * 5.4);
+            border-radius: 50%;
+            background: color-mix(in srgb, var(--brand, #00e5a0) 22%, transparent);
+            border: calc(var(--u) * 0.3) solid var(--brand, #00e5a0);
+            display: grid;
+            place-items: center;
+          }
+
+          .pk-av svg {
+            width: calc(var(--u) * 3.2);
+            height: calc(var(--u) * 3.2);
+            fill: none;
+            stroke: var(--on-accent, #0f1012);
+            stroke-width: 3.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+
+          .pk-av-on {
+            position: absolute;
+            inset: calc(var(--u) * -0.3);
+            border-radius: 50%;
+            background: var(--on-accent, #0f1012);
+            opacity: 0;
+          }
+
+          .pk-av-on + svg {
+            position: relative;
+            stroke: var(--brand, #00e5a0);
+          }
+
+          .pk-label {
+            position: relative;
+            display: grid;
+            font-size: calc(var(--u) * var(--lab, 4.4));
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+          }
+
+          .pk-label span {
+            grid-area: 1 / 1;
+          }
+
+          .pk-label .b {
+            color: var(--on-accent, #0f1012);
+            opacity: 0;
+          }
+        </style>
+
+        <div id="pipeline-kanban-clip" class="pk-clip clip" data-start="0" data-duration="5" data-track-index="0">
+          <div class="pk-stage" role="img">
+            <div class="pk-title"></div>
+          </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            "use strict";
+
+            var root = document.getElementById("root");
+            var clip = root.querySelector(".pk-clip");
+            var stage = root.querySelector(".pk-stage");
+            var titleEl = root.querySelector(".pk-title");
+            var vars = window.__hyperframes && window.__hyperframes.getVariables ? window.__hyperframes.getVariables() : {};
+
+            function list(value, fallback) {
+              var raw = value == null || String(value).trim() === "" ? fallback : String(value);
+              return raw
+                .split(",")
+                .map(function (s) {
+                  return s.trim();
+                })
+                .filter(function (s) {
+                  return s.length > 0;
+                });
+            }
+
+            var stages = list(vars.stages, "Lead,Rozmowa,Oferta,Klient").slice(0, 5);
+            if (stages.length < 2) stages = ["Lead", "Klient"];
+            var fill = list(vars.fill, "2,1,1,0").map(function (s) {
+              var n = parseInt(s, 10);
+              return Number.isFinite(n) ? Math.max(0, Math.min(2, n)) : 0;
+            });
+            var cardText = vars.card == null ? "Nowy lead" : String(vars.card);
+            var doneText = vars.done == null ? "" : String(vars.done).trim();
+            var cues = list(vars.cues, "")
+              .map(Number)
+              .filter(function (n) {
+                return Number.isFinite(n) && n >= 0;
+              })
+              .sort(function (a, b) {
+                return a - b;
+              });
+            if ((vars.backdrop || "solid") !== "none") clip.classList.add("solid");
+            titleEl.textContent = vars.title == null ? "" : String(vars.title).trim();
+
+            // --- budowa tablicy
+            var lanes = [];
+            stages.forEach(function (name, i) {
+              var lane = document.createElement("div");
+              lane.className = "pk-lane" + (i === stages.length - 1 ? " last" : "");
+              var base = fill[i] || 0;
+              var ghosts = "";
+              for (var g = 0; g < base; g += 1) ghosts += '<div class="pk-ghost"><i></i><i></i></div>';
+              lane.innerHTML =
+                '<div class="pk-glow"></div>' +
+                '<div class="pk-head"><div class="pk-name"><span class="pk-dot"></span><span class="pk-nm"></span></div>' +
+                '<div class="pk-count"><span class="c0">' + base + '</span><span class="c1">' + (base + 1) + "</span></div></div>" +
+                '<div class="pk-row"><div class="pk-slot"></div>' + ghosts + "</div>";
+              lane.querySelector(".pk-nm").textContent = name;
+              stage.appendChild(lane);
+              lanes.push(lane);
+            });
+
+            var card = document.createElement("div");
+            card.className = "pk-card";
+            card.innerHTML =
+              '<div class="pk-card-fill"></div>' +
+              '<div class="pk-av"><div class="pk-av-on"></div><svg viewBox="0 0 24 24"><path class="pk-check" d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>' +
+              '<div class="pk-label"><span class="a"></span><span class="b"></span></div>';
+            card.querySelector(".a").textContent = cardText;
+            card.querySelector(".b").textContent = doneText || cardText;
+            stage.appendChild(card);
+            var longest = Math.max(Array.from(cardText).length, Array.from(doneText).length, 1);
+            card.style.setProperty("--lab", Math.min(4.4, 25 / (longest * 0.56)).toFixed(2));
+
+            // Uklad jest policzony w jednostkach --u, bez mierzenia DOM: etap ma 26 u, odstep 2,4 u, gniazdo karty lezy
+            // 3,28 u od lewej i 11,28 u od gory etapu. Pozycje karty ida w procentach jej wlasnego rozmiaru (38 x 11,5 u).
+            var LANE = 26, GAP = 2.4, CARD_W = 38, CARD_H = 11.5;
+            var top0 = titleEl.textContent ? 5.6 + GAP : 0;
+            var totalU = top0 + stages.length * LANE + (stages.length - 1) * GAP;
+            stage.style.setProperty("--u", "min(1cqw, " + (88 / totalU).toFixed(4) + "cqh)");
+            var spots = lanes.map(function (lane, i) {
+              return { x: (3.28 / CARD_W) * 100, y: ((top0 + i * (LANE + GAP) + 11.28) / CARD_H) * 100 };
+            });
+
+            // --- czas
+            var duration = Math.max(0.5, parseFloat(root.dataset.duration || "5"));
+            var hops = stages.length - 1;
+            var IN = 0.7;
+            var HOP = 0.55;
+            var times = [];
+            for (var h = 0; h < hops; h += 1) {
+              // rowno od 1,0 s do 1,1 s przed koncem, ale nie gesciej niz co 0,9 s (ladowanie musi sie skonczyc przed kolejnym uniesieniem)
+              var auto = 1.0 + h * Math.max(0.9, (duration - 2.1) / Math.max(1, hops - 1 || 1));
+              var at = h < cues.length ? cues[h] : cues.length ? cues[cues.length - 1] + (h - cues.length + 1) * (HOP + 0.2) : auto;
+              times.push(Math.min(Math.max(0.2, duration - HOP - 0.1), at));
+            }
+
+            var check = card.querySelector(".pk-check");
+            var checkLen = check.getTotalLength();
+            gsap.set(check, { strokeDasharray: checkLen, strokeDashoffset: checkLen });
+            gsap.set(card, { xPercent: spots[0].x, yPercent: spots[0].y, scale: 0.6, opacity: 0 });
+            lanes.forEach(function (lane) {
+              gsap.set(lane.querySelector(".c1"), { opacity: 0 });
+            });
+
+            var tl = gsap.timeline({ paused: true });
+            if (titleEl.textContent) tl.fromTo(titleEl, { opacity: 0, yPercent: 30 }, { opacity: 1, yPercent: 0, duration: 0.35, ease: "power3.out" }, 0);
+            lanes.forEach(function (lane, i) {
+              tl.fromTo(lane, { opacity: 0, yPercent: 16 }, { opacity: 1, yPercent: 0, duration: 0.45, ease: "expo.out" }, 0.05 + i * 0.07);
+              var ghosts = lane.querySelectorAll(".pk-ghost");
+              if (ghosts.length) tl.to(ghosts, { opacity: 1, duration: 0.3, stagger: 0.05, ease: "power2.out" }, 0.25 + i * 0.07);
+            });
+            // karta wpada do pierwszego etapu
+            tl.to(card, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 0.42);
+            tl.set(lanes[0].querySelector(".c0"), { opacity: 0 }, 0.52);
+            tl.set(lanes[0].querySelector(".c1"), { opacity: 1 }, 0.52);
+
+            times.forEach(function (at, h) {
+              var from = spots[h];
+              var to = spots[h + 1];
+              var side = ((h % 2 === 0 ? 7 : 4.5) / CARD_W) * 100; // luk w prawo, na zmiane wiekszy i mniejszy
+              // uniesienie i przechyl
+              tl.to(card, { scale: 1.08, rotation: h % 2 === 0 ? 4 : -4, duration: 0.16, ease: "power2.out" }, at);
+              // lot: x idzie lukiem (wychylenie i powrot), y prosto z przyspieszeniem
+              tl.to(card, { xPercent: from.x + side, duration: HOP * 0.45, ease: "sine.out" }, at + 0.06);
+              tl.to(card, { xPercent: to.x, duration: HOP * 0.45, ease: "sine.in" }, at + 0.06 + HOP * 0.45);
+              tl.to(card, { yPercent: to.y, duration: HOP * 0.9, ease: "power2.inOut" }, at + 0.06);
+              // ladowanie ze sprezyna
+              var next = h + 1 < times.length ? times[h + 1] : Infinity;
+              tl.to(card, { scale: 1, rotation: 0, duration: Math.max(0.12, Math.min(0.42, next - (at + HOP * 0.86) - 0.02)), ease: "back.out(2.6)" }, at + HOP * 0.86);
+              var land = at + HOP * 0.86;
+              tl.set(lanes[h].querySelector(".c1"), { opacity: 0 }, at + 0.12);
+              tl.set(lanes[h].querySelector(".c0"), { opacity: 1 }, at + 0.12);
+              tl.set(lanes[h + 1].querySelector(".c0"), { opacity: 0 }, land);
+              tl.set(lanes[h + 1].querySelector(".c1"), { opacity: 1 }, land);
+              tl.fromTo(lanes[h + 1].querySelector(".pk-count"), { scale: 1.35 }, { scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, land);
+              var glow = lanes[h + 1].querySelector(".pk-glow");
+              var last = h === hops - 1;
+              tl.fromTo(glow, { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power2.out", immediateRender: false }, land);
+              if (!last) tl.to(glow, { opacity: 0, duration: 0.5, ease: "power2.in" }, land + 0.22);
+              if (last) {
+                // ostatni etap: karta wypelnia sie akcentem, tekst ciemnieje, rysuje sie ptaszek
+                tl.to(card.querySelector(".pk-card-fill"), { opacity: 1, duration: 0.22, ease: "power2.out" }, land + 0.05);
+                tl.to(card.querySelector(".a"), { opacity: 0, duration: 0.12 }, land + 0.05);
+                tl.to(card.querySelector(".b"), { opacity: 1, duration: 0.18 }, land + 0.09);
+                tl.to(card.querySelector(".pk-av-on"), { opacity: 1, duration: 0.18 }, land + 0.05);
+                tl.to(check, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, land + 0.2);
+              }
+            });
+
+            tl.seek(0);
+            window.__timelines = window.__timelines || {};
+            window.__timelines["pipeline-kanban"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

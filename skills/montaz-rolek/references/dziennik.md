@@ -141,5 +141,14 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Do jego oceny:** zostawione „To znaczy Grok, bo to zrobił”, „zarządzają wszystkimi etatami” (tak w ostatnim dublu), wiadomości w Slacku poglądowe, rolka 73 s.
 - **Ocena Jakuba, 23.11.2026:** „super jest, puszczam to”. Bez poprawek; zostawione miejsca (żart o Groku, „etatami”, poglądowy Slack, 73 s) przyjęte bez uwag. To ogólna akceptacja, nie osobna pochwała każdego elementu.
 
+## 2026-11-23, IMG_0720 + IMG_0721 „AI: masakra / spoko / genialne” (rolka organiczna, 36,3 s)
+- **Zlecenie:** dwa nagrania i przykładowa rolka (snapgram) „żebyś wiedział, jak podkładać loga”: 4 kategorie po 3 narzędzia, „znajdź sobie te wszystkie loga i nad moją głową je zawieś”. Podał przypisanie narzędzi (maile: Gemini / Claude / Grok Bot; notatki: Google Note Taker / Fireflies / Fathom; kampanie FB: FastTony / Claude ze skillami / PerfOS; montaż: After Effects / Edits / Claude ze skillami).
+- **Format z referencji:** rząd trzech kafelków nad głową z etykietami, pod nimi pigułka z kategorią; logo kolejnej kategorii najpierw rozmyte i przygaszone, ostre na „to jest…”, a na werdykcie kafelek pulsuje (GENIALNE z miętową poświatą). Etykiety MASAKRA / SPOKO / GENIALNE w palecie marki (szary, biały, akcent) zamiast czerwonego, pomarańczowego i zielonego z referencji. Dopiski „Note Taker” i „+ SKILLE” pod kafelkami. Kadry z twarzą niżej (środek na 47–48% wysokości), żeby głowa nie wchodziła pod rząd.
+- **Dwa pliki jako jedno źródło:** `ffmpeg -f concat -c copy` sklejone bez rekompresji w `aroll/zrodlo.mov` (obrót zachowany), więc wszystkie skrypty działają na jednej osi czasu.
+- **Pułapka:** przytrzymanie pod planszę końcową (`END_HOLD`) sięgało 1,8 s za koniec nagrania i A-roll miał 1035/1089 klatek; pierwszy render przeszedł z tym ostrzeżeniem niezauważony. Poprawka: `tpad=stop_mode=clone` w każdym ujęciu w `aroll.py` (projekt IMG_0720). Ostrzeżenie „NIEZGODNE” w logu A-rollu zawsze czytaj.
+- **Logotypy:** Gemini, Google Meet (jako „Google Note Taker”), After Effects z Wikimedia Commons, Fireflies i FastTony ze stron producentów, Edits z App Store (w `~/Desktop/Montażysta AI/Grafiki/logo/`, źródła w `ZRODLA.txt`); Claude, Grok Bot, Fathom i PerfOS z PDF-a stacku (grokbot.com przekierowuje na x.ai bez własnego logo).
+- **Do jego oceny:** etykiety w palecie zamiast kolorów z referencji, Google Meet jako znak „Google Note Taker”, brak tytułu u góry (w referencji był), pominięta rozmowa i próby z początku nagrania.
+- **Ocena Jakuba:** czeka.
+
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

@@ -40,7 +40,7 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
 4. **Głos naturalny, bez AI.** Od 17.11.2026 domyślnie idzie dźwięk z mikrofonu po lekkim masteringu z `aroll.py` (highpass, łagodna kompresja, −14 LUFS). Jego słowa po IMG_0576: „za bardzo używasz voice enhancer AI, już kupiłem dobre mikrofony, także bez tego, albo z dużo mniejszym filtrem”. Wariant „C” (Sidon plus łańcuch radiowy), który wybrał 13.11.2026 przy mikrofonie stojącym pół metra od ust, robisz tylko na jego prośbę albo gdy nagranie jest wyraźnie złe (pogłos pokoju, daleki mikrofon), i wtedy mówisz mu o tym przy oddaniu.
 5. **Efekty dźwiękowe tylko z prawdziwych próbek i tylko subtelnie.** Whooshe generowane z szumu określił jako „chujowe” (IMG_0361). 17.11.2026 sam poprosił o delikatne dźwięki pod animacje: „wyskakuje jakiś napis, to jest taki bardzo delikatny, subtelny dźwięk”, a przy animowanym wykresie „takie shhh”. Biblioteka leży w `~/Desktop/Montażysta AI/Muzyka/SFX/` (Kenney, CC0, i wybrane pliki z Mixkit, pobrane za jego zgodą), a miksuje ją `scripts/sfx.py`. Poziomy są celowo niskie (pyknięcia ok. −20 dBFS w szczycie, swooshe −21, „shh” −24, przy głosie −14 LUFS) i po odsłuchu próbki 17.11.2026 ocenił je: „Jest dobrze”. Nie podgłaśniaj ich bez jego prośby. Nowe paczki pobierasz dopiero po pytaniu z nazwą, źródłem i rozmiarem. Muzyka nadal tylko z `~/Desktop/Montażysta AI/Muzyka/`.
 6. **Liczby i treści w grafikach tylko z tego, co mówi.** Jeśli coś jest poglądowe (np. „3 follow-upy” w powiadomieniu), powiedz mu o tym przy oddaniu.
-7. **Pobranie czegokolwiek nowego** (model, biblioteka) wymaga pytania z nazwą, źródłem i rozmiarem.
+7. **Pobranie czegokolwiek nowego** (model, biblioteka) wymaga pytania z nazwą, źródłem i rozmiarem. Wyjątek: zdjęcia, logo i okładki do filmu z zasady 10 pobierasz bez pytania (zgoda Jakuba z 20.11.2026).
 8. **Parametry wyjścia:** 1080×1920, 30 kl./s, −14 LUFS, szczyt −1,5 dBFS.
 9. **Strefa bezpieczna (safe zone).** Wszystko, co widz ma przeczytać albo zobaczyć, leży między 270 a 1245 px w pionie i między 70 a 1010 px w poziomie, a od 860 px w dół omija prawą kolumnę przycisków (prawa krawędź 885 px, od 1145 px 850 px). Jakub, 18.11.2026: „napisy i animacje czasem są za wysoko bądź za szeroko”, plus dwa szablony z sieci. Napisy mają przez to 620 px szerokości zamiast 950 (krótsze frazy, ten sam wygląd), nakładki nie stoją już na 96 px u góry, a pole CTA zeszło spod opisu rolki. Stałe są w `SAFE` w `kompozycja.py`, opis i rysunek w `references/styl.md`, punkt 8, a przed każdym renderem `scripts/strefa.py` ma pokazać zero klatek z treścią poza strefą.
 
@@ -70,6 +70,20 @@ Kolejność ma znaczenie, bo każdy krok korzysta z wyniku poprzedniego. Dokład
 9. **Render i kontrola:** `hyperframes render`, potem `kontrola_eksportu.py` (głośność, właściwa ścieżka głosu, transkrypcja kawałkami bez powtórzeń). Dopiero wtedy kopiuj do Eksporty.
 10. **Oddanie:** krótko, co zrobione i co warto sprawdzić. Uzupełnij `NOTATKI.md` i `napisy.srt`. Plik powyżej 30 MiB nie dojdzie na telefon. Lżejszą kopię zrób tylko na prośbę, a gdy pyta, gdzie jest plik, pokaż mu go w Finderze (`open -R`).
 11. **Pętla nauki:** zapytaj o ocenę. Po publikacji poproś o zrzuty z Insights (wykres utrzymania widzów). Dopisz wpis do `references/dziennik.md` i ważne decyzje do pamięci.
+
+## Nazwy własne: zdjęcie, logo, okładka
+
+Jakub, 20.11.2026: „Zawsze jak wspominam o jakiejś firmie, nazwie własnej, imieniu i nazwisku, to staraj się wyszukiwać zdjęcie osoby, o której wspominam… i wrzucić je jako taką miniaturkę w film. Tak samo jak wspominam o Meta, znajdź logo Mety. Jak o Facebooku, logo Facebooka, jak o Instagramie, logo Instagrama. Jak o książce, wyszukaj okładkę.”
+
+- **Po transkrypcji wypisz nazwy własne** z wybranych kwestii: osoby, firmy i produkty, książki. Każda dostaje grafikę, która wchodzi na słowie, w którym pada nazwa:
+  - osoba: zdjęcie twarzy w kółku z obrysem w kolorze akcentu i podpisem imienia (pigułka jak `mention` w hooku albo mała karta nad napisami);
+  - firma lub produkt: oficjalne logo, najlepiej SVG albo PNG z przezroczystym tłem, na małym ciemnym kafelku (logo w swoich kolorach, to obcy znak);
+  - książka: okładka z lekkim cieniem i obrotem, ewentualnie z autorem.
+- **Skąd brać:** logo z oficjalnej strony z materiałami prasowymi albo z Wikimedia Commons, zdjęcia osób z Wikimedia Commons albo oficjalnej strony, okładki od wydawcy albo z księgarni. Bierz najlepszą jakość, jaką znajdziesz, i obejrzyj plik, zanim go użyjesz: czy to ta osoba, czy aktualne logo, czy polskie wydanie książki, jeśli o takim mówi.
+- **Pobieranie bez pytania** (zgoda z 20.11.2026, wyjątek od zasady 7): tylko obrazy pod konkretny film, nic do instalowania. Zapisuj je do wspólnego folderu `~/Desktop/Montażysta AI/Grafiki/` (`osoby/`, `logo/`, `ksiazki/`, nazwa pliku = nazwa własna), żeby kolejne filmy brały je z dysku, a do projektu kopiuj do `branding/`.
+- **Rytm i strefa:** grafika trwa, dopóki o tym mówi (zwykle 1,5–3 s), stoi w strefie bezpiecznej i nie zasłania twarzy. Gdy w jednym zdaniu pada kilka nazw (np. Facebook i Instagram), daj je razem w jednym rzędzie, a nie po kolei w tym samym miejscu. Liczy się do limitu szablonów (najwyżej dwa razy ten sam układ pod rząd), więc zmieniaj formę: pigułka przy napisie, karta nad napisami, logo na planszy.
+- **Wyjątki:** nigdy logo adGen w personal brandzie (zasada 3); marka, o której film jest (np. PerfOS), ma swój branding z projektu. Jeśli nie da się znaleźć pewnego zdjęcia albo logo, pomiń grafikę i powiedz o tym przy oddaniu, zamiast wstawiać coś podobnego.
+- Przy oddaniu wypisz, które zdjęcia, logo i okładki weszły i skąd są.
 
 ## Jak dobierać grafiki
 

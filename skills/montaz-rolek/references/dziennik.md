@@ -148,7 +148,10 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Pułapka:** przytrzymanie pod planszę końcową (`END_HOLD`) sięgało 1,8 s za koniec nagrania i A-roll miał 1035/1089 klatek; pierwszy render przeszedł z tym ostrzeżeniem niezauważony. Poprawka: `tpad=stop_mode=clone` w każdym ujęciu w `aroll.py` (projekt IMG_0720). Ostrzeżenie „NIEZGODNE” w logu A-rollu zawsze czytaj.
 - **Logotypy:** Gemini, Google Meet (jako „Google Note Taker”), After Effects z Wikimedia Commons, Fireflies i FastTony ze stron producentów, Edits z App Store (w `~/Desktop/Montażysta AI/Grafiki/logo/`, źródła w `ZRODLA.txt`); Claude, Grok Bot, Fathom i PerfOS z PDF-a stacku (grokbot.com przekierowuje na x.ai bez własnego logo).
 - **Do jego oceny:** etykiety w palecie zamiast kolorów z referencji, Google Meet jako znak „Google Note Taker”, brak tytułu u góry (w referencji był), pominięta rozmowa i próby z początku nagrania.
-- **Ocena Jakuba:** czeka.
+- **Uwagi Jakuba do wersji 1 (23.11.2026):** zrzut z rzędem logo i głową tuż pod pigułką kategorii: „źle wykadrowane…”; oraz „do «wyjebania» zacenzuruj i przykryj mi wtedy usta (jak na śmiesznych filmach albo na YouTubie, żeby nie zdejmowali monetyzacji)”.
+- **Wersja 2:** rząd logo zwarty (kafelki 160 px, kończy się ok. 580 px), twarz niżej w kadrze (środek na 50%, bez zbliżenia 1,5), napisy na 1160 px. Przekleństwo: w głosie piknięcie 1 kHz na czas słowa (`audio/aroll_cenzura.wav`), w napisie „#@!%&”, na ustach czarny pasek z „#@!%&” (pozycja ust z `twarze.json` i kadru). Whisper w gotowym pliku słyszy „do ***”.
+- **Wniosek na przyszłość:** gdy grafika ma wisieć nad głową, kadr ustawiaj pod nią od razu (głowa z włosami poniżej dolnej krawędzi rzędu, broda nad napisami). Czy cenzurować przekleństwa zawsze, nie powiedział; to było przy tej rolce.
+- **Ocena wersji 2:** czeka.
 
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

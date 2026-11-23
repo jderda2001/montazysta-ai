@@ -34,6 +34,7 @@ cp ../IMG_0526/hf/{package.json,hyperframes.json,meta.json} hf/ && cp ../IMG_052
 - `wyspy.py`: wyspy mowy (silencedetect) i whisper na każdej, zapis do `analiza/wyspy.json`. `obwiednia.py OD DO --wykres` pokazuje obwiednię RMS i doliny (pauzy).
 - Zasada: ostatni pełny dubel każdej kwestii. Wątpliwe miejsca sprawdzaj na obwiedni, nie na samym tekście.
 - Hook kinetyczny potrzebuje 1–2 krótkich zdań z liczbą albo kontrastem.
+- **Hook bierz z właściwego nagrania**, czyli od zdania, od którego zaczyna się ciąg dubli i treść. Linijka z rozgrzewki albo z rozmowy w pokoju to próba, nawet jeśli brzmi efektownie (IMG_0717: „Zwolniłem montażystę, którego nigdy nie zatrudniałem” Jakub uznał za nielogiczne, a jego mina była zdziwiona). W razie wątpliwości obejrzyj minę na klatce i zapytaj.
 
 ## 4. Falstarty (obowiązkowo)
 ```bash

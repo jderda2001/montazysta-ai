@@ -164,7 +164,10 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
   - źródło 1908×3304 (szersze niż 9:16): `crop()` w `aroll.py` wyliczał kadr wyższy niż nagranie i ffmpeg padał. Kadr liczę teraz od `min(SRC_W, SRC_H·9/16)`.
   - `twarze.py` miał na sztywno skalę 2160×3840, więc twarze wychodziły przesunięte i głowa była ucinana. Poprawione w skillu (`aroll.SRC_W/SRC_H`).
 - **Grafiki:** prefiks klas `m7-` (lekcja z IMG_0720), kontrola osi 540 na klatkach, strefa 0 naruszeń. Kalendarz z trzema pustymi dniami jest poglądowy.
-- **Ocena Jakuba:** czeka.
+- **Uwaga Jakuba do v1:** „ten hook jest źle dobrany… «Zwolniłem montażystę, którego nawet nigdy nie zatrudniałem» – nielogiczne i bez sensu. Nawet moja mina wtedy jest zdziwiona, a trochę później powiedziałem ten poprawny hook”. Wziąłem zdanie spoza właściwego nagrania (próba w trakcie rozmowy z osobami w pokoju) tylko dlatego, że brzmiało jak hook.
+- **v2:** hook „45 godzin i 3000 zł… jeden plik” jako kinetyczny na twarzy; nieudana próba i plansza liczników wypadły; 47,0 s; plik przemianowany na „45 godzin i 3000 zł”.
+- **Wniosek:** hook to pierwsze zdanie właściwego nagrania (to, od którego zaczyna się ciąg dubli i treść), a nie efektowna linijka z rozgrzewki. Zdanie spoza ciągu biorę tylko wtedy, gdy ma sens w całości i nie widać po minie, że to próba; w razie wątpliwości pytam przed montażem.
+- **Ocena v2:** czeka.
 
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

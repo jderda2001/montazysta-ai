@@ -157,5 +157,14 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Wniosek:** nowym elementom dawaj nazwy klas, których nie ma w szablonie (`grep` w CSS przed użyciem), a każdy rząd, który ma być symetryczny, sprawdzaj na klatce z narysowaną osią 540 px i krawędziami strefy.
 - **Ocena wersji 3:** czeka.
 
+## 2026-11-23, IMG_0717 „Zwolniłem montażystę” (rolka organiczna, 49,8 s)
+- **Zlecenie:** samo nagranie, „dawaj tera to”. Treść: hook „Zwolniłem montażystę, którego nawet nigdy nie zatrudniałem”, 45 h i 3000 zł miesięcznie oszczędza jeden plik (skill), 30 rolek × 1,5 h, montażysta 3–4 tys. zł, agent w Claude, CTA „rolka”.
+- **Nagranie:** 5 min, w pokoju rozmawiały inne osoby (wycięte). „Nie pierdolę.” po hooku półgłosem, wycięte zamiast cenzurowania.
+- **Pułapki:**
+  - źródło 1908×3304 (szersze niż 9:16): `crop()` w `aroll.py` wyliczał kadr wyższy niż nagranie i ffmpeg padał. Kadr liczę teraz od `min(SRC_W, SRC_H·9/16)`.
+  - `twarze.py` miał na sztywno skalę 2160×3840, więc twarze wychodziły przesunięte i głowa była ucinana. Poprawione w skillu (`aroll.SRC_W/SRC_H`).
+- **Grafiki:** prefiks klas `m7-` (lekcja z IMG_0720), kontrola osi 540 na klatkach, strefa 0 naruszeń. Kalendarz z trzema pustymi dniami jest poglądowy.
+- **Ocena Jakuba:** czeka.
+
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

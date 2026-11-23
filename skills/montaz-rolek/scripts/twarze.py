@@ -62,10 +62,11 @@ with tempfile.TemporaryDirectory() as td:
             c = linia.split()
             if len(c) == 7:
                 t = float(c[0][:-4])
-                k = 4.0  # 540 -> 2160
-                out[f"{t:.2f}"] = [round(float(c[3]) * k), round(float(c[4]) * k), round(float(c[5]) * k), round(float(c[6]) * k)]
+                # klatki 540x960 -> wymiary zrodla z aroll.py (IMG_0717 mialo 1908x3304, nie 2160x3840)
+                kx, ky = aroll.SRC_W / SKALA[0], aroll.SRC_H / SKALA[1]
+                out[f"{t:.2f}"] = [round(float(c[3]) * kx), round(float(c[4]) * ky), round(float(c[5]) * kx), round(float(c[6]) * ky)]
 (P / "analiza/twarze.json").write_text(json.dumps(out))
 print(f"wykryto twarz w {len(out)} z {len(czasy)} probek -> analiza/twarze.json")
 if out:
-    dol = max((y + h * 1.05) / 3840 for x, y, w, h in out.values())
+    dol = max((y + h * 1.05) / aroll.SRC_H for x, y, w, h in out.values())
     print(f"najnizsza broda: {dol:.0%} wysokosci zrodla")

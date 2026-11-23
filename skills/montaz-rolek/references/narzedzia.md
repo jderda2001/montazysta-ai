@@ -92,3 +92,6 @@
 - **Liczniki w grafikach rób transformem, nie w JS.** Kolumna cyfr 0–9 przesuwana przez `yPercent` (`wheel` / `roll` w `projekty/IMG_0597/skrypty/kompozycja.py`) daje ten sam obraz przy renderze i przy skoku na dowolny czas. Liczbę ukryj do momentu, w którym pada, inaczej na karcie stoi „000”.
 - **Walidator napisów na długiej kwestii (powyżej ok. 10 s) sypie fałszywymi flagami**, bo whisper inaczej zapisuje długi wycinek. Porównaj wtedy czasy kilku słów z granicami kawałków z obwiedni (sondy): zgodność do 0,05 s znaczy, że czasy są dobre.
 
+
+- **PDF na obrazy bez instalowania czegokolwiek** (IMG_0718): `scripts/pdf_strony.swift` (PDFKit z macOS). `swiftc -O -o analiza/pdf_strony scripts/pdf_strony.swift`, potem `analiza/pdf_strony PLIK.pdf KATALOG 1100` daje `strona_01.png`… Narzędzie Read nie pokaże PDF-a, bo nie ma `pdftoppm`.
+- **Szablony biblioteki w polu strefy (`mount(..., pole=…)`) mają po zmniejszeniu drobny tekst:** `constellation-hub` 16 px, `grid-card-assemble` 18 px (IMG_0718). `hyperframes check` zgłasza to jako `text_below_floor`; wtedy zrób grafikę własną albo montuj bez pola.

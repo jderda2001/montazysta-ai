@@ -131,5 +131,15 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Nowe:** kadr ze środka twarzy z pomiaru (`twarze.py` + `twarz_ujecia()` w `aroll.py`) przy dalekim ujęciu; liczniki z toczącymi się cyframi w jednej planszy; karty ról przekreślane na „Teraz”. Pułapka: spacja tysięcy w `wheel()` zwijała się („349000”), teraz twarda spacja.
 - **Ocena Jakuba:** „dałeś za ciemny obraz”. Źródło (ciemny pokój, zielone LED) miało średnio 48/255, a standardowy grading (gamma 0,96, mocna winieta) zbił je do 30–35. Poprawka: `eq=contrast=1.04:saturation=1.08:gamma=1.34:brightness=0.015`, winieta PI/8, średnio 63–66. Ocena wersji jaśniejszej: czeka.
 
+## 2026-11-23, IMG_0718 „Mój stack AI” (rolka organiczna, 72,7 s)
+- **Zlecenie:** „ma tam być na starcie wspomnienie, że oglądaj do końca po cały stack, albo żeby go odebrać… (i podgląd tego PDF-a, jak go przeglądasz)”. Do nagrania dołączył PDF „Mój stack AI w agencji” (14 stron).
+- **Nagranie:** 6,5 min, bardzo dużo dubli (hook w 5 wersjach, „Po prostu etaty zastąpiliśmy…” i „A oto struktura…” po kilkanaście razy). Wybrane ostatnie pełne duble, sklejki w środku zdań przy „Grok Bot, | które…” (koniec „bot” z obwiedni) i „robotę zarządczą, | czyli…”. Falstarty z `kawalki.py --drobne`: „Reklamy na…”, „czyli zarządzają wszystkimi AI…”, „Także napisz pod tym filmem” (powtórzone).
+- **Zapowiedź na starcie:** karta u góry kadru przez cały hook („ZOSTAŃ DO KOŃCA / Cały mój stack AI / PDF do odebrania na końcu”) z miniaturą PDF-a, która sama się przewija. Przy „rozpisałem cały ten mój stack AI… narzędzie po narzędziu” pełna plansza z przeglądanym PDF-em w perspektywie i plakietką „AUTOR: GROK” na jego żarcie. CTA: obserwuj → komentarz „AI” → karta pliku PDF; plansza końcowa z wachlarzem stron.
+- **Nowe:** logotypy narzędzi wycięte prosto z PDF-a (spójne ikony), PDF → PNG przez PDFKit z macOS (`scripts/pdf_strony.swift`, bez instalowania poppler), plansza z 15 kafelkami, z których 10 obraca się w agentów AI.
+- **Pułapka:** `constellation-hub` i `grid-card-assemble` z biblioteki po zmniejszeniu do pola strefy (`pole`) mają napisy 16–18 px (check: `text_below_floor`, a nagłówek planszy był pod szablonem: `text_occluded`). Zastąpione własnymi grafikami z tekstem 30+ px. Przed użyciem szablonu w polu sprawdź rozmiar czcionki w raporcie checka.
+- **Grading:** ten sam pokój co IMG_0688, ale jaśniejsze źródło (YAVG 69), więc łagodny grading (gamma 1,06); A-roll 58–67.
+- **Do jego oceny:** zostawione „To znaczy Grok, bo to zrobił”, „zarządzają wszystkimi etatami” (tak w ostatnim dublu), wiadomości w Slacku poglądowe, rolka 73 s.
+- **Ocena Jakuba:** czeka.
+
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

@@ -95,3 +95,4 @@
 
 - **PDF na obrazy bez instalowania czegokolwiek** (IMG_0718): `scripts/pdf_strony.swift` (PDFKit z macOS). `swiftc -O -o analiza/pdf_strony scripts/pdf_strony.swift`, potem `analiza/pdf_strony PLIK.pdf KATALOG 1100` daje `strona_01.png`… Narzędzie Read nie pokaże PDF-a, bo nie ma `pdftoppm`.
 - **Szablony biblioteki w polu strefy (`mount(..., pole=…)`) mają po zmniejszeniu drobny tekst:** `constellation-hub` 16 px, `grid-card-assemble` 18 px (IMG_0718). `hyperframes check` zgłasza to jako `text_below_floor`; wtedy zrób grafikę własną albo montuj bez pola.
+- **Kolizje klas CSS w `kompozycja.py`** (IMG_0720): szablon ma już m.in. `.tiles`, `.list`, `.row`, `.tile`, `.chip2`, `.panel`, `.cap`, `.kin`. Nowa klasa o tej samej nazwie dziedziczy stare reguły (`right: 0`, `justify-content: center`) i przesuwa elementy. Przed nazwaniem klasy zrób `grep -n "\.nazwa " skrypty/kompozycja.py`. Symetrię sprawdzaj na klatce z osią 540 px (`drawbox`).

@@ -100,7 +100,9 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
   - „mam wrażenie, w niektórych miejscach troszeczkę za szybko przyciąłeś, możesz to sprawdzić”.
 - **Czego nie skomentował:** logo PerfOS, węższe napisy, nakładki nad napisami, sklejony hook, długość 116 s, odtworzone karty, dźwięki. Brak uwagi przy ogólnej akceptacji, nie pochwała każdej z tych rzeczy.
 - **Wersja 2:** przy „No i wynik” dojazd na twarz na słowie, 1,1 s pauzy (zwolnienie 50% i zatrzymana klatka, bo po słowie patrzy w kamerę tylko 0,15 s), ciemniejące brzegi, narastający szum, napis do końca pauzy. Cięcia: po zdaniu 0,22 s i przed 0,14 s (było 0,15 / 0,10), scalone kwestie z naturalną pauzą. Pomiar pokazał, że próg −45 dB kończył słowa za wcześnie (ciche końcówki do −55 dB). **Mój błąd w wersji 2:** uznałem 0,2 s po „dziś” za uciętą końcówkę i wydłużyłem kwestię, a była to dźwięczna zapowiedź wyciętego słowa „gdzie”; kontrola eksportu pokazała „dziś Gli-perfos”. Naprawione wyciszeniem dźwięku od 119.86 i podmianą samej ścieżki (bez renderu obrazu). Zmiana w skillu: `styl.md` punkty 5 i 6, `pipeline.md` punkt 5, domyślne marginesy w `scripts/aroll.py`.
-- **Ocena wersji 2:** czeka.
+- **Uwaga do wersji 2:** dwa zrzuty, „patrz jak nierówno to zrobiłeś… każde takie chujowe – wycentruj ładnie, uwzględniając safe zone”. Rząd kafelków był przesunięty o ok. 110 px w prawo względem etykiet i pigułki: w szablonie `kompozycja.py` jest stara klasa `.tiles` (kafelki „urlop/choroba”) z `right: 0` i `justify-content: center`, która nałożyła się na nową klasę o tej samej nazwie. Poprawka: własne nazwy klas (`.ltiers`, `.ltiles`) i sprawdzenie klatki z linią środka 540 px.
+- **Wniosek:** nowym elementom dawaj nazwy klas, których nie ma w szablonie (`grep` w CSS przed użyciem), a każdy rząd, który ma być symetryczny, sprawdzaj na klatce z narysowaną osią 540 px i krawędziami strefy.
+- **Ocena wersji 3:** czeka.
 
 ## 2026-11-18, IMG_0591 „Szczęście, plan czy pragnienie” przerobiona pod strefę bezpieczną (4 pliki, cięcia bez zmian)
 - **Zlecenie:** „przerób też rolkę o Thielu pod nową strefę”. Rolka wyszła o 9:36 (i poprawiona o 11:12 przez inną sesję) z napisami na 1420 px i grafikami od 100 px, czyli poza strefą.
@@ -151,7 +153,9 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Uwagi Jakuba do wersji 1 (23.11.2026):** zrzut z rzędem logo i głową tuż pod pigułką kategorii: „źle wykadrowane…”; oraz „do «wyjebania» zacenzuruj i przykryj mi wtedy usta (jak na śmiesznych filmach albo na YouTubie, żeby nie zdejmowali monetyzacji)”.
 - **Wersja 2:** rząd logo zwarty (kafelki 160 px, kończy się ok. 580 px), twarz niżej w kadrze (środek na 50%, bez zbliżenia 1,5), napisy na 1160 px. Przekleństwo: w głosie piknięcie 1 kHz na czas słowa (`audio/aroll_cenzura.wav`), w napisie „#@!%&”, na ustach czarny pasek z „#@!%&” (pozycja ust z `twarze.json` i kadru). Whisper w gotowym pliku słyszy „do ***”.
 - **Wniosek na przyszłość:** gdy grafika ma wisieć nad głową, kadr ustawiaj pod nią od razu (głowa z włosami poniżej dolnej krawędzi rzędu, broda nad napisami). Cenzura przekleństw obowiązuje zawsze („Tak, zawsze”, 23.11.2026), zasada w `ZASADY.md`.
-- **Ocena wersji 2:** czeka.
+- **Uwaga do wersji 2:** dwa zrzuty, „patrz jak nierówno to zrobiłeś… każde takie chujowe – wycentruj ładnie, uwzględniając safe zone”. Rząd kafelków był przesunięty o ok. 110 px w prawo względem etykiet i pigułki: w szablonie `kompozycja.py` jest stara klasa `.tiles` (kafelki „urlop/choroba”) z `right: 0` i `justify-content: center`, która nałożyła się na nową klasę o tej samej nazwie. Poprawka: własne nazwy klas (`.ltiers`, `.ltiles`) i sprawdzenie klatki z linią środka 540 px.
+- **Wniosek:** nowym elementom dawaj nazwy klas, których nie ma w szablonie (`grep` w CSS przed użyciem), a każdy rząd, który ma być symetryczny, sprawdzaj na klatce z narysowaną osią 540 px i krawędziami strefy.
+- **Ocena wersji 3:** czeka.
 
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

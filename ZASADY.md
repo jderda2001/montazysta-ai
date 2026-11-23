@@ -59,6 +59,15 @@ O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyj
 - Rolki są bez muzyki, chyba że ktoś poprosi. W long-formie cichy lo-fi z `zasoby/Muzyka`, ok. 20 dB pod głosem, z duckingiem (`muzyka_podklad.py`).
 - Czasy słów do napisów licz osobno dla każdej kwestii, whisperem z DTW i flagą `-nfa`. Bez `-nfa` DTW po cichu się wyłącza.
 
+## Przekleństwa: zawsze cenzura
+
+Jakub, 23.11.2026: „zacenzuruj i przykryj mi wtedy usta… żeby nie zdejmowali monetyzacji”, a zapytany, czy tak ma być zawsze, odpowiedział: „Tak, zawsze”. Każde przekleństwo cenzuruj bez pytania, w trzech miejscach:
+- **Dźwięk:** piknięcie 1 kHz na czas słowa w miejsce głosu.
+- **Napis:** „#@!%&” w miejscu słowa.
+- **Obraz:** czarny pasek z „#@!%&” na ustach.
+
+Wzór: projekt IMG_0720. Na koniec sprawdź whisperem na gotowym pliku, że przekleństwa nie słychać.
+
 ## Falstarty i powtórki
 
 Whisper wygładza zająknięcia, powtórzone zdania i falstarty. Przed oddaniem każdego filmu:

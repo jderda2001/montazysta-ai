@@ -150,7 +150,7 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Do jego oceny:** etykiety w palecie zamiast kolorów z referencji, Google Meet jako znak „Google Note Taker”, brak tytułu u góry (w referencji był), pominięta rozmowa i próby z początku nagrania.
 - **Uwagi Jakuba do wersji 1 (23.11.2026):** zrzut z rzędem logo i głową tuż pod pigułką kategorii: „źle wykadrowane…”; oraz „do «wyjebania» zacenzuruj i przykryj mi wtedy usta (jak na śmiesznych filmach albo na YouTubie, żeby nie zdejmowali monetyzacji)”.
 - **Wersja 2:** rząd logo zwarty (kafelki 160 px, kończy się ok. 580 px), twarz niżej w kadrze (środek na 50%, bez zbliżenia 1,5), napisy na 1160 px. Przekleństwo: w głosie piknięcie 1 kHz na czas słowa (`audio/aroll_cenzura.wav`), w napisie „#@!%&”, na ustach czarny pasek z „#@!%&” (pozycja ust z `twarze.json` i kadru). Whisper w gotowym pliku słyszy „do ***”.
-- **Wniosek na przyszłość:** gdy grafika ma wisieć nad głową, kadr ustawiaj pod nią od razu (głowa z włosami poniżej dolnej krawędzi rzędu, broda nad napisami). Czy cenzurować przekleństwa zawsze, nie powiedział; to było przy tej rolce.
+- **Wniosek na przyszłość:** gdy grafika ma wisieć nad głową, kadr ustawiaj pod nią od razu (głowa z włosami poniżej dolnej krawędzi rzędu, broda nad napisami). Cenzura przekleństw obowiązuje zawsze („Tak, zawsze”, 23.11.2026), zasada w `ZASADY.md`.
 - **Ocena wersji 2:** czeka.
 
 ## Statystyki z Instagrama

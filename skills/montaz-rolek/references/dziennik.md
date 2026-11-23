@@ -139,7 +139,7 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Pułapka:** `constellation-hub` i `grid-card-assemble` z biblioteki po zmniejszeniu do pola strefy (`pole`) mają napisy 16–18 px (check: `text_below_floor`, a nagłówek planszy był pod szablonem: `text_occluded`). Zastąpione własnymi grafikami z tekstem 30+ px. Przed użyciem szablonu w polu sprawdź rozmiar czcionki w raporcie checka.
 - **Grading:** ten sam pokój co IMG_0688, ale jaśniejsze źródło (YAVG 69), więc łagodny grading (gamma 1,06); A-roll 58–67.
 - **Do jego oceny:** zostawione „To znaczy Grok, bo to zrobił”, „zarządzają wszystkimi etatami” (tak w ostatnim dublu), wiadomości w Slacku poglądowe, rolka 73 s.
-- **Ocena Jakuba:** czeka.
+- **Ocena Jakuba, 23.11.2026:** „super jest, puszczam to”. Bez poprawek; zostawione miejsca (żart o Groku, „etatami”, poglądowy Slack, 73 s) przyjęte bez uwag. To ogólna akceptacja, nie osobna pochwała każdego elementu.
 
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

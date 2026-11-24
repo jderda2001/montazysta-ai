@@ -169,5 +169,18 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Wniosek:** hook to pierwsze zdanie właściwego nagrania (to, od którego zaczyna się ciąg dubli i treść), a nie efektowna linijka z rozgrzewki. Zdanie spoza ciągu biorę tylko wtedy, gdy ma sens w całości i nie widać po minie, że to próba; w razie wątpliwości pytam przed montażem.
 - **Ocena v2:** czeka.
 
+## 2026-11-24, PERFOS-film30 „PerfOS od środka” (film 16:9 z lektorem, glina z kie.ai + ekrany aplikacji)
+- **Zlecenie:** film produktowy na YouTube, X i LinkedIn. Lektor EN to głos PerfOS z ElevenLabs V3, a postać jest z plasteliny (Kling 3.0). Montował Kreatywny (agent OpenBot) według tego skilla. Ekrany od IT będą 27.11, do tego czasu zastępuje je makieta panelu (`perfos.pl/nowy-panel`).
+- **Uwagi Jakuba do v2:**
+  - „nie czaję tego czarnego motywu z taką kratką… to jest tylko na etapie wyboru planu… po prostu brzydkie”. Tło `#0f0f0f` z kratką (z IMG_0597) wypada z filmów PerfOS, zasada jest w `ZASADY.md`.
+  - „lektor się ucina w niektórych momentach i to nie jest takie płynne”. Przyczyna: ElevenLabs V3 kończył osobno generowane kwestie w środku ostatniego słowa. Ostatnie 40 ms plików miało od -19 do -37 dB zamiast ciszy („day”, „hire”, „headlines”, „ads”).
+  - „przejścia pomiędzy ekranami czasami są zbyt szybkie”. Dwa ekrany trwały po ok. 1 s.
+  - „ekrany muszą być ładnie zanimowane, np. przeglądanie strony albo nagrywanie”.
+- **v3:**
+  - Lektor: cała narracja w jednym zleceniu z kwestią-buforem na końcu („Okay, that's all for today.”, potem wycięta), cięcia w środku pauz, 0,25–0,5 s oddechu pod przejścia. Koszt 5,7 kr za podejście.
+  - Obraz: okno aplikacji zostaje na ekranie i zmienia się tylko strona w środku. Do tego przewijanie, najazd kamery, obramowanie w mięcie na słowie i kursor z kliknięciem na „yes”. Plansze stoją na miętowym gradiencie z onboardingu. Wejścia trwają 0,8–0,85 s, wyjścia 0,6–0,65 s, zmiana strony 0,7 s. Długość 31,4 s.
+- **Wniosek:** przy lektorze z TTS sprawdzaj obwiednią koniec każdej kwestii (ostatnie 40 ms mają być poniżej -50 dB), a narrację generuj jednym ciągiem. W filmach z aplikacją pokazuj ją tak, jak widzi ją klient, i animuj jak przeglądanie, a nie jako statyczne plansze.
+- **Ocena v3:** czeka.
+
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

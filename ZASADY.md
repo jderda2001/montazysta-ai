@@ -33,6 +33,8 @@ O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyj
 
 **PerfOS** (system AI Jakuba do reklam na Meta; perfos.pl).
 - Ciemny motyw: tło `#0f0f0f`, karty `#131313`–`#161616`, obrys `#262626`, tekst `#f5f5f5`, tekst pomocniczy `#a1a1aa`, akcent `#00E5A0`, tekst na akcencie `#04261c`. Krój Geist. Logo PerfOS (litera P z przełącznikiem) może być na planszach.
+- **Bez czarnego tła z kratką** (Jakub, 24.11.2026: „nie czaję tego czarnego motywu z taką kratką… to jest tylko w ostatnim etapie, gdy wybiera się plan… po prostu brzydkie”). Panel aplikacji ma tylko jasny motyw: tło `#ffffff`, powierzchnie `#fafafa`, tekst `#171717`, linie `#ededed`, akcent `#00e5a0`, tekst na akcencie `#04261c`. Ekrany aplikacji pokazuj w tym jasnym motywie, w jasnym oknie, na miętowym gradiencie z onboardingu (`#b9f5dd` → `#4fd9a8` → `#0f8f66` → `#063d2d`); ciemny `#0f0f0f` tylko na drobne elementy (pigułki, karty nad napisami).
+- **Ekrany mają żyć jak przeglądanie** (Jakub, 24.11.2026): okno zostaje, a strona w środku się zmienia (wjazd z prawej, 0,7 s), do tego przewijanie, najazd kamery na ważny element, obramowanie w mięcie na słowie i kursor z kliknięciem. Przejścia nie krótsze niż ok. 0,6 s, ekran nie krócej niż ok. 1,5 s. Wzór: `projekty/PERFOS-film30/skrypty/kompozycja.py` (wersja 3).
 - Pliki marki: `projekty/IMG_0597/branding/`. Większy zestaw jest w repo `PerfOS` w `public/brand/`.
 - Wzór: `projekty/IMG_0597/skrypty/kompozycja.py` (`MARKA = "perfos"`, odtworzone karty panelu PerfOS, toczące się cyfry, przełączniki). Liczby bierz tylko z nagrania i ze zrzutów panelu.
 - Eksport: `Eksporty/Rolki/<RRRR-MM-DD Tytuł>/`.

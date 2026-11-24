@@ -339,9 +339,11 @@ def build():
 
     jasne = []  # okna jasnych plansz: napisy w nich dostaja klase dk (ciemny tekst, mietowy zakreslacz)
 
-    def panel(pid, t_in, t_out, inner, track=2, leak_in=True, leak_out=True, cls="", fade_out=True, extend=0.0, wejscie=None, jasna=False):
+    def panel(pid, t_in, t_out, inner, track=2, leak_in=True, leak_out=True, cls="", fade_out=True, extend=0.0, wejscie=None, jasna=False, szklo=False):
         """jasna=True: wstawka "premium" jak w referencjach Jakuba (24.11.2026) - jasne tlo, ciemny tekst, biale karty
         (.lcard), wejscie kurtyna z gory. Napisy na niej robia sie ciemne same."""
+        if szklo:  # matowe szklo jak w Apple: A-roll przeswieca rozmyty spod jasnej tafli (Jakub, 24.11.2026)
+            jasna, cls = True, (cls + " glass-p").strip()
         if jasna:
             cls = (cls + " light").strip()
             wejscie = wejscie or "kurtyna"
@@ -734,6 +736,10 @@ TEMPLATE = r"""<!doctype html>
       .panel.light .p-head { color: #0f1012; opacity: .45; font-size: 28px; letter-spacing: .18em; }
       .panel.light .lcard { background: #ffffff; border: 1px solid #e7e7e3; border-radius: 24px; box-shadow: 0 18px 48px rgba(15,16,18,.08); }
       .panel.light .tile { box-shadow: none; }
+      .panel.glass-p .pbg { background: linear-gradient(160deg, rgba(255,255,255,.62), rgba(242,242,238,.42));
+        -webkit-backdrop-filter: blur(54px) saturate(165%); backdrop-filter: blur(54px) saturate(165%); }
+      .panel.glass-p .lcard { background: rgba(255,255,255,.62); border: 1px solid rgba(255,255,255,.8);
+        -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); box-shadow: 0 18px 48px rgba(15,16,18,.10), inset 0 1px 0 rgba(255,255,255,.9); }
       .cap.dk .w { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #0f1012; filter: none; }
       .cap.dk .w.hl { color: #0f1012; background: linear-gradient(transparent 58%, rgba(var(--accent-rgb),.6) 58%, rgba(var(--accent-rgb),.6) 92%, transparent 92%); }
       .leak { position: absolute; inset: -10%; z-index: 40; pointer-events: none; mix-blend-mode: screen;

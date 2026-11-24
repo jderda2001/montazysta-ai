@@ -219,7 +219,12 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
   - ciemne napisy z miętowym zakreślaczem na jasnych planszach;
   - opis w zasadzie 10.
 - **Próbka 2:** IMG_0717 „PRÓBKA premium 60fps”, obie sceny jasne, kurtyna, render 60 kl./s (2820 klatek). A-roll został w 30 kl./s, bo `IMG_0717.mov` zniknęło z Pobranych.
-- **Ocena próbki 2:** czeka.
+- **Ocena próbki 2:** „Fajne białe tło, ale można by dodać też taką wersję blurred glass, tak jak na Apple… Daj różne wersje CTA (ale w podobnym stylu), takie bardziej różnorodne”.
+- **Szkło:** `panel(..., szklo=True)`, matowa jasna tafla z `backdrop-filter`, A-roll prześwituje rozmyty. HyperFrames renderuje to poprawnie.
+- **CTA:** moduł `scripts/cta.py` z 5 wariantami (`pole`, `arkusz`, `pigulka`, `profil`, `dm`) na jasnym szkle, bez sprężyn. Każda rolka ma dostać inny wariant niż poprzednia.
+- **Demo:** `Eksporty/Rolki/2026-11-24 Szkło i CTA – demo/` (28 s, 60 kl./s, skrypt `scripts/demo_szklo_cta.py`).
+- **Użyte CTA (prowadź od teraz):** IMG_0717 v2 – stare pole komentarza.
+- **Ocena demo:** czeka.
 
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

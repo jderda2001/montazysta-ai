@@ -31,8 +31,11 @@ FRAMES = {
 # Start = poczatek glosu (-45 dB) - PRE; koniec = wygasniecie glosu (-52 dB, koncowki slow zostaja) + 0,22 s po zdaniu
 # (.?!) albo 0,12 s w srodku zdania. Wychodzi ok. 0,3-0,35 s miedzy zdaniami i ok. 0,2-0,25 s w srodku zdania.
 # (18.11.2026 przy stalych 0,10 / 0,15 od granic wysp Jakub uznal czesc ciec za zbyt szybkie - stad pomiar od glosu.)
-PRE, POST = 0.10, 0.22
-POST_SRODEK, POST_ZDANIE = 0.12, 0.22
+PRE, POST = 0.05, 0.22
+POST_SRODEK, POST_ZDANIE = 0.05, 0.10
+# Druga poprawka 24.11.2026 (C4534-C4538), Jakub: "dalej sa przerwy pomiedzy scinkami... pol sekundy albo sekunda...
+# wycinaj to za kazdym razem". Na styku ok. 0,15 s ciszy: przed glosem 0,05 s, po zdaniu 0,10 s, w srodku zdania 0,05 s,
+# start glosu od -40 dB (oddech i "mmm" przed slowem odpadaja).
 _WAV16 = P / "audio/nowe_16k.wav"  # dzwiek w czasie SEGS (mikrofon), mono 16 kHz
 
 
@@ -50,7 +53,7 @@ def _db(t0, t1, hop=0.01, win=0.02):
     return out
 
 
-def poczatek_mowy(s, prog=-45.0, szukaj=0.5):
+def poczatek_mowy(s, prog=-40.0, szukaj=0.5):
     """Faktyczny poczatek glosu od s (pierwsze miejsce powyzej progu)."""
     for t, d in _db(s - 0.06, s + szukaj):
         if d > prog:

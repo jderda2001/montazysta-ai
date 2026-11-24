@@ -61,9 +61,13 @@ uv run --no-project --with numpy python3 -I skrypty/kawalki.py 3 4 9  # wybrane
 ## 5. A-roll
 - W `aroll.py` ustaw `VIDEO`, `AUDIO`, `FRAMES` (pod twarz), `SEGS` = [(start_mowy, koniec_mowy, [(od, kadr), …], tekst), …] w czasie nagrania z mikrofonu.
 - **Styki kwestii liczone od faktycznego głosu** (od 24.11.2026, Jakub: „czasami wkradają się krótkie przerwy… chciałbym, żeby były minimalnie krótsze, żeby flow było płynniejsze”).
-  - `poczatek_mowy()`: start głosu przy −45 dB, minus `PRE` 0,10 s.
-  - `koniec_mowy()`: wygaśnięcie przy −52 dB, plus `POST_ZDANIE` 0,22 s po kropce, pytajniku lub wykrzykniku albo `POST_SRODEK` 0,12 s w środku zdania.
-  - Wcześniej marginesy liczyły się od granic wysp z silencedetect. Wyspa startuje nawet 0,2 s przed głoską, więc na styku było średnio 0,53 s ciszy (C4527, C4528). Teraz wychodzi ok. 0,3–0,35 s między zdaniami i 0,2–0,25 s w środku zdania.
+  - `poczatek_mowy()`: start głosu przy −40 dB (oddech i „mmm” przed słowem odpadają), minus `PRE` 0,05 s.
+  - `koniec_mowy()`: wygaśnięcie przy −52 dB, plus `POST_ZDANIE` 0,10 s po kropce, pytajniku lub wykrzykniku albo `POST_SRODEK` 0,05 s w środku zdania.
+  - Historia:
+    - Wcześniej marginesy liczyły się od granic wysp z silencedetect. Wyspa startuje nawet 0,2 s przed głoską, więc na styku było średnio 0,53 s ciszy (C4527, C4528).
+    - Po pierwszej poprawce wyszło 0,3–0,4 s i Jakub nadal uznał to za „bardzo niepłynne” (C4534–C4538, 24.11.2026).
+    - Teraz cel to ok. 0,15 s ciszy na każdym styku.
+  - Pomiar: przerwy powyżej 0,25 s w `audio/aroll.wav` (próg −38 dBFS) mają być tylko tam, gdzie pauza jest celowa.
   - Sprawdzian po `aroll.py`: przerwa między ostatnim słowem kwestii a pierwszym następnej (z `audio/slowa.json`).
   - Celowa pauza przed puentą: opcja kwestii `{"post": …}`.
   - `END_HOLD` 2,5. Wersja `aroll.py` z marginesami per kwestia (`{"pre": …, "post": …}`), twarzą per ujęcie, wyrównaniem głośności kwestii i pauzą `"HOLD"` (zwolnienie i zatrzymana klatka) jest w `projekty/IMG_0597/skrypty/`; bierz ją, gdy nagranie to iPhone 4K z mikrofonem podpiętym do telefonu.

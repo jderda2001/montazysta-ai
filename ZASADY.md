@@ -44,6 +44,11 @@ O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyj
 - Bez logo adGen i bez dekoracyjnych kwadratów na planszach.
 - CTA to „napisz w komentarzu…” i plansza końcowa z dymkiem komentarza.
 
+- **Logika i przejścia** (24.11.2026):
+  - Kwestie układaj według sensu wypowiedzi i scenariusza. Ostatni dubel nie wchodzi, gdy przeczy reszcie albo ma błąd faktyczny: wtedy wcześniejszy dubel albo wycięte wtrącenie.
+  - Dwie plansze pod rząd tylko przenikaniem: pierwsza zostaje pod drugą, bez mignięcia twarzy.
+  - Licznik wchodzi razem z liczeniem, bez widocznych zer.
+
 ## Styl (zatwierdzony, nie eksperymentuj)
 
 - **Napisy są zamrożone:** słowo po słowie, frazy po 2–5 słów, wyróżnienia akcentem, Inter Tight, pozycja 1120 px i szerokość 620 px. Nie zmieniaj ich wyglądu.
@@ -60,7 +65,7 @@ O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyj
 - **Różnorodność:** jeden szablon pojawia się najwyżej dwa razy w rolce i nigdy dwa razy pod rząd. Przed wyborem grafik przeczytaj `references/biblioteka.md` i obejrzyj arkusze podglądów.
 - **Kadry:** W/M/C (zoom 1,0/1,15/1,30). Twardy przeskok kadru tylko przy cięciu dubli, a akcenty robi płynny zoom. W każdym ujęciu jest delikatny najazd. Przy niskim kadrze najpierw zmierz twarz (`twarze.py`), dopiero potem ustawiaj napisy.
 - **Strefa bezpieczna rolek:** y 270–1245, x 70–1010. Od 860 px w dół prawa krawędź jest na 885 px, od 1145 px na 850 px. Przed każdym renderem uruchom `strefa.py` i dopiero przy zerze naruszeń renderuj.
-- **Napięcie przed puentą:** zdanie zapowiadające wynik („No i wynik”) dostaje najazd na twarz i ok. 1 s pauzy. Styki kwestii mają być płynne, bez pustej ciszy (24.11.2026): marginesy liczone od faktycznego głosu, ok. 0,3–0,35 s ciszy między zdaniami i 0,2–0,25 s w środku zdania (`poczatek_mowy()` / `koniec_mowy()` w `aroll.py`). Końcówek słów nie ścinaj.
+- **Napięcie przed puentą:** zdanie zapowiadające wynik („No i wynik”) dostaje najazd na twarz i ok. 1 s pauzy. Styki kwestii mają być płynne, bez pustej ciszy (24.11.2026): marginesy liczone od faktycznego głosu, ok. 0,15 s ciszy na styku (po zdaniu 0,10 s, w środku 0,05 s, start głosu od −40 dB) (`poczatek_mowy()` / `koniec_mowy()` w `aroll.py`). Końcówek słów nie ścinaj.
 
 ## Pierwsze 2 sekundy (od 24.11.2026, zasada 11 skilla)
 

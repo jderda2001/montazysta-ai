@@ -56,6 +56,10 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
     - **Przejścia plansz.** Domyślnie miękkie przenikanie z lekkim zoomem (`"fade"`). Iris, wipe, diag i slide najwyżej raz w rolce, light leak najwyżej raz.
     - **Czysto.** Jedna myśl na ekranie, dużo powietrza, mniej obramowań, poświat i chipów. Jasne tło planszy (biel albo jasny szary, czarny tekst, akcent) jest dozwolone w palecie i dobrze odcina się od ciemnego A-rollu.
     - Przy oddaniu wypisz sceny i ich czasy, żeby było widać, że w każdym oknie 30 s są najwyżej dwie.
+    - **60 kl./s.** Jakub po pierwszej próbce: „dalej mam wrażenie, że nie są takie płynne (np. w 60 fps)”. iPhone nagrywa w 60 kl./s, więc A-roll (`FPS = 60` w `aroll.py`) i render (`--fps 60`, `data-fps="60"`) idą w 60. Gdy źródło jest w 30 kl./s, A-roll zostaje w 30, a grafiki i zoomy i tak renderuj w 60.
+    - **Wstawki premium są jasne** (referencje w `Referencje i wytyczne/`, 24.11.2026: „b-rolle nie są premium”). Wstawka to pełnoekranowa jasna plansza: złamana biel `#f5f5f2` z delikatnym miętowym gradientem w rogu, ciemny tekst `#0f1012`, białe karty (`.lcard`) z cienką ramką `#e7e7e3` i miękkim cieniem, małe ikony, dużo powietrza. Bez poświat i grubych obramowań. Akcent tylko na jednej rzeczy (pasek, przycisk, liczba), na jasnym tle jako ciemniejsza mięta albo wypełnienie z ciemnym tekstem. Robi to `panel(..., jasna=True)`.
+    - **Kurtyna:** jasna plansza zjeżdża z góry w 0,55 s z `power3.inOut` i tak samo odjeżdża, a treść tylko łagodnie się pojawia. To domyślne wejście jasnej planszy.
+    - **Napisy na jasnej planszy są ciemne**, a wyróżnienie to miętowy zakreślacz pod słowem. Krój, rozmiar, pozycja i ruch zostają; klasę `dk` nadaje `kompozycja.py` sam. To jedyny wyjątek od zasady 1 i wynika z czytelności.
 
 ## Foldery i nazwy
 

@@ -54,7 +54,9 @@ O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyj
   - płynne zoomy (`zoom()`, 1,5–3 s, `sine.inOut`) zamiast przeskoków kadru;
   - ruch bez sprężyn i podskoków, wejścia 0,5–0,8 s;
   - przejście plansz domyślnie miękkie przenikanie, efektowne najwyżej raz w rolce;
-  - czysto, dużo powietrza; jasna plansza jest dozwolona.
+  - czysto, dużo powietrza;
+  - wstawki jasne, „premium”: złamana biel, ciemny tekst, białe karty, wejście kurtyną, ciemne napisy na jasnym tle;
+  - render i A-roll w 60 kl./s.
 - **Różnorodność:** jeden szablon pojawia się najwyżej dwa razy w rolce i nigdy dwa razy pod rząd. Przed wyborem grafik przeczytaj `references/biblioteka.md` i obejrzyj arkusze podglądów.
 - **Kadry:** W/M/C (zoom 1,0/1,15/1,30). Twardy przeskok kadru tylko przy cięciu dubli, a akcenty robi płynny zoom. W każdym ujęciu jest delikatny najazd. Przy niskim kadrze najpierw zmierz twarz (`twarze.py`), dopiero potem ustawiaj napisy.
 - **Strefa bezpieczna rolek:** y 270–1245, x 70–1010. Od 860 px w dół prawa krawędź jest na 885 px, od 1145 px na 850 px. Przed każdym renderem uruchom `strefa.py` i dopiero przy zerze naruszeń renderuj.

@@ -59,7 +59,7 @@ SEGS = [
 ]
 
 GRADE = "eq=contrast=1.08:saturation=1.04:gamma=0.96,vignette=angle=PI/5:mode=forward"
-FPS = 30
+FPS = 60  # 24.11.2026 (Jakub: "nie są takie płynne, np. w 60 fps"): iPhone nagrywa 60 kl./s, A-roll i render też w 60
 
 
 def fr(t):

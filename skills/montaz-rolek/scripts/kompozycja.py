@@ -112,6 +112,8 @@ def kolory(page, marka=None):
 # plansza wchodzi miekkim przenikaniem "fade". Efektowne przejscia tylko przez wejscie="...", najwyzej jedno w rolce.
 PRZEJSCIA = ["fade"]
 RUCH = {
+    # kurtyna: jasna plansza zjezdza z gory w 0,55 s (referencje Jakuba z 24.11.2026); do plansz panel(..., jasna=True)
+    "kurtyna": ('{y:-1920}', '{y:0', 0.55, "power3.inOut", '{y:-1920', 0.5, "power3.inOut", False),
     "fade": ('{opacity:0,scale:1.04,filter:"blur(10px)"}', '{opacity:1,scale:1,filter:"blur(0px)"', 0.6, "power2.out",
              '{opacity:0,scale:0.98,filter:"blur(8px)"', 0.45, "power2.inOut", False),
     "blur": ('{opacity:0,scale:1.06,filter:"blur(18px)"}', '{opacity:1,scale:1,filter:"blur(0px)"', 0.32, "power3.out",
@@ -335,7 +337,15 @@ def build():
         js.append(f'tl.fromTo("#{lid}",{{opacity:0,xPercent:-18}},{{opacity:1,xPercent:0,duration:0.2,ease:"power2.out"}},{t - 0.22:.3f});')
         js.append(f'tl.to("#{lid}",{{opacity:0,xPercent:16,duration:0.3,ease:"power2.in"}},{t - 0.02:.3f});')
 
-    def panel(pid, t_in, t_out, inner, track=2, leak_in=True, leak_out=True, cls="", fade_out=True, extend=0.0, wejscie=None):
+    jasne = []  # okna jasnych plansz: napisy w nich dostaja klase dk (ciemny tekst, mietowy zakreslacz)
+
+    def panel(pid, t_in, t_out, inner, track=2, leak_in=True, leak_out=True, cls="", fade_out=True, extend=0.0, wejscie=None, jasna=False):
+        """jasna=True: wstawka "premium" jak w referencjach Jakuba (24.11.2026) - jasne tlo, ciemny tekst, biale karty
+        (.lcard), wejscie kurtyna z gory. Napisy na niej robia sie ciemne same."""
+        if jasna:
+            cls = (cls + " light").strip()
+            wejscie = wejscie or "kurtyna"
+            jasne.append((t_in + 0.25, t_out - 0.3))
         """extend/fade_out=False: plansza trwa dluzej pod nastepna plansza (przenikanie bez przeswitu wideo)."""
         # Kwadraty dekoracyjne u dolu planszy zostaja tylko w palecie adGen. W personal brandzie plansza jest czysta:
         # Jakub o mietowych kwadratach (IMG_0576, 17.11.2026): "nie podoba mi sie to".
@@ -508,6 +518,11 @@ def build():
     pop("#endtxt", end_card_in + 0.25)
     pop("#endsub", end_card_in + 0.38)
 
+    for i in range(len(el)):
+        if 'class="cap clip"' in el[i]:
+            m = re.search(r'data-start="([0-9.]+)" data-duration="([0-9.]+)"', el[i])
+            if any(a <= float(m.group(1)) + float(m.group(2)) / 2 <= b for a, b in jasne):
+                el[i] = el[i].replace('class="cap clip"', 'class="cap dk clip"')
     page = TEMPLATE.replace("{{TOTAL}}", f"{total:.3f}").replace("{{ELEMENTS}}", "\n    ".join(el)) \
         .replace("{{JS}}", "\n      ".join(js)).replace("{{KIN_TOP}}", str(KIN_TOP)).replace("{{CAP_TOP}}", str(CAP_TOP)) \
         .replace("{{KIN_PAD}}", str((1080 - KIN_W) // 2))
@@ -713,6 +728,14 @@ TEMPLATE = r"""<!doctype html>
       .endtxt { position: absolute; left: 0; right: 0; top: 910px; text-align: center; font-size: 60px; font-weight: 800; }
       .endsub { position: absolute; left: 0; right: 0; top: 995px; text-align: center; font-size: 40px; font-weight: 500; color: #c9ccd3; }
 
+      /* jasne wstawki "premium" (panel(..., jasna=True)), 24.11.2026 */
+      .panel.light { color: #0f1012; }
+      .panel.light .pbg { background: radial-gradient(110% 70% at 85% 0%, #e3f6ee 0%, #f5f5f2 48%, #f2f1ee 100%); }
+      .panel.light .p-head { color: #0f1012; opacity: .45; font-size: 28px; letter-spacing: .18em; }
+      .panel.light .lcard { background: #ffffff; border: 1px solid #e7e7e3; border-radius: 24px; box-shadow: 0 18px 48px rgba(15,16,18,.08); }
+      .panel.light .tile { box-shadow: none; }
+      .cap.dk .w { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #0f1012; filter: none; }
+      .cap.dk .w.hl { color: #0f1012; background: linear-gradient(transparent 58%, rgba(var(--accent-rgb),.6) 58%, rgba(var(--accent-rgb),.6) 92%, transparent 92%); }
       .leak { position: absolute; inset: -10%; z-index: 40; pointer-events: none; mix-blend-mode: screen;
         background: radial-gradient(45% 35% at 30% 45%, rgba(var(--accent-rgb),.6), rgba(var(--accent-rgb),0) 70%),
                     radial-gradient(40% 30% at 70% 60%, rgba(255,255,255,.5), rgba(255,255,255,0) 70%),
@@ -720,7 +743,7 @@ TEMPLATE = r"""<!doctype html>
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="{{TOTAL}}" data-width="1080" data-height="1920">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="{{TOTAL}}" data-width="1080" data-height="1920" data-fps="60">
     <div id="zwrap"><div id="vwrap">
       <video id="aroll" class="clip" src="aroll.mp4" data-start="0" data-duration="{{TOTAL}}" data-track-index="0" muted playsinline></video>
       <audio id="glos" src="glos.wav" data-start="0" data-duration="{{TOTAL}}" data-track-index="9"></audio>

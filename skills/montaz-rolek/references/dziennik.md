@@ -206,7 +206,20 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
   - CTA z planszą końcową.
 
   Do tego 6 płynnych zoomów na twarz (`sine.inOut`, 1,4–3,5 s), 9 efektów dźwiękowych (11,5 na minutę). Wersja v2 została obok do porównania.
-- **Ocena Jakuba:** czeka.
+- **Ocena próbki 1:** „Mam uwagi… jakoś dalej mam wrażenie, że nie są takie płynne (np. w 60 fps), tak samo b-rolle (wstawki) nie są premium. W folderze Referencje i wytyczne znajdziesz 2 rolki, obejrzyj je”.
+- **Druga referencja** (TikTok o Grok Bot, 54 s, 30 kl./s):
+  - wstawki to jasne, kremowe plansze z małymi ikonami, cienkim ciemnym tekstem i białymi kartami z miękkim cieniem;
+  - kilka razy ekran jest dzielony: wstawka u góry, A-roll na dole;
+  - przejście to kurtyna: plansza zjeżdża z góry w ok. 0,35 s z miękkim startem i hamowaniem, treść tylko się przenika.
+
+  Obie referencje mają 30 kl./s, więc płynność daje sam ruch, ale Jakub chce też 60 kl./s.
+- **Zmiany:**
+  - `FPS = 60` w `aroll.py`, `--fps 60` i `data-fps="60"`;
+  - `panel(..., jasna=True)` (jasne tło, `.lcard`, kurtyna);
+  - ciemne napisy z miętowym zakreślaczem na jasnych planszach;
+  - opis w zasadzie 10.
+- **Próbka 2:** IMG_0717 „PRÓBKA premium 60fps”, obie sceny jasne, kurtyna, render 60 kl./s (2820 klatek). A-roll został w 30 kl./s, bo `IMG_0717.mov` zniknęło z Pobranych.
+- **Ocena próbki 2:** czeka.
 
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

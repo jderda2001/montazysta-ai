@@ -108,7 +108,7 @@ cd .. && uv run --no-project --with numpy python3 -I skrypty/strefa.py       # 0
 
 ## 9. Render, kontrola, eksport
 ```bash
-cd hf && hyperframes render -o renders/final.mp4 --quality delivery --video-frame-format png   # w tle tylko przez run_in_background, nie przez `( … ) &`
+cd hf && hyperframes render -o renders/final.mp4 --quality delivery --fps 60 --video-frame-format png   # w tle tylko przez run_in_background, nie przez `( … ) &`
 uv run --no-project --with numpy python3 -I ../skrypty/kontrola_eksportu.py renders/final.mp4 ../audio/aroll_studio_gleboki.wav
 D="$HOME/Desktop/Montażysta AI/Eksporty/Rolki/<RRRR-MM-DD Tytuł>"   # reklamy: Eksporty/Reklamy adGen/…, long-form: Eksporty/YouTube/…
 mkdir -p "$D" && cp -f renders/final.mp4 "$D/<Tytuł>_MM.RR.mp4"

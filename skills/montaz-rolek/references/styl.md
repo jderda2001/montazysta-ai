@@ -90,11 +90,13 @@ Nowe elementy z IMG_0591 (wzór w `projekty/IMG_0591/skrypty/kompozycja.py`, fun
 Ikony: obrysowe 24×24 (styl Lucide), `stroke-width 2`. Zestaw jest w `ICON` w `kompozycja.py`.
 
 ## 5. Ruch i czasy animacji
-- Plansza wchodzi 0,12 s przed swoim momentem jednym z sześciu przejść (`iris`, `wipe`, `zoom`, `diag`, `slide`, `blur`), które `panel()` zmienia z planszy na planszę. Opis każdego jest w `references/biblioteka.md`. Dawne wejście z IMG_0526 to `blur`: `opacity 0, scale 1,06, blur 18 → 1`, 0,32 s `power3.out`, równocześnie light leak (biały przelot z domieszką akcentu, 0,55 s). Light leak idzie już tylko z nim.
-- Plansza wychodzi: `scale 1,04, blur 14, opacity 0`, 0,18 s `power2.in` (też z light leakiem).
-- Elementy wewnątrz plansz (`pop`): `opacity 0, y 26, scale 0,94 → 1`, 0,3 s `back.out(1.6)`, każdy na swoim słowie.
-- Nakładki na wideo (powiadomienie, chip): stoją nad napisami i wjeżdżają od dołu, `y 30…40, blur 10 → 0`, 0,35 s `power3.out`, wyjście 0,22 s. W górnym pasie (niski kadr) ten sam ruch od góry, `y −30…−60`.
-- Wyskakujące plakietki i dymki: `back.out(1.9–2.2)`.
+- **Od 24.11.2026 obowiązuje zasada 10 z SKILL.md: mniej, ale płynniej.** Jakub pokazał referencję i napisał: „wszystko jest mega płynne… bardziej premium, bo teraz jest bardziej AI slopowe”. Konkretnie:
+  - **Limit:** najwyżej 2 złożone animacje (sceny) na każde 30 s. Każdą scenę zgłaszasz `scena("nazwa", od, do)`, a `kompozycja.py` ostrzega, gdy w oknie 30 s są więcej niż dwie. Lepiej jedna scena, która trwa 5–8 s i rozwija się przez kilka zdań, niż cztery karty po 2 s.
+  - **Wejście planszy (domyślne, `"fade"`):** przenikanie `opacity 0 → 1` z lekkim odjazdem `scale 1,04 → 1` i `blur 10 → 0`, 0,6 s `power2.out`; wyjście 0,45 s `power2.inOut` (`opacity 0, scale 0,98`). Pozostałe przejścia (`iris`, `wipe`, `zoom`, `diag`, `slide`, `blur`) tylko przez `wejscie=…`, najwyżej jedno w rolce. Light leak najwyżej raz.
+  - **Elementy w scenie (`pop`):** `opacity 0, y 18, blur 8 → 0`, 0,6 s `power3.out`, bez skali i bez `back.out`. Kilka elementów wchodzi kaskadą co 0,08–0,15 s albo każdy na swoim słowie.
+  - **Nakładki na wideo:** wejście 0,55 s `expo.out` (`y 24, blur 10 → 0`), wyjście 0,35 s `power2.inOut`. Nakładka to też scena i wlicza się do limitu.
+  - **Plakietki i dymki:** `power3.out` z `scale 0,9 → 1`. Bez sprężyn i podskoków (`back.out`, `bounce`, wstrząsy).
+  - **Kamera w scenie:** w złożonej animacji cała scena siedzi w kontenerze, który powoli jedzie i przybliża (`scale 1 → 1,1–1,25` plus przesunięcie x/y, 1,5–3 s, `sine.inOut`), zatrzymując się na elemencie, o którym akurat mówi. Tak jak przewijany i przybliżany ekran telefonu w referencji.
 - Kwadraty dekoracyjne (tylko paleta adGen) obracają się liniowo przez cały czas planszy (kilka stopni), dla życia w tle.
 - **Zapowiedź puenty albo liczb dostaje chwilę napięcia** (Jakub po IMG_0597: przy „No i wynik” „powinno być bardziej zbudowane napięcie, troszkę przedłużone, przybliżenie na moją twarz”). Na kluczowym słowie szybki dojazd do twarzy (`#vwrap` do 1,13 w 0,34 s, `power3.out`), potem ok. 1 s pauzy bez słów z dalszym powolnym najazdem (do ok. 1,22), ciemniejącymi brzegami kadru (`.focus`) i cichym narastającym „shh”; napis stoi do końca pauzy. Gdy po słowie nie ma dość nagrania z kontaktem wzrokowym, pauzę robi zwolnienie 50% i zatrzymana klatka (`"HOLD"` w `projekty/IMG_0597/skrypty/aroll.py`). Jedno takie miejsce na rolkę, najwyżej dwa.
 - **Wykresy i schematy mają żyć** (Jakub po IMG_0576: „zanimuj bardziej wykres”). Statyczny rysunek, na którym tylko dorysowuje się linia, to za mało. Każdy element wchodzi własnym ruchem na swoim słowie: osie się rysują, punkty mają falę (pierścień rosnący i gasnący w 0,6 s), linie prowadzi jadąca kropka, etykiety wyskakują ze skalą, zmiana znaczenia ma mocny gest (wstrząs, wbicie znaku, zamiana nagłówka), a całość powoli najeżdża (`scale 1 → 1,05`).
@@ -102,8 +104,9 @@ Ikony: obrysowe 24×24 (styl Lucide), `stroke-width 2`. Zestaw jest w `ICON` w `
 ## 6. Wideo: kadry, najazd, grading
 - Kadry na źródle 1080×1920 (crop w, h, x, y): **W** (1080, 1920, 0, 0) pełny; **M** (940, 1672, 38, 102) zoom 1,15; **C** (832, 1478, 92, 180) zoom 1,30. Środek dopasuj do twarzy w nowym nagraniu (w IMG_0526 twarz była ok. 508, 653). Więcej niż 1,3 nie przybliżaj, bo źródło ma tylko 1080 px szerokości.
 - **Tempo cięć** (Jakub po IMG_0597: „w niektórych miejscach troszeczkę za szybko przyciąłeś”): po zdaniu zostaje 0,22 s, przed zdaniem 0,14 s, razem ok. 0,36 s oddechu. Sąsiednie zdania, między którymi w nagraniu jest naturalna pauza do ok. 0,5 s, zostają jedną kwestią ze zmianą kadru w pauzie. Ciasno (0,10–0,15 s) tylko przy cięciu w środku zdania.
-- Zmiana kadru między kwestiami, a w długiej kwestii w pauzach. Przeplataj W/M/C, nie dawaj dwóch takich samych kadrów obok siebie.
-- W każdym ujęciu delikatny najazd: `scale 1 → 1,035` liniowo, `transform-origin: 50% 36%`.
+- Zmiana kadru W/M/C tylko w miejscach cięć dubli, czyli między kwestiami z różnych dubli. W ciągłej wypowiedzi kadru nie przeskakuj, tylko daj płynny zoom (od 24.11.2026, zasada 10).
+- **Płynny zoom (`zoom(t, skala, dl)` w `kompozycja.py`):** najazd na `#vwrap` do 1,12–1,25 przez 1,5–3 s z `sine.inOut`, na zdaniu, które coś akcentuje, potem powolny powrót albo cięcie. Jeden zoom na 2–3 zdania, nie na każde.
+- W każdym ujęciu bez zoomu delikatny najazd: `scale 1 → 1,035` liniowo, `transform-origin: 50% 36%`.
 - Grading: `eq=contrast=1.08:saturation=1.04:gamma=0.96,vignette=angle=PI/5:mode=forward`. **Najpierw zmierz jasność źródła** (`signalstats`, YAVG klatki po kadrowaniu): ten grading przyciemnia o ok. 15 punktów. Przy ciemnym nagraniu (YAVG poniżej ok. 55) rozjaśnij: `eq=contrast=1.04:saturation=1.08:gamma=1.34:brightness=0.015`, winieta `PI/8`, cel ok. 60–70 (Jakub o IMG_0688, YAVG 33: „dałeś za ciemny obraz”), skalowanie `in_range=pc:out_range=tv`.
 
 ## 7. Zasady czasowania

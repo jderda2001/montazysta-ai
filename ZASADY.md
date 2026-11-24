@@ -49,8 +49,14 @@ O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyj
 - **Napisy są zamrożone:** słowo po słowie, frazy po 2–5 słów, wyróżnienia akcentem, Inter Tight, pozycja 1120 px i szerokość 620 px. Nie zmieniaj ich wyglądu.
 - **Hook kinetyczny:** małe słowa i duże hasło (liczba albo puenta) w kolorze akcentu.
 - **Plansze i nakładki** ilustrują to, co pada w nagraniu. Wykresy i schematy mają być mocno animowane: rysujące się osie, jadąca kropka, wstrząs. Statyczny rysunek odpada.
-- **Różnorodność:** kolejne plansze wchodzą innym przejściem (`panel()` rotuje: iris, wipe, zoom, diag, slide, blur). Jeden szablon pojawia się najwyżej dwa razy w rolce i nigdy dwa razy pod rząd. Przed wyborem grafik przeczytaj `references/biblioteka.md` i obejrzyj arkusze podglądów.
-- **Kadry:** W/M/C (zoom 1,0/1,15/1,30) zmieniane w pauzach, w każdym ujęciu delikatny najazd. Przy niskim kadrze najpierw zmierz twarz (`twarze.py`), dopiero potem ustawiaj napisy.
+- **Mniej, ale płynniej (od 24.11.2026, zasada 10 skilla):**
+  - najwyżej 2 złożone animacje na każde 30 s filmu: jedna bogata scena zamiast kilku małych kart;
+  - płynne zoomy (`zoom()`, 1,5–3 s, `sine.inOut`) zamiast przeskoków kadru;
+  - ruch bez sprężyn i podskoków, wejścia 0,5–0,8 s;
+  - przejście plansz domyślnie miękkie przenikanie, efektowne najwyżej raz w rolce;
+  - czysto, dużo powietrza; jasna plansza jest dozwolona.
+- **Różnorodność:** jeden szablon pojawia się najwyżej dwa razy w rolce i nigdy dwa razy pod rząd. Przed wyborem grafik przeczytaj `references/biblioteka.md` i obejrzyj arkusze podglądów.
+- **Kadry:** W/M/C (zoom 1,0/1,15/1,30). Twardy przeskok kadru tylko przy cięciu dubli, a akcenty robi płynny zoom. W każdym ujęciu jest delikatny najazd. Przy niskim kadrze najpierw zmierz twarz (`twarze.py`), dopiero potem ustawiaj napisy.
 - **Strefa bezpieczna rolek:** y 270–1245, x 70–1010. Od 860 px w dół prawa krawędź jest na 885 px, od 1145 px na 850 px. Przed każdym renderem uruchom `strefa.py` i dopiero przy zerze naruszeń renderuj.
 - **Napięcie przed puentą:** zdanie zapowiadające wynik („No i wynik”) dostaje najazd na twarz i ok. 1 s pauzy. Marginesy cięć: 0,22 s po zdaniu i 0,14 s przed zdaniem. Naturalnych pauz do ok. 0,5 s nie ścinaj.
 

@@ -108,8 +108,12 @@ def kolory(page, marka=None):
 # (Jakub po IMG_0576: "bardzo generyczne sa przejscia"). Wymuszenie konkretnego: panel(..., wejscie="iris").
 # Wartosci w px, nie w %: render zaokragla liczby do calosci, a 1% kadru to 19 px skoku.
 # Krotka: (stan poczatkowy, stan otwarty, czas wejscia, ease, stan wyjscia, czas wyjscia, ease, czy z light leakiem).
-PRZEJSCIA = ["iris", "wipe", "zoom", "diag", "slide", "blur"]
+# Od 24.11.2026 (zasada 10, Jakub: "wszystko mega plynne... mniej tych przejsc... bardziej premium"): domyslnie kazda
+# plansza wchodzi miekkim przenikaniem "fade". Efektowne przejscia tylko przez wejscie="...", najwyzej jedno w rolce.
+PRZEJSCIA = ["fade"]
 RUCH = {
+    "fade": ('{opacity:0,scale:1.04,filter:"blur(10px)"}', '{opacity:1,scale:1,filter:"blur(0px)"', 0.6, "power2.out",
+             '{opacity:0,scale:0.98,filter:"blur(8px)"', 0.45, "power2.inOut", False),
     "blur": ('{opacity:0,scale:1.06,filter:"blur(18px)"}', '{opacity:1,scale:1,filter:"blur(0px)"', 0.32, "power3.out",
              '{opacity:0,scale:1.04,filter:"blur(14px)"', 0.18, "power2.in", True),
     "iris": ('{clipPath:"circle(0px at 540px 760px)"}', '{clipPath:"circle(2300px at 540px 760px)"', 0.55, "power3.out",
@@ -242,8 +246,23 @@ def build():
     el, js, srt = [], [], []
     dzw = []  # efekty dzwiekowe: dzw.append({"t": czas_trafienia, "typ": "pop" | "tik" | "swoosh" | "shh" | "powiad"}); opis w sfx.py
 
+    # --- zasada 10 (24.11.2026): plynne zoomy i limit scen
+    sceny = []  # (nazwa, od, do): kazda zlozona animacja (plansza, karta, przeplyw, logo, CTA); najwyzej 2 na 30 s
+
+    def scena(nazwa, od, do):
+        sceny.append((nazwa, od, do))
+
+    def zoom(t, skala=1.18, dl=2.0, do=None, wroc=None):
+        """Plynny najazd calego kadru (#zwrap, niezalezny od najazdu ujec w #vwrap): do `skala` w `dl` s, sine.inOut.
+        do=czas ciecia -> skala wraca do 1 skokiem (cięcie to ukrywa); wroc=czas -> wraca plynnie w 1,2 s."""
+        js.append(f'tl.to("#zwrap",{{scale:{skala},duration:{dl},ease:"sine.inOut"}},{t:.3f});')
+        if wroc is not None:
+            js.append(f'tl.to("#zwrap",{{scale:1,duration:1.2,ease:"sine.inOut"}},{wroc:.3f});')
+        elif do is not None:
+            js.append(f'tl.set("#zwrap",{{scale:1}},{do:.3f});')
+
     # --- wideo: delikatny najazd w kazdym ujeciu
-    js.append('gsap.set("#vwrap",{scale:1});')
+    js.append('gsap.set("#vwrap",{scale:1}); gsap.set("#zwrap",{scale:1});')
     for e in edl:
         for sh in e["shots"]:
             js.append(f'tl.set("#vwrap",{{scale:1}},{sh["t_in"]:.3f});')
@@ -285,7 +304,7 @@ def build():
             js.append(f'tl.fromTo("#{sid} .kin-t .w:nth-child({i + 1})",{{opacity:0,y:14,filter:"blur(7px)"}},'
                       f'{{opacity:1,y:0,filter:"blur(0px)",duration:0.18,ease:"power2.out"}},{w[0] - 0.04:.3f});')
         srt.append((start, end, " ".join(w[2] for w in small + big + after)))
-    js.append(f'tl.fromTo("#k1 .mention img",{{scale:0.4}},{{scale:1,duration:0.35,ease:"back.out(2.2)"}},{W("kaja")[0] - 0.04:.3f});')
+    js.append(f'tl.fromTo("#k1 .mention img",{{scale:0.85}},{{scale:1,duration:0.6,ease:"power3.out"}},{W("kaja")[0] - 0.04:.3f});')
 
     # --- napisy slowo po slowie (od kwestii 2)
     end_card_in = round(seg(9)["speech"][1] - seg(9)["a_in"] + seg(9)["t_in"] + 0.12, 3)
@@ -324,6 +343,7 @@ def build():
               '<div class="sq sq3" data-layout-allow-overflow></div>') if MARKA == "adgen" else ""
         rodzaj = wejscie or PRZEJSCIA[len(_uzyte_przejscia) % len(PRZEJSCIA)]
         _uzyte_przejscia.append(rodzaj)
+        scena(f"plansza {pid}", t_in, t_out)
         dzw.append({"t": t_in, "typ": "swoosh"})  # kazde wejscie planszy ma miekki swoosh
         r_od, r_do, r_czas, r_ease, w_do, w_czas, w_ease, r_leak = RUCH[rodzaj]
         el.append(f'<div id="{pid}" class="panel clip {cls}" data-layout-allow-overflow data-start="{t_in - 0.12:.3f}" data-duration="{t_out - t_in + 0.12 + extend:.3f}" data-track-index="{track}">'
@@ -344,15 +364,17 @@ def build():
                 leak(t_out)
 
     def pop(sel, t, extra=""):
-        js.append(f'tl.fromTo("{sel}",{{opacity:0,y:26,scale:0.94{extra}}},{{opacity:1,y:0,scale:1,duration:0.3,ease:"back.out(1.6)"}},{t:.3f});')
+        # zasada 10: bez sprezyn (back.out) - plynne wejscie z rozmyciem, 0,6 s power3.out
+        js.append(f'tl.fromTo("{sel}",{{opacity:0,y:18,filter:"blur(8px)"{extra}}},{{opacity:1,y:0,filter:"blur(0px)",duration:0.6,ease:"power3.out"}},{t:.3f});')
 
     def overlay(oid, t_in, t_out, inner, cls, track=5, y_from=30):
         """Nakladka na wideo. Domyslnie stoi nad napisami (pas 925-1110 px, do 690 px szerokosci) i wjezdza od dolu, bo
         w typowym kadrze gorny pas strefy (270-480 px) zajmuje glowa. Gdy nad glowa jest wolne miejsce (niski kadr),
         przenies klase na 290 px (do 940 px szerokosci) i daj y_from ujemne. Zawsze sprawdz na klatce."""
+        scena(f"nakladka {oid}", t_in, t_out)
         el.append(f'<div id="{oid}" class="{cls} clip" data-start="{t_in:.3f}" data-duration="{t_out - t_in:.3f}" data-track-index="{track}">{inner}</div>')
-        js.append(f'tl.fromTo("#{oid}",{{opacity:0,y:{y_from},filter:"blur(10px)"}},{{opacity:1,y:0,filter:"blur(0px)",duration:0.35,ease:"power3.out"}},{t_in:.3f});')
-        js.append(f'tl.to("#{oid}",{{opacity:0,y:{y_from * 0.6:.0f},filter:"blur(8px)",duration:0.22,ease:"power2.in"}},{t_out - 0.22:.3f});')
+        js.append(f'tl.fromTo("#{oid}",{{opacity:0,y:{y_from * 0.8:.0f},filter:"blur(10px)"}},{{opacity:1,y:0,filter:"blur(0px)",duration:0.55,ease:"expo.out"}},{t_in:.3f});')
+        js.append(f'tl.to("#{oid}",{{opacity:0,y:{y_from * 0.4:.0f},filter:"blur(8px)",duration:0.35,ease:"power2.inOut"}},{t_out - 0.35:.3f});')
 
     # --- P1: co robi Kaja
     s2 = seg(2)
@@ -402,7 +424,7 @@ def build():
     panel("p2", s5["t_in"], seg(6)["t_in"], inner)
     pop("#p2cal", s5["t_in"] + 0.02)
     t_land = W("ląduje", s5["t_in"])[0]
-    js.append(f'tl.fromTo("#p2evt",{{opacity:0,y:-150,scale:0.92}},{{opacity:1,y:0,scale:1,duration:0.42,ease:"bounce.out"}},{t_land - 0.12:.3f});')
+    js.append(f'tl.fromTo("#p2evt",{{opacity:0,y:-150,scale:0.92}},{{opacity:1,y:0,scale:1,duration:0.42,ease:"power3.out"}},{t_land - 0.12:.3f});')
     pop("#p2inv", W("zaproszenie", s5["t_in"])[0] - 0.06)
 
     # --- kafelki: urlop / choroba / follow-upy (kwestia 6, pelny kadr)
@@ -451,7 +473,7 @@ def build():
     panel("p4", p4_in, p4_out, inner, track=7)
     pop("#pcard", p4_in + 0.02)
     t_ag = W("agent", p4_in)[0]
-    js.append(f'tl.fromTo("#pcbadge",{{opacity:0,scale:0.5,rotation:-8}},{{opacity:1,scale:1,rotation:0,duration:0.35,ease:"back.out(2.2)"}},{t_ag - 0.05:.3f});')
+    js.append(f'tl.fromTo("#pcbadge",{{opacity:0,scale:0.9,filter:"blur(8px)"}},{{opacity:1,scale:1,filter:"blur(0px)",duration:0.6,ease:"power3.out"}},{t_ag - 0.05:.3f});')
     js.append(f'tl.fromTo("#pcbot",{{color:"#9b9b9b"}},{{color:"#ffffff",duration:0.3}},{t_ag - 0.05:.3f});')
 
     # --- chip: zadanie dla Ciebie (kwestia 8, pelny kadr)
@@ -482,7 +504,7 @@ def build():
              '<div class="endtxt" id="endtxt">Napisz w komentarzu</div>'
              '<div class="endsub" id="endsub">a nagram o tym osobną rolkę</div>')
     panel("pend", end_card_in, total, inner, track=6, cls="top")
-    js.append(f'tl.fromTo("#bub",{{opacity:0,scale:0.6,rotation:-6}},{{opacity:1,scale:1,rotation:0,duration:0.45,ease:"back.out(1.9)"}},{end_card_in + 0.05:.3f});')
+    js.append(f'tl.fromTo("#bub",{{opacity:0,scale:0.92,filter:"blur(10px)"}},{{opacity:1,scale:1,filter:"blur(0px)",duration:0.7,ease:"power3.out"}},{end_card_in + 0.05:.3f});')
     pop("#endtxt", end_card_in + 0.25)
     pop("#endsub", end_card_in + 0.38)
 
@@ -517,6 +539,15 @@ def build():
     print(f"{out} | {len(phrases)} fraz, {len(el)} elementow, {total:.2f}s, plansza koncowa od {end_card_in:.2f}")
     for ph in phrases:
         print(f"   {ph[0][0]:6.2f} " + " ".join(("*" + w[2] + "*") if w[3] else w[2] for w in ph))
+    # zasada 10: najwyzej 2 zlozone animacje (sceny) w kazdym oknie 30 s
+    sceny.sort(key=lambda x: x[1])
+    print(f"sceny ({len(sceny)}): " + ", ".join(f"{n} {a:.1f}-{b:.1f}" for n, a, b in sceny))
+    for n, a, b in sceny:
+        w_oknie = [x for x in sceny if a <= x[1] < a + 30]
+        if len(w_oknie) > 2:
+            print(f"UWAGA (zasada 10): {len(w_oknie)} scen w oknie {a:.1f}-{a + 30:.1f} s (dozwolone 2): "
+                  + ", ".join(x[0] for x in w_oknie) + ". Polacz je w jedna scene albo zostaw sama twarz z plynnym zoomem.")
+            break
     if za_dlugie:
         print(f"UWAGA: {len(za_dlugie)} fraz nie miesci sie w strefie bezpiecznej ({CAP_W} px) przy czcionce >= {CAP_MIN} px. "
               f"Podziel je w PHRASES (do ok. {int(CAP_W / (CAP_MIN * 0.54))} znakow):")
@@ -550,7 +581,7 @@ TEMPLATE = r"""<!doctype html>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
       #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--font-display); color: var(--ink); }
-      #vwrap { position: absolute; inset: 0; transform-origin: 50% 36%; }
+      #zwrap, #vwrap { position: absolute; inset: 0; transform-origin: 50% 36%; }
       #aroll { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; }
 
       .kin { position: absolute; left: 0; right: 0; top: {{KIN_TOP}}px; text-align: center; z-index: 30; }
@@ -690,10 +721,10 @@ TEMPLATE = r"""<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{{TOTAL}}" data-width="1080" data-height="1920">
-    <div id="vwrap">
+    <div id="zwrap"><div id="vwrap">
       <video id="aroll" class="clip" src="aroll.mp4" data-start="0" data-duration="{{TOTAL}}" data-track-index="0" muted playsinline></video>
       <audio id="glos" src="glos.wav" data-start="0" data-duration="{{TOTAL}}" data-track-index="9"></audio>
-    </div>
+    </div></div>
     {{ELEMENTS}}
     </div>
     <script>

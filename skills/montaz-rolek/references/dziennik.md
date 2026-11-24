@@ -182,5 +182,31 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Wniosek:** przy lektorze z TTS sprawdzaj obwiednią koniec każdej kwestii (ostatnie 40 ms mają być poniżej -50 dB), a narrację generuj jednym ciągiem. W filmach z aplikacją pokazuj ją tak, jak widzi ją klient, i animuj jak przeglądanie, a nie jako statyczne plansze.
 - **Ocena v3:** czeka.
 
+## 2026-11-24, zmiana stylu animacji: mniej, ale płynniej (zasada 10)
+- **Zlecenie:** referencja (rolka o Instagramie ze snapgramu) i prośba: „wszystko jest mega płynne… nasze animacje są trochę mniej płynne… mniej tych przejść, ale więcej bardzo płynnych zoomów, jakaś bardzo ciekawa i złożona animacja… maksymalnie 2 animacje per 30 sekund… bardziej premium, bo teraz jest bardziej AI slopowe”.
+- **Analiza referencji:** 27 s, jedno ujęcie bez twardych cięć, tylko 3 momenty graficzne:
+  - jasna plansza z tekstem dopisywanym słowo po słowie;
+  - jedna długa scena (ok. 8 s), w której kamera jedzie po ekranie telefonu i przybliża podświetlane elementy;
+  - jedna karta komentarza na przyciemnionym obrazie.
+
+  Przez resztę czasu jest sama twarz z miękkimi zoomami.
+- **Zmiany w skillu:**
+  - zasada 10 w SKILL.md;
+  - `styl.md`, punkty 5 i 6;
+  - szablon `kompozycja.py`:
+    - domyślne przejście `"fade"`;
+    - `pop` i `overlay` bez `back.out` (0,55–0,6 s, `power3.out` / `expo.out`, z rozmyciem);
+    - `zoom()` na nowym kontenerze `#zwrap`;
+    - `scena()` z ostrzeżeniem, gdy w oknie 30 s są więcej niż 2 sceny;
+  - SFX 6–10 na minutę;
+  - zasada w `ZASADY.md`.
+- **Próbka:** IMG_0717 v3 („45 godzin i 3000 zł – PRÓBKA płynny styl”). Zamiast 12 grafik są 3 sceny:
+  - scena A: 30 × 1,5 h → 45 h → paski i „ponad etat”, z kamerą odjeżdżającą od równania;
+  - scena B: marki → agent w Claude → surowe nagranie → gotowa rolka, z kamerą zjeżdżającą w dół;
+  - CTA z planszą końcową.
+
+  Do tego 6 płynnych zoomów na twarz (`sine.inOut`, 1,4–3,5 s), 9 efektów dźwiękowych (11,5 na minutę). Wersja v2 została obok do porównania.
+- **Ocena Jakuba:** czeka.
+
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

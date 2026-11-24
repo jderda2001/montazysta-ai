@@ -126,6 +126,7 @@ D="$HOME/Desktop/Montażysta AI/Eksporty/Rolki/<RRRR-MM-DD Tytuł>"   # reklamy:
 mkdir -p "$D" && cp -f renders/final.mp4 "$D/<Tytuł>_MM.RR.mp4"
 ```
 - Dobrze: −14,0 LUFS, szczyt −1,5, przesunięcie 0,00 ms, różnica ok. −30 dB (szum AAC), w transkrypcji kawałkami brak powtórzeń.
+- **Przy ciasnych stykach kawałki z `kontrola_eksportu.py` robią się długie (ponad 30 s) i whisper gubi albo przekręca końcówki** (C4535, 25.11.2026: „Cześć i koniecznie zaobserwuj”, a w nagraniu było pełne CTA). Zanim uznasz to za błąd montażu, przepisz podejrzany fragment osobno, w oknie 10–12 s.
 - Render z HyperFrames: 47 s rolki to ok. 70 s pracy, ok. 50 MB.
 
 ## 10. Porównania A/B

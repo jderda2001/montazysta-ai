@@ -39,6 +39,15 @@ Potrzebne są macOS, Claude Code i dostęp do tego repo (zaproszenie od Jakuba n
    Przed tym poleceniem skopiuj klucz do schowka.
 5. Otwórz Claude Code w folderze `~/Montażysta AI`. W aplikacji desktopowej wybierz ten folder, w terminalu wpisz `cd ~/"Montażysta AI" && claude`.
 
+## Twoje referencje (wgraj po instalacji)
+
+Repo nie zawiera cudzych rolek ani zdjęć. Każdy wgrywa swoje, a instalator przypomni o tym na końcu i otworzy folder:
+
+- **`~/Desktop/Montażysta AI/Referencje i wytyczne/Rolki wzorcowe/`**: 1–3 rolki, które Ci się podobają, Twoje albo ulubionych twórców (pobrane np. przez snapgram albo ssstik). Montażysta ogląda je przed montażem i bierze z nich tempo, ruch, styl wstawek, CTA i plansz końcowych.
+- **`~/Desktop/Montażysta AI/Referencje i wytyczne/Zdjęcie profilowe/`**: Twoje zdjęcie profilowe, najlepiej kwadratowe, z twarzą na środku. Trafia do CTA (profil, wiadomość) i na plansze końcowe.
+
+Opis tego, czego szukać we wzorcach, jest w `skills/montaz-rolek/references/wzorce/README.md`.
+
 ## Jak pracować
 
 - Nagranie z iPhone'a wrzuć do `~/Downloads` albo do `~/Desktop/Montażysta AI/Nagrania `. Napisz Claude'owi, co to jest: reklama adGen z hookami A/B/C, rolka PerfOS albo rolka organiczna. Dołącz scenariusz, jeśli go masz.

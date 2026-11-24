@@ -70,8 +70,8 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
       - `stos`: trzy szklane karty w wachlarzu.
 
       Pod planszą zostaje rozmyty A-roll, więc ostatnie kwestie nie mogą być przykryte inną planszą. Każda rolka dostaje inną planszę niż poprzednia; zapis w dzienniku.
-    - **Zdjęcie profilowe Jakuba:** `assets/jakub_avatar.jpg` (512×512, z „Referencji i wytycznych”). Używaj go w CTA `profil` i `dm` oraz na planszach `profil`, `telefon`, `jasna` i `stos`; skopiuj do `hf/` i podaj `foto="avatar.jpg"`. Gdy komentarz pisze widz (`pole`, `arkusz`), zostaje neutralny awatar.
-    - Podgląd wszystkiego i rolki wzorcowe: `references/wzorce/` (README z opisem; zatwierdzone 24.11.2026 słowami „zajebiste!!!!”). Demo generuje `scripts/demo_szklo_cta.py`.
+    - **Zdjęcie profilowe i rolki wzorcowe są u użytkownika, nie w repo:** `~/Desktop/Montażysta AI/Referencje i wytyczne/Zdjęcie profilowe/` (`foto = cta.przygotuj_avatar(P / "hf")` przycina do 512 px i kopiuje do `hf/`) oraz `…/Rolki wzorcowe/`. Przed montażem obejrzyj rolki wzorcowe. Gdy folder jest pusty, poproś o wgranie. Opis w `references/wzorce/README.md`.
+    - Podgląd wszystkich CTA i plansz: `scripts/demo_szklo_cta.py` (film demo na tle dowolnego A-rollu).
     - **Napisy na jasnej planszy są ciemne**, a wyróżnienie to miętowy zakreślacz pod słowem. Krój, rozmiar, pozycja i ruch zostają; klasę `dk` nadaje `kompozycja.py` sam. To jedyny wyjątek od zasady 1 i wynika z czytelności.
 
 ## Foldery i nazwy

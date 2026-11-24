@@ -7,7 +7,7 @@ Uzycie w build() kompozycji:
     h, j, d = cta.cta("arkusz", "cta", t_in, t_out, "ROLKA", t_slowo, foto="avatar.jpg")
     h2, j2, d2 = cta.plansza("profil", "pend", end_card_in, total, "ROLKA", "a podeślę Ci link do skilla", foto="avatar.jpg")
     el += [h, h2]; js += j + j2; dzw += d + d2
-oraz cta.CTA_CSS w <style>. Zdjecie profilowe Jakuba: skills/montaz-rolek/assets/jakub_avatar.jpg (skopiuj do hf/).
+oraz cta.CTA_CSS w <style>. Zdjecie profilowe: foto = cta.przygotuj_avatar(P / "hf") (z Referencje i wytyczne/Zdjecie profilowe).
 
 CTA (nad napisami, srodek na osi 540 px):
     pole     - pole komentarza, slowo wpisuje sie litera po literze, przycisk wyslij
@@ -24,6 +24,23 @@ Plansze koncowe (pelny ekran, A-roll rozmyty pod tafla):
 Ruch wedlug zasady 10: bez sprezyn, 0,5-0,9 s power3.out / expo.out, rozmycie schodzi do zera, powolny dryf.
 """
 import html
+import subprocess
+from pathlib import Path
+
+FOLDER_ZDJECIA = Path.home() / "Desktop/Montażysta AI/Referencje i wytyczne/Zdjęcie profilowe"
+
+
+def przygotuj_avatar(hf_dir):
+    """Bierze pierwsze zdjecie z Referencje i wytyczne/Zdjecie profilowe, przycina do kwadratu 512 px (srodek) i zapisuje
+    jako hf/avatar.jpg. Zwraca "avatar.jpg" albo None (wtedy CTA i plansze pokaza inicjaly)."""
+    pliki = sorted(p for p in FOLDER_ZDJECIA.glob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".heic"))
+    if not pliki:
+        print(f"UWAGA: brak zdjecia profilowego w {FOLDER_ZDJECIA} - CTA i plansze z inicjalami. Popros uzytkownika o zdjecie.")
+        return None
+    cel = Path(hf_dir) / "avatar.jpg"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(pliki[0]), "-vf",
+                    "crop='min(iw,ih)':'min(iw,ih)',scale=512:512:flags=lanczos", "-q:v", "2", str(cel)], check=True)
+    return "avatar.jpg"
 
 WARIANTY = ["pole", "arkusz", "pigulka", "profil", "dm"]
 PLANSZE = ["profil", "slowo", "telefon", "jasna", "stos"]

@@ -85,7 +85,7 @@ fi
 ok "twarz (pomiar twarzy)"
 
 # 8. Foldery robocze
-mkdir -p "$DOM/projekty" "$PULPIT/Nagrania " "$PULPIT/Referencje i wytyczne" \
+mkdir -p "$DOM/projekty" "$PULPIT/Nagrania " "$PULPIT/Referencje i wytyczne/Rolki wzorcowe" "$PULPIT/Referencje i wytyczne/Zdjęcie profilowe" \
          "$PULPIT/Eksporty/Rolki" "$PULPIT/Eksporty/Reklamy adGen" "$PULPIT/Eksporty/YouTube"
 ok "foldery: ~/Montażysta AI/projekty i ~/Desktop/Montażysta AI (Nagrania, Eksporty, Referencje)"
 
@@ -114,5 +114,23 @@ ffmpeg -hide_banner -version 2>/dev/null | head -1
 whisper-cli --help 2>&1 | grep -q -- "-nfa" && ok "whisper-cli (z -nfa)" || print -P "%F{yellow}!%f whisper-cli bez flagi -nfa: daj znać Jakubowi"
 [[ -s "$HOME/.config/kie/api_key" || -n "${KIE_API_KEY:-}" ]] && ok "klucz kie.ai" \
   || print -P "%F{yellow}!%f brak klucza kie.ai (potrzebny tylko do miniatur): zapisz go w ~/.config/kie/api_key i ustaw chmod 600"
+# 13. Twoje referencje (nie ma ich w repo - kazdy wgrywa swoje)
+REF="$PULPIT/Referencje i wytyczne"
+nr=$(ls "$REF/Rolki wzorcowe" 2>/dev/null | grep -ciE '\.(mp4|mov)$')
+nz=$(ls "$REF/Zdjęcie profilowe" 2>/dev/null | grep -ciE '\.(jpg|jpeg|png|heic)$')
+print
+print -P "%F{cyan}━━━ Twoje referencje ━━━%f"
+if [[ $nr -gt 0 ]]; then ok "rolki wzorcowe: $nr"; else
+  print -P "%F{yellow}!%f Wgraj 1–3 rolki, które Ci się podobają (Twoje albo ulubionych twórców), do:"
+  print "    $REF/Rolki wzorcowe/"
+  print "    Montażysta bierze z nich tempo, ruch, wstawki, CTA i plansze końcowe (zasada 10 w skillu)."
+fi
+if [[ $nz -gt 0 ]]; then ok "zdjęcie profilowe"; else
+  print -P "%F{yellow}!%f Wgraj swoje zdjęcie profilowe (kwadratowe, twarz na środku) do:"
+  print "    $REF/Zdjęcie profilowe/"
+  print "    Trafi do CTA (profil, wiadomość) i na plansze końcowe."
+fi
+open "$REF" 2>/dev/null
+
 print
 ok "Gotowe. Otwórz nowe okno terminala (albo Claude Code) w folderze: $DOM"

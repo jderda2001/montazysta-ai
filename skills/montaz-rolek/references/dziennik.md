@@ -227,7 +227,7 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **Ocena demo 1:** „zajebiste… daję Ci w referencjach moje zdjęcie profilowe, ten glass jest super, ale jeszcze trochę zrobiłbym bardziej jak Apple (liquid glass). Daj jeszcze 5 wersji planszy końcowej (aby była bardziej premium, może też być liquid glass)”.
 - **Zrobione:**
   - CTA przestylowane na `.lglass` (Liquid Glass, biały tekst);
-  - zdjęcie profilowe w `assets/jakub_avatar.jpg`;
+  - zdjęcie profilowe (od 24.11.2026 u użytkownika w `Referencje i wytyczne/Zdjęcie profilowe/`, nie w repo);
   - 5 plansz końcowych w `cta.plansza()` (`profil`, `slowo`, `telefon`, `jasna`, `stos`) na rozmytym A-rollu;
   - demo 2: „Liquid Glass, 5 CTA i 5 plansz końcowych” (48 s, 60 kl./s).
 - **Użyte plansze końcowe (prowadź od teraz):** IMG_0717 v2 – stary dymek „ROLKA” na ciemnym tle.
@@ -238,7 +238,13 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
   - CTA `arkusz` (niższy arkusz z jednym starym komentarzem, `c-wys`, żeby nie wchodził na napisy);
   - plansza `profil` (karta 660 px, z zapasem na dryf 1,035 w strefie).
 - **Użyte (rotacja):** IMG_0717 v3 – CTA `arkusz`, plansza `profil`.
-- **Referencje zapisane w skillu:** `references/wzorce/` (2 rolki referencyjne, zdjęcie profilowe, zatwierdzone demo, README).
+- **Referencje (poprawka Jakuba):** „zdjęcia i grafiki referencyjne niech będą w README/installation… żeby wgrać w dane miejsce rolki, które się tej osobie podobają, np. swoje albo od ulubionych twórców, a także swoje zdjęcie profilowe”.
+  - Pliki wyszły z repo.
+  - Każdy trzyma je u siebie: `Referencje i wytyczne/Rolki wzorcowe/` i `…/Zdjęcie profilowe/`.
+  - Instalator na końcu przypomina o wgraniu i otwiera folder.
+  - `cta.przygotuj_avatar()` bierze zdjęcie stamtąd.
+  - `references/wzorce/README.md` opisuje, czego szukać we wzorcach.
+  - U Jakuba skopiowane: 2 rolki wzorcowe, zatwierdzone demo, `avatar.jpg`.
 - **Ocena demo (24.11.2026):** szkło bez uwag; które CTA w rotacji: „Wszystkie 5”. Rotacja: pole → arkusz → pigulka → profil → dm, każda rolka inny wariant niż poprzednia.
 
 ## Statystyki z Instagrama

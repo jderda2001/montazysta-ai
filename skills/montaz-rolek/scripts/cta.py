@@ -80,7 +80,7 @@ def cta(wariant, cid, t_in, t_out, slowo, t_slowo, uchwyt="jakub.derda", imie="J
 
     if wariant == "arkusz":
         stare = "".join(f'<div class="c-row c-old"><span class="c-av sm"></span><span class="c-sk"><i style="width:{w}px"></i><i style="width:{w2}px"></i></span></div>'
-                        for w, w2 in ((160, 300), (120, 240)))
+                        for w, w2 in ((160, 300),))
         inner = ('<div class="lglass c-ark"><div class="c-hd"><span class="c-grab"></span><b>Komentarze</b></div>'
                  f'<div class="c-list"><div class="c-row c-new" id="{cid}new"><span class="c-av sm mint">{_ic("user", 26)}</span>'
                  f'<span class="c-tx"><b>Ty</b><span class="c-kw">{s}</span></span><span class="c-hrt" id="{cid}hr">{_ic("heart", 30)}</span></div>'
@@ -89,7 +89,7 @@ def cta(wariant, cid, t_in, t_out, slowo, t_slowo, uchwyt="jakub.derda", imie="J
         js.append(f'tl.to("#{cid}new",{{height:84,opacity:1,duration:0.7,ease:"power3.inOut"}},{t_slowo - 0.1:.3f});')
         js.append(f'tl.to("#{cid}hr",{{color:"#ff3b5c",fill:"#ff3b5c",duration:0.35,ease:"power2.out"}},{t_slowo + 0.9:.3f});')
         dzw.append({"t": t_slowo - 0.1, "typ": "powiad"})
-        return wrap(inner, "c-dol"), js, dzw
+        return wrap(inner, "c-dol c-wys"), js, dzw  # wyzszy arkusz zaczyna sie wyzej, zeby nie wchodzic na napisy
 
     if wariant == "pigulka":
         inner = (f'<div class="lglass c-pig"><span>Napisz</span><span class="c-chip" id="{cid}ch">{s}</span><span>w komentarzu</span>'
@@ -213,6 +213,7 @@ CTA_CSS = r"""
                     radial-gradient(60% 40% at 100% 100%, rgba(255,255,255,.16), rgba(255,255,255,0) 70%); }
       .ctaw { position: absolute; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; z-index: 26; }
       .ctaw.c-dol { top: 900px; }
+      .ctaw.c-dol.c-wys { top: 830px; }
       .cic { flex: none; }
       .c-av { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.18); color: #fff; flex: none;
         font-size: 24px; font-weight: 800; overflow: hidden; }
@@ -268,7 +269,7 @@ CTA_CSS = r"""
       .e-ring { display: inline-block; padding: 8px; border-radius: 50%; background: conic-gradient(from 200deg, var(--accent), rgba(255,255,255,.9), var(--accent)); }
       .e-ring .c-av { border: 6px solid #0f1012; }
       .e-mid.dk .e-ring .c-av { border-color: #f5f5f2; }
-      .e-prof { position: absolute; left: 165px; width: 750px; top: 330px; padding: 44px 40px 40px; border-radius: 56px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+      .e-prof { position: absolute; left: 210px; width: 660px; top: 330px; padding: 44px 40px 40px; border-radius: 56px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
       .e-nm { font-size: 56px; margin-top: 14px; }
       .e-uh { font-size: 30px; color: rgba(255,255,255,.72); }
       .e-l1 { font-size: 46px; font-weight: 800; letter-spacing: -0.01em; margin-top: 22px; }

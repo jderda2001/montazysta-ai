@@ -71,7 +71,7 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
 
       Pod planszą zostaje rozmyty A-roll, więc ostatnie kwestie nie mogą być przykryte inną planszą. Każda rolka dostaje inną planszę niż poprzednia; zapis w dzienniku.
     - **Zdjęcie profilowe Jakuba:** `assets/jakub_avatar.jpg` (512×512, z „Referencji i wytycznych”). Używaj go w CTA `profil` i `dm` oraz na planszach `profil`, `telefon`, `jasna` i `stos`; skopiuj do `hf/` i podaj `foto="avatar.jpg"`. Gdy komentarz pisze widz (`pole`, `arkusz`), zostaje neutralny awatar.
-    - Podgląd wszystkiego: `Eksporty/Rolki/2026-11-24 Szkło i CTA – demo/` (skrypt `scripts/demo_szklo_cta.py`).
+    - Podgląd wszystkiego i rolki wzorcowe: `references/wzorce/` (README z opisem; zatwierdzone 24.11.2026 słowami „zajebiste!!!!”). Demo generuje `scripts/demo_szklo_cta.py`.
     - **Napisy na jasnej planszy są ciemne**, a wyróżnienie to miętowy zakreślacz pod słowem. Krój, rozmiar, pozycja i ruch zostają; klasę `dk` nadaje `kompozycja.py` sam. To jedyny wyjątek od zasady 1 i wynika z czytelności.
 
 ## Foldery i nazwy

@@ -231,6 +231,14 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
   - 5 plansz końcowych w `cta.plansza()` (`profil`, `slowo`, `telefon`, `jasna`, `stos`) na rozmytym A-rollu;
   - demo 2: „Liquid Glass, 5 CTA i 5 plansz końcowych” (48 s, 60 kl./s).
 - **Użyte plansze końcowe (prowadź od teraz):** IMG_0717 v2 – stary dymek „ROLKA” na ciemnym tle.
+- **Ocena demo 2 i decyzja (24.11.2026):** „zajebiste!!!! dobra, to daj eksport tego full, wrzucę na IG, zapisz całe referencje”. Wszystkie 5 plansz końcowych w rotacji.
+- **Eksport finalny IMG_0717** „45 godzin i 3000 zł” (zastąpił v2):
+  - 60 kl./s (A-roll w 30 kl./s, bo źródło zniknęło);
+  - jasne sceny z kurtyną, płynne zoomy;
+  - CTA `arkusz` (niższy arkusz z jednym starym komentarzem, `c-wys`, żeby nie wchodził na napisy);
+  - plansza `profil` (karta 660 px, z zapasem na dryf 1,035 w strefie).
+- **Użyte (rotacja):** IMG_0717 v3 – CTA `arkusz`, plansza `profil`.
+- **Referencje zapisane w skillu:** `references/wzorce/` (2 rolki referencyjne, zdjęcie profilowe, zatwierdzone demo, README).
 - **Ocena demo (24.11.2026):** szkło bez uwag; które CTA w rotacji: „Wszystkie 5”. Rotacja: pole → arkusz → pigulka → profil → dm, każda rolka inny wariant niż poprzednia.
 
 ## Statystyki z Instagrama

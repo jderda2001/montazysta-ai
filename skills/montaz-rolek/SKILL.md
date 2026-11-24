@@ -61,6 +61,17 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
     - **Kurtyna:** jasna plansza zjeżdża z góry w 0,55 s z `power3.inOut` i tak samo odjeżdża, a treść tylko łagodnie się pojawia. To domyślne wejście jasnej planszy.
     - **Wariant szkło** (Jakub, 24.11.2026: „fajne białe tło, ale można by dodać też taką wersję blurred glass, tak jak na Apple”). `panel(..., szklo=True)` daje matową, jasną taflę (`backdrop-filter: blur(54px) saturate(165%)`), spod której prześwituje rozmyty A-roll, z półprzezroczystymi kartami `.lcard`. Przeplataj białą i szklaną wstawkę, np. jedną białą i jedną szklaną w rolce.
     - **CTA za każdym razem w innym wariancie**, w tym samym jasnym, szklanym stylu (Jakub: „daj różne wersje CTA… bardziej różnorodne”). Warianty są w `scripts/cta.py`: `pole` (pole komentarza), `arkusz` (arkusz komentarzy z Instagrama), `pigulka` („Napisz SŁOWO w komentarzu”), `profil` (Obserwuj → Obserwujesz) i `dm` (wiadomość i odpowiedź z linkiem). Przed wyborem sprawdź w dzienniku, który wariant był w poprzedniej rolce, weź inny i zapisz, którego użyłeś. Podgląd wszystkich: `Eksporty/Rolki/2026-11-24 Szkło i CTA – demo/`.
+    - **Liquid Glass na wideo** (Jakub: „glass jest super, ale jeszcze trochę bardziej jak Apple (liquid glass)”). CTA i plansze końcowe leżące na A-rollu są w klasie `.lglass` z `cta.py`: przezroczysta tafla z mocnym rozmyciem i nasyceniem tła, jasna krawędź z odblaskiem u góry po lewej, wewnętrzna poświata, biały tekst i miętowe akcenty z ciemnym tekstem.
+    - **Plansza końcowa też w rotacji, 5 wariantów** w `cta.plansza()`:
+      - `profil`: szklana karta ze zdjęciem w miętowym pierścieniu i przyciskiem Obserwuj;
+      - `slowo`: wielka szklana pigułka ze słowem i przejeżdżającym odblaskiem;
+      - `telefon`: szklany telefon z komentarzem i odpowiedzią z linkiem;
+      - `jasna`: jasna plansza z zakreślonym słowem;
+      - `stos`: trzy szklane karty w wachlarzu.
+
+      Pod planszą zostaje rozmyty A-roll, więc ostatnie kwestie nie mogą być przykryte inną planszą. Każda rolka dostaje inną planszę niż poprzednia; zapis w dzienniku.
+    - **Zdjęcie profilowe Jakuba:** `assets/jakub_avatar.jpg` (512×512, z „Referencji i wytycznych”). Używaj go w CTA `profil` i `dm` oraz na planszach `profil`, `telefon`, `jasna` i `stos`; skopiuj do `hf/` i podaj `foto="avatar.jpg"`. Gdy komentarz pisze widz (`pole`, `arkusz`), zostaje neutralny awatar.
+    - Podgląd wszystkiego: `Eksporty/Rolki/2026-11-24 Szkło i CTA – demo/` (skrypt `scripts/demo_szklo_cta.py`).
     - **Napisy na jasnej planszy są ciemne**, a wyróżnienie to miętowy zakreślacz pod słowem. Krój, rozmiar, pozycja i ruch zostają; klasę `dk` nadaje `kompozycja.py` sam. To jedyny wyjątek od zasady 1 i wynika z czytelności.
 
 ## Foldery i nazwy

@@ -11,7 +11,7 @@ cta = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(cta)
 
 el, js = [], []
-TOTAL = 28.0
+TOTAL = 28.0  # nadpisywane nizej
 
 # --- wstawka "szklo" (kurtyna z gory, A-roll rozmyty pod tafla)
 t0, t1 = 0.8, 4.8
@@ -24,17 +24,27 @@ js.append(f'tl.to("#pg",{{y:-1920,duration:0.5,ease:"power3.inOut"}},{t1 - 0.5:.
 for k, t in ((1, 1.4), (2, 2.1), (3, 2.4)):
     js.append(f'tl.fromTo("#g{k}",{{opacity:0,y:20,filter:"blur(10px)"}},{{opacity:1,y:0,filter:"blur(0px)",duration:0.6,ease:"power3.out"}},{t:.2f});')
 
-# --- 5 wariantow CTA
+# --- 5 wariantow CTA (Liquid Glass, ze zdjeciem profilowym) i 5 plansz koncowych
 plan = [("pole", 5.2, 9.2, 6.2), ("arkusz", 9.6, 13.6, 10.4), ("pigulka", 14.0, 18.0, 15.0),
         ("profil", 18.4, 22.4, 19.4), ("dm", 22.8, 27.8, 23.6)]
 for n, (w, a, b, ts) in enumerate(plan):
-    h, j, _ = cta.cta(w, f"c{n}", a, b, "ROLKA", ts)
+    h, j, _ = cta.cta(w, f"c{n}", a, b, "ROLKA", ts, foto="avatar.jpg")
     el.append(h)
     js.extend(j)
-etyk = [(0.8, 4.8, "WSTAWKA · SZKŁO")] + [(a, b, f"CTA {n + 1} · {w}") for n, (w, a, b, ts) in enumerate(plan)]
+pl = []
+t = 28.2
+for n, w in enumerate(cta.PLANSZE):
+    a, b = t, t + 3.8
+    h, j, _ = cta.plansza(w, f"e{n}p", a, b, "ROLKA", "a podeślę Ci link do skilla", foto="avatar.jpg")
+    el.append(h)
+    js.extend(j)
+    pl.append((a, b, f"PLANSZA {n + 1} · {w}"))
+    t = b + 0.2
+TOTAL = round(t, 2)
+etyk = [(0.8, 4.8, "WSTAWKA · SZKŁO")] + [(a, b, f"CTA {n + 1} · {w}") for n, (w, a, b, ts) in enumerate(plan)] + pl
 for n, (a, b, txt) in enumerate(etyk):
-    el.append(f'<div id="e{n}" class="etyk clip" data-start="{a:.2f}" data-duration="{b - a:.2f}" data-track-index="8"><span>{txt}</span></div>')
-    js.append(f'tl.fromTo("#e{n}",{{opacity:0}},{{opacity:1,duration:0.4}},{a:.2f}); tl.to("#e{n}",{{opacity:0,duration:0.3}},{b - 0.3:.2f});')
+    el.append(f'<div id="et{n}" class="etyk clip" data-start="{a:.2f}" data-duration="{b - a:.2f}" data-track-index="9"><span>{txt}</span></div>')
+    js.append(f'tl.fromTo("#et{n}",{{opacity:0}},{{opacity:1,duration:0.4}},{a:.2f}); tl.to("#et{n}",{{opacity:0,duration:0.3}},{b - 0.3:.2f});')
 
 page = f"""<!doctype html>
 <html lang="pl" data-resolution="portrait"><head><meta charset="UTF-8" />
@@ -59,7 +69,7 @@ page = f"""<!doctype html>
   .lcard b {{ font-size: 48px; }}
   .lcard span {{ font-size: 28px; font-weight: 700; color: #00a874; }}
   .lcard.sm {{ padding: 22px 30px; font-size: 28px; font-weight: 800; letter-spacing: .06em; }}
-  .etyk {{ position: absolute; left: 0; right: 0; top: 1190px; display: flex; justify-content: center; z-index: 40; }}
+  .etyk {{ position: absolute; left: 0; right: 0; top: 1200px; z-index: 60; display: flex; justify-content: center; z-index: 40; }}
   .etyk span {{ padding: 8px 20px; border-radius: 100px; background: rgba(0,0,0,.55); font-size: 26px; font-weight: 700; letter-spacing: .08em; }}
 {cta.CTA_CSS}
 </style></head><body>

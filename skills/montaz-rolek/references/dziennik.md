@@ -260,4 +260,24 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
   - sformułowania, które są dwa razy w tekście („który jest wspomagany przez”): akustyka je pomija, chyba że podobieństwo ≥ 0,85.
 
 ## Statystyki z Instagrama
+
+### 2026-11-24, zrzuty od Jakuba (6 rolek, IG + FB)
+Przypisanie po klatce i długości; dwóch rolek z 1:33 i 1:51 nie da się pewnie przypisać do konkretnych podsumowań, więc ich liczby podaję razem.
+
+| Rolka | Wyśw. | Pominięcia | Polub. | Kom. | Udost. | Zapis. | Krzywa |
+|---|---|---|---|---|---|---|---|
+| IMG_0688 „Agent AI w pół roku” (0:49) | 837 | 65,4% | 2,2% | 0,5% | 0,2% | 0,0% | spadek do ok. 25% w 3–5 s, potem płasko |
+| IMG_0717 „45 godzin” v2, stary styl (0:47) | 556 | 74,8% | 2,5% | 2,5% | 0,0% | 0,4% | to samo |
+| „Zakładając firmę… KORPO” (1:05, nie nasz montaż, duży napis od 1. klatki) | 624 | 63,3% | 5,9% | 0,0% | 1,0% | 0,0% | najłagodniejszy spadek |
+| IMG_0718 „Mój stack AI” (1:12) | 1013 | 74,8% | 2,7% | 2,2% | 1,6% | 0,6% | spadek do ok. 20%, potem płasko |
+| IMG_0576 „10K vs 100K” (1:33) i IMG_0597 PerfOS (1:51) | 1130 / 1382 | 68,1% / 68,6% | 3,2% / 2,9% | 0,2% / 0,9% | 0,5% / 0,4% | 0,0% / 0,4% | spadek do ok. 20–25%, potem płasko |
+
+- **Wniosek:** widzów tracimy w pierwszych 2–3 sekundach (pominięcia 63–75%). Kto zostanie, ogląda prawie do końca, bo krzywe są płaskie. Środek montażu trzyma, a problemem jest wejście:
+  - pierwsza klatka bez czytelnego hasła (napisy i hook kinetyczny pojawiają się słowo po słowie);
+  - hook zaczyna się od kontekstu („W listopadzie 2025…”, „Dzisiaj, czyli dokładnie rok później…”), a nie od puenty;
+  - hook mówi o Jakubie („moja firma”, „mój agent”), a nie o korzyści widza;
+  - pierwsza klatka jest ciemna i ma niski kontrast (ciemny pokój, zielony LED).
+- **Najlepszy wynik:** najmniej pominięć i najwięcej polubień i udostępnień miała rolka „KORPO” z dużym, gotowym napisem od 1. klatki i uniwersalnym tematem. Najwięcej udostępnień: „Mój stack AI” (konkretna wartość do zabrania). CTA ze słowem-kluczem działa (komentarze 2,2–2,5%).
+- **Źródła:** Aktualności, Karta Rolki i Relacje; Eksploruj tylko 1,5–3,9%, czyli zasięg głównie u obserwujących.
+
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

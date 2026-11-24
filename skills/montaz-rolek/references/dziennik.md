@@ -224,7 +224,7 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
 - **CTA:** moduł `scripts/cta.py` z 5 wariantami (`pole`, `arkusz`, `pigulka`, `profil`, `dm`) na jasnym szkle, bez sprężyn. Każda rolka ma dostać inny wariant niż poprzednia.
 - **Demo:** `Eksporty/Rolki/2026-11-24 Szkło i CTA – demo/` (28 s, 60 kl./s, skrypt `scripts/demo_szklo_cta.py`).
 - **Użyte CTA (prowadź od teraz):** IMG_0717 v2 – stare pole komentarza.
-- **Ocena demo:** czeka.
+- **Ocena demo (24.11.2026):** szkło bez uwag; które CTA w rotacji: „Wszystkie 5”. Rotacja: pole → arkusz → pigulka → profil → dm, każda rolka inny wariant niż poprzednia.
 
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

@@ -247,5 +247,17 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
   - U Jakuba skopiowane: 2 rolki wzorcowe, zatwierdzone demo, `avatar.jpg`.
 - **Ocena demo (24.11.2026):** szkło bez uwag; które CTA w rotacji: „Wszystkie 5”. Rotacja: pole → arkusz → pigulka → profil → dm, każda rolka inny wariant niż poprzednia.
 
+## 2026-11-24, kontrola powtórzeń na całej rolce (`powtorzenia.py`)
+- **Zlecenie:** „są jeszcze czasem miejsca, w których się powtarzam albo poprawiam bardzo szybko… wiem, że to ciężkie do wyłapania, ale może da się dodać do skilla jeszcze jedno sprawdzenie, czy na pewno nie ma powtórzenia na całej rolce”.
+- **Odkrycie przy testach:** whisper nie zapisuje drugi raz frazy powtórzonej bez pauzy („Pewnie widzisz, że Pewnie widzisz, że…” wyszło raz), nawet na kawałkach dzielonych od 0,09 s. Dlatego doszło porównanie akustyczne (MFCC, podobieństwo fragmentu do fragmentu 0,2–3 s wcześniej).
+- **Kalibracja:**
+  - czyste rolki IMG_0717, IMG_0718 i IMG_0720: 0 alarmów;
+  - prawdziwe falstarty Jakuba z surowego IMG_0717 („Dobrze użyte AI nigdy…”, „Pewnie widzisz, że…”, „tak jak to… tak jak ta”): 3 na 3;
+  - wklejone wpadki (falstart, „Jedna jedna”, zdanie powtórzone na styku kwestii): 3 na 3;
+  - IMG_0640: 2 miejsca do odsłuchu, m.in. końcówka „Daj znać w komentarzu, ile…”, czyli tam, gdzie Jakub zgłaszał powtórzenie.
+- **Fałszywe alarmy usunięte:**
+  - zdania o tej samej budowie („To jest masakrą. / To jest spoko”): reguła krótkich falstartów tylko dla kawałków urwanych;
+  - sformułowania, które są dwa razy w tekście („który jest wspomagany przez”): akustyka je pomija, chyba że podobieństwo ≥ 0,85.
+
 ## Statystyki z Instagrama
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.

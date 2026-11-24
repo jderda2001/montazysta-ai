@@ -56,6 +56,8 @@ uv run --no-project --with numpy python3 -I skrypty/kawalki.py 3 4 9  # wybrane
 - **Nie skracaj końca kwestii na podstawie samej obwiedni.** Cichy fragment po ostatnim słowie bywa jego końcówką: po skróceniu ogona o 0,37 s z „Napoleon Hill” zostało „Napoleon”. Sprawdzian jak wyżej, whisper z ogonem i bez.
 - Nie tnij tego, co jest stylem, a nie potknięciem (westchnienie „Europa, no… co ja mogę rzec?”, pauza przed puentą). Wątpliwe miejsca, których nie ruszyłeś, wymień Jakubowi przy oddaniu.
 
+- **Kontrola całej rolki (od 24.11.2026, obowiązkowo):** po `aroll.py` uruchom `uv run --no-project --with numpy python3 -I skrypty/powtorzenia.py`. Szuka powtórzeń także na stykach kwestii i takich bez pauzy (porównanie akustyczne MFCC: okno 0,4 s przy odstępie 0,4–3 s z progiem 0,68 oraz okno 0,25 s przy odstępie 0,2–0,4 s z progiem 0,78). Celowo powtórzone sformułowania, które są dwa razy w tekście kwestii, pomija. Wynik: lista miejsc z klipami w `analiza/powtorzenia/` i kod wyjścia 1, gdy coś znalazł.
+
 ## 5. A-roll
 - W `aroll.py` ustaw `VIDEO`, `AUDIO`, `FRAMES` (pod twarz), `SEGS` = [(start_mowy, koniec_mowy, [(od, kadr), …], tekst), …] w czasie nagrania z mikrofonu.
 - Stałe: `PRE` 0,14, `POST` 0,22 (do 18.11.2026 było 0,10 / 0,15 i Jakub uznał część cięć za zbyt szybkie), `END_HOLD` 2,5. Wersja `aroll.py` z marginesami per kwestia (`{"pre": …, "post": …}`), twarzą per ujęcie, wyrównaniem głośności kwestii i pauzą `"HOLD"` (zwolnienie i zatrzymana klatka) jest w `projekty/IMG_0597/skrypty/`; bierz ją, gdy nagranie to iPhone 4K z mikrofonem podpiętym do telefonu.

@@ -85,6 +85,7 @@ Whisper wygładza zająknięcia, powtórzone zdania i falstarty. Przed oddaniem 
 - każdy alarm (`POWTORKA?`, `?`) rozstrzygnij whisperem bez promptu na samym kawałku i obwiednią z `fonemy.py`;
 - zająknięcie w środku kwestii wytnij polem `wytnij` w `SEGS`, a sklejkę sprawdź whisperem w trzech kontekstach;
 - po renderze przeczytaj kontrolę eksportu zdanie po zdaniu.
+- po `aroll.py` uruchom `powtorzenia.py` (cała rolka: frazy, falstarty, akustyka) i rozstrzygnij każde miejsce z klipu w `analiza/powtorzenia/`.
 
 ## Formaty i komplet przy oddaniu
 

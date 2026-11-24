@@ -62,6 +62,15 @@ O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyj
 - **Strefa bezpieczna rolek:** y 270–1245, x 70–1010. Od 860 px w dół prawa krawędź jest na 885 px, od 1145 px na 850 px. Przed każdym renderem uruchom `strefa.py` i dopiero przy zerze naruszeń renderuj.
 - **Napięcie przed puentą:** zdanie zapowiadające wynik („No i wynik”) dostaje najazd na twarz i ok. 1 s pauzy. Marginesy cięć: 0,22 s po zdaniu i 0,14 s przed zdaniem. Naturalnych pauz do ok. 0,5 s nie ścinaj.
 
+## Pierwsze 2 sekundy (od 24.11.2026, zasada 11 skilla)
+
+Statystyki 6 rolek: 63–75% widzów odpada w 2–3 s, a kto zostanie, ogląda do końca. Dlatego:
+- pełny hook na ekranie od klatki 0 (`hook0()`), z ruchem i jasnym startem;
+- puenta w pierwszych 1,5 s;
+- hasło pod widza, nie o sobie;
+- zawsze 2 wersje hooka (A i B) do testu przez „Próbne rolki”;
+- statystyki każdej rolki trafiają do dziennika.
+
 ## Dźwięk
 
 - Głos naturalny z mikrofonu, lekki mastering, −14 LUFS. Sidon albo „studio” tylko na prośbę albo przy wyraźnie złym nagraniu, i wtedy powiedz o tym przy oddaniu.

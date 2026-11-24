@@ -74,6 +74,15 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
     - Podgląd wszystkich CTA i plansz: `scripts/demo_szklo_cta.py` (film demo na tle dowolnego A-rollu).
     - **Napisy na jasnej planszy są ciemne**, a wyróżnienie to miętowy zakreślacz pod słowem. Krój, rozmiar, pozycja i ruch zostają; klasę `dk` nadaje `kompozycja.py` sam. To jedyny wyjątek od zasady 1 i wynika z czytelności.
 
+11. **Pierwsze 2 sekundy decydują (od 24.11.2026, na podstawie statystyk).** Sześć rolek miało 63–75% pominięć: widzowie odpadają w 2–3 s, a kto zostanie, ogląda prawie do końca (krzywe płaskie). Najmniej pominięć miała rolka z dużym, gotowym napisem od pierwszej klatki („KORPO”). Szczegóły są w dzienniku, w sekcji „Statystyki z Instagrama”. Zasady:
+    - **Klatka 0 ma pełny hook na ekranie.** `hook0()` w `kompozycja.py` stawia hasło (1–2 linie, 70–96 px, jedno słowo w akcencie) w górnej części kadru od pierwszej klatki, bez wjazdu i bez pisania słowo po słowie. Większość ludzi przewija bez dźwięku, więc w pierwszej sekundzie muszą przeczytać, o co chodzi. Hook kinetyczny z napisami słowo po słowie może iść pod spodem.
+    - **Ruch od pierwszej klatki:** szybki odjazd kadru 1,12 → 1,0 w 0,6 s (`power3.out`). Robi to `hook0()`.
+    - **Jasny start:** pierwsza klatka nie może być ciemna. `hook0()` rozjaśnia obraz przez pierwsze 1,2 s (brightness 1,15 → 1). Zmierz YAVG pierwszej klatki; cel to co najmniej ok. 70.
+    - **Puenta w pierwszych 1,5 s.** Zaczynaj od najmocniejszego zdania (liczba, kontrast, teza), a kontekst daj potem. Zdania typu „W listopadzie 2025…” czy „Dzisiaj, czyli dokładnie rok później…” nie mogą otwierać rolki. Gdy w nagraniu puenta pada później, przestaw kolejność kwestii albo daj ją jako hasło `hook0()`.
+    - **Hook pod widza, nie o sobie.** Hasło z klatki 0 mówi o korzyści albo problemie widza („Ten plik zastąpi Ci montażystę”), a nie o „mojej firmie”. Gdy nagranie mówi o Jakubie, hasło i tak może być pod widza.
+    - **Zawsze 2 wersje hooka** do testu przez „Próbne rolki” na Instagramie: wersja A (puenta o Jakubie, jak w nagraniu) i B (hasło pod widza albo inna kolejność). Pliki `<Tytuł>_HOOK A_MM.RR.mp4` i `_HOOK B_` w tym samym folderze Eksporty, a wzór dwóch wersji jest w `projekty/IMG_0576` (`hookB/`). Przy oddaniu napisz, czym się różnią, i poproś o wynik testu do dziennika.
+    - Wpisuj statystyki każdej rolki do dziennika (pominięcia, polubienia, komentarze, udostępnienia, kształt krzywej). Gdy hook B wygrywa kilka razy z rzędu, zmień domyślny styl hooka.
+
 ## Foldery i nazwy
 
 - **Wejście:** wideo zwykle w `~/Downloads/IMG_xxxx.mov` (iPhone, po obrocie 1080×1920). Audio z mikrofonu w `~/Desktop/Montażysta AI/Nagrania /` (uwaga: spacja na końcu nazwy folderu).

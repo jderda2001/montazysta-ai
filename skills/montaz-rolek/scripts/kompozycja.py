@@ -263,6 +263,24 @@ def build():
         elif do is not None:
             js.append(f'tl.set("#zwrap",{{scale:1}},{do:.3f});')
 
+    def hook0(linie, akcent=None, do=None, top=300, rozmiar=92):
+        """Zasada 11 (24.11.2026, statystyki: 63-75% pominiec w 2-3 s): pelny hook widoczny OD KLATKI 0, bez wjazdu.
+        linie: 1-2 linie hasla (do ok. 16 znakow na linie przy 92 px); akcent: slowo (albo jego fragment) w kolorze
+        akcentu; do: kiedy haslo znika (domyslnie koniec hooka). Do tego ruch od pierwszej klatki (odjazd 1,12 -> 1,0
+        w 0,6 s) i rozjasnienie startu (brightness 1,15 -> 1 przez 1,2 s)."""
+        do = do if do is not None else seg(1)["t_in"]
+        def lin(t):
+            if akcent and akcent in t:
+                a_, b_ = t.split(akcent, 1)
+                return f'{html.escape(a_)}<span class="hk0-ac">{html.escape(akcent)}</span>{html.escape(b_)}'
+            return html.escape(t)
+        el.append(f'<div id="hk0" class="hk0 clip" data-start="0" data-duration="{do:.3f}" data-track-index="5" style="top:{top}px">'
+                  + "".join(f'<div class="hk0-l" style="font-size:{rozmiar}px">{lin(t)}</div>' for t in linie) + "</div>")
+        js.append(f'tl.fromTo("#hk0",{{scale:1.04}},{{scale:1,duration:0.8,ease:"power3.out"}},0);')
+        js.append(f'tl.to("#hk0",{{opacity:0,y:-16,filter:"blur(8px)",duration:0.35,ease:"power2.inOut"}},{do - 0.35:.3f});')
+        js.append('tl.fromTo("#zwrap",{scale:1.12},{scale:1,duration:0.6,ease:"power3.out"},0);')
+        js.append('tl.fromTo("#vwrap",{filter:"brightness(1.15)"},{filter:"brightness(1)",duration:1.2,ease:"power1.out"},0);')
+
     # --- wideo: delikatny najazd w kazdym ujeciu
     js.append('gsap.set("#vwrap",{scale:1}); gsap.set("#zwrap",{scale:1});')
     for e in edl:
@@ -742,6 +760,10 @@ TEMPLATE = r"""<!doctype html>
         -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); box-shadow: 0 18px 48px rgba(15,16,18,.10), inset 0 1px 0 rgba(255,255,255,.9); }
       .cap.dk .w { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #0f1012; filter: none; }
       .cap.dk .w.hl { color: #0f1012; background: linear-gradient(transparent 58%, rgba(var(--accent-rgb),.6) 58%, rgba(var(--accent-rgb),.6) 92%, transparent 92%); }
+      /* hook od klatki 0 (zasada 11) */
+      .hk0 { position: absolute; left: 70px; right: 70px; text-align: center; z-index: 32; transform-origin: 50% 0; }
+      .hk0-l { font-weight: 900; letter-spacing: -0.03em; line-height: 1.02; color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,.6), 0 2px 6px rgba(0,0,0,.5); white-space: nowrap; }
+      .hk0-ac { color: var(--accent); }
       .leak { position: absolute; inset: -10%; z-index: 40; pointer-events: none; mix-blend-mode: screen;
         background: radial-gradient(45% 35% at 30% 45%, rgba(var(--accent-rgb),.6), rgba(var(--accent-rgb),0) 70%),
                     radial-gradient(40% 30% at 70% 60%, rgba(255,255,255,.5), rgba(255,255,255,0) 70%),

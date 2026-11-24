@@ -25,10 +25,46 @@ FRAMES = {
     "M": (940, 1672, 38, 102),    # zoom 1.15
     "C": (832, 1478, 92, 180),    # zoom 1.30
 }
-# Po zdaniu 0,22 s, przed zdaniem 0,14 s. Przy 0,10 / 0,15 Jakub uznal czesc ciec za zbyt szybkie (IMG_0597, 18.11.2026):
-# naturalne pauzy kurczyly sie do 0,25 s, a ciche koncowki slow wpadaly w wyciszenie. Ciecia w srodku zdania wymagaja
-# ciasniejszych wartosci per kwestia - patrz projekty/IMG_0597/skrypty/aroll.py.
-PRE, POST = 0.14, 0.22
+# Marginesy liczone od FAKTYCZNEGO glosu, nie od granic wysp z silencedetect (Jakub, 24.11.2026, C4527/C4528: "czasami
+# wkradaja sie krotkie przerwy pomiedzy jednym a drugim elementem... chcialbym, zeby byly minimalnie krotsze, zeby flow
+# bylo plynniejsze"). Wyspa zaczyna sie nawet 0,2 s przed pierwsza gloska, wiec na styku bylo srednio 0,53 s ciszy.
+# Start = poczatek glosu (-45 dB) - PRE; koniec = wygasniecie glosu (-52 dB, koncowki slow zostaja) + 0,22 s po zdaniu
+# (.?!) albo 0,12 s w srodku zdania. Wychodzi ok. 0,3-0,35 s miedzy zdaniami i ok. 0,2-0,25 s w srodku zdania.
+# (18.11.2026 przy stalych 0,10 / 0,15 od granic wysp Jakub uznal czesc ciec za zbyt szybkie - stad pomiar od glosu.)
+PRE, POST = 0.10, 0.22
+POST_SRODEK, POST_ZDANIE = 0.12, 0.22
+_WAV16 = P / "audio/nowe_16k.wav"  # dzwiek w czasie SEGS (mikrofon), mono 16 kHz
+
+
+def _db(t0, t1, hop=0.01, win=0.02):
+    import array, math, wave
+    with wave.open(str(_WAV16)) as w:
+        sr = w.getframerate()
+        w.setpos(max(0, int(t0 * sr)))
+        x = array.array("h", w.readframes(int((t1 - t0 + win) * sr)))
+    step, L, out, k = int(hop * sr), int(win * sr), [], 0
+    while k + L <= len(x):
+        rms = math.sqrt(sum(v * v for v in x[k:k + L]) / L) / 32768
+        out.append((t0 + k / sr, 20 * math.log10(rms + 1e-9)))
+        k += step
+    return out
+
+
+def poczatek_mowy(s, prog=-45.0, szukaj=0.5):
+    """Faktyczny poczatek glosu od s (pierwsze miejsce powyzej progu)."""
+    for t, d in _db(s - 0.06, s + szukaj):
+        if d > prog:
+            return max(s - 0.06, t - 0.02)
+    return s
+
+
+def koniec_mowy(e, prog=-52.0, szukaj=0.45):
+    """Faktyczny koniec glosu po e: pierwsze miejsce, od ktorego przez 30 ms jest ponizej progu."""
+    env = _db(e - 0.08, e + szukaj)
+    for i in range(len(env) - 2):
+        if env[i][0] >= e - 0.05 and all(env[j][1] < prog for j in range(i, i + 3)):
+            return env[i][0]
+    return e + 0.12
 END_HOLD = 2.5  # przytrzymanie po ostatnim slowie pod plansze koncowa
 
 # Kwestie: (start_mowy, koniec_mowy, [(od, kadr), ...], tekst[, wytnij]) - czasy w NOWYM AUDIO.
@@ -79,8 +115,9 @@ def make_edl():
     for i, seg in enumerate(SEGS):
         s, e, shots, text = seg[:4]
         cuts = sorted(seg[4]) if len(seg) > 4 else []
-        a_in = s - PRE
-        a_out = e + POST + (END_HOLD if i == len(SEGS) - 1 else 0.0)
+        a_in = poczatek_mowy(s) - PRE
+        a_out = koniec_mowy(e) + (POST_ZDANIE if text.rstrip()[-1:] in ".?!" else POST_SRODEK)
+        a_out += END_HOLD if i == len(SEGS) - 1 else 0.0
         parts, p, o = [], a_in, 0.0      # kawalki nagrania: [poczatek w nagraniu, dlugosc, poczatek w kwestii]
         for c0, c1 in cuts + [(a_out, None)]:
             d = fr(c0 - p)

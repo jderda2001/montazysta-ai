@@ -34,3 +34,4 @@ Jedna linijka na notatkę. Przy sprzeczności wygrywa nowsza data, a ponad notat
 - [CTA „zaobserwuj”](feedback-cta-obserwuj.md) — od 24.11.2026 domyślne CTA rolek to obserwowanie, bez słów-kluczy i automatyzacji; tryb „obserwuj” w cta.py skilla (od 25.11.2026 w repo)
 - [Logika rolki i przejścia](feedback-logika-i-przejscia.md) — kwestie układaj według sensu i scenariusza, nie tylko ostatni dubel; dwie sceny pod rząd przenikaniem; liczniki bez zer (24.11.2026)
 - [Skill scenariusze-rolek + całe repo](skill-scenariusze-i-repo-komplet.md) — 25.11.2026: scenariusze robi skill scenariusze-rolek; w repo ma być dosłownie wszystko (kontekst/, pamięć, wzory C45xx), bo montaż przejmuje osobny agent
+- [Pierwsze 5 s i sklejka podejść](feedback-pierwsze-5-sekund-sklejka.md) — 25.11.2026 HOOK A C4537_v2 zdjęty ze wszystkich platform (sklejka dwóch podejść w ciągłej mowie); hook z jednego podejścia, `poczatek.py` na każdej wersji przed oddaniem

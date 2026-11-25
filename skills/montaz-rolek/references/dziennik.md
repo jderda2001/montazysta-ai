@@ -330,7 +330,9 @@ Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % 
 - Fakty spoza nagrania pominięte: nazwa notetakera (brak), „wysłano w 5 min” (brak czasu w nagraniu).
 - Naprawione narzędzia: `oczy.sh` (`$Z:e` w zsh), `sprawdz_sync.py` (ścieżka nagrania na sztywno → `VIDEO` z `aroll.py`).
 - **Użyte (rotacja):** C4537_v2 – CTA brak (plansza pełni CTA), plansza `profil`.
-- Ocena Jakuba: (czeka).
+- Ocena Jakuba (25.11.2026, przekazana przez Social Media Managera i Personal Brand Managera): HOOK A („Przestań pisać oferty po callu”, opublikowany 18:00 na IG, FB, YT Shorts, TikTok) zdjęty ze wszystkich platform: w pierwszych 3 s „coś się powtarza i wygląda źle”. Ok. 19:45–19:51 w jego miejsce wyszedł HOOK B („Kończę calla…”). HOOK A nigdy nie wraca.
+- Przyczyna: sklejka dwóch podejść tego samego zdania na 1,67 s (podejście 3 „…po callu.” + podejście 1 „Niech napisze ją rozmowa.” od 9,91 s, 40 ms po starcie głosu, w ciągłej mowie). Od cięcia whisper słyszy „O nich napiszę” (ułamek „u” z „callu”), obraz przeskakuje na inny plan i pozycję głowy. `powtorzenia.py` dał 0 (powtórzony ułamek głoski, nie słowo), a sklejkę testowałem tylko w oknach od 0 s. Wniosek i nowa kontrola: `poczatek.py`, notatka `kontekst/pamiec/feedback-pierwsze-5-sekund-sklejka.md`.
+- Drobne w HOOK B: naprawa mrugnięcia (klatki 0–2 = klatka 8) daje na 0,10 s mały przeskok obrazu wstecz (klatka z 0,27 s, potem powrót). Przy kolejnych naprawach oczu bierz klatkę najbliższą startu (jak C4529 B: klatka 3), nie późniejszą.
 
 ## 2026-11-25, PERFOS-film30 wersja pionowa 9:16 (robocza, z poziomego filmu 16:9 z gliną i ekranami aplikacji)
 - Zlecenie (CMO PerfOS, prośba Jakuba): pion 1080×1920 na Reels i Shorts z tych samych ujęć, bez nowych generacji. Projekt `projekty/PERFOS-film30/pion/` (osobny `skrypty/`, `hf/`, `analiza/`, więc `strefa.py` działa bez zmian). Dźwięk 1:1 z wersji poziomej (te same czasy słów i efektów).

@@ -123,6 +123,13 @@ Kolejność ma znaczenie, bo każdy krok korzysta z wyniku poprzedniego. Dokład
 
     Każde miejsce dostaje klip w `analiza/powtorzenia/`. Rozstrzygnij je uchem i `fonemy.py`, prawdziwe wytnij i puść kontrolę jeszcze raz. Oddajesz dopiero przy 0 miejscach albo z wymienionymi miejscami, które świadomie zostały (powód przy oddaniu). Kalibracja: czysta rolka daje 0, prawdziwe falstarty Jakuba 3 na 3, wklejone wpadki 3 na 3.
 9. **Render i kontrola:** `hyperframes render`, potem `kontrola_eksportu.py` (głośność, właściwa ścieżka głosu, transkrypcja kawałkami bez powtórzeń). Dopiero wtedy kopiuj do Eksporty.
+9a. **Pierwsze 5 s słowo po słowie** (`poczatek.py`), obowiązkowo na każdym gotowym pliku, HOOK A i HOOK B: `uv run --no-project --with numpy python3 -I skrypty/poczatek.py <plik.mp4> <napisy.srt> --projekt <folder wersji>`. 25.11.2026 HOOK A C4537_v2 wyszedł na wszystkie platformy i Jakub go zdjął: w pierwszych 3 s „coś się powtarza i wygląda źle”. Hook był sklejony z dwóch podejść tego samego zdania, cięcie w ciągłej mowie (ułamek „u” po „callu”, inny plan i pozycja głowy), a `powtorzenia.py` dał 0, bo powtórzony był ułamek głoski, nie słowo. Skrypt:
+    - transkrybuje 0–5 s ze znacznikami słów (DTW) i porównuje z `.srt` (słowa spoza napisów, brakujące, powtórzone);
+    - na każdym cięciu transkrybuje okna zaczynające się i kończące dokładnie na nim (tu whisper słyszy ułamki głosek, których w dłuższym oknie nie pokazuje);
+    - w nagraniu sprawdza głos tuż przed `a_in` i po `a_out` oraz sklejkę podejść: czy tuż przed `a_in` pada to samo, co kończy poprzednią kwestię;
+    - szuka zamrożeń, powrotu do tej samej klatki i napisu dwa razy pod rząd, zapisuje stykówkę klatek co 0,5 s i klipy z cięć w `analiza/poczatek/`.
+
+    Hook bierz z jednego podejścia. Drugą połowę zdania z innego podejścia doklejaj tylko przy wyraźnej pauzie w nagraniu przed `a_in`; inaczej krótszy hook z jednego podejścia. Oddajesz przy 0 alarmach albo z każdym alarmem rozstrzygniętym uchem (i opisanym przy oddaniu). Stykówkę zawsze obejrzyj.
 10. **Oddanie:** krótko, co zrobione i co warto sprawdzić. Uzupełnij `NOTATKI.md` i `napisy.srt`. Plik powyżej 30 MiB nie dojdzie na telefon. Lżejszą kopię zrób tylko na prośbę, a gdy pyta, gdzie jest plik, pokaż mu go w Finderze (`open -R`).
 11. **Pętla nauki:** zapytaj o ocenę. Po publikacji poproś o zrzuty z Insights (wykres utrzymania widzów). Dopisz wpis do `references/dziennik.md` i ważne decyzje do pamięci.
 

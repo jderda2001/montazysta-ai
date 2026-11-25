@@ -102,6 +102,7 @@ Whisper wygładza zająknięcia, powtórzone zdania i falstarty. Przed oddaniem 
 - zająknięcie w środku kwestii wytnij polem `wytnij` w `SEGS`, a sklejkę sprawdź whisperem w trzech kontekstach;
 - po renderze przeczytaj kontrolę eksportu zdanie po zdaniu.
 - po `aroll.py` uruchom `powtorzenia.py` (cała rolka: frazy, falstarty, akustyka) i rozstrzygnij każde miejsce z klipu w `analiza/powtorzenia/`.
+- **Pierwsze 5 s słowo po słowie (od 25.11.2026, po zdjęciu HOOK A C4537_v2 ze wszystkich platform):** hook bierz z jednego podejścia; drugą połowę zdania z innego podejścia doklejaj tylko przy wyraźnej pauzie w nagraniu przed `a_in`. Na każdym gotowym pliku (HOOK A i HOOK B) uruchom `poczatek.py` (transkrypcja 0–5 s ze znacznikami słów vs `.srt`, okna od i do każdego cięcia, głos przed `a_in`, sklejka podejść, klatki co 0,5 s, podwójny napis) i obejrzyj stykówkę. Oddajesz przy 0 alarmach albo z każdym rozstrzygniętym uchem. Szczegóły: `kontekst/pamiec/feedback-pierwsze-5-sekund-sklejka.md`.
 
 ## Formaty i komplet przy oddaniu
 

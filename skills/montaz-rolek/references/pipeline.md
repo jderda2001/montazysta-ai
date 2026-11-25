@@ -128,6 +128,7 @@ mkdir -p "$D" && cp -f renders/final.mp4 "$D/<Tytuł>_MM.RR.mp4"
 - Dobrze: −14,0 LUFS, szczyt −1,5, przesunięcie 0,00 ms, różnica ok. −30 dB (szum AAC), w transkrypcji kawałkami brak powtórzeń.
 - **Przy ciasnych stykach kawałki z `kontrola_eksportu.py` robią się długie (ponad 30 s) i whisper gubi albo przekręca końcówki** (C4535, 25.11.2026: „Cześć i koniecznie zaobserwuj”, a w nagraniu było pełne CTA). Zanim uznasz to za błąd montażu, przepisz podejrzany fragment osobno, w oknie 10–12 s.
 - Render z HyperFrames: 47 s rolki to ok. 70 s pracy, ok. 50 MB.
+- **Pierwsze 5 s (od 25.11.2026, obowiązkowo, każda wersja):** `uv run --no-project --with numpy python3 -I skrypty/poczatek.py renders/final.mp4 napisy.srt --projekt .` (z folderu wersji: projekt albo `hookB/`). Wynik: lista `ALARM`/`uwaga` z czasem, stykówka `analiza/poczatek/<plik>_klatki.jpg` (co 0,5 s, 0–4,5 s) i klipy z cięć. Kalibracja: wadliwy HOOK A C4537_v2 daje 3 alarmy, 16 zaplanowanych plików z 24.11 nie ma sklejki podejść. Fałszywe alarmy: celowe cięcie w środku zdania (Klarna, „rok temu”) i pisownia whispera („grogbotów”, „8000$”).
 
 ## 10. Porównania A/B
 - Folder `ab/` z kompozycją: plansza „A/B/C” 1,5 s, potem ten sam fragment rolki (`<video muted>` + `<audio src=…>`) z podpisem w pigułce u dołu.

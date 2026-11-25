@@ -32,7 +32,7 @@ Każdy plik to jedna lekcja albo jeden fakt: kiedy i jak Jakub coś powiedział 
 1. Po każdym filmie dopisz do `skills/montaz-rolek/references/dziennik.md` ocenę Jakuba: pochwały, krytykę, cytaty, statystyki z Instagrama.
 2. Nową ogólną zasadę od Jakuba zapisz w trzech miejscach: w `ZASADY.md`, w odpowiednim `SKILL.md` lub referencji oraz jako notatkę w `kontekst/pamiec/` (z datą i cytatem) z linijką w `INDEKS.md`.
 3. Nowy wzorcowy projekt skopiuj do `wzory/` (skrypty i `NOTATKI.md`, bez nagrań).
-4. Po zmianie: commit w repo. Push robi Jakub sam (`git -C ~/"Montażysta AI/montazysta-ai" push`), chyba że powie inaczej.
+4. Po zmianie: commit i `git push` (Jakub, 25.11.2026: push po każdym montażu, tak jak w `ZASADY.md`).
 
 ## Foldery na Macu Jakuba
 

@@ -2,25 +2,32 @@
 stylu)", "glass jest super, ale jeszcze troche bardziej jak Apple (liquid glass)", "daj jeszcze 5 wersji planszy
 koncowej"). Wszystkie warianty sa w rotacji: kolejna rolka bierze inny wariant niz poprzednia (zapis w dzienniku).
 
+TRYB (Jakub, 24.11.2026: "CTA ma byc cos w stylu zaobserwuj, bo nie chce miec automatyzacji na kazdej rolce"):
+    tryb="obserwuj" (DOMYSLNY) - wezwanie do obserwowania, bez slow-kluczy i automatyzacji DM. `slowo` jest wtedy
+        zwyklym tekstem: tresc komentarza (pole, arkusz), wiadomosc widza (dm), haslo/liczba na planszy (slowo, jasna,
+        stos) albo dopisek pod karta (profil); pusty "" = bez dopisku.
+    tryb="slowo" - stary wariant "Napisz SLOWO w komentarzu" pod automatyzacje. Tylko gdy Jakub wprost o to poprosi.
+
 Uzycie w build() kompozycji:
     import cta
-    h, j, d = cta.cta("arkusz", "cta", t_in, t_out, "ROLKA", t_slowo, foto="avatar.jpg")
-    h2, j2, d2 = cta.plansza("profil", "pend", end_card_in, total, "ROLKA", "a podeślę Ci link do skilla", foto="avatar.jpg")
+    h, j, d = cta.cta("pigulka", "cta", t_in, t_out, "", t_slowo, foto="avatar.jpg")       # Zaobserwuj @jakub.derda
+    h2, j2, d2 = cta.plansza("profil", "pend", end_card_in, total, "", "Codziennie jedna automatyzacja", foto="avatar.jpg")
+    # stary tryb pod automatyzacje: cta.cta("arkusz", ..., "ROLKA", t_slowo, tryb="slowo")
     el += [h, h2]; js += j + j2; dzw += d + d2
 oraz cta.CTA_CSS w <style>. Zdjecie profilowe: foto = cta.przygotuj_avatar(P / "hf") (z Referencje i wytyczne/Zdjecie profilowe).
 
 CTA (nad napisami, srodek na osi 540 px):
-    pole     - pole komentarza, slowo wpisuje sie litera po literze, przycisk wyslij
-    arkusz   - arkusz komentarzy jak w Instagramie, komentarz ze slowem wjezdza na gore, serduszko sie wypelnia
-    pigulka  - "Napisz [SLOWO] w komentarzu", palec stuka w slowo
-    profil   - karta profilu ze zdjeciem: Obserwuj -> Obserwujesz, pod spodem "i napisz SLOWO"
-    dm       - wiadomosc ze slowem, kropki pisania, odpowiedz z karta linku
+    pole     - pole komentarza, tekst wpisuje sie litera po literze, przycisk wyslij
+    arkusz   - arkusz komentarzy jak w Instagramie, komentarz wjezdza na gore, serduszko sie wypelnia
+    pigulka  - obserwuj: "Zaobserwuj @uchwyt"; slowo: "Napisz [SLOWO] w komentarzu"; palec stuka w chip
+    profil   - karta profilu ze zdjeciem: Obserwuj -> Obserwujesz, pod spodem dopisek (slowo: "i napisz SLOWO")
+    dm       - wiadomosc widza, kropki pisania, odpowiedz (obserwuj: "pokaze w nastepnej rolce"; slowo: karta linku)
 Plansze koncowe (pelny ekran, A-roll rozmyty pod tafla):
-    profil   - karta profilu: duze zdjecie z mietowym pierscieniem, imie, slowo, przycisk Obserwuj
-    slowo    - wielka szklana pigulka ze slowem i przesuwajacym sie odblaskiem
-    telefon  - szklany telefon z komentarzem ze slowem i odpowiedzia z linkiem
-    jasna    - jasna plansza jak wstawki premium: zdjecie, slowo, podpis
-    stos     - trzy szklane karty w wachlarzu (profil, slowo, link) z powolna paralaksa
+    profil   - karta profilu: duze zdjecie z mietowym pierscieniem, imie, podpis, przycisk Obserwuj -> Obserwujesz
+    slowo    - wielka szklana pigulka (haslo/liczba) z odblaskiem, pod nia "Zaobserwuj @uchwyt"
+    telefon  - szklany telefon: obserwuj = ekran profilu z przyciskiem; slowo = komentarz i odpowiedz z linkiem
+    jasna    - jasna plansza jak wstawki premium: zdjecie, haslo, "Zaobserwuj @uchwyt", podpis
+    stos     - trzy szklane karty w wachlarzu (profil, haslo, Zaobserwuj) z powolna paralaksa
 Ruch wedlug zasady 10: bez sprezyn, 0,5-0,9 s power3.out / expo.out, rozmycie schodzi do zera, powolny dryf.
 """
 import html
@@ -43,6 +50,7 @@ def przygotuj_avatar(hf_dir):
     return "avatar.jpg"
 
 WARIANTY = ["pole", "arkusz", "pigulka", "profil", "dm"]
+TRYBY = ["obserwuj", "slowo"]
 PLANSZE = ["profil", "slowo", "telefon", "jasna", "stos"]
 
 _IK = {
@@ -72,8 +80,14 @@ def _av(foto, inicjaly, cls=""):
 
 
 def cta(wariant, cid, t_in, t_out, slowo, t_slowo, uchwyt="jakub.derda", imie="Jakub Derda", inicjaly="JD", foto=None,
-        odpowiedz="Trzymaj link do skilla", link="montaz-rolek · skill"):
-    """Zwraca (html, [js], [efekty dzwiekowe]). t_out = koniec (zwykle wejscie planszy koncowej)."""
+        odpowiedz=None, link="montaz-rolek · skill", tryb="obserwuj", wezwanie="Zaobserwuj"):
+    """Zwraca (html, [js], [efekty dzwiekowe]). t_out = koniec (zwykle wejscie planszy koncowej).
+    t_slowo = moment akcentu (wpisanie tekstu, klikniecie Obserwuj, stukniecie w chip)."""
+    if tryb not in TRYBY:
+        raise SystemExit(f"Nieznany tryb CTA: {tryb} (dostepne: {', '.join(TRYBY)})")
+    obs = tryb == "obserwuj"
+    if odpowiedz is None:
+        odpowiedz = "Pokażę to w następnej rolce. Zaobserwuj!" if obs else "Trzymaj link do skilla"
     s = html.escape(slowo)
     js, dzw = [], []
     wrap = lambda inner, cls: (f'<div id="{cid}" class="ctaw {cls} clip" data-start="{t_in:.3f}" '
@@ -100,7 +114,7 @@ def cta(wariant, cid, t_in, t_out, slowo, t_slowo, uchwyt="jakub.derda", imie="J
                         for w, w2 in ((160, 300),))
         inner = ('<div class="lglass c-ark"><div class="c-hd"><span class="c-grab"></span><b>Komentarze</b></div>'
                  f'<div class="c-list"><div class="c-row c-new" id="{cid}new"><span class="c-av sm mint">{_ic("user", 26)}</span>'
-                 f'<span class="c-tx"><b>Ty</b><span class="c-kw">{s}</span></span><span class="c-hrt" id="{cid}hr">{_ic("heart", 30)}</span></div>'
+                 f'<span class="c-tx"><b>Ty</b><span class="{"c-km" if obs else "c-kw"}">{s}</span></span><span class="c-hrt" id="{cid}hr">{_ic("heart", 30)}</span></div>'
                  f'{stare}</div></div>')
         js.append(f'gsap.set("#{cid}new",{{height:0,opacity:0}});')
         js.append(f'tl.to("#{cid}new",{{height:84,opacity:1,duration:0.7,ease:"power3.inOut"}},{t_slowo - 0.1:.3f});')
@@ -109,8 +123,12 @@ def cta(wariant, cid, t_in, t_out, slowo, t_slowo, uchwyt="jakub.derda", imie="J
         return wrap(inner, "c-dol c-wys"), js, dzw  # wyzszy arkusz zaczyna sie wyzej, zeby nie wchodzic na napisy
 
     if wariant == "pigulka":
-        inner = (f'<div class="lglass c-pig"><span>Napisz</span><span class="c-chip" id="{cid}ch">{s}</span><span>w komentarzu</span>'
-                 f'<span class="c-tap" id="{cid}tp"></span></div>')
+        if obs:
+            chip = s or "@" + html.escape(uchwyt)
+            srodek = f'<span>{html.escape(wezwanie)}</span><span class="c-chip c-low" id="{cid}ch">{chip}</span>'
+        else:
+            srodek = f'<span>Napisz</span><span class="c-chip" id="{cid}ch">{s}</span><span>w komentarzu</span>'
+        inner = f'<div class="lglass c-pig">{srodek}<span class="c-tap" id="{cid}tp"></span></div>'
         js.append(f'gsap.set("#{cid}tp",{{opacity:0,scale:0.4}});')
         js.append(f'tl.to("#{cid}tp",{{opacity:1,scale:1,duration:0.35,ease:"power2.out"}},{t_slowo - 0.15:.3f});')
         js.append(f'tl.to("#{cid}tp",{{opacity:0,scale:1.8,duration:0.6,ease:"power2.out"}},{t_slowo + 0.25:.3f});')
@@ -121,10 +139,12 @@ def cta(wariant, cid, t_in, t_out, slowo, t_slowo, uchwyt="jakub.derda", imie="J
     if wariant == "profil":
         inner = (f'<div class="lglass c-prof">{_av(foto, inicjaly, "lg")}<span class="c-nm"><b>{html.escape(imie)}</b>'
                  f'<span>@{html.escape(uchwyt)}</span></span><span class="c-fol" id="{cid}fb"><span id="{cid}ft">Obserwuj</span></span></div>'
-                 f'<div class="c-pod" id="{cid}pd">i napisz <span class="c-chip sm">{s}</span> w komentarzu</div>')
+                 + (f'<div class="c-pod" id="{cid}pd">{s}</div>' if obs and s else '')
+                 + ('' if obs else f'<div class="c-pod" id="{cid}pd">i napisz <span class="c-chip sm">{s}</span> w komentarzu</div>'))
         js.append(f'tl.to("#{cid}fb",{{backgroundColor:"rgba(255,255,255,.22)",duration:0.35,ease:"power2.inOut"}},{t_slowo:.3f});')
         js.append(f'tl.set("#{cid}ft",{{textContent:"Obserwujesz ✓"}},{t_slowo + 0.1:.3f});')
-        js.append(_in(f"#{cid}pd", t_slowo + 0.5))
+        if s or not obs:
+            js.append(_in(f"#{cid}pd", t_slowo + 0.5))
         dzw.append({"t": t_slowo, "typ": "tik"})
         return wrap(inner, "c-dol"), js, dzw
 
@@ -132,7 +152,8 @@ def cta(wariant, cid, t_in, t_out, slowo, t_slowo, uchwyt="jakub.derda", imie="J
         inner = (f'<div class="lglass c-dm"><div class="c-dmh">{_av(foto, inicjaly, "sm")}<b>{html.escape(uchwyt)}</b></div>'
                  f'<div class="c-b me" id="{cid}b1">{s}</div>'
                  f'<div class="c-b them c-dots" id="{cid}b2"><i></i><i></i><i></i></div>'
-                 f'<div class="c-b them" id="{cid}b3">{html.escape(odpowiedz)}<span class="c-lk">{_ic("link", 26)}{html.escape(link)}</span></div></div>')
+                 f'<div class="c-b them" id="{cid}b3">{html.escape(odpowiedz)}'
+                 + ('' if obs else f'<span class="c-lk">{_ic("link", 26)}{html.escape(link)}</span>') + '</div></div>')
         js.append(f'gsap.set(["#{cid}b1","#{cid}b2","#{cid}b3"],{{opacity:0}});')
         js.append(_in(f"#{cid}b1", t_slowo - 0.05, 16, 0.5))
         js.append(_in(f"#{cid}b2", t_slowo + 0.6, 12, 0.4))
@@ -147,10 +168,16 @@ def cta(wariant, cid, t_in, t_out, slowo, t_slowo, uchwyt="jakub.derda", imie="J
 
 
 def plansza(wariant, pid, t_in, t_out, slowo, podpis, uchwyt="jakub.derda", imie="Jakub Derda", inicjaly="JD", foto=None,
-            link="link do skilla"):
+            link="link do skilla", tryb="obserwuj", wezwanie="Zaobserwuj"):
     """Plansza koncowa na pelny ekran. A-roll zostaje pod spodem i jest rozmyty (backdrop-filter), wiec w kompozycji
-    nie zaslaniaj wideo inna plansza. Zwraca (html, [js], [efekty])."""
+    nie zaslaniaj wideo inna plansza. Zwraca (html, [js], [efekty]).
+    tryb="obserwuj": slowo = krotkie haslo/liczba ("40 H", "1 czy 2?") albo "" (bez hasla)."""
+    if tryb not in TRYBY:
+        raise SystemExit(f"Nieznany tryb planszy: {tryb} (dostepne: {', '.join(TRYBY)})")
+    obs = tryb == "obserwuj"
     s, p = html.escape(slowo), html.escape(podpis)
+    uh, wz = "@" + html.escape(uchwyt), html.escape(wezwanie)
+    obs_linia = f'{wz} <span class="c-chip sm c-low">{uh}</span>'  # "Zaobserwuj @jakub.derda"
     js, dzw = [], []
     d = t_out - t_in
     tlo = "e-tlo jasne" if wariant == "jasna" else "e-tlo"
@@ -165,19 +192,42 @@ def plansza(wariant, pid, t_in, t_out, slowo, podpis, uchwyt="jakub.derda", imie
     if wariant == "profil":
         inner = (f'<div class="lglass e-prof" id="{pid}c"><span class="e-ring">{_av(foto, inicjaly, "xl")}</span>'
                  f'<b class="e-nm">{html.escape(imie)}</b><span class="e-uh">@{html.escape(uchwyt)}</span>'
-                 f'<div class="e-l1">Napisz <span class="c-chip">{s}</span> w komentarzu</div><div class="e-l2">{p}</div>'
-                 f'<span class="e-btn" id="{pid}b">Obserwuj</span></div>')
+                 + (f'<div class="e-l1">{s}</div>' if obs and s else '')
+                 + ('' if obs else f'<div class="e-l1">Napisz <span class="c-chip">{s}</span> w komentarzu</div>')
+                 + f'<div class="e-l2">{p}</div>'
+                 f'<span class="e-btn" id="{pid}b"><span id="{pid}bt">Obserwuj</span></span></div>')
         js.append(_in(f"#{pid}c", t, 40, 0.8))
         js.append(_in(f"#{pid}b", t + 0.6, 12, 0.5))
+        if obs:  # klikniecie: Obserwuj -> Obserwujesz
+            js.append(f'tl.to("#{pid}b",{{scale:0.94,duration:0.12,ease:"power2.out",yoyo:true,repeat:1}},{t + 1.5:.3f});')
+            js.append(f'tl.to("#{pid}b",{{backgroundColor:"rgba(255,255,255,.22)",color:"#fff",duration:0.35,ease:"power2.inOut"}},{t + 1.6:.3f});')
+            js.append(f'tl.set("#{pid}bt",{{textContent:"Obserwujesz ✓"}},{t + 1.65:.3f});')
+            dzw.append({"t": t + 1.5, "typ": "tik"})
         return head + inner + tail, js, dzw
 
     if wariant == "slowo":
         inner = (f'<div class="e-mid"><div class="lglass e-pill" id="{pid}w"><span>{s}</span><i class="e-sweep" id="{pid}sw"></i></div>'
-                 f'<div class="e-l1 w" id="{pid}t1">Napisz w komentarzu</div><div class="e-l2 w" id="{pid}t2">{p}</div></div>')
+                 f'<div class="e-l1 w" id="{pid}t1">{obs_linia if obs else "Napisz w komentarzu"}</div><div class="e-l2 w" id="{pid}t2">{p}</div></div>')
         js.append(_in(f"#{pid}w", t, 30, 0.8))
         js.append(f'tl.fromTo("#{pid}sw",{{xPercent:-160}},{{xPercent:260,duration:1.6,ease:"power2.inOut"}},{t + 0.6:.3f});')
         js.append(_in(f"#{pid}t1", t + 0.35))
         js.append(_in(f"#{pid}t2", t + 0.5))
+        return head + inner + tail, js, dzw
+
+    if wariant == "telefon" and obs:  # ekran profilu w szklanym telefonie
+        inner = (f'<div class="lglass e-tel e-telp" id="{pid}ph"><span class="e-notch"></span>'
+                 f'<span class="e-ring" id="{pid}a">{_av(foto, inicjaly, "lg2")}</span>'
+                 f'<b class="e-nm" id="{pid}n">{html.escape(imie)}</b><span class="e-uh">{uh}</span>'
+                 + (f'<span class="e-tsl">{s}</span>' if s else '')
+                 + f'<span class="e-btn" id="{pid}b"><span id="{pid}bt">Obserwuj</span></span>'
+                 f'</div><div class="e-cap" id="{pid}t1">{p}</div>')
+        js.append(_in(f"#{pid}ph", t, 50, 0.9))
+        js.append(_in(f"#{pid}b", t + 0.7, 12, 0.5))
+        js.append(_in(f"#{pid}t1", t + 0.4))
+        js.append(f'tl.to("#{pid}b",{{scale:0.94,duration:0.12,ease:"power2.out",yoyo:true,repeat:1}},{t + 1.5:.3f});')
+        js.append(f'tl.to("#{pid}b",{{backgroundColor:"rgba(255,255,255,.22)",color:"#fff",duration:0.35,ease:"power2.inOut"}},{t + 1.6:.3f});')
+        js.append(f'tl.set("#{pid}bt",{{textContent:"Obserwujesz ✓"}},{t + 1.65:.3f});')
+        dzw.append({"t": t + 1.5, "typ": "tik"})
         return head + inner + tail, js, dzw
 
     if wariant == "telefon":
@@ -193,9 +243,13 @@ def plansza(wariant, pid, t_in, t_out, slowo, podpis, uchwyt="jakub.derda", imie
         return head + inner + tail, js, dzw
 
     if wariant == "jasna":
+        if obs:  # haslo (opcjonalne) nad wezwaniem
+            srodek = ((f'<div class="e-kwl" id="{pid}k">{s}</div>' if s else f'<div id="{pid}k"></div>')
+                      + f'<div class="e-l1" id="{pid}t1">{obs_linia}</div>')
+        else:
+            srodek = f'<div class="e-l1" id="{pid}t1">Napisz w komentarzu</div><div class="e-kwl" id="{pid}k">{s}</div>'
         inner = (f'<div class="e-mid dk"><span class="e-ring" id="{pid}a">{_av(foto, inicjaly, "xl")}</span>'
-                 f'<div class="e-l1" id="{pid}t1">Napisz w komentarzu</div><div class="e-kwl" id="{pid}k">{s}</div>'
-                 f'<div class="e-l2" id="{pid}t2">{p}</div></div>')
+                 f'{srodek}<div class="e-l2" id="{pid}t2">{p}</div></div>')
         js.append(_in(f"#{pid}a", t, 20, 0.7))
         js.append(_in(f"#{pid}t1", t + 0.2))
         js.append(_in(f"#{pid}k", t + 0.35, 24, 0.8))
@@ -204,8 +258,11 @@ def plansza(wariant, pid, t_in, t_out, slowo, podpis, uchwyt="jakub.derda", imie
 
     if wariant == "stos":
         inner = (f'<div class="e-stos"><div class="lglass e-k k1" id="{pid}k1">{_av(foto, inicjaly, "lg")}<b>{html.escape(imie)}</b><span>@{html.escape(uchwyt)}</span></div>'
-                 f'<div class="lglass e-k k3" id="{pid}k3">{_ic("file", 52)}<b>{html.escape(link)}</b><span>{p}</span></div>'
-                 f'<div class="lglass e-k k2" id="{pid}k2"><span class="e-l1 w">Napisz w komentarzu</span><span class="c-chip big">{s}</span></div></div>')
+                 + (f'<div class="lglass e-k k3" id="{pid}k3">{_ic("heart", 52)}<b>{s}</b><span>{p}</span></div>'
+                    f'<div class="lglass e-k k2" id="{pid}k2"><span class="e-l1 w">{wz}</span><span class="c-chip md c-low">{uh}</span></div></div>'
+                    if obs else
+                    f'<div class="lglass e-k k3" id="{pid}k3">{_ic("file", 52)}<b>{html.escape(link)}</b><span>{p}</span></div>'
+                    f'<div class="lglass e-k k2" id="{pid}k2"><span class="e-l1 w">Napisz w komentarzu</span><span class="c-chip big">{s}</span></div></div>'))
         for kid, r, x, dl in (("k1", -8, -30, 0.0), ("k3", 7, 30, 0.12), ("k2", 0, 0, 0.24)):
             sel = f"#{pid}{kid}"
             js.append(f'tl.fromTo("{sel}",{{opacity:0,y:60,rotation:0,filter:"blur(12px)"}},{{opacity:1,y:0,rotation:{r},x:{x},filter:"blur(0px)",duration:0.9,ease:"expo.out"}},{t + dl:.3f});')
@@ -260,6 +317,15 @@ CTA_CSS = r"""
       .c-chip { display: inline-block; padding: 6px 22px; border-radius: 100px; background: var(--accent); color: var(--on-accent); font-weight: 900; letter-spacing: .04em; text-shadow: none; }
       .c-chip.sm { padding: 2px 14px; font-size: .9em; }
       .c-chip.big { font-size: 96px; padding: 10px 44px; letter-spacing: .02em; }
+      .c-chip.md { font-size: 50px; padding: 8px 34px; }
+      .c-chip.c-low { letter-spacing: 0; }
+      .c-km { font-weight: 700; }
+      .c-av.lg2 { width: 170px; height: 170px; font-size: 56px; }
+      .e-telp { display: flex; flex-direction: column; align-items: center; gap: 10px; top: 330px; height: auto; padding: 110px 34px 64px; text-align: center; }
+      .e-telp + .e-cap { top: 1010px; }
+      .e-telp .e-nm { font-size: 46px; }
+      .e-tsl { margin-top: 10px; font-size: 34px; font-weight: 800; }
+      .e-btn { transform-origin: 50% 50%; }
       .c-tap { position: absolute; left: 50%; top: 50%; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 4px solid rgba(255,255,255,.8); }
       .c-prof { width: 690px; display: flex; align-items: center; gap: 20px; padding: 20px 22px; border-radius: 34px; }
       .c-nm { display: flex; flex-direction: column; gap: 2px; flex: 1; }
@@ -315,6 +381,6 @@ CTA_CSS = r"""
       .e-k b { font-size: 42px; }
       .e-k span { font-size: 28px; opacity: .78; }
       .e-k.k1 { top: 0; }
-      .e-k.k3 { top: 230px; }
-      .e-k.k2 { top: 450px; gap: 18px; }
+      .e-k.k3 { top: 272px; }
+      .e-k.k2 { top: 506px; gap: 18px; }
 """

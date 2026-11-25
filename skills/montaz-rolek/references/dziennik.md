@@ -259,6 +259,33 @@ Czytaj na start każdego montażu. Po każdym filmie dopisz wpis: data, projekt,
   - zdania o tej samej budowie („To jest masakrą. / To jest spoko”): reguła krótkich falstartów tylko dla kawałków urwanych;
   - sformułowania, które są dwa razy w tekście („który jest wspomagany przez”): akustyka je pomija, chyba że podobieństwo ≥ 0,85.
 
+## 2026-11-24, scenariusze i CTA „zaobserwuj”
+- Pierwsza rolka pod nowe zasady powstała ze scenariusza (skill `scenariusze-rolek`, paczka „3 scenariusze – freelancerzy i małe firmy”).
+- Jakub: „CTA ma być coś w stylu «zaobserwuj», bo nie chcę mieć automatyzacji na każdej rolce”. Od tego dnia `cta.py` domyślnie w trybie „obserwuj” (5 CTA i 5 plansz), słowo-klucz tylko na prośbę.
+
+## 2026-11-24, C4527 „20 ofert w godzinę” (pierwsze nagranie z kamery Sony, hook A i B, ok. 34 s)
+- Nowe źródło: kamera Sony (XAVC 4K, obrót w metadanych, 29,97 kl./s, mikrofon w pliku). Hook A powiedziany dwa razy („Wysyłam 20 ofert w godzinie”), wzięte drugie podejście; falstart „Dałem jednym…”.
+- Grafiki: jasna scena Grok Bot → Useme/Oferteo → zlecenia → oferta w Canvie; szklana 12 ofert / 8 odpowiedzi / 4 spotkania; plansza `telefon`.
+- Problemy rozwiązane: napisy na białej koszulce (miękkie przyciemnienie obrazu pod pasem napisów), miętowe litery hasła gasły na zielonej ścianie (akcent jako zakreślenie), hasło na klatce 0 zasłaniało oczy (mniejsze 74 px).
+- Do sprawdzenia przez Jakuba (zgłoszone): hook A mówi „20 ofert w godzinę”, a wynik „12 ofert po tygodniu”.
+- **Uwaga Jakuba po oddaniu:** „czasami wkradają się krótkie przerwy pomiędzy jednym a drugim elementem… chciałbym, żeby były minimalnie krótsze”. Pomiar: 0,39–0,71 s między ostatnim słowem a pierwszym następnej kwestii. Poprawka: marginesy od faktycznego głosu (pipeline, punkt 5).
+
+## 2026-11-24, C4528 „AI przypomina o fakturach” i C4529 „AI nie zabierze Ci klientów” (scenariusze 2 i 3, hook A i B)
+- C4528: prawdziwa historia (administracja zapominała o fakturach, AI przypomina coraz mniej miło i przekazuje do windykacji). Falstarty „Najpierw… Najpierw”, „Potem SMS a c…”, hook B „Klient nie płacicie nad…”. Whisper na ostatniej kwestii z długim ogonem zwrócił tylko „Dobra, lecimy trójkę”: od tej pory `slowa.py` na przyciętej ostatniej kwestii. Plansza `jasna`.
+- C4529: cztery falstarty; „Kogo wybiera klient? … Oczywiste” jako jedna kwestia z pauzą 0,8 s i najazdem 1,0 → 1,2 → 1,27 (napięcie). W wersji B mrugnięcie na klatce 0 (klatki 0–2 zastąpione klatką 3). Plansza `stos` (karty rozsunięte, bo zasłaniały uchwyt).
+- Ocena: brak osobnej; uwaga o przerwach (wyżej) dotyczyła też tych rolek.
+
+## 2026-11-24/25, paczka „5 scenariuszy – AI i biznes”: C4534 (IPO Anthropic), C4535 (OpenWorks), C4536 (Klarna), C4537 (oferta po callu), C4538 (skill)
+- Montaż jedna po drugiej, każda w wersjach A i B, z logo nazw własnych (Anthropic, Claude, OpenAI, ChatGPT, Klarna, Grok Bot, Canva) z Wikimedia Commons / ikon stron.
+- Poprawka faktów: w C4536 ostatni dubel miał „Klarna **rok temu** wpuściła AI” (to był luty 2024), wycięte ze środka zdania (`a_out`/`a_in`, zmiana kadru, sklejka sprawdzona whisperem w 3 kontekstach).
+- **Uwaga Jakuba 1 (25.11):** „Dalej są takie przerwy pomiędzy ścinkami… pół sekundy albo sekunda… bardzo niepłynne. Weź to jeszcze bardziej zoptymalizuj… składaj całą rolkę wedle logiki całej tej wypowiedzi i scenariuszy… w rolce o OpenAI też się to zbugowało”. Znalezione i poprawione:
+  - styki 0,3–0,4 s (raz 0,72 s przez „mmm” przed słowem) → ok. 0,15 s (`przerwy.py` do pomiaru);
+  - OpenAI: kurtyna sceny A w górę i dopiero potem scena B, więc ok. 0,5 s mignięcia twarzy ze starym napisem → przenikanie; licznik „0000 $” przed zakręceniem → wchodzi z liczeniem;
+  - logika: „…ale myślę, że to kwestia czasu” gryzło się z „U nas tego jeszcze nie ma” → dubel zgodny ze scenariuszem.
+- **Ocena Jakuba po poprawce:** „Super, super, dużo lepiej”.
+- **Uwaga Jakuba 2 (25.11), C4538 w 13–14 s:** „zacząłem pewien wyraz i pomyliłem się, i powtórzyłem go dosłownie pół sekundy później. Takie rzeczy też musimy wyłapywać”. Było to „Jed… jeden folder” (pauza 0,16 s, płytki dołek): kawalki.py i powtorzenia.py go nie widziały. Dodany przebieg mikro i reguła „restart słowa” w `powtorzenia.py` (na starej wersji wykrywa to miejsce; fałszywe alarmy najwyżej 1 na rolkę).
+- Wnioski na stałe: zasady w `ZASADY.md` (logika i przejścia, restart słowa, styki), proces w `pipeline.md` punkt 12, wzór `wzory/C4538`.
+
 ## Statystyki z Instagrama
 
 ### 2026-11-24, zrzuty od Jakuba (6 rolek, IG + FB)

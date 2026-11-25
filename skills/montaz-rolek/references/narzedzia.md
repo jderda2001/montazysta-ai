@@ -100,3 +100,11 @@
 ## Film 16:9 z lektorem i gliną, PERFOS-film30 (24.11.2026)
 - **Głos mono mierzony jako mono kłamie o 3 dB.** Render HyperFrames robi z mono `glos.wav` stereo (dual mono), a `ebur128` w `kontrola_eksportu.py` mierzy stereo: głos z -15,8 LUFS w pliku wyszedł -12,8 LUFS w filmie. Ścieżkę głosu złóż od razu w stereo (`pan=stereo|c0=c0|c1=c0`) i mierz ją w stereo. Przy lektorze z TTS `loudnorm` z `linear=true` zatrzymał się na -15,7 przez limit szczytu, więc pewniej działa wzmocnienie do -14 i `alimiter=limit=0.79` (wzór: `projekty/PERFOS-film30/skrypty/kompozycja.py`, `build_voice()`).
 - **`kontrola_eksportu.py` transkrybuje po polsku (`-l pl` na sztywno).** Przy filmie po angielsku skopiuj go do `skrypty/` projektu z `-l en`, inaczej whisper tłumaczy albo gubi zdania.
+
+## Pułapki z rolek z kamery Sony (24–25.11.2026)
+- **whisper na kawałku dłuższym niż 30 s** (przy ciasnych stykach kontrola eksportu daje takie kawałki) gubi albo przekręca końcówkę („Cześć i koniecznie zaobserwuj”). Przepisz podejrzany fragment osobno.
+- **whisper z promptem na kwestii z długim ogonem** (END_HOLD pod planszą końcową) potrafi zwrócić tylko słowa z ogona i pominąć całą kwestię: `slowa.py` puszczaj na ostatniej kwestii przyciętej do końca mowy.
+- **Czasy słów z `wyspy.py`** dla wyspy z kilkoma podejściami są śmieciowe (wszystkie słowa drugiego podejścia na jednym czasie). Podejścia rozdzielaj `kawalki.py` i whisperem `-ml 1 -sow` na wycinku.
+- **Krótki falstart bez wyraźnej pauzy** („Jed… jeden folder”, dołek 0,06 s do −48 dB surowego dźwięku): `kawalki.py` w obu trybach go nie rozcina, whisper pisze jedno słowo. Łapie go przebieg mikro w `powtorzenia.py` (dołki do −30 dB na głosie po masteringu).
+- **zsh i zmienne w filtrach ffmpeg:** `$g[x]` zsh czyta jako indeks tablicy. Pisz `${g}`. W pętlach `for r in "a b"` zsh nie dzieli słów: użyj `${=r}` albo par `a:b` z `${p%%:*}`.
+- **GSAP i kolory z CSS:** `backgroundColor:"var(--accent)"` się nie animuje. Wpisz `{{ACCENT}}` (podmienia `kolory()`), w f-stringu `{{{{ACCENT}}}}`.

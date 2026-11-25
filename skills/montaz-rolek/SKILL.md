@@ -5,7 +5,7 @@ description: Montaż pionowych rolek (Reels/TikTok/Shorts) i reklam wideo Jakuba
 
 # Montaż rolek w stylu Jakuba
 
-Ten skill zbiera to, co Jakub zatwierdził przy kolejnych filmach. Wzorcowy projekt to `~/Montażysta AI/projekty/IMG_0526/` (rolka „Kaja zamiast settera”, 13.11.2026), o którym powiedział: „świetny montaż, trzymajmy się tego stylu”. Skrypty w `scripts/` to szablony z tego projektu. Kopiujesz je do nowego projektu i zmieniasz tylko dane konkretnego nagrania.
+Ten skill zbiera to, co Jakub zatwierdził przy kolejnych filmach. Pierwszy wzorcowy projekt to `~/Montażysta AI/projekty/IMG_0526/` (rolka „Kaja zamiast settera”, 13.11.2026), o którym powiedział: „świetny montaż, trzymajmy się tego stylu”. **Najnowszy wzór rolki to `wzory/C4538/`** (repo; instalator kopiuje go do `projekty/C4538/`, 25.11.2026): kamera Sony, styl premium (zasada 10), hasło od klatki 0 (zasada 11), hook A i B, CTA „zaobserwuj”, cięcia od głosu, przenikanie scen. Przy nowej rolce kopiuj skrypty stamtąd (aroll.py, kompozycja.py, cta.py, powtorzenia.py), a nie z IMG_0526, i zmieniaj tylko dane nagrania oraz blok grafik w `build()`. Pełny kontekst o Jakubie i całą pamięć poprzedniego montażysty masz w `kontekst/` w repo.
 
 Na start przeczytaj `references/dziennik.md`: co mu się podobało, a co odrzucił. To najszybszy sposób, żeby nie powtórzyć starego błędu.
 
@@ -36,7 +36,7 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
 
 1. **Napisy są zamrożone.** Słowo po słowie, frazy po 2–4 słowa (do ok. 20 znaków, tyle mieści strefa bezpieczna), wyróżnienia kluczowych słów w kolorze akcentu, krój Inter Tight, pozycja i animacja jak w `references/styl.md`. Powiedział: „napisy zostawiłbym, nigdy bym ich nie zmieniał”. Nie eksperymentuj z ich wyglądem. Wolno poprawiać tylko trafność czasów. Kolor wyróżnień idzie za paletą marki (17.11.2026: akcent zamiast pomarańczu), reszta wyglądu bez zmian.
 2. **Animacje z IMG_0526 to wzorzec.** Jego słowa: „świetne i bardzo poprawne”. Nowe grafiki projektuj w tym samym języku wizualnym (ciemne plansze, akcenty w kolorze marki, wejście z rozmyciem i light leakiem). Rozwijaj go, ale nie podmieniaj stylistyki bez pytania. Dwie poprawki z IMG_0576 (17.11.2026): w personal brandzie plansze nie mają kwadratów dekoracyjnych u dołu („nie podoba mi się to”), a wykresy i schematy mają być mocno animowane („zanimuj bardziej wykres”), czyli każdy element wchodzi ruchem na swoim słowie, a nie pojawia się gotowy. Jak, opisuje `references/styl.md`, punkt 4.
-3. **Nigdy logo adGen.** Filmy są pod jego personal brand. Plansza końcowa ma dymek komentarza i tekst, bez logo.
+3. **Nigdy logo adGen.** Filmy są pod jego personal brand. Plansza końcowa to wezwanie do obserwowania ze zdjęciem profilowym, bez logo.
 4. **Głos naturalny, bez AI.** Od 17.11.2026 domyślnie idzie dźwięk z mikrofonu po lekkim masteringu z `aroll.py` (highpass, łagodna kompresja, −14 LUFS). Jego słowa po IMG_0576: „za bardzo używasz voice enhancer AI, już kupiłem dobre mikrofony, także bez tego, albo z dużo mniejszym filtrem”. Wariant „C” (Sidon plus łańcuch radiowy), który wybrał 13.11.2026 przy mikrofonie stojącym pół metra od ust, robisz tylko na jego prośbę albo gdy nagranie jest wyraźnie złe (pogłos pokoju, daleki mikrofon), i wtedy mówisz mu o tym przy oddaniu.
 5. **Efekty dźwiękowe tylko z prawdziwych próbek i tylko subtelnie.** Whooshe generowane z szumu określił jako „chujowe” (IMG_0361). 17.11.2026 sam poprosił o delikatne dźwięki pod animacje: „wyskakuje jakiś napis, to jest taki bardzo delikatny, subtelny dźwięk”, a przy animowanym wykresie „takie shhh”. Biblioteka leży w `~/Desktop/Montażysta AI/Muzyka/SFX/` (Kenney, CC0, i wybrane pliki z Mixkit, pobrane za jego zgodą), a miksuje ją `scripts/sfx.py`. Poziomy są celowo niskie (pyknięcia ok. −20 dBFS w szczycie, swooshe −21, „shh” −24, przy głosie −14 LUFS) i po odsłuchu próbki 17.11.2026 ocenił je: „Jest dobrze”. Nie podgłaśniaj ich bez jego prośby. Nowe paczki pobierasz dopiero po pytaniu z nazwą, źródłem i rozmiarem. Muzyka nadal tylko z `~/Desktop/Montażysta AI/Muzyka/`.
 6. **Liczby i treści w grafikach tylko z tego, co mówi.** Jeśli coś jest poglądowe (np. „3 follow-upy” w powiadomieniu), powiedz mu o tym przy oddaniu.
@@ -61,14 +61,17 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
     - **Wstawki premium są jasne** (referencje w `Referencje i wytyczne/`, 24.11.2026: „b-rolle nie są premium”). Wstawka to pełnoekranowa jasna plansza: złamana biel `#f5f5f2` z delikatnym miętowym gradientem w rogu, ciemny tekst `#0f1012`, białe karty (`.lcard`) z cienką ramką `#e7e7e3` i miękkim cieniem, małe ikony, dużo powietrza. Bez poświat i grubych obramowań. Akcent tylko na jednej rzeczy (pasek, przycisk, liczba), na jasnym tle jako ciemniejsza mięta albo wypełnienie z ciemnym tekstem. Robi to `panel(..., jasna=True)`.
     - **Kurtyna:** jasna plansza zjeżdża z góry w 0,55 s z `power3.inOut` i tak samo odjeżdża, a treść tylko łagodnie się pojawia. To domyślne wejście jasnej planszy.
     - **Wariant szkło** (Jakub, 24.11.2026: „fajne białe tło, ale można by dodać też taką wersję blurred glass, tak jak na Apple”). `panel(..., szklo=True)` daje matową, jasną taflę (`backdrop-filter: blur(54px) saturate(165%)`), spod której prześwituje rozmyty A-roll, z półprzezroczystymi kartami `.lcard`. Przeplataj białą i szklaną wstawkę, np. jedną białą i jedną szklaną w rolce.
-    - **CTA za każdym razem w innym wariancie**, w tym samym jasnym, szklanym stylu (Jakub: „daj różne wersje CTA… bardziej różnorodne”). Warianty są w `scripts/cta.py`: `pole` (pole komentarza), `arkusz` (arkusz komentarzy z Instagrama), `pigulka` („Napisz SŁOWO w komentarzu”), `profil` (Obserwuj → Obserwujesz) i `dm` (wiadomość i odpowiedź z linkiem). Przed wyborem sprawdź w dzienniku, który wariant był w poprzedniej rolce, weź inny i zapisz, którego użyłeś. Podgląd wszystkich: `Eksporty/Rolki/2026-11-24 Szkło i CTA – demo/`.
+    - **CTA domyślnie „zaobserwuj”, bez słów-kluczy i automatyzacji DM** (Jakub, 24.11.2026: „CTA ma być coś w stylu «zaobserwuj», bo nie chcę mieć automatyzacji na każdej rolce”). `cta.cta()` i `cta.plansza()` mają `tryb="obserwuj"` jako domyślny. Kwestia CTA daje powód do obserwowania (następna rolka, seria, „po kolei pokażę Ci…”), może poprosić o zwykły komentarz („Którym jesteś?”), ale bez słowa-klucza. `tryb="slowo"` („Napisz SŁOWO w komentarzu”, link w DM) tylko na wyraźną prośbę Jakuba. W trybie obserwuj `slowo` to zwykły tekst: treść komentarza (`pole`, `arkusz`), wiadomość widza (`dm`), dopisek (`profil`), krótkie hasło lub liczba na planszy (`slowo`, `jasna`, `stos`, np. „40 H”, „8000 $”, „SKILL”) albo `""`. W praktyce (C4527–C4538) plansza końcowa wchodzi na słowie „zaobserwuj”/„koniecznie” i sama pełni rolę CTA, a osobne CTA na wideo pomijam, żeby nie przekroczyć 2 scen na 30 s.
+    - **CTA za każdym razem w innym wariancie**, w tym samym jasnym, szklanym stylu (Jakub: „daj różne wersje CTA… bardziej różnorodne”). Warianty są w `scripts/cta.py`: `pole` (pole komentarza), `arkusz` (arkusz komentarzy z Instagrama), `pigulka` („Zaobserwuj @jakub.derda”, palec stuka), `profil` (Obserwuj → Obserwujesz) i `dm` (pytanie widza i odpowiedź „pokażę w następnej rolce”). Przed wyborem sprawdź w dzienniku, który wariant był w poprzedniej rolce, weź inny i zapisz, którego użyłeś. Podgląd wszystkich: `Eksporty/Rolki/2026-11-24 Szkło i CTA – demo/`.
     - **Liquid Glass na wideo** (Jakub: „glass jest super, ale jeszcze trochę bardziej jak Apple (liquid glass)”). CTA i plansze końcowe leżące na A-rollu są w klasie `.lglass` z `cta.py`: przezroczysta tafla z mocnym rozmyciem i nasyceniem tła, jasna krawędź z odblaskiem u góry po lewej, wewnętrzna poświata, biały tekst i miętowe akcenty z ciemnym tekstem.
     - **Plansza końcowa też w rotacji, 5 wariantów** w `cta.plansza()`:
-      - `profil`: szklana karta ze zdjęciem w miętowym pierścieniu i przyciskiem Obserwuj;
-      - `slowo`: wielka szklana pigułka ze słowem i przejeżdżającym odblaskiem;
-      - `telefon`: szklany telefon z komentarzem i odpowiedzią z linkiem;
-      - `jasna`: jasna plansza z zakreślonym słowem;
-      - `stos`: trzy szklane karty w wachlarzu.
+      - `profil`: szklana karta ze zdjęciem w miętowym pierścieniu, hasło, podpis, przycisk Obserwuj → Obserwujesz;
+      - `slowo`: wielka szklana pigułka z hasłem lub liczbą i odblaskiem, pod nią „Zaobserwuj @jakub.derda”;
+      - `telefon`: szklany telefon z ekranem profilu i przyciskiem Obserwuj → Obserwujesz;
+      - `jasna`: jasna plansza ze zdjęciem, zakreślonym hasłem i „Zaobserwuj @jakub.derda”;
+      - `stos`: trzy szklane karty w wachlarzu (profil, hasło z podpisem, Zaobserwuj).
+
+      Rotacja w praktyce: C4527 telefon, C4528 jasna, C4529 stos, C4534 profil, C4535 slowo, C4536 telefon, C4537 stos, C4538 jasna.
 
       Pod planszą zostaje rozmyty A-roll, więc ostatnie kwestie nie mogą być przykryte inną planszą. Każda rolka dostaje inną planszę niż poprzednia; zapis w dzienniku.
     - **Zdjęcie profilowe i rolki wzorcowe są u użytkownika, nie w repo:** `~/Desktop/Montażysta AI/Referencje i wytyczne/Zdjęcie profilowe/` (`foto = cta.przygotuj_avatar(P / "hf")` przycina do 512 px i kopiuje do `hf/`) oraz `…/Rolki wzorcowe/`. Przed montażem obejrzyj rolki wzorcowe. Gdy folder jest pusty, poproś o wgranie. Opis w `references/wzorce/README.md`.
@@ -86,7 +89,9 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
 
 ## Foldery i nazwy
 
-- **Wejście:** wideo zwykle w `~/Downloads/IMG_xxxx.mov` (iPhone, po obrocie 1080×1920). Audio z mikrofonu w `~/Desktop/Montażysta AI/Nagrania /` (uwaga: spacja na końcu nazwy folderu).
+- **Wejście:**
+  - od 24.11.2026 zwykle kamera Sony: `C45xx.MP4` (XAVC, 3840×2160 z obrotem 90° w metadanych, czyli po obrocie 2160×3840, 29,97 kl./s), dźwięk z mikrofonu DJI w pliku (bez synchronizacji, `analiza/sync.json` z `offset: 0`). Pliki przychodzą z pulpitu albo z `~/Desktop/Montażysta AI/Surówki/nie zmontowane/`; po montażu, za zgodą Jakuba, przenieś je do `Surówki/zmontowane/` i popraw `VIDEO` w projektach. Wzór: `wzory/C4538/`;
+  - starsze: wideo w `~/Downloads/IMG_xxxx.mov` (iPhone), audio z mikrofonu w `~/Desktop/Montażysta AI/Nagrania /` (uwaga: spacja na końcu nazwy folderu).
 - **Projekt:** `~/Montażysta AI/projekty/<IMG_xxxx>/` z podfolderami `skrypty/`, `audio/`, `analiza/`, `aroll/`, `hf/` (HyperFrames), opcjonalnie `ab/` (porównania), plus `NOTATKI.md` i `napisy.srt`.
 - **Eksport (zawsze porządek, struktura zatwierdzona 13.11.2026):** jeden folder na film, nazwany `<RRRR-MM-DD Tytuł>` (dzień eksportu), w folderze typu:
   - `Eksporty/Rolki/…/<Tytuł>_MM.RR.mp4`: rolki organiczne;
@@ -99,7 +104,9 @@ Każda z tych zasad wynika z jego wyraźnej decyzji. Złamanie którejś cofa za
 
 Kolejność ma znaczenie, bo każdy krok korzysta z wyniku poprzedniego. Dokładne komendy i progi kontroli są w `references/pipeline.md`. Pułapki narzędzi (whisper, ffmpeg, HyperFrames, zsh) są w `references/narzedzia.md`. Przejrzyj je przed pierwszą komendą, bo oszczędzają godziny.
 
-1. **Projekt.** Załóż folder, skopiuj `scripts/*.py` do `skrypty/`, a do `hf/` skopiuj konfigurację HyperFrames z IMG_0526 (`package.json`, `hyperframes.json`, `meta.json`, `fonts/`). Ustaw w `aroll.py` ścieżki `VIDEO` i `AUDIO`.
+1. **Projekt.** Załóż folder `projekty/<nazwa nagrania>/`, skopiuj skrypty z najnowszego wzoru (`projekty/C4538/skrypty/` albo `wzory/C4538/skrypty/`), a do `hf/` konfigurację HyperFrames (`package.json`, `hyperframes.json`, `meta.json`, `fonts/`). Ustaw w `aroll.py` ścieżkę `VIDEO` (i `AUDIO`, gdy dźwięk jest osobno).
+   - **Hook A i B:** w `aroll.py` słownik `HOOKI` (każdy hook to lista kwestii, np. dwa podejścia sklejone) i `N_HOOK = len(HOOKI[HOOK])`. Wersja B to podfolder `hookB/` z kopią `skrypty/`, linkiem do `audio/nowe_16k.wav`, `analiza/sync.json` i `twarze.json`, `hf/` oraz pustym plikiem `HOOK_B` (to on przełącza wersję w `aroll.py` i `kompozycja.py`). Zmiany w skryptach rób w głównym folderze i kopiuj do `hookB/skrypty/`.
+   - Cały łańcuch dla jednej wersji: `zsh skrypty/przebieg.sh <folder>` (A-roll, powtórzenia, czasy słów, kompozycja, strefa, check).
 2. **Synchronizacja** (`sync.py`): korelacja dźwięku telefonu z mikrofonem daje offset i dryf. Nigdy nie synchronizuj na oko.
 3. **Transkrypcja i wybór dubli** (`wyspy.py`). Zasada: ostatni pełny dubel każdej kwestii, chyba że psuje logikę całości. Przed cięciem przeczytaj wybrane kwestie po kolei i porównaj ze scenariuszem: nic się nie powtarza, nie wyklucza i nie ma błędu faktycznego (C4535: „…to kwestia czasu” kontra „U nas tego jeszcze nie ma”; C4536: „rok temu”). Wtedy weź wcześniejszy pełny dubel albo wytnij wtrącenie. Wszystkie niewykorzystane warianty (inne hooki, CTA) wypisz w `NOTATKI.md` jako materiał na wersję B.
 4. **Falstarty** (`kawalki.py`), obowiązkowo. Whisper na całym dublu wygładza zająknięcia, więc „I każdego ranka dosta… I każdego ranka dostaję…” wygląda jak czyste zdanie. Jakub sam wyłapał to w IMG_0526. Kawałek, który powtarza początek następnego, oznacza start kwestii od powtórzenia. Puszczaj oba tryby, zwykły i `--drobne`: skrypt sam oznacza `POWTORKA?` (w kawałkach słychać więcej sylab, niż ma tekst kwestii) i `?` (kawałek, w którym żadne słowo nie pasuje do tekstu), a na końcu wypisuje listę miejsc do sprawdzenia. Każde z nich rozstrzygnij osobnym whisperem na samym kawałku i drobną obwiednią (`fonemy.py`), nie czytaniem na oko. Zdanie powiedziane dwa razy pod rząd bierz od drugiego podejścia. Zająknięcie w środku kwestii (powtórzona sylaba „sukce- cesu”, pauza w środku słowa „do… kładnie”) wytnij polem `wytnij` w `SEGS`, a skok obrazu większy niż 3 klatki schowaj zmianą kadru dokładnie w miejscu cięcia. Zanim wytniesz, policz sylaby w `fonemy.py`, bo od tego zależy, co ma wypaść, a sklejkę sprawdź whisperem w trzech kontekstach (`pipeline.md`, krok 4). W IMG_0591 powtórzone zdanie i dwa zająknięcia poszły do oddanego filmu i Jakub sam musiał je zgłosić („powtórzyłem i zaciąłem się w niektórych miejscach”).
@@ -141,7 +148,7 @@ Jedna grafika na jedną myśl, w momencie, gdy ją wypowiada. Słownik elementó
 
 ## Opis pod rolkę
 
-Krótki, jako podsumowanie, nie transkrypcja 1:1. Pierwszą długą wersję odrzucił („chujowe, krótka jako podsumowanie”). Struktura: 2–4 linijki, liczba lub kontrast w pierwszej linii, CTA z tym samym słowem-kluczem co w filmie. Jego głos (krótko, konkretnie, prowokacyjnie) opisuje skill `jakub-clone`, rejestr C.
+Krótki, jako podsumowanie, nie transkrypcja 1:1. Pierwszą długą wersję odrzucił („chujowe, krótka jako podsumowanie”). **Zawsze 2 propozycje** różniące się kątem (np. liczba/kontrast vs teza/pytanie), w pliku `<Tytuł>_MM.RR - opisy.txt` obok filmów i w wiadomości. Struktura: 2–4 linijki, liczba lub kontrast w pierwszej linii, na końcu CTA „zaobserwuj” (słowo-klucz tylko w rolkach z automatyzacją). Jego głos (krótko, konkretnie, prowokacyjnie) opisuje skill `jakub-clone`, rejestr C.
 
 ## Porównania A/B
 
@@ -179,6 +186,10 @@ Pierwszy taki odcinek: `projekty/IMG_0529` (13.11.2026, „Zautomatyzowany dzia�
 - `references/narzedzia.md`: pułapki narzędzi i gdzie co jest zainstalowane.
 - `references/dziennik.md`: oceny Jakuba film po filmie. Czytaj na start, dopisuj na koniec.
 - `scripts/sfx.py`: miks subtelnych efektów dźwiękowych pod głos (typy, warianty i poziomy są na górze pliku).
+- `scripts/przebieg.sh`: łańcuch od A-rollu do sprawdzonej kompozycji dla jednej wersji (A albo `hookB/`).
+- `scripts/przerwy.py`: pomiar ciszy na stykach i dziur ≥ 0,25 s w zmontowanym głosie (cel ok. 0,15 s).
+- `scripts/oczy.sh`: podgląd pierwszych klatek (oczy na klatce 0) i podmiana klatek z mrugnięciem przed startem mowy.
+- `scripts/cta.py`: CTA i plansze końcowe Liquid Glass, domyślnie w trybie „obserwuj”.
 - `scripts/strefa.py`: kontrola strefy bezpiecznej na całym filmie i obrys strefy na klatkach; szablony od Jakuba leżą w `references/strefa_szablon_*.png`.
 - `scripts/twarze.py` i `scripts/twarz.swift`: pomiar twarzy w ujęciach (Vision z macOS) pod automatyczny dobór kadru, gdy broda wypada nisko i napisy nie mieszczą się w strefie (`references/pipeline.md`, punkt 5).
 - `scripts/`: szablony skryptów (z IMG_0526) plus `waliduj_napisy.py`, `kontrola_eksportu.py` `rolki_promo.py` (3 rolki promo z long-formu, IMG_0529) i `muzyka_podklad.py` (podkład lo-fi z duckingiem pod long-form).

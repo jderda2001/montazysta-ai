@@ -137,3 +137,25 @@ mkdir -p "$D" && cp -f renders/final.mp4 "$D/<Tytuł>_MM.RR.mp4"
 
 ## 11. Zmiana dubla albo cięcia w gotowym projekcie
 Kolejność: `aroll.py` → `ln -f` → (`kawalki.py` dla zmienionych kwestii) → `slowa.py` → surowe cięcia + `sidon_infer.py` + `studio.py` → `kompozycja.py` → check i snapshot → render → `kontrola_eksportu.py` → eksport. Grafiki dopasują się same, bo liczą się ze słów.
+
+## 12. Rolka z kamery Sony, hook A/B, styl premium (wzór `wzory/C4538`, 24–25.11.2026)
+Przebieg, którym powstało 8 rolek z 24–25.11.2026 (C4527–C4529, C4534–C4538). Kolejność:
+1. **Projekt i dźwięk.** Kopia `skrypty/` i `hf/` z C4538. Dźwięk z pliku kamery: `ffmpeg -i C45xx.MP4 -map 0:a:0 -ac 1 -ar 16000 audio/nowe_16k.wav`, `analiza/sync.json` = `{"offset": 0.0}`. ffmpeg sam obraca obraz (metadane), więc `SRC_W, SRC_H = 2160, 3840`. Jasność zwykle wysoka (YAVG ok. 126), grading lekki.
+2. **Transkrypcja** `wyspy.py` (prompt z nazwami z tematu). Rozpoznaj, który to scenariusz, i przeczytaj go (`~/Montażysta AI/scenariusze/`).
+3. **Wybór dubli według logiki** (zasada 3 procesu): ostatni pełny dubel, chyba że psuje sens całości albo ma błąd faktyczny. Jakub nagrywa hook A, hook B, potem treść, często kilka podejść pod rząd w jednej wyspie (czasy słów z wyspy są wtedy niewiarygodne: szukaj podejść przez `kawalki.py` i whisper `-ml 1 -sow` na fragmencie).
+4. **Falstarty:** `kawalki.py` w obu trybach, potem `fonemy.py` na początku drugiego podejścia (start = pierwsza głoska, `pre` małe, gdy tuż przed jest koniec poprzedniego podejścia).
+   - Wtrącenie ze środka zdania („Klarna [rok temu] wpuściła AI…”) wycinaj jako dwie kwestie z dokładnymi granicami `{"a_out": …}` / `{"a_in": …}` i zmianą kadru na styku. Granice szukaj sylabami w `fonemy.py`, a sklejkę testuj whisperem w trzech kontekstach (sama sklejka, okno 1,4 s, z poprzednią kwestią). Granice z `whisper -ml 1` bywają przesunięte o 0,2–0,3 s.
+   - Ciche „mmm”/buczenie przed słowem (−38…−42 dB) wytnij `{"a_in": …}`, bo inaczej robi dziurę 0,5–0,7 s.
+5. **A-roll** `aroll.py` (styki od faktycznego głosu, zob. punkt 5) i **kontrola całej rolki** `powtorzenia.py` (trzy przebiegi, w tym mikro). Każdy alarm rozstrzygnij: whisper na samym fragmencie w kilku oknach + `fonemy.py`.
+6. **Oczy na klatce 0:** `zsh skrypty/oczy.sh pokaz` i przy mrugnięciu `oczy.sh napraw K Z` (tylko klatki przed mową). Po każdym `aroll.py` powtórz.
+7. **Czasy słów** `slowa.py` na kwestiach z przyciętą ostatnią (robi to `przebieg.sh`): ogon END_HOLD z „Dobra, lecimy dalej” sprawiał, że whisper pomijał całe CTA.
+8. **Kompozycja** (wzór `wzory/C4538/skrypty/kompozycja.py`):
+   - `PHRASES` po normalizacji muszą pasować do słów whispera. Pisownię whispera popraw w `FIX` („Klocie”/„Glocie” → „Claude”, „mój” → „mówi”), słowa rozbite przez whispera łączy `load_words()` (`laczenia`: „tak że” → „także”, „za nim” → „zanim”, „note taker” → „notetaker”), a jedno słowo whispera pokazywane jako dwa wpisz z podkreślnikiem („Grok_Bocie”).
+   - `hook0()` z `do=kin_end` (koniec ostatniej kwestii hooka; hook B bywa z dwóch kwestii). Rozmiar hasła dobierz tak, żeby na klatce 0 nie zasłaniało oczu (zwykle 64–74 px, `top` 276–280); sprawdź snapshotem klatki 0 obu wersji.
+   - Zielona ściana: akcent hasła jako miętowe zakreślenie z ciemnym tekstem (`.hk0-ac`), nie miętowe litery. Biała koszulka pod napisami: miękkie przyciemnienie obrazu pod pasem napisów (`.c7-scrim`, eliptyczne, bez widocznego pasa).
+   - Dwie sceny (najwyżej 2 na 30 s) plus plansza końcowa, która wchodzi na „zaobserwuj”/„koniecznie” i jest CTA. Dwie sceny pod rząd: przenikanie (`fade_out=False, extend=0.75` + `wejscie="fade"`). Liczniki wchodzą razem z liczeniem.
+   - Logo nazw własnych z Wikimedia Commons albo ikon stron do `~/Desktop/Montażysta AI/Grafiki/logo/` + `ZRODLA.txt`, w projekcie `hf/logo/`.
+   - Efekty dźwiękowe: 5–7 na rolkę (ok. 10 na minutę), tylko na ruchach, które coś znaczą.
+9. **Kontrole:** `hyperframes check` (0 błędów; ostrzeżenia o kontraście hasła na zieleni są znane), snapshoty kluczowych momentów i przejść, `strefa.py` (0 naruszeń; tło jasnej planszy końcowej `.e-tlo` jest ukryte w trybie kontrolnym), `przerwy.py`.
+10. **Render obu wersji** (`--fps 60 --quality delivery --video-frame-format jpg`, jeden po drugim w tle), `kontrola_eksportu.py` z `hf/glos.wav`. Kawałki są przy ciasnych stykach długie: podejrzane końcówki przepisz osobno w oknie 10–12 s. „Dziękuję” na końcu pod planszą to halucynacja whispera na ciszy (sprawdź głośność: ok. −63 dB).
+11. **Eksport** do `Eksporty/Rolki/<RRRR-MM-DD Tytuł>/`: `_HOOK A_`, `_HOOK B_`, dwa `.srt`, `- opisy.txt` (2 propozycje). `NOTATKI.md` w projekcie: cięcia, grafiki, rzeczy poglądowe, fakty do sprawdzenia.

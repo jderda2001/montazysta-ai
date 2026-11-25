@@ -86,8 +86,14 @@ ok "twarz (pomiar twarzy)"
 
 # 8. Foldery robocze
 mkdir -p "$DOM/projekty" "$PULPIT/Nagrania " "$PULPIT/Referencje i wytyczne/Rolki wzorcowe" "$PULPIT/Referencje i wytyczne/Zdjęcie profilowe" \
-         "$PULPIT/Eksporty/Rolki" "$PULPIT/Eksporty/Reklamy adGen" "$PULPIT/Eksporty/YouTube"
-ok "foldery: ~/Montażysta AI/projekty i ~/Desktop/Montażysta AI (Nagrania, Eksporty, Referencje)"
+         "$PULPIT/Eksporty/Rolki" "$PULPIT/Eksporty/Reklamy adGen" "$PULPIT/Eksporty/YouTube" \
+         "$PULPIT/Surówki/nie zmontowane" "$PULPIT/Surówki/zmontowane" "$PULPIT/Grafiki/logo" "$PULPIT/Grafiki/osoby" \
+         "$PULPIT/Grafiki/ksiazki" "$DOM/scenariusze"
+ok "foldery: ~/Montażysta AI/{projekty,scenariusze} i ~/Desktop/Montażysta AI (Nagrania, Surówki, Eksporty, Referencje, Grafiki)"
+
+# 8b. Biblioteka logo nazw własnych (Grafiki/logo + ZRODLA.txt), bez nadpisywania własnych plików
+rsync -a --ignore-existing "$REPO/zasoby/Grafiki/" "$PULPIT/Grafiki/"
+ok "logo do grafik w ~/Desktop/Montażysta AI/Grafiki/logo"
 
 # 9. Wzorcowe projekty (skrypty, notatki, branding, szkielet hf) do ~/Montażysta AI/projekty
 rsync -a --ignore-existing "$REPO/wzory/" "$DOM/projekty/"
@@ -95,13 +101,13 @@ ok "wzorcowe projekty w ~/Montażysta AI/projekty"
 
 # 10. Skille Claude Code jako linki do repo (stara wersja trafia do kopii)
 mkdir -p "$HOME/.claude/skills"
-for s in montaz-rolek miniatury; do
+for s in montaz-rolek miniatury scenariusze-rolek; do
   cel="$HOME/.claude/skills/$s"
   if [[ -L "$cel" ]]; then rm "$cel"
   elif [[ -e "$cel" ]]; then mkdir -p "$HOME/.claude/skills-kopia-$DZIS"; mv "$cel" "$HOME/.claude/skills-kopia-$DZIS/"; info "stary skill $s przeniesiony do ~/.claude/skills-kopia-$DZIS"; fi
   ln -s "$REPO/skills/$s" "$cel"
 done
-ok "skille montaz-rolek i miniatury podpięte z repo"
+ok "skille montaz-rolek, miniatury i scenariusze-rolek podpięte z repo"
 
 # 11. Zasady zespołu jako CLAUDE.md folderu roboczego
 if [[ -e "$DOM/CLAUDE.md" && ! -L "$DOM/CLAUDE.md" ]]; then mv "$DOM/CLAUDE.md" "$DOM/CLAUDE.md.kopia-$DZIS"; fi

@@ -42,7 +42,7 @@ O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyj
 **Personal brand Jakuba** (rolki organiczne, long-form, rolki promo). W skillu `MARKA = "personal"`.
 - Czerń `#0f1012`, biel i ciemne szarości. Jeden akcent na film, domyślnie `#00E5A0`, zawsze z ciemnym tekstem na akcencie. Kolor stawiaj tylko na sensie: kluczowe słowo, liczba, przycisk.
 - Bez logo adGen i bez dekoracyjnych kwadratów na planszach.
-- CTA to „napisz w komentarzu…” i plansza końcowa z dymkiem komentarza.
+- CTA to „zaobserwuj” (z powodem: następna rolka, seria), bez słów-kluczy i automatyzacji DM; plansza końcowa też z wezwaniem do obserwowania (`cta.py`, `tryb="obserwuj"`). „Napisz SŁOWO w komentarzu” tylko na wyraźną prośbę Jakuba (24.11.2026).
 
 - **Logika i przejścia** (24.11.2026):
   - Kwestie układaj według sensu wypowiedzi i scenariusza. Ostatni dubel nie wchodzi, gdy przeczy reszcie albo ma błąd faktyczny: wtedy wcześniejszy dubel albo wycięte wtrącenie.
@@ -105,7 +105,7 @@ Whisper wygładza zająknięcia, powtórzone zdania i falstarty. Przed oddaniem 
 
 ## Formaty i komplet przy oddaniu
 
-- **Rolka:** 1080×1920, jedna wersja (reklama: jedna na hook). Do każdej rolki **2 propozycje opisu** różniące się kątem, w pliku `<Tytuł>_MM.RR - opisy.txt` obok filmu i w wiadomości.
+- **Rolka:** 1080×1920, 60 kl./s, zawsze dwie wersje: `<Tytuł>_HOOK A_MM.RR.mp4` i `_HOOK B_` (do testu przez „Próbne rolki” na IG), do każdej `.srt` (reklama: jedna wersja na hook). Do każdej rolki **2 propozycje opisu** różniące się kątem, w pliku `<Tytuł>_MM.RR - opisy.txt` obok filmu i w wiadomości.
 - **Long-form na YouTube** zawsze poziomo, 16:9, 4K. Przy każdym wideo dłuższym niż 10 min, bez pytania:
   - **3 rolki promo** po 10–15 s;
   - **3 miniatury A/B/C** skillem `miniatury`, z 2 tytułami do każdej.
@@ -128,7 +128,15 @@ Skille odsyłają do projektów typu `projekty/IMG_0526/`. Ich skrypty, notatki,
 | IMG_0597 | Pierwsza rolka PerfOS. |
 | IMG_0529 | Long-form na YouTube z rolkami promo i miniaturami. |
 | IMG_0591, IMG_0640, IMG_0688 | Najnowsze rolki: strefa bezpieczna, cięcia w środku kwestii, scrim pod napisami. |
+| **C4538** | **Najnowszy wzór rolki (25.11.2026), od niego zaczynaj.** Kamera Sony, styl premium, hasło od klatki 0, hook A/B (`hookB/` + plik `HOOK_B`), CTA „zaobserwuj”, styki ok. 0,15 s, dwie sceny pod rząd z przenikaniem. |
+| C4527–C4529 | Scenariusze 1–3 dla freelancerów (20 ofert, faktury i windykacja, AI nie zabierze klientów); C4527 ma scrim pod napisami na białej koszulce i akcent hasła jako zakreślenie na zielonej ścianie. |
+| C4534–C4537 | Scenariusze „AI i biznes”: IPO Anthropic (wykres kursu), OpenWorks (licznik, przenikanie scen), Klarna (wycięte wtrącenie „rok temu” ze środka zdania przez `a_in`/`a_out`), oferta po callu (oczy na klatce 0). |
 | IMG_0361 | Stara wersja, sprzed zakazu logo i zasad o falstartach. Tylko poglądowo. |
+
+## Kontekst i scenariusze
+
+- `kontekst/README.md`: kim jest Jakub, foldery, od czego zacząć; `kontekst/pamiec/`: wszystkie notatki poprzedniego montażysty (cytaty, daty, decyzje). Przy sprzeczności wygrywa nowsza data, a ponad notatkami ten plik i `SKILL.md`.
+- Scenariusze rolek pisze skill `scenariusze-rolek` (proces, format, przykłady z 24.11.2026).
 
 ## Praca techniczna
 

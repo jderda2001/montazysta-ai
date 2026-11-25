@@ -8,8 +8,10 @@ Zestaw, z którym Claude Code montuje rolki, reklamy i long-formy w stylu zatwie
 |---|---|
 | `skills/montaz-rolek/` | Skill montażu: proces, styl, skrypty (cięcia, falstarty, napisy, kadry, plansze, SFX, kontrola), biblioteka ok. 50 szablonów grafik HyperFrames i dziennik ocen. |
 | `skills/miniatury/` | Skill miniatur YouTube: 3 warianty do testu A/B, po 2 tytuły do każdego. |
+| `skills/scenariusze-rolek/` | Skill scenariuszy rolek 20–30 s (dwa hooki, hasło od klatki 0, rozpiska z montażem, CTA „zaobserwuj”, źródła) i wzorcowe paczki scenariuszy. |
+| `kontekst/` | Cała wiedza poprzedniego montażysty: kim jest Jakub, foldery, od czego zacząć (`README.md`) i wszystkie notatki z uwagami Jakuba (`pamiec/`, spis w `INDEKS.md`). **Nowy agent czyta to na start.** |
 | `ZASADY.md` | Zasady zespołu: marki (adGen, PerfOS, personal brand), styl, dźwięk, eksporty, synchronizacja. Instalator podpina ten plik jako `~/Montażysta AI/CLAUDE.md`. |
-| `wzory/` | Wzorcowe projekty bez nagrań: skrypty, notatki, branding, szkielet HyperFrames. Instalator kopiuje je do `~/Montażysta AI/projekty/`. |
+| `wzory/` | Wzorcowe projekty bez nagrań: skrypty, notatki, branding, szkielet HyperFrames. Instalator kopiuje je do `~/Montażysta AI/projekty/`. Najnowszy wzór rolki: `wzory/C4538/` (kamera Sony, hook A/B, CTA „zaobserwuj”). |
 | `zasoby/Muzyka/` | Muzyka lo-fi do long-formów (Biblioteka audio YouTube) i SFX (Kenney CC0, Mixkit). Szczegóły licencji są w plikach w `SFX/`. |
 | `instalacja/zainstaluj.sh` | Instalacja wszystkich narzędzi i podpięcie skilli. |
 
@@ -50,13 +52,14 @@ Opis tego, czego szukać we wzorcach, jest w `skills/montaz-rolek/references/wzo
 
 ## Jak pracować
 
-- Nagranie z iPhone'a wrzuć do `~/Downloads` albo do `~/Desktop/Montażysta AI/Nagrania `. Napisz Claude'owi, co to jest: reklama adGen z hookami A/B/C, rolka PerfOS albo rolka organiczna. Dołącz scenariusz, jeśli go masz.
-- Claude sam pobierze najnowszą wersję skilli (`git pull`), zmontuje film, sprawdzi falstarty i strefę bezpieczną, wyrenderuje i odłoży plik do `~/Desktop/Montażysta AI/Eksporty/…` razem z 2 propozycjami opisu albo tekstu reklamy.
+- Nagranie (kamera Sony `C45xx.MP4` albo iPhone) wrzuć do `~/Desktop/Montażysta AI/Surówki/nie zmontowane/` (albo na pulpit, do `~/Downloads`, do `Nagrania `). Napisz Claude'owi, co to jest: reklama adGen z hookami A/B/C, rolka PerfOS albo rolka organiczna. Jeśli nagranie jest ze scenariusza, scenariusz leży w `~/Montażysta AI/scenariusze/` i Claude go odnajdzie.
+- Scenariusze: poproś o nie („daj 5 skryptów o AI w biznesie”); skill `scenariusze-rolek` sprawdzi newsy w sieci i zapisze paczkę w `~/Montażysta AI/scenariusze/`.
+- Claude sam pobierze najnowszą wersję skilli (`git pull`), zmontuje film w wersjach z hookiem A i B, sprawdzi falstarty, powtórzenia, przerwy, strefę bezpieczną i oczy na pierwszej klatce, wyrenderuje i odłoży pliki do `~/Desktop/Montażysta AI/Eksporty/…` razem z 2 propozycjami opisu albo tekstu reklamy.
 - Uwagi do montażu pisz normalnie („za szybko ucięte”, „mocniej animuj wykres”). Po oddaniu Claude zapisze ocenę w dzienniku skilla i wypchnie zmianę do repo, więc druga osoba dostanie tę lekcję.
 
 ## Synchronizacja
 
-- Zmiany ze skilli i zasad wypycha Claude po montażu (commit i `git push`). Ręcznie: `git -C ~/"Montażysta AI/montazysta-ai" pull`.
+- Zmiany ze skilli i zasad Claude commituje po montażu; `git push` robi Jakub (albo Claude, jeśli go o to poprosisz). Ręcznie: `git -C ~/"Montażysta AI/montazysta-ai" pull` / `push`.
 - `dziennik.md` scala się automatycznie (`merge=union`), więc równoległe wpisy obu osób się nie gryzą.
 - Do repo nie trafiają nagrania, eksporty, rendery ani klucze (`.gitignore`). Repo jest prywatne.
 

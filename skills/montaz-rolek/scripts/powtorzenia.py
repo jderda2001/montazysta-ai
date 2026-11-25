@@ -7,13 +7,16 @@ kwestii z roznych dubli (koniec jednej mowi to samo co poczatek nastepnej), a wh
 "to to", "sukce- cesu" i zdanie powiedziane dwa razy.
 
 Co robi:
-  1. Tnie glos z montazu (audio/aroll.wav albo podany plik) na kawalki miedzy pauzami, w dwoch przebiegach:
-     drobnym (pauzy >= 0,09 s) i zwyklym (>= 0,2 s). Kazdy kawalek idzie do whispera BEZ promptu (prompt wygladza).
+  1. Tnie glos z montazu (audio/aroll.wav albo podany plik) na kawalki miedzy pauzami, w trzech przebiegach:
+     mikro (dolki ponizej -30 dB od 0,05 s, na glosie po masteringu), drobnym (pauzy >= 0,09 s) i zwyklym (>= 0,2 s). Kazdy kawalek idzie do
+     whispera BEZ promptu (prompt wygladza). Mikro (25.11.2026, C4538): "Jed... jeden folder" mial dolek tylko do -48 dB
+     przez 0,06 s, wiec drobny przebieg go nie rozcinal, a whisper na calosci slyszal jedno "Jeden".
   2. Szuka trzech rzeczy:
      A. ta sama fraza (2-4 slowa z co najmniej jednym slowem tresci) powiedziana wiecej razy niz w tekscie kwestii,
         blisko siebie (do 12 slow), oraz to samo slowo dwa razy pod rzad ("to to", "zeby zeby");
      B. falstart: kawalek, ktory jest poczatkiem nastepnego ("Pewnie widzisz," -> "Pewnie widzisz, ze..."),
-        albo urwane slowo poprawione od razu ("sukce- sukcesu", "do- dokladnie");
+        albo urwane slowo poprawione od razu ("sukce- sukcesu", "do- dokladnie"), albo restart slowa: krotki kawalek
+        (do 0,6 s, 1-2 slowa), po ktorym nastepny zaczyna sie od slowa o tym samym poczatku ("Jed..." -> "jeden folder");
      C. slowa, ktorych nie ma w tekscie kwestii (SEGS w aroll.py -> aroll/edl.json), a ktore sa powtorzeniem sasiednich.
   3. Kazde podejrzane miejsce: czas w rolce, numer kwestii, czas w nagraniu, kontekst, oraz klip do odsluchu
      analiza/powtorzenia/NN_<czas>.wav (+-1,2 s). Kod wyjscia 1, gdy sa alarmy.
@@ -171,7 +174,7 @@ def main():
     x = wczytaj(src)
     alarmy = []
 
-    for nazwa, prog, pauza in (("drobny", -42.0, 0.09), ("zwykly", -45.0, 0.2)):
+    for nazwa, prog, pauza in (("mikro", -30.0, 0.05), ("drobny", -42.0, 0.09), ("zwykly", -45.0, 0.2)):
         kaw = transkrybuj(x, kawalki(x, prog, pauza))
         slowa = []  # (czas, slowo) - czas slowa przyblizony liniowo w kawalku
         for a, b, t in kaw:
@@ -212,6 +215,12 @@ def main():
                 krotki = urwany and 2 <= len(w1) <= 4 and len(w2) > len(w1) and w1[:2] == w2[:2]  # "tak jak to" -> "tak jak ta, ktora..."
                 if rowny or krotki:
                     alarmy.append((kaw[k + m][0], f"[{nazwa}] falstart: „{kaw[k][2]}” → „{kaw[k + m][2]}”"))
+            # restart slowa: krotki kawalek, a nastepny zaczyna sie od slowa o tym samym poczatku (min. 3 litery)
+            w2n = [norm(w) for w in kaw[k + 1][2].split() if norm(w)]
+            if w1 and w2n and kaw[k][1] - kaw[k][0] <= 0.6 and len(w1) <= 2 and w1[-1] != w2n[0]:
+                pref = len(__import__("os").path.commonprefix([w1[-1], w2n[0]]))
+                if pref >= 3:
+                    alarmy.append((kaw[k + 1][0], f"[{nazwa}] restart słowa: „{kaw[k][2]}” → „{kaw[k + 1][2]}”"))
         pelne = [norm(w) for _, w in slowa]
         for k in range(len(pelne) - 1):
             a_, b_ = pelne[k], pelne[k + 1]

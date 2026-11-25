@@ -112,6 +112,7 @@ Kolejność ma znaczenie, bo każdy krok korzysta z wyniku poprzedniego. Dokład
     - falstarty i urwane słowa;
     - słowa spoza tekstu kwestii;
     - akustykę: fragment, który brzmi jak fragment 0,2–3 s wcześniej, łapie powtórkę, której whisper nie zapisuje.
+    - restart słowa w przebiegu mikro (dołki do −30 dB od 0,05 s, na głosie po masteringu): krótki kawałek, po którym następny zaczyna się od słowa o tym samym początku. Jakub, 25.11.2026 (C4538, 13 s): „zacząłem pewien wyraz, pomyliłem się i powtórzyłem go pół sekundy później… takie rzeczy też musimy wyłapywać”. Było to „Jed… jeden folder” z pauzą 0,16 s, której zwykły i drobny podział nie rozcinał, a whisper na całości pisał jedno „Jeden”. Mikro daje też fałszywe alarmy na urwanych spółgłoskach („Nikt” jako „Nie”), więc każdy rozstrzygnij uchem.
 
     Każde miejsce dostaje klip w `analiza/powtorzenia/`. Rozstrzygnij je uchem i `fonemy.py`, prawdziwe wytnij i puść kontrolę jeszcze raz. Oddajesz dopiero przy 0 miejscach albo z wymienionymi miejscami, które świadomie zostały (powód przy oddaniu). Kalibracja: czysta rolka daje 0, prawdziwe falstarty Jakuba 3 na 3, wklejone wpadki 3 na 3.
 9. **Render i kontrola:** `hyperframes render`, potem `kontrola_eksportu.py` (głośność, właściwa ścieżka głosu, transkrypcja kawałkami bez powtórzeń). Dopiero wtedy kopiuj do Eksporty.

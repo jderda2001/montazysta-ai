@@ -49,6 +49,8 @@ O palecie decyduje marka, a nie format filmu. Jeśli z nagrania nie wynika, czyj
   - Dwie plansze pod rząd tylko przenikaniem: pierwsza zostaje pod drugą, bez mignięcia twarzy.
   - Licznik wchodzi razem z liczeniem, bez widocznych zer.
 
+- **Restart słowa** („Jed… jeden”, poprawka w pół sekundy): `powtorzenia.py` ma przebieg mikro, który to łapie. Każdy alarm sprawdź uchem (25.11.2026).
+
 ## Styl (zatwierdzony, nie eksperymentuj)
 
 - **Napisy są zamrożone:** słowo po słowie, frazy po 2–5 słów, wyróżnienia akcentem, Inter Tight, pozycja 1120 px i szerokość 620 px. Nie zmieniaj ich wyglądu.

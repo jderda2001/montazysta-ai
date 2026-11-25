@@ -308,3 +308,14 @@ Przypisanie po klatce i długości; dwóch rolek z 1:33 i 1:51 nie da się pewni
 - **Źródła:** Aktualności, Karta Rolki i Relacje; Eksploruj tylko 1,5–3,9%, czyli zasięg głównie u obserwujących.
 
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.
+
+## 2026-11-25, C4537_v2 „Kończę call, oferta już czeka” (montaż testowy agenta-montażysty OpenBot, hook A i B, ok. 28 s)
+- Zlecenie: Jakub wrzucił C4537 do `Surówki/nie zmontowane` jako test nowego obiegu (Surówki → w montażu → Eksporty/Rolki/Nieopublikowane). Montaż od zera według skilla; C4537 z 24.11 zostaje obok.
+- Hook B pełniejszy niż w C4537: „Przestań pisać oferty po callu.” (15.59) + „Niech napisze ją rozmowa.” wycięte z pierwszego, szybkiego podejścia (9.91, w ciągłej mowie) + `post` 0,31 po „callu” (bez tego 0,02 s ciszy). Pułapka: 9.88 przechodziło 3 konteksty na surowym dźwięku, a kontrola eksportu (gotowy głos, kawałek 15 s) dała „W ogóle niech” (30 ms przejścia z „callu”). Sklejkę w ciągłej mowie sprawdzaj na `audio/aroll.wav` po `aroll.py --audio-only` w oknach 0–4 i 0–8 s, nie na sklejonym surowym nagraniu (jest ciszej, whisper potrafi pominąć całą kwestię).
+- Ciche „mmm” przed „Na każdym moim callu” (29.28–29.62, −37…−42 dB) robiło 0,49 s przerwy → `a_in` 29.60; styki śr. 0,19 s.
+- Scena A jako jedna bogata scena z kamerą: zakreślacze na słowach → przejazd kamery w prawo → fragmenty płyną do notatki → Grok Bot → oferta w Canvie z sekcjami. Pułapka: biała `.lcard` później w DOM przykryła przelatujące chipy (z-index 3). Ruch chipów tylko `x/y` (check odrzuca `left/top`). Przejazd kamery dopisany do `_okna_ruchu`, żeby strefa.py nie liczyła treści w ruchu.
+- Scenariusz chciał CTA „pole” + planszę `profil`: CTA pole pominięte (3. złożona animacja w 30 s, zasada 10), plansza `profil` od „Zaobserwuj” z dopiskiem „Chcesz zobaczyć cały setup? / Daj znać w komentarzu”.
+- Fakty spoza nagrania pominięte: nazwa notetakera (brak), „wysłano w 5 min” (brak czasu w nagraniu).
+- Naprawione narzędzia: `oczy.sh` (`$Z:e` w zsh), `sprawdz_sync.py` (ścieżka nagrania na sztywno → `VIDEO` z `aroll.py`).
+- **Użyte (rotacja):** C4537_v2 – CTA brak (plansza pełni CTA), plansza `profil`.
+- Ocena Jakuba: (czeka).

@@ -7,7 +7,9 @@ from pathlib import Path
 import numpy as np
 P = Path(__file__).resolve().parent.parent
 edl = json.loads((P / "aroll/edl.json").read_text())
-VIDEO = Path.home() / "Desktop/Montażysta AI/Surówki/zmontowane/C4538.MP4"
+import importlib.util as _iu
+_s = _iu.spec_from_file_location("aroll", P / "skrypty/aroll.py"); _a = _iu.module_from_spec(_s); _s.loader.exec_module(_a)
+VIDEO = _a.VIDEO  # zawsze to samo nagranie co w aroll.py (C4537_v2, 25.11.2026: sciezka na sztywno do C4538 dawala +-100 ms na innym filmie)
 def rd(path):
     with wave.open(str(path)) as w:
         return np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32)

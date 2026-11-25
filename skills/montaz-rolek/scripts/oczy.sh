@@ -7,6 +7,7 @@
 #   K ustaw tak, zeby nie wchodzic na mowe (pierwsze slowo w audio/slowa.json; przy 30 kl./s klatka = 0,033 s):
 #   zamrozenie pod mowa psuje synchronizacje ust. Reszta mrugniecia po starcie mowy wyglada naturalnie.
 #   Dzwiek i liczba klatek bez zmian (sprawdz sprawdz_sync.py). Po kazdym aroll.py naprawe trzeba powtorzyc.
+# ${Z} w klamrach: zsh czyta "$Z:e" jako modyfikator (:e = rozszerzenie) i robil z filtra "start_frame=nd_frame=9" (C4537_v2, 25.11.2026).
 # Kadr oczu (crop) dobrany do ujec z C45xx (twarz w gornej czesci); przy innym kadrze popraw CROP.
 set -e
 CROP="600:300:240:330"
@@ -19,7 +20,7 @@ case "$1" in
   napraw)
     K=$2; Z=$3
     ffmpeg -v error -y -i aroll/aroll.mp4 -filter_complex \
-      "[0:v]split[a][b];[a]trim=start_frame=$Z:end_frame=$((Z+1)),setpts=PTS-STARTPTS,loop=loop=$((K-1)):size=1:start=0,setpts=N/$FPS/TB[f];[b]trim=start_frame=$K,setpts=PTS-STARTPTS[r];[f][r]concat=n=2:v=1:a=0[v]" \
+      "[0:v]split[a][b];[a]trim=start_frame=${Z}:end_frame=$((Z+1)),setpts=PTS-STARTPTS,loop=loop=$((K-1)):size=1:start=0,setpts=N/$FPS/TB[f];[b]trim=start_frame=$K,setpts=PTS-STARTPTS[r];[f][r]concat=n=2:v=1:a=0[v]" \
       -map "[v]" -map 0:a -r $FPS -c:v libx264 -preset slow -crf 14 -pix_fmt yuv420p -color_range tv -colorspace bt709 \
       -color_primaries bt709 -color_trc bt709 -c:a copy -movflags +faststart aroll/aroll_oczy.mp4
     a=$(ffprobe -v error -count_packets -select_streams v:0 -show_entries stream=nb_read_packets -of csv=p=0 aroll/aroll_oczy.mp4)

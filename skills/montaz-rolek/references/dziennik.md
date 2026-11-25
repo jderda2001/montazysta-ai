@@ -331,3 +331,13 @@ Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % 
 - Naprawione narzędzia: `oczy.sh` (`$Z:e` w zsh), `sprawdz_sync.py` (ścieżka nagrania na sztywno → `VIDEO` z `aroll.py`).
 - **Użyte (rotacja):** C4537_v2 – CTA brak (plansza pełni CTA), plansza `profil`.
 - Ocena Jakuba: (czeka).
+
+## 2026-11-25, PERFOS-film30 wersja pionowa 9:16 (robocza, z poziomego filmu 16:9 z gliną i ekranami aplikacji)
+- Zlecenie (CMO PerfOS, prośba Jakuba): pion 1080×1920 na Reels i Shorts z tych samych ujęć, bez nowych generacji. Projekt `projekty/PERFOS-film30/pion/` (osobny `skrypty/`, `hf/`, `analiza/`, więc `strefa.py` działa bez zmian). Dźwięk 1:1 z wersji poziomej (te same czasy słów i efektów).
+- Przekadrowanie ujęć 16:9 (1928×1072): skala do 1920 px wysokości (×1,79) i wycinek 1080 px w miejscu bohatera, lekki `unsharp`. Postać centralna (P na biurku, P w maszynowni) wychodzi dobrze i dużo większa niż w poziomie. Gorzej: duże zbliżenie (soczewka wypełnia cały kadr) i scena szeroka, gdzie akcja jest w dwóch miejscach. Na to panorama: ujęcie w pełnej szerokości (3414 px) jako `<video>` i GSAP `x` od bohatera do detalu na słowie i z powrotem przed przejściem.
+- Punkty przejść z poziomej kompozycji przeliczane funkcją (`v16()`: offset kadru 16:9 → skala → odjęcie wycinka), żeby koło z obiektywu i wyjście okna z oka trafiały w oko także w pionie.
+- Ekrany aplikacji (zrzuty 1260 px szer.) w pionie: okno 690×700 w strefie (pod 860 px prawa krawędź 885), a w środku kamera po stronie: najazdy 1,2–1,7 i przejazdy między obramowaniami. Przy skali poniżej ok. 1,2 tekst panelu ma ok. 12 px i na telefonie jest nieczytelny; pierwsza próba z 0,95 odpadła na podglądzie. Strona nie może być niższa niż widok przy danej skali (biały pas pod spodem), a przy krawędziach zrzutów onboardingu widać ich miętowy margines: punkt kamery trzymaj w obrębie karty.
+- Napis w akcencie na miętowej glinie ginie: pod napisami scrim (radialny, 0,5), a w ujęciu, gdzie na 1120 px stoi dół litery P, napisy niżej (1170 px, nadal w strefie).
+- Hasło od klatki 0 (zasada 11) w dwóch wierszach małych słów, żeby nie zostało jedno słowo w drugiej linii.
+- Kontrole: check 0 błędów, strefa 0, YAVG klatki 0 = 138.
+- Ocena Jakuba: (czeka).

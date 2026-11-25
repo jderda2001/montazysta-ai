@@ -307,6 +307,18 @@ Przypisanie po klatce i długości; dwóch rolek z 1:33 i 1:51 nie da się pewni
 - **Najlepszy wynik:** najmniej pominięć i najwięcej polubień i udostępnień miała rolka „KORPO” z dużym, gotowym napisem od 1. klatki i uniwersalnym tematem. Najwięcej udostępnień: „Mój stack AI” (konkretna wartość do zabrania). CTA ze słowem-kluczem działa (komentarze 2,2–2,5%).
 - **Źródła:** Aktualności, Karta Rolki i Relacje; Eksploruj tylko 1,5–3,9%, czyli zasięg głównie u obserwujących.
 
+### 2026-11-25, pomiar 24 h od Social Media Managera PB: „45 godzin i 3000 zł” (D0 IG + FB, publikacja 24.11, jedna wersja)
+Źródło: `/Users/jd/OpenBot/Shared/PersonalBrand/analityka/2026-11-25.md` (statystyki rolki IG, odczyt 25.11 17:50). Której wersji montażu IMG_0717 dotyczy post, nie potwierdzono.
+
+| Kanał | Wyśw. | Widzowie | Polub. | Kom. | Udost. | Zapis. | Nowi obserwujący | Wejścia na profil |
+|---|---|---|---|---|---|---|---|---|
+| Instagram | 718 | 278 | 7 | 10 | 0 | 2 | 0 | 0 |
+| Facebook (crosspost) | 275 | brak | 1 reakcja | 0 | brak | brak | brak | brak |
+
+- 51,4% wyświetleń od nieobserwujących, a mimo to 0 obserwacji i 0 wejść na profil. Średniego czasu i % obejrzeń IG nie pokazał.
+- Komentarze to głównie słowo-klucz „rolka” z przypiętego komentarza (mechanizm Social Media Managera, poza montażem).
+- **Wniosek dla montażu:** końcówka musi dać jasny powód, żeby wysłać rolkę dalej albo wejść na profil (np. „to część serii”, „w kolejnej rolce pokażę…”). Na planszy końcowej z „zaobserwuj” dopisek z tym powodem, ale tylko z tego, co Jakub mówi w nagraniu lub scenariuszu: serię wpisuję, gdy rolka naprawdę do niej należy. CTA nie trafia do opisu. Porównania hook A/B i pór będą od 26.11.
+
 Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % obejrzeń do końca, gdzie spada wykres utrzymania (sekunda i co wtedy było na ekranie), wniosek dla montażu.
 
 ## 2026-11-25, C4537_v2 „Kończę call, oferta już czeka” (montaż testowy agenta-montażysty OpenBot, hook A i B, ok. 28 s)

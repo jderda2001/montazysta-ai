@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pl" data-resolution="portrait"><head><meta charset="UTF-8" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<style>
+@font-face { font-family: "Inter Tight"; src: url("fonts/InterTight.ttf") format("truetype"); font-weight: 100 900; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:#0f1012; }
+#root { position:relative; width:1080px; height:1920px; overflow:hidden; font-family:"Inter Tight", sans-serif; }
+#tlo { position:absolute; inset:0; width:1080px; height:1920px; object-fit:cover; }
+.karta { position:absolute; left:0; right:0; top:880px; margin:0 auto; width:max-content; max-width:680px; padding:26px 38px 30px;
+  border-radius:30px; background:rgba(15,16,18,.92); box-shadow:0 24px 60px rgba(0,0,0,.35); text-align:center; }
+.l { font-size:84px; font-weight:800; letter-spacing:-0.035em; line-height:1.08; color:#fff; white-space:nowrap; }
+.ac { display:inline-block; margin-top:10px; padding:2px 18px 8px; border-radius:16px; background:#00E5A0; color:#0f1012; }
+</style></head><body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="1" data-width="1080" data-height="1920" data-fps="30">
+  <img id="tlo" class="clip" src="tlo_A.jpg" data-start="0" data-duration="1" data-track-index="0" alt="">
+  <div class="karta clip" data-start="0" data-duration="1" data-track-index="1">
+    <div class="l">Oferta pisze się</div><div class="l"><span class="ac">sama</span></div>
+  </div>
+</div>
+<script>const tl = gsap.timeline({ paused: true }); window.__timelines = { main: tl };</script>
+</body></html>

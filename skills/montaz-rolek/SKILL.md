@@ -130,6 +130,12 @@ Kolejność ma znaczenie, bo każdy krok korzysta z wyniku poprzedniego. Dokład
     - szuka zamrożeń, powrotu do tej samej klatki i napisu dwa razy pod rząd, zapisuje stykówkę klatek co 0,5 s i klipy z cięć w `analiza/poczatek/`.
 
     Hook bierz z jednego podejścia. Drugą połowę zdania z innego podejścia doklejaj tylko przy wyraźnej pauzie w nagraniu przed `a_in`; inaczej krótszy hook z jednego podejścia. Oddajesz przy 0 alarmach albo z każdym alarmem rozstrzygniętym uchem (i opisanym przy oddaniu). Stykówkę zawsze obejrzyj.
+9b. **Każde cięcie w całym filmie** (`ciecia.py`, od 26.11.2026), obowiązkowo na każdym gotowym pliku, HOOK A i HOOK B: `uv run --no-project --with numpy python3 -I skrypty/ciecia.py <plik.mp4> <napisy.srt> --projekt <folder wersji>`. `poczatek.py` patrzy tylko na 0–5 s, a ten sam błąd (cięcie w trakcie głoski, ułamek głosu z sąsiedniego dubla, urwana końcówka) może wypaść na każdym styku. Dla każdego cięcia (t_in kwestii i≥1, plus wycięcia ze środka kwestii):
+    - obwiednia nagrania (`audio/nowe_16k.wav`) ±0,5 s przy `a_in` i `a_out` poprzedniej: głos w 60 ms przed `a_in` / po `a_out` powyżej mowy−6 dB = ALARM, powyżej mowy−14 dB = uwaga; długość ciszy na styku;
+    - whisper bez promptu w oknach zaczynających się (1,0 i 1,5 s) i kończących (1,2 i 1,6 s) dokładnie na cięciu: pierwsze/ostatnie słowo vs `audio/slowa.json` i `.srt`;
+    - urwane słowo (słowo z `slowa.json` przecina cięcie), sklejka dwóch podejść (pomijana, gdy kwestia zaczyna się w nagraniu do 1,6 s po poprzedniej, czyli to ten sam dubel), to samo słowo dwa razy na styku.
+
+    Wynik: lista `ALARM`/`uwaga`, `<out>/<plik>_ciecia.json` (obwiednie i transkrypcje każdego cięcia) i klipy ±1 s z oznaczonych cięć. Każdy alarm rozstrzygnij `fonemy.py` (samogłoska = głośno i mało przejść przez zero, „s/c/sz” = dużo przejść, zwarcie = dołek) i dłuższymi oknami whispera. Whisper w krótkim oknie wypełnia ucięte słowo całym („pracuję”, „zajebiste”), więc o urwanej końcówce rozstrzyga obwiednia, nie transkrypcja. Fałszywe uwagi: „AI” jako „Ej, ej”, „Mała” jako „No a”, pisownia whispera („w klucze” = „w Claude'zie”).
 10. **Oddanie:** krótko, co zrobione i co warto sprawdzić. Uzupełnij `NOTATKI.md` i `napisy.srt`. Plik powyżej 30 MiB nie dojdzie na telefon. Lżejszą kopię zrób tylko na prośbę, a gdy pyta, gdzie jest plik, pokaż mu go w Finderze (`open -R`).
 11. **Pętla nauki:** zapytaj o ocenę. Po publikacji poproś o zrzuty z Insights (wykres utrzymania widzów). Dopisz wpis do `references/dziennik.md` i ważne decyzje do pamięci.
 

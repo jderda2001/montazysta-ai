@@ -67,6 +67,9 @@ def koniec_mowy(e, prog=-52.0, szukaj=0.45):
     for i in range(len(env) - 2):
         if env[i][0] >= e - 0.05 and all(env[j][1] < prog for j in range(i, i + 3)):
             return env[i][0]
+    # 26.11.2026: bez ciszy w 0,45 s (glos trwa dalej) ten zapas ucinal koncowa sylabe (C4538 "pracu(ję)", ciecia.py).
+    print(f"UWAGA koniec_mowy({e:.2f}): glos nie gasnie w {szukaj:.2f} s - sprawdz koniec kwestii (fonemy.py), "
+          "mozliwa ucieta koncowka slowa", file=sys.stderr)
     return e + 0.12
 END_HOLD = 2.5  # przytrzymanie po ostatnim slowie pod plansze koncowa
 

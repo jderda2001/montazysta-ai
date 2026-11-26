@@ -343,3 +343,10 @@ Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % 
 - Hasło od klatki 0 (zasada 11) w dwóch wierszach małych słów, żeby nie zostało jedno słowo w drugiej linii.
 - Kontrole: check 0 błędów, strefa 0, YAVG klatki 0 = 138.
 - Ocena Jakuba: (czeka).
+
+## 2026-11-26, kontrola każdego cięcia w 17 zaplanowanych wersjach (zlecenie Personal Brand Managera po HOOK A C4537_v2)
+- Nowy skrypt `ciecia.py` (obwiednia nagrania ±0,5 s przy `a_in`/`a_out`, whisper w oknach od i do cięcia, urwane słowo, sklejka podejść, słowo dwa razy na styku). 154 cięcia w 17 plikach. Kalibracja: wycofany HOOK A C4537_v2 daje 2 alarmy na 1,67 s.
+- Błędy: C4538 („Przestań tłumaczyć AI…”) A 9,20 s i B 10,53 s „pracu(ję)”, IMG_0720 („AI masakra…”) 19,23 s „zajebist(e)”. Oba to koniec kwestii postawiony przed ostatnią sylabą (zob. `kontekst/pamiec/feedback-kazde-ciecie.md`). Poprawki w `projekty/C4538_poprawka` i `projekty/IMG_0720_poprawka`, pliki „ - poprawka” obok zaplanowanych; zaplanowanych plików nie ruszałem.
+- Reszta czysta. Znane: Klarna 5,23 s (A) / 4,53 s (B) celowe cięcie „rok temu” (opisane 25.11), 81 mld B „te narzędzie” na 2,96 s (napis „to narzędzie”).
+- `aroll.py`: ostrzeżenie, gdy `koniec_mowy()` nie znajduje ciszy w 0,45 s.
+- Ocena Jakuba: (czeka).

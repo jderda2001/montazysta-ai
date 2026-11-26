@@ -23,5 +23,6 @@ Skopiuj do `projekty/<IMG_xxxx>/skrypty/`. Każdy skrypt liczy ścieżki względ
 | `strefa.py` | kontrola strefy bezpiecznej (safe zone) na całym filmie, obrys strefy na klatkach | nic (strefę zmienia się w `SAFE` w `kompozycja.py`) |
 | `kontrola_eksportu.py` | kontrola gotowego pliku przed oddaniem | nic |
 | `poczatek.py` | pierwsze 5 s gotowego pliku słowo po słowie: transkrypcja vs `.srt`, okna od i do każdego cięcia, głos przed `a_in`, sklejka dwóch podejść, zamrożenia i powtórzone klatki, podwójny napis, stykówka co 0,5 s (od 25.11.2026, obowiązkowo na HOOK A i B) | nic |
+| `ciecia.py` | każde cięcie w całym gotowym pliku: obwiednia nagrania ±0,5 s przy `a_in`/`a_out`, whisper w oknach od i do cięcia vs `slowa.json` i `.srt`, urwane słowo, sklejka podejść, to samo słowo dwa razy na styku (od 26.11.2026, obowiązkowo na HOOK A i B) | nic |
 
 Grafiki w `build()` opowiadają historię Kai (lista zadań, powiadomienie, CRM, kalendarz, koszty, profil, komentarz). W nowym temacie zostaw funkcje pomocnicze (`panel`, `overlay`, `pop`, `leak`, `W`, `seg`) i CSS, a zestaw grafik ułóż od nowa pod treść, korzystając ze słownika w `references/styl.md`.

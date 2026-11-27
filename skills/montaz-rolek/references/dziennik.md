@@ -350,3 +350,12 @@ Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % 
 - Reszta czysta. Znane: Klarna 5,23 s (A) / 4,53 s (B) celowe cięcie „rok temu” (opisane 25.11), 81 mld B „te narzędzie” na 2,96 s (napis „to narzędzie”).
 - `aroll.py`: ostrzeżenie, gdy `koniec_mowy()` nie znajduje ciszy w 0,45 s.
 - Ocena Jakuba: (czeka).
+
+## 2026-11-27, PERFOS-film30 finał v5 (16:9, LinkedIn PL+EN, 1:1, 9:16) na prawdziwych ekranach aplikacji od IT
+- Zlecenie (CMO PerfOS): podmiana makiet na zrzuty z konta pokazowego (E1–E7, 3840×2160), dwie poprawki faktu w lektorze, 4 wersje z jednego zestawu kompozycji. Projekt `projekty/PERFOS-film30/`.
+- Zrzuty IT mają w PNG systemowy kursor (a pierwszy zestaw jeszcze znaczek trybu deweloperskiego Next.js „N”). Kursor usuwany łatką: z bliźniaczego zrzutu o identycznym układzie (różnica obrazów = sam kursor) albo kolorem tła. Kursor do kliknięcia dokładamy sami, więc stary w zrzucie dawałby dwa kursory.
+- Treści zakazane w kadrze (koszt na zapytanie, progi kwotowe, polski format daty, kraj): kadrowanie zamiast zamazywania. Strona wjeżdża już w zbliżeniu, a kamera ma obszar dozwolony (`BOUNDS` z prawą krawędzią przed kolumną kosztu), bo przy najeździe od skali 1 zakazana liczba jest czytelna w klatkach pośrednich (OCR złapał „$17.32” w połowie najazdu). Gdy kadr nie wystarcza: zakrycie wyglądające jak interfejs (puste pole „Click to add” skopiowane z sąsiedniej karty, ucięcie „, 30.11” do „On Monday”), nie rozmycie.
+- Kontrola treści po renderze: OCR (Apple Vision) klatki co 0,5 s ze wzorcami zakazów zleceniodawcy (waluta, słowo, data, kraj) i pomijaniem tekstu napisów z .srt. Fałszywe alarmy biorą się z przejść (blednąca strona pod spodem: „19 inquiries” → „1.9”) i polskich napisów czytanych bez ogonków; każdy alarm sprawdzić na klatce.
+- Ten sam zestaw reklam na trzech ekranach (generowanie, akceptacja, „poniedziałek”) zastąpiony przy „Every Monday” kafelkiem „To do … Mon 7:12”, żeby nie powtarzać tych samych grafik.
+- Kontrole: −14,0 LUFS, szczyt −1,7 dBFS, strefa 9:16 = 0, transkrypcja bez zakazanych zwrotów, OCR 0 prawdziwych alarmów.
+- Ocena Jakuba: (czeka).

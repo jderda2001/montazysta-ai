@@ -359,3 +359,12 @@ Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % 
 - Ten sam zestaw reklam na trzech ekranach (generowanie, akceptacja, „poniedziałek”) zastąpiony przy „Every Monday” kafelkiem „To do … Mon 7:12”, żeby nie powtarzać tych samych grafik.
 - Kontrole: −14,0 LUFS, szczyt −1,7 dBFS, strefa 9:16 = 0, transkrypcja bez zakazanych zwrotów, OCR 0 prawdziwych alarmów.
 - Ocena Jakuba: (czeka).
+
+## 2026-11-28, PERFOS-B8 „Dwie firmy. Ten sam budżet na reklamy.” (reklama Meta 9:16, bez lektora, hak A i B)
+- Zlecenie (CMO PerfOS, tura 1 kreacji wg analizy konkurenta, wzorzec „dwie identyczne marki, ten sam budżet”): 21,0 s tylko z gotowych ujęć gliny z filmu 30 s (s03, s05, s07, s10), 0 kr. Projekt `projekty/PERFOS-B8-dwie-firmy/` (hak B w `hookB/` z plikiem `HOOK_B`, klipy i dźwięk przez dowiązania).
+- „Dwie firmy” bez nowej generacji: to samo ujęcie w dwóch połówkach kadru (1080×950 każda) i miętowa linia między nimi. Ten sam plik w dwóch elementach `<video>` HyperFrames odtwarza z opóźnieniem (na klatce 0 połówki różniły się o ok. 1,5 s ruchu), więc dwie kopie pliku. Połówka z ujęcia przeskalowanego do 1420 px wysokości, żeby obiektyw P stał pod hasłem, a nie za nim.
+- Porównanie jako jedna złożona scena (karty z paskami: budżet rośnie w obu, opłata agencji rośnie, PerfOS stoi), druga to plansza końcowa: 2 sceny na 21 s.
+- Bez głosu `hyperframes check` daje dwa przydatne ostrzeżenia: `text_below_floor` (tekst < 28 px przy 1080) i `line_unread` (fraza krócej niż ok. 0,5 s + 0,3 s na słowo). Frazy po 0,8 s były za krótkie; teraz 2 frazy na scenę po 1,4–1,6 s.
+- Dźwięk: motyw serii PerfOS na −20 LUFS, +4 dB na planszy końcowej, 4 efekty z biblioteki (`sfx.py`), całość −14,1 LUFS, szczyt −1,9 dBFS.
+- Kontrole: check 0 błędów, strefa 0 (39 klatek), YAVG klatki 0 = 105, OCR co 0,5 s bez zakazanych treści (OCR czyta „ł” na miętowym gradiencie jako „l”, sprawdzone na klatkach).
+- Ocena: (czeka).

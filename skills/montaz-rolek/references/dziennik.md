@@ -368,3 +368,15 @@ Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % 
 - Dźwięk: motyw serii PerfOS na −20 LUFS, +4 dB na planszy końcowej, 4 efekty z biblioteki (`sfx.py`), całość −14,1 LUFS, szczyt −1,9 dBFS.
 - Kontrole: check 0 błędów, strefa 0 (39 klatek), YAVG klatki 0 = 105, OCR co 0,5 s bez zakazanych treści (OCR czyta „ł” na miętowym gradiencie jako „l”, sprawdzone na klatkach).
 - Ocena: (czeka).
+
+## 2026-11-28, PERFOS odc. 7 „Dear Santa” v3 (seria z gliny, 37,5 s EN + wariant reklamowy PL 26,3 s)
+- **Krytyka (Jakub, v1/v2 zmontowane prostym skryptem ffmpeg poza skillem):** „nudne”, za mało najazdów na twarze, brak animacji i przerywników; gliniany Jakub w pierwszym ujęciu w sklepie bez akcesoriów z karty postaci („to musi być referencja z moodboarda, za każdym razem”).
+- **Zmiana:** odcinki serii też montujemy w HyperFrames według skilla, nie skryptem z planszami napisów. Projekt `projekty/PERFOS-ep07-dear-santa/` (wariant PL w `reklama-PL/` z plikiem `WARIANT_PL`, klipy przez dowiązania).
+- Najazdy: punkt zaczepienia skali = środek twarzy z `twarz.swift` dla każdego ujęcia; bazowy ruch 1→1,02 do słowa-akcentu, potem drugi `fromTo` do 1,12–1,16 z `immediateRender:false` (bez tego check zgłasza `gsap_repeated_fromto_without_baseline`, a nakładające się tweeny dawały skok skali).
+- Przerywniki bez nowej generacji: licznik polubień 0→11 zamiast napisu „Eleven likes” (fraza tylko w SRT), jasna wstawka z wycinkami kubków z kadru wzorcowego jako „reklamy”, chip „Next morning”, przenikanie 0,4 s przy zmianie pory dnia (klip s08 dłuższy o przenikanie).
+- Czasy słów: whisper z `-ml 1` dzieli słowa („Boost|ed”, „don|'t”) i pisze liczby cyframi („11”) oraz dokłada wtrącenia („Haha”). Scalanie tokenów bez spacji, mapa liczb i dopasowanie po kolei z pomijaniem wtrąceń. Wariant PL na głosie EN: słowa frazy PL rozłożone w oknie odpowiadającej frazy EN, ruch kamery i przerywniki zawsze z czasów EN.
+- `line_unread` liczy czas od pojawienia się pierwszego słowa, więc wcześniejsze wejście frazy nie pomaga; szybkie „But I brought / a helper” scalone w jedną frazę (49 px, mieści się w strefie). Ostatnia kwestia przed planszą stoi do końca ujęcia (≥ 2 s).
+- Render HyperFrames przerywa się sam, gdy proces nadrzędny wyjdzie (`render_cancelled_parent_exited`): nie odczepiać przez `setsid`, uruchamiać jako zadanie w tle sesji.
+- Dźwięk: limiter 0,74 dawał po AAC szczyt −1,2 dBFS; poprawka samego dźwięku (limiter 0,66 + wzmocnienie w pętli, obraz kopiowany): −14,1 LUFS, szczyt −3,0 dBFS.
+- Kontrole: check 0 błędów i 0 ostrzeżeń czytelności, strefa 0, transkrypcja zgodna, OCR zgodny (poza znanymi błędami „ł”/„Ż” i mięty).
+- Ocena Jakuba: (czeka).

@@ -380,3 +380,11 @@ Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % 
 - Dźwięk: limiter 0,74 dawał po AAC szczyt −1,2 dBFS; poprawka samego dźwięku (limiter 0,66 + wzmocnienie w pętli, obraz kopiowany): −14,1 LUFS, szczyt −3,0 dBFS.
 - Kontrole: check 0 błędów i 0 ostrzeżeń czytelności, strefa 0, transkrypcja zgodna, OCR zgodny (poza znanymi błędami „ł”/„Ż” i mięty).
 - Ocena Jakuba: (czeka).
+
+## 2026-11-28, PERFOS-B8 „Dwie firmy” v2 (reklama Meta 9:16, hak A 23,0 s, hak B 24,1 s)
+- **Krytyka (Jakub, dosłownie):** „masakryczne to jest - te okręgi nigdy ich nie używaj i daj tam jakiegoś lektora bo nudne to” (plansza końcowa: P na ciemnym tle z pierścieniami wokół oka).
+- **Zmiana (zasada twarda w filmach PerfOS):** żadnych okręgów, pierścieni i kręgów za postacią ani wokół oka, w planszach, tłach, przejściach (okrągłe maski, „wejście przez obiektyw”), animacjach i miniaturach; bez poświat i świecących obwódek. Plansza końcowa PerfOS = gliniana scena z ramą systemu grafik (`Shared/Perfos/marketing/system-grafik/plansza-koncowa/`).
+- Reklama bez twarzy nie może być bez głosu: lektor PL (ElevenLabs v3 przez kie.ai, ok. 10 kr), tekst = napisy wygładzone do mowy, liczby słownie („pięćset dziewięćdziesiąt dziewięć złotych”), marka zapisana „Perf o-es”, żeby TTS czytał „Perf OS”. Lekkie `atempo=1.08` do ok. 2,5 słowa/s. Oś filmu liczona z długości nagrań lektora, napisy i tytuły wchodzą razem z jego słowami.
+- Muzyka pod lektorem: poziom liczony od głośności lektora (−16 LU), +6 dB po ostatniej kwestii na planszy.
+- Klip krótszy od sceny: pętla tam i z powrotem w zwolnionym tempie zamiast kilkusekundowej stopklatki.
+- Ocena Jakuba: (czeka).

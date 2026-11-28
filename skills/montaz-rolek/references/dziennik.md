@@ -388,3 +388,13 @@ Brak danych. Format wpisu: data publikacji, projekt, średni czas oglądania, % 
 - Muzyka pod lektorem: poziom liczony od głośności lektora (−16 LU), +6 dB po ostatniej kwestii na planszy.
 - Klip krótszy od sceny: pętla tam i z powrotem w zwolnionym tempie zamiast kilkusekundowej stopklatki.
 - Ocena Jakuba: (czeka).
+
+## 2026-11-28, IMG_0795 „If you run Facebook or Instagram ads” (rolka PerfOS po angielsku, 36,6 s, hak A i B)
+- Zlecenie Jakuba: „zmontuj i zaplanuj” na wszystkie social media PerfOS. iPhone 16 Pro 4K60, dźwięk z pliku (offset 0), 5 min surówki z wieloma dublami i rozmową w pokoju na końcu. Wzór C4538; w skryptach whisper `-l en` (domyślnie był wpisany `pl`).
+- Angielski z akcentem: whisper w krótkich oknach pisze „Perforce/Purpose” zamiast „PerfOS”, „a checker” zamiast „checks your”. `waliduj_napisy.py` daje przez to 26 z 110 „błędów”, choć słowa padają w czasie: rozstrzyga sens transkrypcji okna, nie pisownia. W napisach poprawna forma czasownika (reads, makes, pauses, changes), bo w mowie brakuje -s; zgłoszone przy oddaniu.
+- `powtorzenia.py`: 5 alarmów mikro, wszystkie fałszywe (whisper w trzech oknach i sylaby w `fonemy.py`).
+- `poczatek.py` złapał zmianę kadru W→M w środku słowa („ads”) przy ciągłym dźwięku: przesunięta do pauzy po „business,” (cisza w obwiedni).
+- Hak B jako zdanie ze środka („Nothing goes live until you click approve.”) dostał szeroki kadr W zamiast C, bo w C hasło z klatki 0 zachodziło na okulary.
+- Plansza końcowa na kontach PerfOS: standard PerfOS (glina B5 + rama, bez okręgów) zamiast planszy „zaobserwuj @jakub.derda”; CTA = jego pytanie o pierwszą reklamę w komentarzu.
+- Logo Facebooka i Instagrama w scenie produktu („connect your ad accounts”), nie w haku: w haku byłaby trzecia animacja w 30 s.
+- Ocena Jakuba: (czeka).
